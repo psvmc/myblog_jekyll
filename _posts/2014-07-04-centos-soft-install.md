@@ -2,8 +2,10 @@
 
 layout: post
 title: CentOS服务器部署
-description: CentOS服务器部署
-keywords: CentOS,服务器部署
+description: CentOS服务器常用软件安装
+keywords: 
+    - CentOS
+    - 服务器部署
 category: linux
 
 ---

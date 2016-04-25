@@ -1,9 +1,13 @@
 ---
 
 layout: post
+
 title: Android 慎用static静态变量
-description: Android 慎用static静态变量
+
+description: Android是用Java开发，其静态变量的生命周期遵守Java的设计。我们知道静态变量是在类被load的时候分配内存的，并且存在于方法区。当类被卸载的时候，静态变量被销毁。在PC机的客户端程序中，一个类被加载和卸载，可简单的等同于jvm进程的启动和结束。那么在Android中呢？
+
 keywords: android
+
 category: android
 
 ---
