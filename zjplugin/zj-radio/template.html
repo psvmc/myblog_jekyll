@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>demo.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./css/zj_radio.css">
+
+</head>
+
+<body>
+
+	<div>
+		<label class="zj-radio zj-radio-check">
+			<input type="radio" name="options" value="1" checked="checked">
+			选项 1
+		</label>
+		<label class="zj-radio zj-radio-uncheck">
+			<input type="radio" name="options" value="2">
+			选项 2
+		</label>
+		<label class="zj-radio zj-radio-uncheck">
+			<input type="radio" name="options" value="3">
+			选项 3
+		</label>
+		<input type="button" value="取值" id="getValue">
+	</div>
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#getValue").click(function() {
+				alert($("input[name=options]:checked").val())
+			})
+		})
+	</script>
+</body>
+</html>

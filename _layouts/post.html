@@ -1,0 +1,196 @@
+--- 
+
+isPost: true 
+comment: true 
+
+---
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<META http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>{% if page.title %} {{ page.title }} {% else %} {{ site.title }} {% endif %}</title>
+<meta name="generator" content="Jekyll" />
+<meta name="author" content="{{ site.author.name }}" />
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ',' }}{% else %}{{ site.keywords | join: ','}}{% endif %}" />
+<!-- //页面样式 -->
+<link href="{{ site.themes }}/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ site.themes }}/css/style.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
+<link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="{{ site.themes }}/css/syntax-highlighting.css" rel="stylesheet">
+<link rel="shortcut icon" href="{{ site.themes }}/images/favicon.ico" type="image/x-icon" />
+<!-- jquery -->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="{{ site.themes }}/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]><script src="{{ site.themes }}/js/html5.js"></script><![endif]-->
+
+</head>
+<body id="ztheme">
+	<div class="page-wrapper">
+		<section class="head" id="ztheme-head">
+			<div id="ztheme-head-img-div" style="position:absolute;z-index:1;width:100%;height:100%;overflow:hidden;display:none;">
+				<img src="/jekyll-themes/ztheme/images/touming.png" style="width:100%;" id="ztheme-head-img" />
+			</div>
+			
+			<div style="width:100%;height:100%;position:absolute;z-index:2;">
+				<header class="header" style="width:98%;margin:0px auto;">
+					<h1 class="logo">
+						<a href="/">{{ site.title }}</a>
+					</h1>
+					<h2 class="subtitle">{{ site.subTitle }}</h2>
+				</header>
+				<nav class="nav" id="ztheme-nav">
+					<ul class="nav-list">
+						{% for link in site.nav %} {% assign active = nil %} {% if page.url == link.url%} {% assign active = 'nav-item-active' %} {% endif %}
+						<li class="nav-item {{ active }}"><a href="{{ link.url }}" target="{{ link.target }}"> {{ link.text }} </a> {{ indicator }}</li> {% endfor %}
+					</ul>
+				</nav>
+			</div>
+		</section>
+		<section class="main" id="ztheme-main">
+			<article class="main-article main-article-page">
+				<div class="ztheme-title">
+					<h1 class="ztheme-title-item">{{ page.title }}</h1>
+					<p class="main-article-meta">
+						<time pubdate="{{ rpost.date | date_to_utc | date: '%Y-%m-%d' }}">{{ page.date | date_to_utc | date: "%Y-%m-%d" }}</time>
+					</p>
+				</div>
+				<div class="ztheme-post">
+					
+					<p class="main-article-meta">
+						<div id="category"></div>
+					</p>
+					<div class="main-article-contant" id="main-article-contant">{{ content }}</div>
+				</div>
+			</article>
+
+
+			<nav class="pagination fn-clear" id="ztheme-paging">
+				<div class="pagination-list">
+					{% if page.previous %}
+					<a class="prev" href="{{ page.previous.url }}" rel="bookmark">
+						<i class="fa fa-chevron-circle-left"></i>
+						{{ page.previous.title | truncatewords:5 }}
+					</a>
+					{% endif %} {% if page.next %}
+					<a class="next" href="{{ page.next.url }}" rel="bookmark">
+						{{ page.next.title | truncatewords:5 }}
+						<i class="fa fa-chevron-circle-right"></i>
+					</a>
+					{% endif %}
+				</div>
+			</nav>
+			<div class="comment">
+				{% if site.disqus.config %}
+				<div class="comment-cnt">
+					<div id="disqus_thread"></div>
+				</div>
+				{% else %} {% if site.duoshuo.config %}
+				<div class="comment-cnt">
+					<div class="ds-thread"></div>
+				</div>
+				{% endif %} {% endif %}
+			</div>
+		</section>
+		<footer class="foot" id="ztheme-foot">
+			<div class="footer fn-clear">
+				<h1 class="logo"></h1>
+			</div>
+			<div class="copyright">
+				<div class="copyright-cnt fn-clear">
+					{% for link in site.follow %}
+					<a class="follow" href="{{ link.url }}" target="_blank">
+						<i class="fa {{ link.class }}"></i>
+					</a>
+					{% endfor %}
+					<p class="text">
+						© 2014-2017 &nbsp;
+						<a href="/index.html" style="text-decoration:none;">剑行者</a>
+					</p>
+				</div>
+			</div>
+			<div class="search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+				      opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+				    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" 
+				           placeholder="文章标题 标签"
+				           >
+
+				    <div style="position: fixed; top: 5px; right: 5px;">
+				        <img src="/search/img/cb-close.png"  id="close-btn"/>
+				    </div>
+				</div>
+
+				<div style="position: fixed; right: 18px; bottom: 60px;border-radius: 3px 3px;background: rgba(0, 0, 0, 0.8);z-index: 9999;" >
+				    <img src="/search/img/cb-search.png"  id="search-btn"  style="height:20px;width:20px;margin:10px;" title="双击ctrl试一下"/>
+				</div>
+
+				<link rel="stylesheet" href="/search/css/cb-search.css">
+
+				<script src="/search/js/bootstrap3-typeahead.min.js"></script>
+				<script src="/search/js/cb-search.js"></script>
+		</footer>
+	</div>
+	<script type="text/javascript" src="{{ site.themes }}/js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="{{ site.themes }}/js/common.js"></script>
+
+	<!-- 目录生成 -->
+	<script type="text/javascript">
+	function categoryCreater(articleId) {
+		var cateh1 = "#" + articleId + " h1,";
+		var cateh2 = "#" + articleId + " h2,";
+		var cateh3 = "#" + articleId + " h3,";
+		var cateh4 = "#" + articleId + " h4,";
+		var cateh5 = "#" + articleId + " h5,";
+		var cateh6 = "#" + articleId + " h6";
+		$(cateh1 + cateh2 + cateh3 + cateh4 + cateh5 + cateh6).each(function(i, item) {
+			if (i == 0) {
+				$("#category").append('<li class="-ml" ><a  href="#-ml">目录</a></li>');
+				$("#category").css("border-left", "3px solid #0088cc").css("padding", "10px 30px").css("background", "#f6f6f6");
+			}
+			var tag = $(item).get(0).localName;
+			$(item).attr("id", "-" + i);
+			$("#category").append('<li class="-'+tag+'"><a  href="#-'+i+'">' + $(this).text() + '</a></li>');
+		});
+
+		$("#category li").css("line-height", 1.6);
+		$(".-ml").css("margin-left", 0);
+		$(".-h1").css("margin-left", 10);
+		$(".-h2").css("margin-left", 20);
+		$(".-h3").css("margin-left", 40);
+		$(".-h4").css("margin-left", 60);
+		$(".-h5").css("margin-left", 80);
+		$(".-h6").css("margin-left", 100);
+		$(".-ml").css("margin-left", 0).css("font-size", "20px");
+	}
+	categoryCreater('main-article-contant');
+	</script>
+	{% if page.comment %} {% if site.disqus.config %}
+	<script type="text/javascript">
+	        //disqus
+	        var disqus_shortname = '{{ site.disqus.id }}';
+	        (function() {
+	            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+	            (document.getElementsByTagName('head')[0] ||
+	                document.getElementsByTagName('body')[0]).appendChild(dsq);
+	        })();
+	</script>
+	{% else %} {% if site.duoshuo.config %}
+	<script type="text/javascript">
+                var duoshuoQuery = {short_name:"{{ site.duoshuo.id }}"};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = 'http://static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+	{% endif %} {% endif %} {% endif %}
+</body>
+</html>
+

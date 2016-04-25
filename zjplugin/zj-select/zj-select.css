@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+
+body {
+	font: 12px/1.231 "微软雅黑", Verdana, "宋体", sans-serif;
+}
+
+.zj-ui-select {
+	display: inline-block;
+	font: 12px/1.231 "微软雅黑", Verdana, "宋体", sans-serif;
+	border: #bbb solid 1px;
+	border-radius: 3px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#efefef));
+	background-image: -moz-linear-gradient(top, #ffffff, #efefef);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#efefef));
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#ffffff, endColorStr=#efefef);
+	cursor: pointer;
+	vertical-align: top;
+	zoom: 1;
+	_height: 25px;
+}
+
+.zj-ui-select:hover {
+	box-shadow: #bbb 0px 0px 2px;
+}
+
+.zj-ui-select .default {
+	line-height: 20px;
+	padding: 2px 5px;
+	overflow: hidden;
+	display: block;
+	zoom: 1;
+}
+
+.zj-ui-select .default span {
+	float: left;
+}
+
+.zj-ui-select .default label {
+	font-size: 10px;
+	padding-left: 3px;
+	border-left: #bbb solid 1px;
+	margin-left: 6px;
+	font-weight: 700;
+	float: right;
+}
+
+.zj-ui-select ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	display: block;
+	border: #bbb solid 1px;
+	margin-left: -1px;
+	line-height: 22px;
+	border-bottom-right-radius: 3px 3px;
+	border-bottom-left-radius: 3px 3px;
+	text-align: left;
+	background: #fff;
+	display: none;
+}
+
+.zj-ui-select li {
+	text-indent: 5px;
+}
+
+.zj-ui-select li:hover,.zj-ui-select li.active {
+	background: #0bF;
+	color: #fff;
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自定义Select</title>
+<style type="text/css">
+body {
+	padding-bottom: 100px;
+}
+
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="./css/zj-select-block.css">
+
+</head>
+
+<body>
+	<fieldset>
+		<legend>內部初始化</legend>
+		<select id="sex">
+			<option value="1">man</option>
+			<option value="2">woman</option>
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#sex').val())" />
+		<input type="button" value="获取text" onclick="alert($('#sex').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>data初始化</legend>
+		<select id="demo1">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo1').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo1').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>data(空)初始化测试</legend>
+		<select id="demo2">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo2').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo2').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>宽度测试</legend>
+		<select id="demo3">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo3').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo3').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>宽度测试</legend>
+		<select id="demo4">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo4').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo4').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>别名测试</legend>
+		<select id="demo5">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo5').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo5').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>添加额外数据</legend>
+		<select id="demo6">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo6').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo6').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>设置默认值</legend>
+		<select id="demo7">
+		</select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo7').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo7').find('option:selected').text())" />
+	</fieldset>
+
+	<fieldset>
+		<legend>添加样式</legend>
+		<select id="demo8"></select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo8').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo8').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>取消圆角</legend>
+		<select id="demo9"></select>
+		<br />
+		<input type="button" value="获取value" onclick="alert($('#demo9').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo9').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>初始化多个</legend>
+		<select class="demo10"></select>
+		<select class="demo10"></select>
+		<br />
+	</fieldset>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/zj-select-block.js"></script>
+	<!-- 调用方式 -->
+	<script>
+		$(function() {
+			$('#demo1').zjselect_block({
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ]
+			});
+			$('#demo2').zjselect_block({
+				data : []
+			});
+			$('#sex').zjselect_block();
+			$('#demo3').zjselect_block({
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ],
+				num : 1
+			});
+			$('#demo4').zjselect_block({
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ],
+				num : 2
+			});
+			$('#demo5').zjselect_block({
+				data : [ {
+					"id" : "1",
+					"name" : "哈哈哈哈"
+				}, {
+					"id" : "2",
+					"name" : "呵呵"
+				}, {
+					"id" : "3",
+					"name" : "嘿嘿"
+				} ],
+				valueField : "id",
+				textField : "name",
+				num : 2
+			});
+			$('#demo6').zjselect_block({
+				data : [ {
+					"id" : "1",
+					"name" : "哈哈哈哈"
+				}, {
+					"id" : "2",
+					"name" : "呵呵"
+				}, {
+					"id" : "3",
+					"name" : "嘿嘿"
+				} ],
+				valueField : "id",
+				textField : "name",
+				num : 2,
+				headerData : [ {
+					"id" : "0",
+					"name" : "我是开头"
+				} ],
+				footerData : [ {
+					"id" : "999",
+					"name" : "我是末尾"
+				} ]
+			});
+			$('#demo7').zjselect_block({
+				value : "3",
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ],
+				num : 2
+			});
+
+			$('#demo8').zjselect_block({
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ],
+				addInputStyle : "border:none;border-bottom: 1px solid rgb(171, 173, 178);",
+				num : 2,
+				yuanjiao : false
+			});
+
+			$('#demo9').zjselect_block({
+				value : "3",
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ],
+				num : 2,
+				yuanjiao : false
+			});
+
+			$('.demo10').zjselect_block({
+				value : "1",
+				data : [ {
+					"value" : "1",
+					"text" : "哈哈哈哈"
+				}, {
+					"value" : "2",
+					"text" : "呵呵"
+				}, {
+					"value" : "3",
+					"text" : "嘿嘿"
+				} ],
+				num : 1,
+				yuanjiao : false
+			});
+		});
+	</script>
+</body>
+</html>

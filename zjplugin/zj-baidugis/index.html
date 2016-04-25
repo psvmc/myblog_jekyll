@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+body,html,#allmap {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B710fe188768052d959c3fb330ba0d73"></script>
+<script type="text/javascript" src="./js/zj_baidugis.js"></script>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+<script type="text/javascript">
+	var allmap = new BMap.Map("allmap");
+	allmap.centerAndZoom(new BMap.Point(116.403765, 39.914850), 12);
+	allmap.enableScrollWheelZoom();
+	function allmap_range() {
+		var range = baidugis.getRangeArr();
+		baidugis.addArea(allmap, range, null);
+		var areas = baidugis.getAreasArr();
+		baidugis.addArea(allmap, areas, null);
+		var center = baidugis.getCenterArr();
+		baidugis.addCenter(allmap, center, null);
+	}
+	setTimeout(function() {
+		allmap_range();
+	}, 500);
+</script>
+</html>
+

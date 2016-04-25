@@ -1,0 +1,19 @@
+.zj-radio {
+	cursor: pointer;
+	padding-right: 20px;
+}
+
+.zj-radio input {
+	margin-right: 10px;
+	filter: alpha(opacity = 0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+.zj-radio-check {
+	background: url(../images/radio_check.png) no-repeat left center;
+}
+
+.zj-radio-uncheck {
+	background: url(../images/radio_uncheck.png) no-repeat left center;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自定义Select</title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="zj-select.css" />
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="zj-select.js"></script>
+<!-- 调用方式 -->
+<script>
+	$(function() {
+		$('select[name="sex"]').select().change(function() {
+			console.info(this.value);
+		});
+		$('select[name="demo2"]').select({
+			url : 'test.json'
+		}).change(function() {
+			console.info(this.value);
+		});
+		$('select[name="demo3"]').select({
+			data : [ {
+				"value" : "1",
+				"text" : "one"
+			}, {
+				"value" : "2",
+				"text" : "two"
+			}, {
+				"value" : "3",
+				"text" : "three"
+			} ]
+		}).change(function() {
+			console.info(this.value);
+		});
+	});
+</script>
+</head>
+
+<body>
+	<fieldset>
+		<legend>初始化多个</legend>
+		<select name="sex" id="sex">
+			<option value="1">man</option>
+			<option value="2">woman</option>
+		</select>
+		<input type="button" value="获取value" onclick="alert($('#sex').val())" />
+		<input type="button" value="获取text" onclick="alert($('#sex').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<select name="sex" id="sex2">
+			<option value="1">公</option>
+			<option value="2">母</option>
+		</select>
+		<input type="button" value="获取value" onclick="alert($('#sex2').val())" />
+		<input type="button" value="获取text" onclick="alert($('#sex2').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>url初始化</legend>
+		<select name="demo2" id="demo2">
+		</select>
+		<input type="button" value="获取value" onclick="alert($('#demo2').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo2').find('option:selected').text())" />
+	</fieldset>
+	<fieldset>
+		<legend>data初始化</legend>
+		<select name="demo3" id="demo3">
+		</select>
+		<input type="button" value="获取value" onclick="alert($('#demo3').val())" />
+		<input type="button" value="获取text" onclick="alert($('#demo3').find('option:selected').text())" />
+	</fieldset>
+</body>
+</html>

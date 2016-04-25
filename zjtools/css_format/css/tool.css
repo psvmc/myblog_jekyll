@@ -1,0 +1,179 @@
+* {
+	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
+}
+
+.title {
+	width: 830px;
+	border: 0;
+	padding: 4px 10px 4px 0
+}
+
+.icon img {
+	width: 72px;
+	height: 72px;
+	float: left;
+	margin-right: 15px
+}
+
+h2 {
+	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
+	color: #333
+}
+
+h3 {
+	font-size: 12px;
+	font-weight: lighter;
+	color: #666
+}
+
+textarea {
+	padding: 4px;
+	margin: 8px 0;
+	width: 99%;
+	min-height: 250px;
+	color: #333;
+	display: block
+}
+
+.bt-blue {
+	font-size: 14px;
+	line-height: 33px;
+	background-color: #4899E0;
+	font-weight: bold;
+	color: #FFF;
+	padding: 6px 18px 8px;
+	margin-right: 12px
+}
+
+.bt-blue:hover {
+	background-color: #368DD9;
+	text-decoration: none
+}
+
+.bt-green {
+	font-size: 14px;
+	line-height: 33px;
+	background-color: #6FB934;
+	font-weight: bold;
+	color: #FFF;
+	padding: 6px 18px 8px
+}
+
+.bt-green:hover {
+	background-color: #5FA924;
+	text-decoration: none
+}
+
+.bt {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	border: none;
+	height: 33px;
+	padding: 0 18px;
+	cursor: pointer;
+	margin-right: 12px
+}
+
+.lanse {
+	background-color: #4899E0;
+}
+
+.lvse {
+	background-color: #6FB934;
+}
+
+.huise {
+	background-color: #DDD;
+	color: #666;
+}
+
+.toolcode {
+	margin: 0 8px 26px
+}
+
+.tool {
+	float: left;
+	margin: 12px 0 40px 0;
+}
+
+.tool dd {
+	width: 82px;
+	height: 132px;
+	margin: 12px 38px 0 0;
+	float: left;
+	display: inline
+}
+
+.tool dd a {
+	color: #666;
+	line-height: 30px;
+	text-align: center;
+	display: block
+}
+
+.tool dd a:hover {
+	color: #390;
+	text-decoration: none
+}
+
+.tool dd img {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #FFF;
+}
+
+.nav-tool {
+	
+}
+
+.nav-tool img {
+	width: 50px;
+	height: 50px;
+	border: 1px solid #EEE
+}
+
+.nav-tool dd {
+	width: 90px;
+	height: 120px;
+	float: left;
+	text-align: center;
+}
+
+.nav-tool dd a {
+	color: #666;
+	border-bottom: 3px solid #EEE;
+	display: block
+}
+
+.nav-tool dd a.on {
+	color: #390
+}
+
+.nav-tool dd a:hover {
+	color: #390
+}
+
+.btn_green {
+	background: #4899E0;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	border: none;
+	height: 33px;
+	padding: 0 18px;
+	cursor: pointer;
+	margin-right: 12px;
+}
+
+.btn_blue {
+	background: #6FB934;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	border: none;
+	height: 33px;
+	padding: 0 18px;
+	cursor: pointer;
+	margin-right: 12px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>demo.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./css/zj-item.css">
+<link rel="stylesheet" type="text/css" href="./css/lionbars.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/jquery.lionbars.1.0.js"></script>
+
+</head>
+
+<body style="padding: 50px;">
+
+	<div class="zj-item" style="width: 200px;height: 300px;">
+		<ul>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长特别长无比长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长</a>
+			</li>
+			<li>
+				<a onclick="javascript:;">我的名字比较长很长超长特别长无比长</a>
+			</li>
+		</ul>
+	</div>
+
+
+
+	<script type="text/javascript">
+		function randomColor() {
+			var colorArray = [ "#99CCFF", "#FFCC00", "#FF9966", "#66CCCC", "#99CCCC", "#CCFF99", "#99CC66", "#FF9900", "#0099CC", "#FF9966" ];
+			var tempColor = 0;
+			var randomNum = 0;
+			$(".zj-item ul li").each(function(i, item) {
+				randomNum = Math.floor(Math.random() * colorArray.length);
+				while (tempColor == randomNum) {
+					randomNum = Math.round(Math.random() * colorArray.length);
+				}
+				$(item).css("borderLeft", "1px solid " + colorArray[randomNum]);
+				$(item).css("borderRight", "1px solid " + colorArray[randomNum]);
+				tempColor = randomNum;
+			});
+		}
+		randomColor();
+
+		$(".zj-item li").dblclick(function() {
+			$(this).remove();
+		})
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('.zj-item').lionbars({
+				autohide : true
+			});
+		});
+	</script>
+</body>
+</html>

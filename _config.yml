@@ -1,0 +1,67 @@
+#生成配置
+markdown: kramdown
+highlighter: rouge
+permalink: /:title.html
+paginate: 10
+paginate_path: "/page:num"
+baseurl: "/"
+exclude: ['vendor', 'README.md', 'Gemfile', 'Gemfile.lock', 'config.ru', 'unicorn.rb', 'Procfile']
+
+#站点基础配置
+title: '剑行者'
+subTitle: 
+description: 
+keywords: 剑行者,java,ios,swift
+url: http://www.psvmc.cn
+
+#菜单配置
+nav:
+  - text: 首页
+    url: /index.html
+    target: _self
+  - text: 日期归档
+    url: /archives.html
+    target: _self
+  - text: 分类归档
+    url: /category.html
+    target: _self
+  - text: 我的工具
+    url: /zjtools/index.html
+    target: _self
+  - text: 我的插件
+    url: /zjplugin/index.html
+    target: _self
+  - text: 第三方插件
+    url: /otplugin/index.html
+    target: _self
+  - text: 示例演示
+    url: /zjdemo/index.html
+    target: _self
+  - text: GitHub
+    url: https://github.com/psvmc
+    target: _blank
+
+
+#theme config
+themes: /jekyll-themes/ztheme
+
+#关注我
+follow:
+  - class: fa-github
+    url: https://github.com/psvmc
+  - class: fa-rss
+    url: /atom.xml
+
+#作者信息
+author:
+  link: http://www.psvmc.cn
+  name: 剑行者
+
+#评论信息
+disqus:
+  config: false
+  id: psvmc
+
+duoshuo:
+  config: false
+  id: psvmc

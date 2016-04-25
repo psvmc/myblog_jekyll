@@ -1,0 +1,170 @@
+.city_select {
+	float: left;
+	margin-top: 5px;
+	font-family: "Microsoft YaHei";
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #ddd;
+	padding-left: 5px;
+	margin: 5px;
+}
+
+.citySelector {
+	font: 14px/1.5 'Microsoft YaHei', arial, \5b8b\4f53;
+	background: #fff;
+	text-align: left;
+}
+
+.cityslide {
+	min-width: 160px;
+	list-style: none;
+	margin: -2px 0 0 -2px;
+	padding: 0px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+}
+
+.cityslide li {
+	list-style: none;
+	overflow: hidden;
+	height: 20px;
+	line-height: 20px;
+	padding: 4px 7px;
+}
+
+.cityslide li.on {
+	background: #9CD9FF;
+	color: #fff;
+}
+
+.cityslide li b {
+	font-weight: normal;
+}
+
+.cityslide li.empty {
+	background: #fff2e8;
+	color: #666;
+}
+
+.cityslide li.empty em {
+	color: red;
+	font-style: normal;
+}
+
+.cityname {
+	float: left;
+}
+
+.cityspell {
+	float: right;
+}
+
+.cityBox {
+	width: 480px;
+	border: 1px solid #E4F4FF;
+	overflow: hidden;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cityBox ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.cityBox ul li {
+	float: left;
+	list-style: none;
+	padding: 5px 8px;
+	border: 1px solid #E4F4FF;
+	cursor: pointer;
+	margin-left: 4px;
+	display: inline;
+	background: #FAFCFF;
+}
+
+.cityBox ul li.on {
+	background: #fff;
+	border-bottom-color: #fff;
+	position: relative;
+}
+
+.hide {
+	display: none;
+}
+
+p.tip {
+	color: #666;
+	line-height: 20px;
+	padding: 5px;
+	margin: 0;
+	text-indent: 3px;
+}
+
+.hotCity {
+	border-top: 1px solid #E4F4FF;
+	margin-top: -1px;
+	clear: left;
+	overflow: hidden;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	_margin-bottom: 8px;
+}
+
+.cityTab {
+	overflow: hidden;
+}
+
+.cityTab dl {
+	margin: 5px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.cityTab dl dt {
+	float: left;
+	margin: 3px 3px;
+	padding-left: 3px;
+	color: #F30;
+	text-indent: 5px;
+	line-height: 25px;
+	font-size: 14px;
+	width: 20px;
+	padding-left: 3px;
+}
+
+.cityTab dl dd {
+	margin-left: 28px;
+	width: 450px;
+}
+
+.cityTab dl dd a {
+	color: #555;
+	width: 66px;
+	height: 25px;
+	font-size: 14px;
+	text-align: center;
+	float: left;
+	margin: 3px 3px;
+	background-color: #fafafa;
+	text-decoration: none;
+	width: 66px;
+}
+
+.cityTab dl dd a:hover {
+	background-color: #00a0e9;
+	color: #fff;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.cityinput {
+	float: left;
+	border-right: 1px solid #ddd;
+	height: 38px;
+	line-height: 38px;
+	color: #666;
+	width: 80px;
+	font-size: 12px;
+	padding: 0 10px 0 5px;
+}

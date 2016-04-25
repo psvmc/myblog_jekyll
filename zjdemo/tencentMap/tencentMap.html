@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>腾讯地图示例</title>
+		<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		#dizhiList {
+			height: 100%;
+			width: 100%; padding：0px;
+			list-style: none;
+			margin: 0px;
+			list-style: none;
+		}
+		#dizhiList li {
+			overflow: hidden;
+			width: 100%;
+			height: 50px;
+			border-bottom: 1px solid #ccc;
+		}
+		#dizhiList li .dizhiTitle {
+			font-size: 13px;
+			text-align: left;
+			margin: 5px 0px;
+		}
+		#dizhiList li .dizhiDetail {
+			text-align: left;
+			color: #888;
+			margin: 5px 0px;
+			font-size: 12px;
+		}
+		#dizhiList li .dizhiLeft {
+			position: relative;
+			float: left;
+			height: 50px;
+			width: 80%;
+			z-index: 1;
+		}
+		#dizhiList li .dizhiRight {
+			margin-top: 15px;
+			position:relative;
+			float: right;
+			height: 24px;
+			width: 24px;
+			z-index: 2;
+		}
+		#dizhiList li .checkedImage {
+			background-image: url(right.png);
+			background-repeat: no-repeat;
+			background-size: 24px 24px;
+		}
+		</style>
+		
+	</head>
+	<body onload="init()">
+		<div>
+			起点
+			<input type="text" id="start" value="鑫苑金融广场" />
+		</div>
+		<div>
+			终点
+			<input type="text" id="end" style="width:90%;" />
+		</div>
+
+		<div style='width: 500px; height: 30px' id="infoDiv">
+			两点之间的距离为：
+			<span id="jvli"></span>
+			米
+		</div>
+		<div style="width:100%;height:200px" id="container"></div>
+		<div style="width:100%;height:100%;">
+			<div>
+				<ul id="dizhiList">
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&libraries=place"></script>
+	<script charset="utf-8" src="http://apps.bdimg.com/libs/jquery/1.6.0/jquery.min.js"></script>
+	<script charset="utf-8" src="tencentMap.js"></script>
+	
+</html>

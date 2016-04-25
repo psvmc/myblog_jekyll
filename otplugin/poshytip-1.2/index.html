@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tip插件演示</title>
+<style type="text/css">
+* {
+	font-family: "微软雅黑";
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+
+a {
+	text-decoration: none;
+}
+</style>
+<link rel="stylesheet" href="src/tip-twitter/tip-twitter.css" type="text/css" />
+
+<!-- jQuery and the Poshy Tip plugin files -->
+<script type="text/javascript" src="includes/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="src/jquery.poshytip.js"></script>
+</head>
+
+<body>
+	<fieldset>
+		<legend>Tip组件</legend>
+		<fieldset>
+			<legend>示例1</legend>
+			<p>
+				<a id="demo-tip-twitter" title="<div style='height:100px;width:300px;overflow:auto;'><h1>测试中文</h1>测试中文测试中文测试中文测试中文测试中文测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br />测试中文<br /></div>" href="#">示例1</a>
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>示例2</legend>
+			<table id="demo2">
+				<tr>
+					<th>标题1</th>
+					<th>标题2</th>
+				</tr>
+				<tr>
+					<td>11111</td>
+					<td>22222</td>
+				</tr>
+			</table>
+		</fieldset>
+
+	</fieldset>
+	<script type="text/javascript">
+		$(function() {
+			$('#demo-tip-twitter').poshytip({
+				className : 'tip-twitter',
+				showTimeout : 100,
+				alignTo : 'target',
+				alignX : 'center',
+				offsetY : 5,
+				allowTipHover : true,
+				fade : false,
+				slide : false
+			});
+
+			$('#demo2 th').poshytip({
+				className : 'tip-twitter',
+				showTimeout : 100,
+				alignTo : 'target',
+				alignX : 'center',
+				offsetY : 5,
+				allowTipHover : true,
+				fade : false,
+				slide : false,
+				content : function(updateCallback) {
+					var $this = $(this);
+					var title = $this.text();
+					window.setTimeout(function() {
+						updateCallback(title);
+					}, 1000);
+					return '加载中...';
+				}
+			});
+		})
+	</script>
+</body>
+</html>

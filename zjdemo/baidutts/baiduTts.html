@@ -1,0 +1,167 @@
+<html>
+	<head>
+		<title>百度语音Demo</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<style type="text/css">
+		fieldset {
+		display: block;
+		min-width: 140px; border : 1px dashed #ccc;
+		margin: 30px;
+		padding: 20px;
+		-moz-border-radius: 8px; /* Mozilla浏览器的私有属性 */
+		-webkit-border-radius: 8px; /* Webkit浏览器的私有属性 */
+		border-radius: 8px;
+		border: 1px dashed #ccc;
+		}
+		
+		fieldset ul{
+		margin:0px;
+		
+		}
+		
+		fieldset form{
+		margin-bottom:0px;
+		
+		}
+		a {
+		text-decoration: none;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>百度语音Demo</h1>
+		<fieldset>
+			<legend>获取Access Token</legend>
+			<form action = "https://openapi.baidu.com/oauth/2.0/token" method="get" id="tokenGet">
+				<table>
+					<tr>
+						<td>固定值：</td>
+						<td><input type="text" name="grant_type" value="client_credentials"/> </td>
+					</tr>
+					<tr>
+						<td>API Key：</td>
+						<td><input type="text" name="client_id" value="MHOY6cW7vlCpluhDMnoh9qdx"/></td>
+					</tr>
+					<tr>
+						<td>Secret Key:</td>
+						<td><input type="text" name="client_secret" value="2a14cb0576b1a8e4aa5b168fb99efcec"/></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2"><input type="submit" value="提交" /></td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+		<fieldset>
+			<legend>表单方式测试</legend>
+			<form action = "http://tsn.baidu.com/text2audio" method="get">
+				<table>
+					<tr>
+						<td>文本：</td>
+						<td><input type="text" name="tex" value="我是超级无敌super man"/> </td>
+					</tr>
+					<tr>
+						<td>语言：</td>
+						<td><input type="text" name="lan" value="zh"/></td>
+					</tr>
+					<tr>
+						<td>access_token:</td>
+						<td><input type="text" name="tok" value="24.8228bfdafc19cc567ad60c4ec1b3d40d.2592000.1443581397.282335-6733891"/></td>
+					</tr>
+					<tr>
+						<td>客户端类型选择:</td>
+						<td><input type="text" name="ctp" value="1"/></td>
+					</tr>
+					<tr>
+						<td>用户唯一标识:</td>
+						<td><input type="text" name="cuid" value="ac:87:a3:01:6c:49"/></td>
+					</tr>
+					<tr>
+						<td>语速:</td>
+						<td><input type="text" name="spd" value="5"/></td>
+					</tr>
+					<tr>
+						<td>音调:</td>
+						<td><input type="text" name="pit" value="5"/></td>
+					</tr>
+					<tr>
+						<td>音量:</td>
+						<td><input type="text" name="vol" value="5"/></td>
+					</tr>
+					<tr>
+						<td>发音人选择:</td>
+						<td><input type="text" name="per" value="0"/></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2"><input type="submit" value="提交" /></td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+
+		<fieldset>
+			<legend>js方式测试</legend>
+			<script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js" type="text/javascript" charset="utf-8" async defer></script>
+			<script>
+			var parseParam=function(param, key){
+			  var paramStr="";
+			  if(param instanceof String||param instanceof Number||param instanceof Boolean){
+			    paramStr+="&"+key+"="+encodeURIComponent(param);
+			  }else{
+			    $.each(param,function(i){
+			      var k=key==null?i:key+(param instanceof Array?"["+i+"]":"."+i);
+			      paramStr+='&'+parseParam(this, k);
+			    });
+			  }
+			  return paramStr.substr(1);
+			};
+
+			function testTTS(ttsContent){
+				var tokenUrl = "https://openapi.baidu.com/oauth/2.0/token";
+				var tokenData ={
+					"grant_type":"client_credentials",
+					"client_id":"MHOY6cW7vlCpluhDMnoh9qdx",
+					"client_secret":"2a14cb0576b1a8e4aa5b168fb99efcec"
+				};
+				var tokenTotalUrl = tokenUrl+"?"+parseParam(tokenData);
+				// $("#ttsIframe").attr("src",tokenTotalUrl);
+				// setInterval(function(){
+				// var win = document.getElementById('ttsIframeconsole.info').contentWindow;
+    			// console.info( win.document.body.innerText );
+				// },1000);
+				// console.info($("#ttsIframe").html());
+
+				// $.post(tokenUrl,
+				// 	tokenData,
+				// 	function(data){
+				// 		var token = data["access_token"];
+				
+				// },"json");
+
+					var url = "http://tsn.baidu.com/text2audio";
+						var data={
+							"tex":ttsContent,
+							"lan":"zh",
+							"tok":"24.8228bfdafc19cc567ad60c4ec1b3d40d.2592000.1443581397.282335-6733891",
+							"ctp":"1",
+							"cuid":"ac:87:a3:01:6c:49",
+							"spd":"5",
+							"pit":"5",
+							"vol":"5",
+							"per":"0"
+						};
+						var parastr  = parseParam(data);
+						$("#ttsIframe").attr("src",url+"?"+parastr);
+				
+
+			}
+
+			</script>
+			<input type="button" value="测试" onclick="testTTS('我是超级无敌super man')" />
+			<video src=""  id="ttsIframe" width="320" height="240" controls autobuffer style="display:none" autoplay="autoplay"></video>
+		</fieldset>
+		
+	</body>
+</html>

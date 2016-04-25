@@ -1,0 +1,866 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./css/zj-tree.css">
+<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/zj_tree.js"></script>
+<title></title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+	<div style="height: 400px;">
+		<input class="zj-tree" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,onClick:function(data){
+		console.info(data);
+		}" />
+	</div>
+
+	<script type="text/javascript">
+		var data = [ {
+			"id" : "001",
+			"icon" : null,
+			"text" : "系统管理",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-xitongshezhi"
+		}, {
+			"id" : "002",
+			"icon" : null,
+			"text" : "动作管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "action\/list"
+			},
+			"url" : "action\/list",
+			"iconCls" : null
+		}, {
+			"id" : "003",
+			"icon" : null,
+			"text" : "模块管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "resource\/list"
+			},
+			"url" : "resource\/list",
+			"iconCls" : null
+		}, {
+			"id" : "004",
+			"icon" : null,
+			"text" : "用户管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "admin\/list"
+			},
+			"url" : "admin\/list",
+			"iconCls" : null
+		}, {
+			"id" : "005",
+			"icon" : null,
+			"text" : "角色管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "role\/list"
+			},
+			"url" : "role\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IHWCU500",
+			"icon" : null,
+			"text" : "投资管理",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-zichanguanli"
+		}, {
+			"id" : "I8IHXKW301",
+			"icon" : null,
+			"text" : "乡镇办年度目标管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96AXRG0C",
+			"attributes" : {
+				"url" : "xzbYear\/list"
+			},
+			"url" : "xzbYear\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IHYWOO02",
+			"icon" : null,
+			"text" : "固定资产投资",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IHWCU500",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8IHZCW503",
+			"icon" : null,
+			"text" : "固定资产投资",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IHYWOO02",
+			"attributes" : {
+				"url" : "gdzctz\/list"
+			},
+			"url" : "gdzctz\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II03JU05",
+			"icon" : null,
+			"text" : "房地产数据",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IHWCU500",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8II0CBV06",
+			"icon" : null,
+			"text" : "企业投资资金土地情况",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II03JU05",
+			"attributes" : {
+				"url" : "tzzjtd\/list"
+			},
+			"url" : "tzzjtd\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II0UT708",
+			"icon" : null,
+			"text" : "房地产数据评估",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II03JU05",
+			"attributes" : {
+				"url" : "fdcsjpg\/list"
+			},
+			"url" : "fdcsjpg\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II151D09",
+			"icon" : null,
+			"text" : "建筑业数据",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IHWCU500",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8II1KYT0A",
+			"icon" : null,
+			"text" : "总专包建筑业生产指标",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II151D09",
+			"attributes" : {
+				"url" : "jzysczb\/list"
+			},
+			"url" : "jzysczb\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II23MZ0C",
+			"icon" : null,
+			"text" : "劳务分包建筑业主要指标",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II151D09",
+			"attributes" : {
+				"url" : "lwfb\/list"
+			},
+			"url" : "lwfb\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II2SIT0E",
+			"icon" : null,
+			"text" : "新开工入库项目",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96C75D0D",
+			"attributes" : {
+				"url" : "rkxm\/list"
+			},
+			"url" : "rkxm\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II3V6T0H",
+			"icon" : null,
+			"text" : "重点项目管理",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-xiangmuguanli"
+		}, {
+			"id" : "I8II47KG0I",
+			"icon" : null,
+			"text" : "区重点项目申报",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8II3V6T0H",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8II4S6O0J",
+			"icon" : null,
+			"text" : "项目分类定义",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II47KG0I",
+			"attributes" : {
+				"url" : "xmfl\/list"
+			},
+			"url" : "xmfl\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II4ZR80K",
+			"icon" : null,
+			"text" : "项目状态定义",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II47KG0I",
+			"attributes" : {
+				"url" : "xmzt\/list"
+			},
+			"url" : "xmzt\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II59D80L",
+			"icon" : null,
+			"text" : "重点项目申报",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II47KG0I",
+			"attributes" : {
+				"url" : "zdxm\/list"
+			},
+			"url" : "zdxm\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II5VFB0M",
+			"icon" : null,
+			"text" : "重点项目进展情况",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96DPZD0E",
+			"attributes" : {
+				"url" : "zdxmJinzhan\/list"
+			},
+			"url" : "zdxmJinzhan\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II6CCQ0N",
+			"icon" : null,
+			"text" : "重点项目问题情况",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96DPZD0E",
+			"attributes" : {
+				"url" : "zdxmWenti\/list"
+			},
+			"url" : "zdxmWenti\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II7GY50Q",
+			"icon" : null,
+			"text" : "第三产业管理",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-quanbu"
+		}, {
+			"id" : "I8II7Q060R",
+			"icon" : null,
+			"text" : "其他服务业管理",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8II7GY50Q",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8II834H0S",
+			"icon" : null,
+			"text" : "行业分类",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II7Q060R",
+			"attributes" : {
+				"url" : "tcFenlei\/list"
+			},
+			"url" : "tcFenlei\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II8STS0V",
+			"icon" : null,
+			"text" : "人口工资管理",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8II7GY50Q",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8II9EQT0W",
+			"icon" : null,
+			"text" : "人口数据管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II8STS0V",
+			"attributes" : {
+				"url" : "tcPerson\/list"
+			},
+			"url" : "tcPerson\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II9P6C0X",
+			"icon" : null,
+			"text" : "大普查人口数据管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II8STS0V",
+			"attributes" : {
+				"url" : "tcDpc\/list"
+			},
+			"url" : "tcDpc\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8II9XQR0Y",
+			"icon" : null,
+			"text" : "从业人员工资管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8II8STS0V",
+			"attributes" : {
+				"url" : "tcCyrygz\/list"
+			},
+			"url" : "tcCyrygz\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIAAQ70Z",
+			"icon" : null,
+			"text" : "社会科技管理",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8II7GY50Q",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8IIALW510",
+			"icon" : null,
+			"text" : "规上工业科技管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIAAQ70Z",
+			"attributes" : {
+				"url" : "tcGykj\/list"
+			},
+			"url" : "tcGykj\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIDDJ111",
+			"icon" : null,
+			"text" : "民生妇儿",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIAAQ70Z",
+			"attributes" : {
+				"url" : "tcMsfe\/list"
+			},
+			"url" : "tcMsfe\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIDLOA12",
+			"icon" : null,
+			"text" : "文化产业解释",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIAAQ70Z",
+			"attributes" : {
+				"url" : "tcWhcy\/list"
+			},
+			"url" : "tcWhcy\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIDV4O13",
+			"icon" : null,
+			"text" : "社会经济调查",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-baobiaoxitong"
+		}, {
+			"id" : "I8IIE5AX14",
+			"icon" : null,
+			"text" : "城镇居民可支配收入",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96FTTG0F",
+			"attributes" : {
+				"url" : "jjJmsr\/list"
+			},
+			"url" : "jjJmsr\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIETK216",
+			"icon" : null,
+			"text" : "农民人均纯收入",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96FTTG0F",
+			"attributes" : {
+				"url" : "jjNmsr\/list"
+			},
+			"url" : "jjNmsr\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIFVX51A",
+			"icon" : null,
+			"text" : "GDP核算",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-gongzuojihua"
+		}, {
+			"id" : "I8IIG4PD1B",
+			"icon" : null,
+			"text" : "GDP季报",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96HN260G",
+			"attributes" : {
+				"url" : "gdpJibao\/list"
+			},
+			"url" : "gdpJibao\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIGME61D",
+			"icon" : null,
+			"text" : "工业管理",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-zhinengmenhu"
+		}, {
+			"id" : "I8IIHBF71E",
+			"icon" : null,
+			"text" : "区工业增加值",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IIGME61D",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8IIHLZF1F",
+			"icon" : null,
+			"text" : "分行业大类产值",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIHBF71E",
+			"attributes" : {
+				"url" : "gyHycz\/list"
+			},
+			"url" : "gyHycz\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIHUUV1G",
+			"icon" : null,
+			"text" : "分行业大类增加值",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIHBF71E",
+			"attributes" : {
+				"url" : "gyGmyszj\/list"
+			},
+			"url" : "gyGmyszj\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8III16T1H",
+			"icon" : null,
+			"text" : "贸易管理",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-gongwenguanli"
+		}, {
+			"id" : "I8III9LQ1I",
+			"icon" : null,
+			"text" : "限额以上批零售汇总",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96IV190H",
+			"attributes" : {
+				"url" : "myPls\/list"
+			},
+			"url" : "myPls\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIJ6GY1M",
+			"icon" : null,
+			"text" : "短信中心",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-shoujiduanxin"
+		}, {
+			"id" : "I8IIJFB11N",
+			"icon" : null,
+			"text" : "短信通知",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96JUXM0I",
+			"attributes" : {
+				"url" : "sendtask\/list"
+			},
+			"url" : "sendtask\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIKCJH1Q",
+			"icon" : null,
+			"text" : "意见征集",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-qiyeshequ"
+		}, {
+			"id" : "I8IIKNHC1R",
+			"icon" : null,
+			"text" : "意见征集",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96KZBW0J",
+			"attributes" : {
+				"url" : "yjZj\/list"
+			},
+			"url" : "yjZj\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIKXDL1S",
+			"icon" : null,
+			"text" : "意见反馈",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96KZBW0J",
+			"attributes" : {
+				"url" : "yjFk\/list"
+			},
+			"url" : "yjFk\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIL55N1T",
+			"icon" : null,
+			"text" : "WebGIS系统",
+			"level" : 1,
+			"seq" : 10,
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-wangluohuiyi"
+		}, {
+			"id" : "I8IILZGS1W",
+			"icon" : null,
+			"text" : "项目在线",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IIL55N1T",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8IIMAB31X",
+			"icon" : null,
+			"text" : "重点项目(WebGIS)",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IILZGS1W",
+			"attributes" : {
+				"url" : "gisZdxm\/list"
+			},
+			"url" : "gisZdxm\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8IIMJEU1Y",
+			"icon" : null,
+			"text" : "新开工入库项目(WebGIS)",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IILZGS1W",
+			"attributes" : {
+				"url" : "gisRkxm\/list"
+			},
+			"url" : "gisRkxm\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I8P5QRBD00",
+			"icon" : null,
+			"text" : "乡镇办管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "xzb\/list"
+			},
+			"url" : "xzb\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I926AABA00",
+			"icon" : null,
+			"text" : "文化及相关产业单位",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIAAQ70Z",
+			"attributes" : {
+				"url" : "tcWhcydw\/list"
+			},
+			"url" : "tcWhcydw\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I926AYLW01",
+			"icon" : null,
+			"text" : "规上文化产业增加值",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "I8IIAAQ70Z",
+			"attributes" : {
+				"url" : "tcGswhzjz\/list"
+			},
+			"url" : "tcGswhzjz\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I9AYE39500",
+			"icon" : null,
+			"text" : "区域管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "area\/list"
+			},
+			"url" : "area\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I9NHSEAV00",
+			"icon" : null,
+			"text" : "重点项目监控",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA96DPZD0E",
+			"attributes" : {
+				"url" : "zdxmJk\/list"
+			},
+			"url" : "zdxmJk\/list",
+			"iconCls" : null
+		}, {
+			"id" : "I9UO03V500",
+			"icon" : null,
+			"text" : "部门管理",
+			"level" : 3,
+			"seq" : 10,
+			"pid" : "IA968C130B",
+			"attributes" : {
+				"url" : "department\/list"
+			},
+			"url" : "department\/list",
+			"iconCls" : null
+		}, {
+			"id" : "IA968C130B",
+			"icon" : null,
+			"text" : "系统管理",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "001",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96AXRG0C",
+			"icon" : null,
+			"text" : "乡镇办投资",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IHWCU500",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96C75D0D",
+			"icon" : null,
+			"text" : "入库项目",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IHWCU500",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96DPZD0E",
+			"icon" : null,
+			"text" : "重点项目",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8II3V6T0H",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96FTTG0F",
+			"icon" : null,
+			"text" : "居民收入",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IIDV4O13",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96HN260G",
+			"icon" : null,
+			"text" : "GDP核算",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IIFVX51A",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96IV190H",
+			"icon" : null,
+			"text" : "贸易管理",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8III16T1H",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96JUXM0I",
+			"icon" : null,
+			"text" : "短信中心",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IIJ6GY1M",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "IA96KZBW0J",
+			"icon" : null,
+			"text" : "意见管理",
+			"level" : 2,
+			"seq" : 10,
+			"pid" : "I8IIKCJH1Q",
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		} ];
+		$(function() {
+			$.zj_tree();
+		})
+	</script>
+</body>
+</html>

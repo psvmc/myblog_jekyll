@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./css/zj-item.css">
+<link rel="stylesheet" type="text/css" href="./css/lionbars.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
+<script type="text/javascript" src="js/jquery.lionbars.1.0.js"></script>
+<script type="text/javascript" src="js/zj_item.js"></script>
+
+<title></title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+</head>
+<body style="padding:20px;">
+	<fieldset>
+		<legend>配置在HTML中</legend>
+		<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
+		console.info(data);
+		},afterChangeFunc:function(){
+		console.info('111');
+		},afterInitFunc:function(){
+		console.info('初始化完毕11');
+		}" />
+		<input type="button" value="获取值" onclick="getValues(this)">
+		<input type="button" value="获取文本" onclick="getTexts(this)">
+		<input type="button" value="添加一项" onclick="addItem(this)">
+		<input type="button" value="删除一项" onclick="delItem(this)">
+	</fieldset>
+	<fieldset>
+		<legend>配置在HTML中</legend>
+		<input class="zj-item" data-options="url:'',data:data,parentField:'pid',width:200,fit:true,dbClick:function(data){
+		console.info(data);
+		},afterChangeFunc:function(){
+		console.info('222');
+		},afterInitFunc:function(){
+		console.info('初始化完毕22');
+		}" />
+		<input type="button" value="获取值" onclick="getValues(this)">
+		<input type="button" value="获取文本" onclick="getTexts(this)">
+		<input type="button" value="添加一项" onclick="addItem(this)">
+		<input type="button" value="删除一项" onclick="delItem(this)">
+	</fieldset>
+	<fieldset>
+		<legend>配置在js中</legend>
+		<input id="test003" />
+		<p>
+			值:
+			<label id="test003_value"></label>
+		</p>
+		<p>
+			文本:
+			<label id="test003_text"></label>
+		</p>
+
+
+		<input type="button" value="获取值" onclick="getValues(this)">
+		<input type="button" value="获取文本" onclick="getTexts(this)">
+		<input type="button" value="添加一项" onclick="addItem(this)">
+		<input type="button" value="删除一项" onclick="delItem(this)">
+	</fieldset>
+
+
+	<script type="text/javascript">
+		var data = [ {
+			"id" : "001",
+			"icon" : null,
+			"text" : "系统管理",
+			"level" : 1,
+
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-xitongshezhi"
+		}, {
+			"id" : "002",
+			"icon" : null,
+			"text" : "动作管理",
+
+			"attributes" : {
+				"url" : "action\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "003",
+			"icon" : null,
+			"text" : "模块管理",
+
+			"attributes" : {
+				"url" : "resource\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "004",
+			"icon" : null,
+			"text" : "用户管理",
+
+			"attributes" : {
+				"url" : "admin\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "005",
+			"icon" : null,
+			"text" : "角色管理",
+
+			"attributes" : {
+				"url" : "role\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "I8IHWCU500",
+			"icon" : null,
+			"text" : "投资管理",
+			"level" : 1,
+
+			"pid" : null,
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : "zj-icon-zichanguanli"
+		}, {
+			"id" : "I8IHXKW301",
+			"icon" : null,
+			"text" : "乡镇办年度目标管理",
+
+			"attributes" : {
+				"url" : "xzbYear\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "I8IHYWOO02",
+			"icon" : null,
+			"text" : "固定资产投资",
+			"level" : 2,
+
+			"attributes" : {
+				"url" : null
+			},
+			"url" : null,
+			"iconCls" : null
+		}, {
+			"id" : "I8IHZCW503",
+			"icon" : null,
+			"text" : "固定资产投资",
+
+			"attributes" : {
+				"url" : "gdzctz\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "I926AYLW01",
+			"icon" : null,
+			"text" : "规上文化产业增加值",
+
+			"attributes" : {
+				"url" : "tcGswhzjz\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "I9AYE39500",
+			"icon" : null,
+			"text" : "区域管理",
+
+			"attributes" : {
+				"url" : "area\/list"
+			},
+
+			"iconCls" : null
+		}, {
+			"id" : "I9NHSEAV00",
+			"icon" : null,
+			"text" : "重点项目监控",
+
+			"attributes" : {
+				"url" : "zdxmJk\/list"
+			},
+
+			"iconCls" : null
+		} ];
+
+		function getValues(obj) {
+			alert($(obj).parent().find(".zj-item").zj_item('getValues'));
+		}
+		function getTexts(obj) {
+			alert($(obj).parent().find(".zj-item").zj_item('getTexts'));
+		}
+		function addItem(obj) {
+			$(obj).parent().find(".zj-item").zj_item('addItem', {
+				id : "newitem",
+				text : "新加项"
+			});
+		}
+		function delItem(obj) {
+			$(obj).parent().find(".zj-item").zj_item('delItem', 'newitem');
+		}
+		$(function() {
+			$(".zj-item").zj_item();
+			$(".zj-item").lionbars({
+				autohide : true
+			});
+			$("#test003").zj_item({
+				url : '',
+				data : data,
+				parentField : 'pid',
+				width : 200,
+				height : 200,
+				fit : true,
+				afterChangeFunc : function() {
+					$("#test003_value").text($("#test003").zj_item("getValues"));
+					$("#test003_text").text($("#test003").zj_item("getTexts"));
+				},
+				afterInitFunc : function() {
+					$("#test003_value").text($("#test003").zj_item("getValues"));
+					$("#test003_text").text($("#test003").zj_item("getTexts"));
+				}
+			});
+			$("#test003").lionbars({
+				autohide : true
+			});
+			
+		})
+	</script>
+</body>
+</html>

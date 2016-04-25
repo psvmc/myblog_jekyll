@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>demo.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./css/zj-tree.css">
+<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+<script src="./js/jquery.min.js"></script>
+
+</head>
+
+<body>
+	<div style="width: 200px;" class="zj-tree">
+
+		<div style="display: block;" class="menu-scroll scroll-up"></div>
+		<ul style="height: 515px;" class="first-menu">
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont icon-yangshengqi"></i>
+					<span class="first-menu-title">个人事务</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>个人事务</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">电子邮件</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">消息管理</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">手机短信</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">邮件审批</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">邮件审批日志</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">智协同</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">公告通知</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">新闻</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">投票</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">个人考勤</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">日程安排</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">工作日志</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">通讯簿</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">个人文件柜</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">控制面板</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">工作流</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>工作流</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">新建工作</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">我的工作</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">工作查询</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">工作监控</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">数据报表</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">超时统计分析</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">工作委托</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">流程日志查询</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">行政办公</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<ul class="second-menu clearfix">
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">工作计划</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">工作计划查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">工作计划管理</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">办公用品</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">办公用品申领</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">办公用品报表</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">办公用品信息管理</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">会议申请与安排</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">会议申请</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">会议查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">会议纪要</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">车辆申请与安排</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">车辆使用申请</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">车辆使用查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">油耗统计</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">固定资产</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">固定资产管理</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">图书管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">图书查询</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">资源申请与管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">资源申请与管理</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">组织机构信息</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">单位信息查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">部门信息查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">用户信息查询</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">知识管理</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>知识管理</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">公共文件柜</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">安全文档中心</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">网络硬盘</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">图片浏览</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">OA知道</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">维基百科</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">文档检索中心</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">智能门户</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>智能门户</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">我的门户</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">门户管理</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">门户模版管理</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">门户内容管理</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">管理中心</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>管理中心</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">管理中心门户</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">管理驾驶舱</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">人力资源</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>人力资源</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">员工自助查询</a>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">人事管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">人事档案</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">档案查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">合同管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">奖惩管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">证照管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">学习经历</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">工作经历</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">劳动技能</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">社会关系</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">人事调动</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">离职管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">复职管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">职称评定</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">员工关怀</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">人事分析</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">招聘管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">招聘需求</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">招聘计划</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">招聘计划审批</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">人才库</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">招聘筛选</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">招聘录用</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">人才分析</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">培训管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">培训计划</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">培训计划审批</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">培训记录</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">考勤管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">考勤审批</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">考勤记录</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">考勤统计</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">值班排班管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">查岗质询登记</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">绩效考核</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">考核项目设定</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">考核任务管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">进行考核</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">薪酬管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">薪酬项目及保险设置</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">薪酬基数设置</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">工资流程管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">财务工资录入</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">部门工资上报</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">福利管理</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">人力资源设置</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">考勤设置</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">人力资源管理员</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">HRMS代码设置</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">在线考试</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">题库管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">试题管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">试卷管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">主观题阅卷</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">考试信息管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">参加考试</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">公文管理</span>
+				</div>
+				<div style="display: none;" class="second-panel" style="display:none">
+					<h4>公文管理</h4>
+					<ul class="second-menu clearfix">
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">发文管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">发文拟稿</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">发文核稿</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">套红盖章</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">发文列表</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">收文管理</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">收文登记</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">领导批阅</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">收文分发</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">收文阅读</a>
+								</li>
+							</ul>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">基础设置</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">参数设置</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">主题词管理</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">公文类型设置</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">收文权限设置</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">档案管理</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>档案管理</h4>
+					<ul class="second-menu clearfix">
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">案卷借阅</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">案卷借阅</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">借阅审批</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">项目管理</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>项目管理</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">我的任务</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">项目查询</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">项目审批</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">项目文档</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">项目问题</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">ERP应用</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>ERP应用</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">应用中心</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">交流园地</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>交流园地</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">企业社区</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">讨论区</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">论坛</a>
+						</li>
+						<li>
+							<a class="second-menu-item" href="javascript:;">专业视频会议</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">附件程序</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>附件程序</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">即时通讯</a>
+						</li>
+						<li class="expand">
+							<a class="second-menu-item" href="javascript:;">实用信息</a>
+							<ul class="third-menu">
+								<li>
+									<a class="third-menu-item" href="javascript:;">电话区号查询</a>
+								</li>
+								<li>
+									<a class="third-menu-item" href="javascript:;">邮政编码查询</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="first-panel first-menu-item">
+					<i class="iconfont"></i>
+					<span class="first-menu-title">系统管理</span>
+				</div>
+				<div class="second-panel" style="display:none">
+					<h4>系统管理</h4>
+					<ul class="second-menu clearfix">
+						<li>
+							<a class="second-menu-item" href="javascript:;">系统信息</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<div style="display: block;" class="menu-scroll scroll-down"></div>
+	</div>
+	<script>
+		$(function() {
+			$(".first-menu li").hover(function() {
+				$(this).find(".first-panel").addClass("first-menu-item-hover").removeClass("first-menu-item");
+				$(this).find(".second-panel").css("display", "block");
+			});
+			$(".first-menu li").mouseleave(function() {
+				$(this).find(".first-panel").removeClass("first-menu-item-hover").addClass("first-menu-item");
+				$(this).find(".second-panel").css("display", "none");
+			});
+			$(".scroll-down").click(function() {
+				var menu = $(this).parent().find(".first-menu");
+				menu.animate({
+					scrollTop : '+=220px'
+				}, "slow");
+			});
+
+			$(".scroll-up").click(function() {
+				var menu = $(this).parent().find(".first-menu");
+				menu.animate({
+					scrollTop : '-=220px'
+				}, "slow");
+			});
+
+			function randomColor() {
+				var colorArray = [ "#99CCFF", "#FFCC00", "#FF9966", "#66CCCC", "#99CCCC", "#CCFF99", "#99CC66", "#FF9900", "#0099CC", "#FF9966" ];
+				var tempColor = 0;
+				var randomNum = 0;
+				$(".first-menu-item .iconfont").each(function(i, item) {
+					randomNum = Math.floor(Math.random() * colorArray.length);
+					while (tempColor == randomNum) {
+						randomNum = Math.round(Math.random() * colorArray.length);
+					}
+					$(item).css("color", colorArray[randomNum]);
+					tempColor = randomNum;
+				});
+			}
+			randomColor();
+		})
+	</script>
+</body>
+</html>

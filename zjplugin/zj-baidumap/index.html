@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>百度地图</title>
+<style type="text/css">
+body {
+	padding-bottom: 100px;
+}
+
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+
+
+</head>
+
+<body>
+	<fieldset>
+		<legend>示例</legend>
+		<table style="width: 600px;">
+			<tr>
+				<th>lng:</th>
+				<td>
+					<input type="text" id="lngId" style="width: 100%;" />
+				</td>
+			</tr>
+			<tr>
+				<th>lat:</th>
+				<td>
+					<input type="text" id="latId" style="width: 100%;" />
+				</td>
+			</tr>
+			<tr>
+				<th>address:</th>
+				<td>
+					<input type="text" id="addressId" style="width: 100%;" />
+				</td>
+			</tr>
+		</table>
+
+		<div id="allmap"></div>
+	</fieldset>
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B710fe188768052d959c3fb330ba0d73"></script>
+	<script type="text/javascript" src="./js/zj_baidumap.js"></script>
+	<!-- 调用方式 -->
+	<script>
+		$(function() {
+			$('#allmap').zjbaidumap({
+				mapId : "allmap",
+				initlng : "113.665102",
+				initlat : "34.751616",
+				width : "600px",
+				height : "300px",
+				lngId : "lngId",
+				latId : "latId",
+				addressId : "addressId"
+			});
+
+		});
+	</script>
+</body>
+</html>

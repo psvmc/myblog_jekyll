@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.form.min.js"></script>
+<script src="js/zj_image_upload.js"></script>
+<title></title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+	<fieldset>
+		<legend>点击异步图片上传</legend>
+		<form action="">
+			<input value="" name="pic" id="pic" />
+			<br />
+			<img alt="" class="upload" height="100" width="100"/>
+		</form>
+	</fieldset>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".upload").zj_image_upload({
+				targetSelector : "#pic",
+				uploadUrl : "response/result.json", // 上传URL地址
+				nopicUrl : "images/nopic.jpg",
+				loadingImgUrl : "images/loading.gif"
+			});
+		});
+
+		//上传成功后执行该函数
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>滚轮取值效果</title>
+</head>
+<body>
+
+	<div style="width:600px;height:300px" id="target">
+		<label for="wheelDelta">滚动值:</label>
+		<input type="text" id="wheelDelta" />
+	</div>
+	<script type="text/javascript">
+		/*********************** 
+		 * 函数：注册某元素的滚轮事件 
+		 * 作者：psvmc
+		 * 参数：事件源DOM Id ， 回调方法（data） 
+		 * data: 1：向下  -1：向上 
+		 *************************/
+		function scrollEvent(domId, callbackFunc) {
+			var dom = document.getElementById(domId);
+			var scrollFunc = function(e) {
+				var direct = 0;
+				e = e || window.event;
+
+				if (e.wheelDelta) {//IE/Opera/Chrome 
+					if (e.wheelDelta > 0) {
+						direct = -1;
+					} else {
+						direct = 1;
+					}
+				} else if (e.detail) {//Firefox 
+					if (e.detail > 0) {
+						direct = 1;
+					} else {
+						direct = -1;
+					}
+				}
+				if (callbackFunc) {
+					callbackFunc(direct);
+				}
+			}
+			/*注册事件*/
+			if (dom.addEventListener) {
+				dom.addEventListener('DOMMouseScroll', scrollFunc, false);
+			}
+			dom.onmousewheel = scrollFunc;//IE/Opera/Chrome
+		}
+
+		scrollEvent("target", function(data) {
+			if (data == 1) {
+				document.getElementById("wheelDelta").value = "向下";
+			} else {
+				document.getElementById("wheelDelta").value = "向上";
+			}
+		});
+	</script>
+</body>
+</html>

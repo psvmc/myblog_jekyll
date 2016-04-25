@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="./css/zj-file-upload.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/zj_file_upload.js"></script>
+<title></title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+</head>
+<body>
+	<fieldset>
+		<legend>添加或编辑</legend>
+		<div>
+			<input class="zj-fileupload" data-options='imageBase : " ./images/",fileInputName : "file",urlInputName : "url"' value="http://c.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc74dd914ecd300baa1cc112ad1.jpg" />
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>添加或编辑</legend>
+		<div>
+			<input class="zj-fileupload" data-options='imageBase : " ./images/",fileInputName : "newfile",urlInputName : "newurl"' value="http://c.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc74dd914ecd300baa1cc112ad1.jpg" />
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>添加或编辑</legend>
+		<div>
+			<input class="zj-fileupload" data-options='imageBase : " ./images/",fileInputName : "newfile2",urlInputName : "newurl2"' value="" />
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>只做显示</legend>
+		<div>
+			<input class="zj-fileupload-show" value="http://c.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc74dd914ecd300baa1cc112ad1.jpg" />
+		</div>
+	</fieldset>
+
+
+	<script type="text/javascript">
+		$(function() {
+			$.zj_file_upload();
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+.tip-error {
+	color: #b94a48;
+	height: 30px;
+	background: url(./images/tip-expression.png) no-repeat 0 5px;
+	margin-left: 60px;
+	padding-top: 3px;
+	padding-left: 30px;
+}
+
+.tip-success {
+	color: #0DC24E;
+	height: 30px;
+	background: url(./images/per_ok.png) no-repeat 0 5px;
+	margin-left: 60px;
+	padding-top: 3px;
+	padding-left: 30px;
+}
+
+.error .control-label,.error .help-block,.error .help-inline {
+	color: #b94a48;
+}
+
+.error .checkbox,.error .radio,.error input,.error select,.error textarea {
+	color: #b94a48;
+}
+
+.error input,.error select,.error textarea {
+	border: none;
+	border-bottom: 1px #ff6464 solid;
+	/* -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); */
+}
+
+.error input:focus,.error select:focus,.error textarea:focus {
+	/* border-color: #953b39; */
+	/* -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392; */
+	
+}
+
+.error .input-prepend .add-on,.error .input-append .add-on {
+	color: #b94a48;
+	background-color: #f2dede;
+	border-color: #b94a48;
+}
+
+.success .checkbox,.success .radio,.success input,.success select,.success textarea {
+	color: #468847;
+}
+
+.success input,.success select,.success textarea {
+	border: none;
+	border-bottom: 1px #0DC24E solid;
+}
+
+.success input:focus,.success select:focus,.success textarea:focus {
+	border-color: #0DC24E;
+}

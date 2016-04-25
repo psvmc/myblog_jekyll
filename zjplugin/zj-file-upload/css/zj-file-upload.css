@@ -1,0 +1,81 @@
+.attach_frame {
+	clear: both;
+	margin: 3px;
+}
+
+.attach_left {
+	border: 1px solid #abcbd2;
+	border-right: none;
+	float: left;
+	width: 8px;
+	height: 30px;
+	float: left;
+	/* Gecko browsers */
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	/* Webkit browsers */
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	/* W3C syntax */
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+.attach_img {
+	border: 1px solid #abcbd2;
+	border-left: none;
+	border-right: none;
+	float: left;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.attach_img img {
+	margin-top: 3px;
+	margin-right: 3px;
+	width: 24px;
+	height: 24px;
+}
+
+.attach_text {
+	border: 1px solid #abcbd2;
+	border-left: none;
+	border-right: none;
+	font-family: "Microsoft YaHei";
+	vertical-align: middle;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	vertical-align: middle;
+}
+
+.attach_right {
+	float: left;
+	border: 1px solid #abcbd2;
+	border-left: none;
+	width: 30px;
+	height: 30px;
+	/* Gecko browsers */
+	-moz-border-radius-topright: 100px;
+	-moz-border-radius-bottomright: 100px;
+	/* Webkit browsers */
+	-webkit-border-top-right-radius: 100px;
+	-webkit-border-bottom-right-radius: 100px;
+	/* W3C syntax */
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+}
+
+.attach_right img {
+	margin-top: 4px;
+	margin-right: 0px;
+	float: right;
+	width: 25px;
+	height: 25px;
+}
+
+.zj-upload-nourl {
+	font-family: "Microsoft YaHei";
+}

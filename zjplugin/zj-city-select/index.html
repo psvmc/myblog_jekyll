@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>城市选择</title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="city-select.css" />
+</head>
+<body>
+	<fieldset>
+		<legend>城市选择</legend>
+		<input type="text" id="fromcity" class="city_select" placeholder="请输入城市" />
+		<br />
+	</fieldset>
+
+	<script type="text/javascript" src="city-select.js"></script>
+	<!-- 调用方式 -->
+	<script type="text/javascript">
+		new ZJ.CitySelector({
+			input : 'fromcity'
+		});
+	</script>
+</body>
+</html>

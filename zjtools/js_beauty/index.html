@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>JavaScript HTML 美化整理工具</title>
+<link type="text/css" rel="Stylesheet" href="./css/JsBeauty.css">
+
+</head>
+
+<body>
+	<div id="topWrap">
+
+		<div id="title">
+			<h1>JavaScript HTML 美化整理工具</h1>
+			<p class="self">美化或解压缩JavaScript、HTML、JSON 、 JSONP等，增加可读性</p>
+		</div>
+	</div>
+	<div class="clear" style="height:20px"></div>
+
+	<div id="mainWrap">
+
+		<div class="clear"></div>
+		<div id="btnWrap">
+			<button id="beautify">
+				<strong>美化</strong>
+				<em>(ctrl-enter)</em>
+			</button>
+			<button id="clear">
+				<strong>清空</strong>
+			</button>
+			<button id="copy">
+				<strong>复制</strong>
+			</button>
+			<button id="paste">
+				<strong>粘贴</strong>
+			</button>
+			<div class="fr">
+				<input class="checkbox" type="checkbox" id="show-option">
+				<label for="show-option">显示选项</label>
+			</div>
+		</div>
+		<div class="clear" style="height:5px"></div>
+		<table id="options">
+			<tbody>
+				<tr>
+					<td style="text-align: left;">
+						<select name="tabsize" id="tabsize">
+							<option value="1">缩进一个制表符</option>
+							<option value="2">缩进2个空格</option>
+							<option value="3">缩进3个空格</option>
+							<option value="4">缩进4个空格</option>
+							<option value="8">缩进8个空格</option>
+						</select>
+
+						<select id="brace-style">
+							<option value="collapse">花括号不单独成行</option>
+							<option value="expand">花括号单独成行</option>
+							<option value="end-expand">后花括号单独成行</option>
+							<!-- option value="expand-strict">Braces always on own line (not recommended)</option -->
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						<span style="margin:6px 0 0 0">HTML &lt;style&gt;, &lt;script&gt; 格式化:</span>
+						<select id="indent-scripts">
+							<option value="keep">保持缩进基本</option>
+							<option value="normal">添加一个缩进级别</option>
+							<option value="separate">独立缩进</option>
+						</select>
+					</td>
+
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						<input class="checkbox" type="checkbox" id="preserve-newlines" checked="checked">
+						<label for="preserve-newlines">保留空行</label>
+						<br>
+						<input class="checkbox" type="checkbox" id="detect-packers" checked="checked">
+						<label for="detect-packers">检测已混淆代码</label>
+						<br>
+						<input class="checkbox" type="checkbox" id="keep-array-indentation">
+						<label for="keep-array-indentation">保持阵列缩进?</label>
+						<br>
+						<input class="checkbox" type="checkbox" id="space-before-conditional" checked="checked">
+						<label for="space-before-conditional">"if(x)" / "if (x)" 保持空格</label>
+						<br>
+						<input class="checkbox" type="checkbox" id="unescape-strings">
+						<label for="unescape-strings">解码 \xNN 或 \uNNNN 字符</label>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="clear"></div>
+		<textarea id="source" rows="16" cols="60"></textarea>
+		<!-- 		
+		<div id="testWrap">
+			<button id="test">
+				<strong>测试</strong>
+			</button>
+			<br />
+			<div id="testresults"></div>
+		</div> 
+		-->
+
+		<div class="clear"></div>
+	</div>
+
+	<script src="./js/jquery_cookies_widget.js"></script>
+	<script src="./js/beautify.js"></script>
+	<script src="./js/beautify-css.js"></script>
+	<script src="./js/beautify-html.js"></script>
+	<script src="./js/sanitytest.js"></script>
+	<script src="./js/beautify-tests.js"></script>
+	<script src="./js/javascriptobfuscator_unpacker.js"></script>
+	<script src="./js/p_a_c_k_e_r_unpacker.js"></script>
+	<script src="./js/urlencode_unpacker.js"></script>
+	<script src="./js/myobfuscate_unpacker.js"></script>
+	<script src="./js/JsBeauty.js"></script>
+</body>
+</html>

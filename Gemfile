@@ -1,0 +1,5 @@
+source 'http://ruby.taobao.org'
+gem 'jekyll'
+gem 'rack-jekyll', github: 'adaoraul/rack-jekyll'
+gem 'rack-contrib', :require => 'rack/contrib/try_static'
+gem 'unicorn'

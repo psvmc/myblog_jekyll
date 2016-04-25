@@ -1,0 +1,48 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.zj-item {
+	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
+	border: 1px solid #ddd;
+	overflow-x: hidden;
+}
+
+.zj-item ul {
+	-moz-user-select: none; /*火狐*/
+	-webkit-user-select: none; /*webkit浏览器*/
+	-ms-user-select: none; /*IE10*/
+	-khtml-user-select: none; /*早期浏览器*/
+	user-select: none;
+}
+
+.zj-item ul li {
+	list-style: none;
+	height: 38px;
+	line-height: 38px;
+	cursor: pointer;
+}
+
+.zj-item ul li a {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	color: #000;
+	text-align: center;
+	color: #000;
+	overflow: hidden;
+}
+
+.zj-item ul li a:hover {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	color: #fff;
+	background-color: #666;
+	text-align: center;
+	overflow: hidden;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+
+}

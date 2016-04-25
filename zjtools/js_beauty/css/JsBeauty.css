@@ -1,0 +1,191 @@
+html {
+	height: 100%;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
+}
+
+.checkbox {
+	margin: 0px;
+	vertical-align:middle;
+}
+
+body {
+	margin: 0;
+	color: #333;
+	font-size: 9pt;
+}
+
+img {
+	border: 0;
+}
+
+#topWrap {
+	text-align: center;
+	width: 500px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+#topWrap .topMenu {
+	float: right
+}
+
+#logoWrap {
+	float: left
+}
+
+.clear {
+	clear: both;
+	height: 0px;
+	font-size: 0px;
+	line-height: 0px;
+	overflow: hidden
+}
+
+#mainWrap {
+	width: 99%;
+	margin: 0 auto;
+}
+
+#infoWrap {
+	float: right;
+	background-color: #3366CC;
+}
+
+table#options {
+	padding: 20px;
+	border: 1px dashed #CCCCCC;
+	width: 100%;
+	display: none;
+	border: 1px dashed #CCCCCC;
+	margin-bottom: 5px;
+}
+
+#options table tr td {
+	margin: 10px;
+}
+
+table#options td {
+	vertical-align: top;
+	padding-left: 10px;
+}
+
+#btnWrap {
+	float: left;
+	width: 100%
+}
+
+#btnWrap button {
+	background: #4899E0;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	border: none;
+	height: 33px;
+	width: 100px;
+	padding: 0 18px;
+	cursor: pointer;
+	margin-right: 12px;
+	padding: 0 18px;
+}
+
+#btnWrap button#beautify {
+	background: #6FB934;
+	width: 180px;
+}
+
+button#submit em {
+	font-size: 11px;
+	font-style: normal;
+	color: #999;
+}
+
+#testWrap {
+	width: 99%;
+	float: right;
+	margin-left: 15px;
+	line-height: 22px;
+	float: right;
+}
+
+#testresults {
+	width: 99%;
+	display: none;
+	float: right;
+	display: none;
+}
+
+#test {
+	background: #4899E0;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	border: none;
+	height: 33px;
+	width: 180px;
+	padding: 0 18px;
+	cursor: pointer;
+	margin-right: 12px;
+	padding: 0 18px;
+}
+
+p,select,label,.blurb,a.turn-off-codemirror {
+	*font-size: small;
+	vertical-align:middle;
+}
+
+a {
+	color: #36d;
+}
+
+a.turn-off-codemirror {
+	margin-left: 25px;
+}
+
+#source {
+	width: 96%;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 11pt;
+}
+
+label {
+	cursor: pointer;
+}
+
+select {
+	width: 220px;
+}
+
+#title {
+	float: left;
+	width: 460px;
+	display: block;
+}
+
+#title p {
+	margin: 15 6px 15px 0;
+	text-align: center;
+}
+
+.self {
+	font-weight: bold;
+	text-decoration: none;
+	color: #444;
+}
+
+li {
+	line-height: 150%;
+}
+
+.contributors a {
+	white-space: nowrap;
+}
+
+.fr {
+	margin: 10px;
+}

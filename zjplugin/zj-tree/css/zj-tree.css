@@ -1,0 +1,246 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	height: 100%;
+	overflow: hidden;
+	font-size: 12px;
+	background: #FFF;
+	position: relative;
+	font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+img {
+	border: 0px;
+}
+
+a {
+	outline: none;
+}
+
+a:focus {
+	outline: none;
+}
+
+.menu-scroll {
+	height: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	display: none;
+}
+
+.scroll-up {
+	width: 100%;
+	border: 1px solid #ddd;
+	background: #f2f2f2;
+	background: url('../images/arrow_up.png') center center no-repeat;
+	border: 1px solid #ddd;
+}
+
+.scroll-up:hover {
+	background: url('../images/arrow_up_dark.png') center center no-repeat;
+}
+
+.scroll-up img,.scroll-down img {
+	margin: 0 90px;
+}
+
+.left-mini .scroll-up img,.left-mini .scroll-down img {
+	margin: 0 17px;
+}
+
+.scroll-down {
+	width: 100%;
+	border: 1px solid #ddd;
+	background: #f2f2f2;
+	background: url('../images/arrow_down.png') center center no-repeat;
+}
+
+.scroll-down:hover {
+	background: url('../images/arrow_down_dark.png') center center no-repeat;
+}
+
+.first-panel {
+	border: 1px solid #ddd;
+}
+
+.first-menu {
+	width: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: #f9f9f7;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+.first-menu .iconfont {
+	font-size: 30px;
+}
+
+div.first-menu-item {
+	display: block;
+	padding: 15px 15px;
+	color: #333;
+	position: relative;
+	padding-left: 31px;
+	border: 1px solid #F9F9F7;
+	cursor: pointer;
+}
+
+div.first-menu-item-hover {
+	background: #FFF;
+	border: 1px solid #dddddd;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	padding: 15px 15px;
+	padding-left: 33px;
+	position: relative;
+	cursor: pointer;
+	color: #333;
+	z-index: 11;
+}
+
+.first-menu-item i {
+	color: #63A3E2;
+}
+
+.first-menu-item-hover i {
+	color: #74A3E5;
+}
+
+.first-menu-title {
+	padding-left: 5px;
+	font-size: 14px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 140px;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.second-panel {
+	left: 200px;
+	top: 0px;
+	width: 400px;
+	position: absolute;
+	bottom: 20px;
+	overflow-y: auto;
+	background: #FFF;
+	border: 1px solid #dddddd;
+	color: #2f80d1;
+	z-index: 10;
+	padding: 0px 10px;
+	margin-left: -1px;
+	box-shadow: 1px 1px 3px 0px #DADADA;
+	-webkit-box-shadow: 1px 1px 3px 0px #DADADA;
+	-o-box-shadow: 1px 1px 3px 0px #DADADA;
+	-moz-box-shadow: 1px 1px 3px 0px #DADADA;
+	border-radius: 5px;
+	left: 200px;
+}
+
+.second-panel:hover {
+	border: 1px solid #dddddd;
+}
+
+.second-panel h4 {
+	margin: 20px 0px;
+	margin-bottom: 10px;
+	padding-left: 14px;
+}
+
+.second-panel a,#menu_panel a {
+	color: #686868;
+	border-radius: 3px;
+	margin: 3px 10px;
+	color: #686868;
+}
+
+.second-panel a:hover
+#menu_panel a:hover {
+	color: #0055aa;
+}
+
+#set-shortcut {
+	font-size: 14px;
+	float: right;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#set-shortcut:hover {
+	color: #0055aa;
+}
+
+.second-menu {
+	margin: 0;
+	padding: 0;
+}
+
+.second-menu li {
+	float: left;
+	list-style: none;
+	min-width: 100px;
+}
+
+.second-menu li.expand {
+	clear: both;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.second-menu .expand>a,.second-menu .expand>a:hover,#menu_panel .expand>a,#menu_panel .expand>a:hover
+	{
+	cursor: pointer;
+	color: #2f80d1;
+	background: #fff;
+	font-weight: bold;
+	color: #2f80d1;
+}
+
+a.second-menu-item {
+	cursor: pointer;
+	padding: 3px 5px;
+	display: inline-block;
+	display: inline;
+	zoom: 1;
+	text-decoration: none;
+}
+
+a.second-menu-item:hover,#menu_panel a.second-menu-item:hover {
+	cursor: pointer;
+	color: #fff;
+	background-color: #b4c2cc;
+	text-decoration: none;
+}
+
+.third-menu {
+	margin: 0;
+	padding: 0;
+	margin-left: 20px;
+}
+
+a.third-menu-item {
+	color: #686868;
+	padding: 3px 5px;
+	margin: 3px 3px;
+	display: inline-block;
+	display: inline;
+	zoom: 1;
+	text-decoration: none;
+	display: inline-block
+}
+
+a.third-menu-item:hover,#menu_panel a.third-menu-item:hover {
+	color: #fff;
+	background-color: #b4c2cc;
+	text-decoration: none;
+}

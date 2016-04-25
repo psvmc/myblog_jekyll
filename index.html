@@ -1,0 +1,33 @@
+---
+layout: common
+title: 剑行者
+description: 专注Java后台,iOS开发
+keywords: java,swift,android
+isIndex: true
+---
+
+{% for rpost in paginator.posts %}
+<article class="main-article" onClick="javascript:location.href='{{ rpost.url }}';">
+    <div class="ztheme-post-list">
+        <h3 class="main-article-title"><a href="{{ rpost.url }}" title="{{ rpost.title }}" rel="bookmark">{{ rpost.title }}</a></h3>
+        <p class="main-article-meta"><time pubdate="{{ rpost.date | date_to_utc | date: '%Y-%m-%d' }}">{{ rpost.date | date_to_utc | date: "%Y-%m-%d" }}</time></p>
+        <div class="main-article-contant">
+            <p style="margin-bottom:30px;">{{ rpost.description }}</p>
+        </div>
+    </div>
+</article>
+{% endfor %}
+{% if paginator.total_pages > 1 %}
+<nav class="pagination fn-clear" id="ztheme-paging">
+    <ul class="pagination-list">
+        {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+                <li class="current"><a href="javascript:void(0);">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ site.url }}/{%if page > 1 %}page{{ page }}/{% endif %}">{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav> 
+{% endif %}
+

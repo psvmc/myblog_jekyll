@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自定义Select</title>
+<style type="text/css">
+legend {
+	font-family: "微软雅黑";
+	font-size: 20px;
+}
+
+fieldset {
+	border: 1px dashed #ccc;
+	margin: 5px;
+	padding: 20px;
+}
+
+fieldset input {
+	margin-top: 10px;
+}
+</style>
+
+
+</head>
+
+<body>
+	<fieldset>
+		<legend>数组分割</legend>
+
+		<input type="button" value="获取value" id="demo1" />
+	</fieldset>
+
+	<fieldset>
+		<legend>初始化form值</legend>
+		<form id="demo2">
+			<input type="text" value="" name="t.aa" />
+			<br />
+			<select name="t.bb">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			<br />
+			<textarea rows="5" cols="50" name="t.cc"></textarea>
+			<br />
+			<input type="button" value="初始化" id="demo2_test" />
+		</form>
+	</fieldset>
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/zj_utils.js"></script>
+	<!-- 调用方式 -->
+	<script>
+		$("#demo1").click(function() {
+			var data = [ {
+				id : 1
+			}, {
+				id : 2
+			}, {
+				id : 3
+			}, {
+				id : 4
+			}, {
+				id : 5
+			}, {
+				id : 6
+			}, {
+				id : 7
+			}, {
+				id : 8
+			} ];
+			zjutil.to2Array(data, 3);
+		});
+		$("#demo2_test").click(function() {
+			var data = {
+				aa : "aa",
+				bb : 2,
+				cc : "cccc"
+			};
+			zjutil.initForm("#demo2", data, "t.")
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="Baiduspider" content="noarchive" />
+<meta name="baidu-site-verification" content="KLY6sTPdzP" />
+<meta name="360-site-verification" content="a1a6742b5e4edede9325f9e239364ce6" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>{% if page.title %} {{ page.title }} {% else %} {{ site.title }} {% endif %}</title>
+<meta name="generator" content="Jekyll" />
+<meta name="author" content="{{ site.author.name }}" />
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ',' }}{% else %}{{ site.keywords | join: ','}}{% endif %}" />
+<!-- //页面样式 -->
+
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
+<link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
+<link href="{{ site.themes }}/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ site.themes }}/css/style.css" type="text/css" />
+<link rel="shortcut icon" href="{{ site.themes }}/images/favicon.ico" type="image/x-icon" />
+<!-- jquery -->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="{{ site.themes }}/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]><script src="{{ site.themes }}/js/html5.js"></script><![endif]-->
+
+</head>
+<body id="ztheme">
+	<div class="page-wrapper">
+		<section class="head" id="ztheme-head">
+			<div id="ztheme-head-img-div" style="position:absolute;z-index:1;width:100%;height:100%;overflow:hidden;display:none;">
+				<img src="/jekyll-themes/ztheme/images/touming.png" style="width:100%;" id="ztheme-head-img" />
+			</div>
+			<div style="width:100%;height:100%;position:absolute;z-index:2;">
+				<header class="header" style="width:98%;margin:0px auto;">
+					<h1 class="logo">
+						<a href="/">{{ site.title }}</a>
+					</h1>
+					<h2 class="subtitle">{{ site.subTitle }}</h2>
+				</header>
+				<nav class="nav" id="ztheme-nav">
+					<ul class="nav-list">
+						{% for link in site.nav %} {% assign active = nil %} {% if page.url == link.url%} {% assign active = 'nav-item-active' %} {% endif %}
+						<li class="nav-item {{ active }}"><a href="{{ link.url }}" target="{{ link.target }}"> {{ link.text }} </a> {{ indicator }}</li> {% endfor %}
+					</ul>
+				</nav>
+			</div>
+		</section>
+		<section class="main" id="ztheme-main">{{ content }}</section>
+		<footer class="foot" id="ztheme-foot">
+			<div class="footer fn-clear">
+				<h1 class="logo"></h1>
+			</div>
+			<div class="copyright">
+				<div class="copyright-cnt fn-clear">
+					{% for link in site.follow %} <a class="follow" href="{{ link.url }}" target="_blank"> <i class="fa {{ link.class }}"></i>
+					</a> {% endfor %}
+					<p class="text">
+						© 2014-2017 &nbsp; <a href="/index.html" style="text-decoration:none;">{{ site.title }}</a>
+					</p>
+				</div>
+			</div>
+				<div class="search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+				      opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+				    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" 
+				           placeholder="文章标题 标签"
+				           >
+
+				    <div style="position: fixed; top: 5px; right: 5px;">
+				        <img src="/search/img/cb-close.png"  id="close-btn"/>
+				    </div>
+				</div>
+
+				<div style="position: fixed; right: 18px; bottom: 60px;border-radius: 3px 3px;background: rgba(0, 0, 0, 0.8);z-index: 9999;" >
+				    <img src="/search/img/cb-search.png"  id="search-btn"  style="height:20px;width:20px;margin:10px;" title="双击ctrl试一下"/>
+				</div>
+
+				<link rel="stylesheet" href="/search/css/cb-search.css">
+
+				<script src="/search/js/bootstrap3-typeahead.min.js"></script>
+				<script src="/search/js/cb-search.js"></script>
+		</footer>
+	</div>
+	<script type="text/javascript" src="{{ site.themes }}/js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="{{ site.themes }}/js/common.js"></script>
+	<script>
+		(function(){
+		    var bp = document.createElement('script');
+		    bp.src = '//push.zhanzhang.baidu.com/push.js';
+		    var s = document.getElementsByTagName("script")[0];
+		    s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+
+
+</body>
+</html>

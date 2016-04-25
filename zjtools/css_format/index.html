@@ -1,0 +1,71 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" debug="true">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS代码格式化</title>
+<meta name="keywords" content="css代码格式化,css在线压缩工具" />
+<meta name="description" content="css代码格式化工具，可以方便快速的横排或竖排CSS代码。" />
+<link rel="stylesheet" type="text/css" href="css/tool.css" />
+</head>
+<body>
+	<div class="content-a">
+		<div class="toolcode">
+			<!-- /工具开始 -->
+			<h2>请在下框输入您要格式化的内容:</h2>
+			<form onsubmit="return false" action="">
+				<textarea id="codetext" name="codetext"></textarea>
+				<button class="btn_blue" onclick="$('codetext').value=code.a();">压缩代码</button>
+				<button class="btn_green" onclick="$('codetext').value=code.b();">格式(多行)</button>
+				<button class="btn_green" onclick="$('codetext').value=code.c();">格式(单行)</button>
+				<button class="btn_blue" onclick="$('codetext').value=code.z();">还原代码</button>
+			</form>
+			<!-- /工具结束 -->
+		</div>
+	</div>
+
+
+</body>
+</html>
+<script type=text/javascript>
+	function $(id) {
+		return document.getElementById(id);
+	}
+	function codezip(obj) {
+		this.s = function() {
+			var code = obj.value;
+			if (!this.codez || this.codez == "")
+				this.codez = code;
+			code = code.replace(/(\n|\t|\s)*/ig, '$1');
+			code = code.replace(/\n|\t|\s(\{|\}|\,|\:|\;)/ig, '$1');
+			code = code.replace(/(\{|\}|\,|\:|\;)\s/ig, '$1');
+			return code;
+		}
+		this.a = function() {
+			var code = this.s();
+			return code;
+		}
+		this.b = function() {
+			var code = this.s();
+			code = code.replace(/(\{)/ig, ' $1');
+			code = code.replace(/(\{|\;)/ig, '$1\n\t');
+			code = code.replace(/\t*(\})/ig, '$1\n');
+			code = code.replace(/(\*\/)/ig, '$1\n');
+			return code;
+		}
+		this.c = function() {
+			var code = this.s();
+			code = code.replace(/(\})/ig, '$1\n');
+			code = code.replace(/(\*\/)/ig, '$1\n');
+			return code;
+		}
+		this.z = function() {
+			return (this.codez) ? this.codez : obj.value;
+		}
+		var my = this;
+		obj.onkeydown = function() {
+			my.codez = "";
+		}
+	}
+	var code = new codezip($('codetext'));
+</script>
