@@ -25,7 +25,11 @@ isArchive: true
 					<a href="{{ post.url }}">
 						<div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
 						<div class="post_title">{{ post.title }}</div>
-						<div class="post_keywords">{{ post.keywords }}</div>
+						<div class="post_keywords">
+							{% for keyword in post.keywords %}
+								{{ keyword }} 
+							{% endfor %}
+						</div>
 					</a>
 				</li>
 				{% endfor %}
