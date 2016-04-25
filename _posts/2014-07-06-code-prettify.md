@@ -3,7 +3,10 @@
 layout: post
 title: 代码高亮与随机色块
 description: jekyll代码高亮与随机色块
-keywords: jekyll,代码高亮,随机色块
+keywords: 
+    - jekyll
+    - 代码高亮
+    - 随机色块
 category: jekyll
 
 ---

@@ -1,11 +1,10 @@
 ---
-
 layout: post
 title: linux基本操作
 description: linux基本操作
-keywords: linux
+keywords: 
+    - linux
 category: linux
-
 ---
 
 ## 查看系统信息

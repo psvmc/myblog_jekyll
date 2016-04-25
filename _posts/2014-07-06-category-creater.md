@@ -3,7 +3,9 @@
 layout: post
 title: Jekyll目录生成
 description: Jekyll目录生成
-keywords: jekyll,目录生成
+keywords: 
+    - jekyll
+    - 目录生成
 category: jekyll
 
 ---

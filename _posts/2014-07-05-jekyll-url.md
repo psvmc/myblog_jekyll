@@ -3,10 +3,13 @@
 layout: post
 title: jekyll中URL的设置
 description: jekyll中URL的设置
-keywords: jekyll,URL
+keywords: 
+    - jekyll
+    - URL
 category: jekyll
 
 ---
+
 ## 配置文件为`_config.yml`
 在配置文件中添加配置类似于  
 `permalink: /:categories/:year-:month-:day-:title.html` 

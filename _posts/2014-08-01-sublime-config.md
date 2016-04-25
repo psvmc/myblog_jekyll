@@ -1,12 +1,13 @@
 ---
-
 layout: post
 title: 我的sublime-text-2配置
 description: 我的sublime-text-2配置
-keywords: sublime-text-2
+keywords: 
+    - sublime-text-2
 categories: sublime
-
 ---
+
+
 ### 配置
 
 	{
