@@ -85,9 +85,11 @@ dispatch_queue_t myConcurrentQueue = dispatch_queue_create("cn.psvmc.task2", DIS
 当队列为并行时，没有固定的顺序，为多线程执行
 
 
-## 队列执行block
+## 队列执行
 
-### 基本执行`dispatch_async` 和 `dispatch_sync`
+### 基本 
+
+`dispatch_async` 和 `dispatch_sync`
 
 ```objc
 //异步执行block，函数立即返回
@@ -160,7 +162,9 @@ dispatch_queue_t queue1 = dispatch_queue_create("com.dispatch.writedb", DISPATCH
 
 下一次调用`writeDB:`必须等到上次调用完成后才能进行，保证`writeDB:`方法是线程安全的。
 
-### 重复执行`dispatch_apply`
+### 重复执行  
+
+`dispatch_apply`
 
 ```objc
 //重复执行block，需要注意的是这个方法是同步返回，也就是说等到所有block执行完毕才返回，如需异步返回则嵌套在dispatch_async中来使用。
@@ -168,7 +172,9 @@ dispatch_queue_t queue1 = dispatch_queue_create("com.dispatch.writedb", DISPATCH
 void dispatch_apply(size_t iterations, dispatch_queue_t queue, void (^block)(size_t)); 
 ```
 
-### 随后执行`dispatch_barrier_async` 和 `dispatch_barrier_sync`
+### 随后执行 
+
+`dispatch_barrier_async` 和 `dispatch_barrier_sync`
 
 ```objc
 //这个函数可以设置同步执行的block，它会等到在它加入队列之前的block执行完毕后，才开始执行。
@@ -179,7 +185,9 @@ void dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
 void dispatch_barrier_sync(dispatch_queue_t queue, dispatch_block_t block); 
 ```
 
-### 只执行一次 `dispatch_once`
+### 只执行一次   
+
+`dispatch_once`
 
 ```objc
 static dispatch_once_t onceToken;
@@ -197,7 +205,9 @@ for (int i = 0; i<10; i++) {
 dispatch_once:0
 ```
     
-### 延迟执行`dispatch_after`
+### 延迟执行  
+
+`dispatch_after`
 
 ```objc
 //延迟执行block
@@ -215,7 +225,9 @@ dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 });
 ```
 
-### 调度执行`dispatch_set_target_queue`
+### 调度执行  
+
+`dispatch_set_target_queue`
 
 dispatch队列的一个很有特色的函数：
 
@@ -305,7 +317,7 @@ dispatch_release(group);
 dispatch_release(serialQueue);
 ```
 
-## 不再使用锁（Lock）
+## 不再使用锁(Lock)
 
 用户队列可以用于替代锁来完成同步机制。在传统多线程编程中，你可能有一个对象要被多个线程使用，你需要一个锁来保护这个对象：
 
