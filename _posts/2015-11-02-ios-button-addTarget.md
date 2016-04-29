@@ -4,11 +4,12 @@ layout: post
 title: iOS按钮事件传參
 description: iOS按钮事件传參的二种方式
 keywords: swift
-categories: swift ios
+categories: ios
 
 ---
 
 ### 经典方式
+
 最常用的方式是直接给button设置tag
 
 ```swift
@@ -34,6 +35,7 @@ buttonPars[101] = ["section":1,"row":1];
 这样的话就可以随意传值了
 
 ### 牛掰方式
+
 iOS牛掰在可以修改运行时 可以直接绑定两个对象  
 具体代码如下
 
@@ -45,7 +47,7 @@ class SonghuoViewController: UIViewController{
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 	   let  cell = tableView.dequeueReusableCellWithIdentifier("songhuoCell", forIndexPath: indexPath) as! SonghuoTableViewCell;
 	   //创建关联
-	   objc_setAssociatedObject(cell.luxianButton, &SonghuoViewController.luxian, indexPath, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN);
+	   objc_setAssociatedObject(cell.luxianButton, &SonghuoViewController.luxian, indexPath, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	   cell.luxianButton.addTarget(self, action: "luxianClick:", forControlEvents: UIControlEvents.TouchUpInside);
 	   return cell;
 	}
