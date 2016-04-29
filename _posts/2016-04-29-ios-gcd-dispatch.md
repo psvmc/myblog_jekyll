@@ -114,11 +114,10 @@ dispatch_sync(queue, ^{
 
 ```objc
 dispatch_sync(queue1, ^{
-
     dispatch_sync(queue1, ^{
-　　　　......
+　　　　//......
     });
-　　......
+　　//......
 　});
 ```
 
@@ -128,7 +127,7 @@ dispatch_sync(queue1, ^{
 
 ```objc
 dispatch_sync(dispatch_get_main_queue(), ^{
-　　......
+　　//......
 }); 
 ```
 
@@ -154,9 +153,9 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 dispatch_queue_t queue1 = dispatch_queue_create("com.dispatch.writedb", DISPATCH_QUEUE_SERIAL);
 
 - (void)writeDB:(NSData *)data{
-　　dispatch_async(queue1, ^{
-　　　　//write database
-　　});
+    dispatch_async(queue1, ^{
+    //write database
+    });
 } 
 ```
 
