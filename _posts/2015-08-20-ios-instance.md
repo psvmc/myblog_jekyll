@@ -11,14 +11,32 @@ categories: ios swift
 ### 实例化TableCell
 在设置delegate之前注册xib
 
-```swift
-self.tableView.registerNib(UINib.init(nibName: "ImageLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "imageLabelCell");
-```
-实例化Cell
+Swift
 
 ```swift
-let  cell = tableView.dequeueReusableCellWithIdentifier("imageLabelCell", forIndexPath: indexPath) as! ImageLabelTableViewCell;
+self.tableView.registerNib(UINib.init(nibName: "ImageLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageLabelTableViewCell");
 ```
+
+OC
+
+```objc
+[self.tableView registerNib:[UINib nibWithNibName:@"ImageLabelTableViewCell" bundle:nil] forCellReuseIdentifier:@"ImageLabelTableViewCell"];
+```
+
+实例化Cell
+
+Swift
+
+```swift
+let  cell = tableView.dequeueReusableCellWithIdentifier("ImageLabelTableViewCell", forIndexPath: indexPath) as! ImageLabelTableViewCell;
+```
+
+OC
+
+```objc
+ImageLabelTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ImageLabelTableViewCell" forIndexPath:indexPath];
+```
+
 如果用的storybord中的tableview的cell直接用`dequeueReusableCellWithIdentifier`方法就行了  
 注意`dequeueReusableCellWithIdentifier`方法是从已经实例化的cell中查找id为`textLeftCell`的对象并进行拷贝 
 
