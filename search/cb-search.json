@@ -8,8 +8,7 @@ layout: null
 		{
 			"title" : "{{ post.title }} [ {{ post.keywords }}  ]",
 			"url" : "{{ post.url }}",
-			"description":"{{ post.description }}",
-			"content":"{{ post.content }}"
+			"description":"{{ post.description }}"
 		}
 		{% if forloop.rindex != 1  %}
 		,
