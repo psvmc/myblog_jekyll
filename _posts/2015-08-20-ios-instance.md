@@ -48,6 +48,12 @@ ImageLabelTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifie
 self.storyboard?.instantiateViewControllerWithIdentifier("renwuMy") as! RenwuMyViewController;
 ```
 
+### 根据xib是梨花控制器
+
+```objc
+RenwuMyViewController * renwuMy Controller = [[RenwuMyViewController alloc] initWithNibName:@"RenwuMyViewController" bundle:nil];
+```
+
 ### 实例化UICollectionCell
 
 在设置delegate之前注册xib
