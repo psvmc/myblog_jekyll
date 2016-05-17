@@ -4,14 +4,16 @@ layout: null
 {
 	"code" : 0 ,
 	"data" : [
-	 {% for post in site.posts %}
-	{
-		"title" : "{{ post.title }} [ {{ post.keywords }}  ]",
-		"url" : "{{ post.url }}"
-	}
-	{% if forloop.rindex != 1  %}
-	,
-	{% endif %}
-    {% endfor %}
+		 {% for post in site.posts %}
+		{
+			"title" : "{{ post.title }} [ {{ post.keywords }}  ]",
+			"url" : "{{ post.url }}",
+			"description":"{{ post.description }}",
+			"content":"{{ post.content }}"
+		}
+		{% if forloop.rindex != 1  %}
+		,
+		{% endif %}
+	   	{% endfor %}
 	]
 }
