@@ -48,7 +48,7 @@ ImageLabelTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifie
 self.storyboard?.instantiateViewControllerWithIdentifier("renwuMy") as! RenwuMyViewController;
 ```
 
-### 根据xib是梨花控制器
+### 根据xib实例化控制器
 
 ```objc
 RenwuMyViewController * renwuMy Controller = [[RenwuMyViewController alloc] initWithNibName:@"RenwuMyViewController" bundle:nil];
