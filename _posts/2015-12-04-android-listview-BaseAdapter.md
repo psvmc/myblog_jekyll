@@ -94,8 +94,7 @@ private  class AddressItem{
 }
 ```
 
-通过判断`convertView`是否为空来复用，但是初次加载的几条数据中item中的没有复用，以后再改进
-
+通过判断`convertView`是否为空来复用
 
 
 
