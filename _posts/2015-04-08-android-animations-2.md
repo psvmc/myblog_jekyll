@@ -1,16 +1,23 @@
 ---
 
 layout: post
-title: Android动画
-description: Android动画
+title: Android动画之View Animation
+description: Android动画之View Animation
 keywords: android
 category: android
 
 ---
 
+## 文章导航
+
++ [Android动画-概述](http://www.psvmc.cn/android-animations-0.html)
++ [Drawable Animation使用方式](http://www.psvmc.cn/android-animations-1.html)
++ [View Animation使用方式](http://www.psvmc.cn/android-animations-2.html)
++ [Property Animation使用方式](http://www.psvmc.cn/android-animations-3.html)
+
 ## 一、动画类型
 
-Android的animation由四种类型组成：`alpha`、`scale`、`translate`、`rotate`
+Android的`View animation`由四种类型组成：`alpha`、`scale`、`translate`、`rotate`
 
 XML配置文件中  
 `alpha`
@@ -36,13 +43,11 @@ Java Code代码中
 ## 二、Android动画模式
 Animation主要有两种动画模式：`tweened` 和 `frame`
 
-一种是tweened animation(渐变动画)   
-XML中  
++ 一种是tweened animation(渐变动画)   
 `alpha`  
 `scale`  
  
-一种是frame by frame(画面转换动画)   
-XML中  
++ 一种是frame by frame(画面转换动画)   
 `translate`    
 `rotate`    
 
@@ -60,13 +65,16 @@ XML中
 + 加入XML的动画代码
 
 ---
-	<?xml version="1.0" encoding="utf-8"?>
-	<set xmlns:android="http://schemas.android.com/apk/res/android">
-	  <alpha/>
-	  <scale/>
-	  <translate/>
-	  <rotate/>
-	</set>
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+  <alpha/>
+  <scale/>
+  <translate/>
+  <rotate/>
+</set>
+```
 
 
 
@@ -75,29 +83,34 @@ XML中
 
 ### 1. Alpha
 
-	<?xml version="1.0" encoding="utf-8"?>
-	<set xmlns:android="http://schemas.android.com/apk/res/android" >
-	<alpha
-	android:fromAlpha="0.1"
-	android:toAlpha="1.0"
-	android:duration="3000"
-	/> 
-	<!-- 透明度控制动画效果 alpha
-	        浮点型值：
-	            fromAlpha 属性为动画起始时透明度
-	            toAlpha   属性为动画结束时透明度
-	            说明: 
-	                0.0表示完全透明
-	                1.0表示完全不透明
-	            以上值取0.0-1.0之间的float数据类型的数字
-	
-	        长整型值：
-	            duration  属性为动画持续时间
-	            说明:     
-	                时间以毫秒为单位
-	-->
-	</set>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+<alpha
+android:fromAlpha="0.1"
+android:toAlpha="1.0"
+android:duration="3000"
+/> 
+<!-- 透明度控制动画效果 alpha
+        浮点型值：
+            fromAlpha 属性为动画起始时透明度
+            toAlpha   属性为动画结束时透明度
+            说明: 
+                0.0表示完全透明
+                1.0表示完全不透明
+            以上值取0.0-1.0之间的float数据类型的数字
+
+        长整型值：
+            duration  属性为动画持续时间
+            说明:     
+                时间以毫秒为单位
+-->
+</set>
+```
+
 ### 2. Scale
+
+
 	<?xml version="1.0" encoding="utf-8"?>
 	<set xmlns:android="http://schemas.android.com/apk/res/android">
 	   <scale  
