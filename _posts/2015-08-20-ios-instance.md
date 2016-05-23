@@ -44,6 +44,8 @@ ImageLabelTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifie
 ### 实例化视图控制器
 从storyboard中
 
+Swift
+
 ```swift
 self.storyboard?.instantiateViewControllerWithIdentifier("renwuMy") as! RenwuMyViewController;
 ```
@@ -58,13 +60,30 @@ RenwuMyViewController * renwuMy Controller = [[RenwuMyViewController alloc] init
 
 在设置delegate之前注册xib
 
-```swift
-collectionView.registerNib(UINib.init(nibName: "MainBigCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "mainBigCollCell");
-```
-实例化Cell
+Swift
 
 ```swift
-let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mainBigCollCell", forIndexPath: indexPath) as! MainBigCollectionViewCell;
+self.collectionView.registerNib(UINib.init(nibName: "MyCell", bundle: nil), forCellWithReuseIdentifier: "MyCell");
+```
+
+Objc
+
+```objc
+[self.collectionView registerNib:[UINib nibWithNibName:@"MyCell" bundle:nil] forCellWithReuseIdentifier:@"MyCell"];
+```
+
+实例化Cell
+
+Swift
+
+```swift
+let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("MyCell", forIndexPath: indexPath) as! MyCell;
+```
+
+OC
+
+```objc
+MyCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
 ```
 
 ### 从xib中实例化对象
