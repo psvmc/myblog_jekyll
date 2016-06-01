@@ -47,7 +47,7 @@ Timer timer = new Timer();
 timer.schedule(task, delay); 
 ```
 
-## handler + postDelayed
+## Handler + postDelayed
 
 ```java
 new Handler().postDelayed(new Runnable(){  
@@ -55,6 +55,26 @@ new Handler().postDelayed(new Runnable(){
     //execute the task
     }  
 }, delay); 
+```
+
+## Handler + Message + sendMessageAtTime
+
+```java
+Handler myHandler = new Handler() {
+    public void handleMessage(Message msg) {
+        switch (msg.what) {
+            case 0:
+                mSwipeLayout.autoRefresh();
+                break;
+        }
+        super.handleMessage(msg);
+    }
+};
+
+//发送消息
+Message message = new Message();
+message.what = 0;
+myHandler.sendMessageAtTime(message, SystemClock.uptimeMillis() + 600);
 ```
 
 ## 其它
