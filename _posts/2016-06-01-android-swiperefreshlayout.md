@@ -66,7 +66,7 @@ mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R
 mSwipeLayout.setRefreshing(false);
 ```
 
-###  进入页面立即刷新
+## 进入页面立即刷新
 
 但是我们想做到一进页面就立刻刷新，并有刷新动画怎么办
 
