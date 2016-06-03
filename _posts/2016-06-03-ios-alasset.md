@@ -205,28 +205,52 @@ typedef void(^ALAssetToNSURLBlock)(NSURL *);
 
 ## 用Alamofire上传
 
+上传时附带其他参数(multipart)  
+但是这种方式没法得到上传进度
+
 ```swift
 //上传文件
 static func uploadImage(url:String,parameters:[String:AnyObject],imagePath:NSURL,fileParName:String){
-    let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: url.URLString)!)
-    mutableURLRequest.HTTPMethod = Method.POST.rawValue
-    let encodedURLRequest = ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
-    Alamofire.upload(
-        encodedURLRequest,
-        multipartFormData: { multipartFormData in
-            multipartFormData.appendBodyPart(fileURL: imagePath, name: fileParName)
-        },
-        encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .Success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                }
-            case .Failure(let encodingError):
-                print(encodingError)
+Alamofire.upload(
+    .POST,
+    url,
+    multipartFormData: { multipartFormData in
+        multipartFormData.appendBodyPart(fileURL: imagePath, name: fileParName)
+        // 这里就是绑定参数的地方
+        for (key, value) in parameters {
+            if(value.stringValue != nil){
+                multipartFormData.appendBodyPart(data: value.stringValue.dataUsingEncoding(NSUTF8StringEncoding)!, name: key);
             }
         }
-    )
+    },
+    encodingCompletion: { encodingResult in
+        switch encodingResult {
+        case .Success(let upload, _, _):
+            upload.responseJSON { response in
+                debugPrint(response)
+            }
+        case .Failure(let encodingError):
+            print(encodingError)
+        }
+    }
+)
+```
+
+可以获取上传进度的方式 但是没法附带其他参数
+
+```swift
+Alamofire.upload(.POST, "https://httpbin.org/post", file: imagePath)
+    .progress { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
+        dispatch_async(dispatch_get_main_queue()) {
+            print("Total bytes written on main queue: \(totalBytesWritten)")
+        }
+    }
+    .validate()
+    .responseJSON { response in
+        debugPrint(response)
 }
 ```
+
+所以例如设置用户头像等就用第一种方式  
+要是做文件上传就必须用第二种方式 第二种方式也能控制暂停、继续、停止等操作
 
