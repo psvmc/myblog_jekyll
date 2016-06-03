@@ -134,7 +134,7 @@ typedef void(^ALAssetToNSURLBlock)(NSURL *);
 方法
 
 ```objc
-// 将原始图片的URL转化为NSData数据,写入沙盒
+// 将原始图片转化为NSData数据,写入沙盒
 + (void)getImageUrlWithALAsset:(ALAsset *)asset callback:(ALAssetToNSURLBlock) block
 {
     // 创建存放原始图的文件夹--->OriginalPhotoImages
@@ -149,12 +149,16 @@ typedef void(^ALAssetToNSURLBlock)(NSURL *);
         NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:((unsigned long)rep.size) error:nil];
         NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
         NSString * imagePath = [ZJImageCachesPath stringByAppendingPathComponent:rep.filename];
+        //删除原有的临时文件
+        if ([fileManager fileExistsAtPath:imagePath]) {
+            [fileManager removeItemAtPath:imagePath error:nil];
+        }
         [data writeToFile:imagePath atomically:YES];
         block([NSURL fileURLWithPath:imagePath]);
     });
 }
 
-// 将原始视频的URL转化为NSData数据,写入沙盒
+// 将原始视频转化为NSData数据,写入沙盒
 + (void)getVideoUrlWithALAsset:(ALAsset *)asset callback:(ALAssetToNSURLBlock) block
 {
     // 解析一下,为什么视频不像图片一样一次性开辟本身大小的内存写入?
@@ -167,6 +171,11 @@ typedef void(^ALAssetToNSURLBlock)(NSURL *);
         
         ALAssetRepresentation *rep = [asset defaultRepresentation];
         NSString * videoPath = [ZJVideoCachesPath stringByAppendingPathComponent:rep.filename];
+        
+        //删除原有的临时文件
+        if ([fileManager fileExistsAtPath:videoPath]) {
+            [fileManager removeItemAtPath:videoPath error:nil];
+        }
         char const *cvideoPath = [videoPath UTF8String];
         FILE *file = fopen(cvideoPath, "ab+");
         if (file) {
