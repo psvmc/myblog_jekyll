@@ -102,6 +102,8 @@ Alamofire.upload(.POST, "https://httpbin.org/post", file: imagePath)
 
 ## 大文件上传
 
+目前考虑到`WEB端`只能用`HTTP方式`，所以我用的是`HTTP分片上传`
+
 ### 方式一 HTTP形式
 
 上面说了  大文件上传需要用`Socket`  
@@ -114,7 +116,7 @@ Alamofire.upload(.POST, "https://httpbin.org/post", file: imagePath)
 
 ### 方式二 Socket形式
 
-Socket上传时 如果是大文件也是要进行分片的
+`Socket`上传时 如果是大文件也是要进行分片的
 
 #### 上传下载客户端
 
