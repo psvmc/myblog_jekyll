@@ -197,6 +197,77 @@ self.menu.showView();
     </tr>
 </table>
 
+## TableViewCell侧滑
+
+### MGSwipeTableCell
+
+<table>
+    <tr>
+    		<td><a href="https://github.com/MortimerGoro/MGSwipeTableCell" target="_blank"> MGSwipeTableCell </a></td>
+    		<td>TableViewCell侧滑</td>
+    		<td>Objective-C</td>
+    </tr>
+</table>
+
+调用方式
+
++ 1 引用头文件
+
+```swift
+//侧滑按钮
+#import "MGSwipeButton.h"
+#import "MGSwipeTableCell.h"
+```
+
++ 2 需要侧滑的`tableViewCell`继承`MGSwipeTableCell`
+
++ 3 `Controller`实现接口`MGSwipeTableCellDelegate`
+
++ 4 相关代码
+
+```swift
+func createRightButtons() -> Array<MGSwipeButton>{
+    var buttonArray = Array<MGSwipeButton>();
+    let titleArray = [
+        "",
+        //""
+    ];
+    let iconArray = [
+        UIImage(named: "cell_cross.png"),
+        //UIImage(named: "cell_menu.png"),
+    ];
+    let backgroundColorArray = [
+        UIColor(red: 1, green: 102/255, blue: 102/255, alpha: 1),
+        //UIColor(red: 104/255, green: 187/255, blue: 248/255, alpha: 1),
+    ];
+    
+    let insets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30);
+    
+    for i in 0  ..< titleArray.count  {
+        let button = MGSwipeButton(title: titleArray[i], icon: iconArray[i], backgroundColor: backgroundColorArray[i],insets: insets);
+        buttonArray.append(button);
+    }
+    
+    return buttonArray;
+}
+    
+func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+    if(index == 0){
+        let indexPath = tableView.indexPathForCell(cell);
+        print("点击了\(indexPath)")
+    }
+    return true;
+}
+```
+
++ 5 cell中调用
+
+```swift
+cell.rightButtons = createRightButtons();
+cell.rightSwipeSettings.transition = MGSwipeTransition.Border;
+cell.delegate = self;
+```
+
 
 ## 数据库
 
