@@ -108,7 +108,9 @@ func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath i
 ```
 
 ## 使用流式布局
+
 ### 继承
+
 `UICollectionViewDataSource`,`UICollectionViewDelegateFlowLayout`
 
 ### 设置
@@ -164,6 +166,7 @@ class QuestionBookHeader: UICollectionReusableView {
     } 
 }
 ```
+
 ### 注册
 
 ```swift
