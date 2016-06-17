@@ -100,6 +100,91 @@ Alamofire.upload(.POST, "https://httpbin.org/post", file: imagePath)
 所以例如设置用户头像等就用第一种方式  
 要是做文件上传就必须用第二种方式 第二种方式也能控制暂停、继续、停止等操作
 
+### 用AFNetworking进行HTTP上传
+
+#### 方式一
+
+```swift
+static func uploadFile(url:String,parameters:[String:AnyObject]?,data:NSData,callBack:(success:Bool,operation:AFHTTPRequestOperation!,responseObject: AnyObject?,error:NSError?) -> Void ,progressBlock:(bytesWritten:UInt,totalBytesWritten:Int64,totalBytesExpectedToWrite:Int64) -> Void) -> AFHTTPRequestOperation {
+    let manager = AFHTTPRequestOperationManager();
+    let operation:AFHTTPRequestOperation? = manager.POST(url, parameters: parameters, constructingBodyWithBlock: {
+        (formData:AFMultipartFormData!) -> Void in
+            formData.appendPartWithFileData(data, name: "file", fileName: "shenfenzheng.jpg", mimeType: "image/jpeg");
+        }, success: {
+            (operation:AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            callBack(success: true, operation: operation, responseObject: responseObject, error: nil)
+        }, failure: {
+            (operation:AFHTTPRequestOperation?,error:NSError?) -> Void in
+            callBack(success: false, operation: operation, responseObject: nil, error: error);
+    })
+    operation?.setUploadProgressBlock(progressBlock);
+    return operation!;
+}
+```
+
+调用方式
+
+```swift
+let operation = uploadFile("", parameters: nil, data: NSData(), callBack: { (success, operation, responseObject, error) in
+    
+}) { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+    
+}
+operation.start();
+```
+
+#### 方式二
+
+这种方式要使用`KVO`来获取进度，个人不推荐 
+因为如果同时上传多个文件时进度处理起来会比较麻烦
+
+Swift代码
+
+```swift
+func uploadFile2(data:NSData){
+    let parameters:[String:AnyObject] = [
+        "userId": "123"
+    ];
+    let request = AFHTTPRequestSerializer().multipartFormRequestWithMethod("POST", URLString: "http://example.com/upload", parameters: parameters, constructingBodyWithBlock: { (formData) in
+        formData.appendPartWithFileData(data, name: "file", fileName: "shenfenzheng.jpg", mimeType: "image/jpeg");
+        }, error: nil)
+    let manager = AFURLSessionManager(sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    var progress: NSProgress?;
+    _ = manager.uploadTaskWithStreamedRequest(request, progress: &progress) { (response, responseObject, error) in
+            progress?.removeObserver(self, forKeyPath: "fractionCompleted", context: nil) 
+    }
+    progress?.addObserver(self, forKeyPath: "fractionCompleted", options: NSKeyValueObservingOptions.Initial, context: nil)
+}
+    
+override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    if(keyPath == "fractionCompleted"){
+        let progress: NSProgress = object as! NSProgress;
+        print("progress: \(progress.fractionCompleted)")
+    }
+}
+```
+
+ObjC代码
+
+```objc
+NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http://example.com/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileURL:[NSURL fileURLWithPath:@"file://path/to/image.jpg"] name:@"file" fileName:@"filename.jpg" mimeType:@"image/jpeg" error:nil];
+    } error:nil];
+
+AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSProgress *progress = nil;
+
+NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@"Error: %@", error);
+    } else {
+        NSLog(@"%@ %@", response, responseObject);
+    }
+}];
+
+[uploadTask resume];
+```
+
 ## 大文件上传
 
 目前考虑到`WEB端`只能用`HTTP方式`，所以我用的是`HTTP分片上传`
