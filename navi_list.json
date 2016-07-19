@@ -8,7 +8,7 @@ layout: null
 		{
 			"title" : "{{ post.title }} [ {{ post.keywords }}  ]",
 			"url" : "{{ post.url }}",
-			"path" : "{{ page.path }}",
+			"path" : "{{ post.path }}",
 			"description":"{{ post.description }}"
 		}
 		{% if forloop.rindex != 1  %}
