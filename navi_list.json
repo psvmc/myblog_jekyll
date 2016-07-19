@@ -6,7 +6,7 @@ layout: null
 	"data" : [
 		 {% for post in site.posts %}
 		{
-			"title" : "{{ post.title }} [ {{ post.keywords }}  ]",
+			"title" : "{{ post.title }}",
 			"keywords" : "{{ post.keywords }}",
 			"path" : "{{ post.path }}",
 			"description":"{{ post.description }}"
