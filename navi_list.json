@@ -2,7 +2,8 @@
 layout: null
 ---
 {
-	"code" : 0 ,
+	"success" : true ,
+	"msg":"",
 	"data" : [
 		 {% for post in site.posts %}
 		{
