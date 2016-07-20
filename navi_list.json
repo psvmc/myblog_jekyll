@@ -11,7 +11,8 @@ layout: null
 			"title" : "{{ post.title }}",
 			"keywords" : "{{ post.keywords }}",
 			"path" : "{{ post.path }}",
-			"description":"{{ post.description }}"
+			{% assign description = "{{ post.description }}" %}
+			"description": "{{ description }}"
 		}
 		{% if forloop.rindex != 1  %}
 		,
