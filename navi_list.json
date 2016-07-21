@@ -12,6 +12,7 @@ layout: null
 			"title" : "{{ post.title }}",
 			"keywords" : "{{ post.keywords }}",
 			"path" : "{{ post.path }}",
+			"url" : "{{ post.url }}",
 			"description": "{{ post.description | replace:'"', '\"' }}"
 		}
 		{% if forloop.rindex != 1  %}
