@@ -106,8 +106,8 @@ RxBus.get().post("007","我是新数据(自定义Tag)");
 
 ```java
 @Subscribe
-public void subscribe02(String food) {
-    Snackbar.make(getWindow().getDecorView(), food, Snackbar.LENGTH_SHORT)
+public void subscribe02(String word) {
+    Snackbar.make(getWindow().getDecorView(), word, Snackbar.LENGTH_SHORT)
             .setAction("Action", null).show();
 }
 
