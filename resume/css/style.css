@@ -1144,10 +1144,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         z-index: -1
     }
     .container {
-        margin-top: 20px;
+        margin-top: 0px;
+        width: 100%;
     }
     .content {
-        padding: 5px;
+        padding: 10px;
     }
     .social {
         margin-top: -120px
@@ -1234,7 +1235,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         width: 50%
     }
     .ratings h5 {
-        width: 40%
+        padding-left: 3%;
+        width: 32%
     }
     .rating {
         overflow-x: hidden;
@@ -1262,7 +1264,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     .ro-timeline>li .ro-time {
         width: 100%;
         position: relative;
-        padding-bottom: 15px
+        padding-bottom: 15px;
+        right: -4px;
     }
     .ro-timeline>li .ro-time span {
         font-size: 1em;
