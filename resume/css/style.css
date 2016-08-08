@@ -116,11 +116,12 @@ ul {
     width: 96%;
     max-width: 900px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, 0);
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.33333);
 }
 .content {
-    background: #fff;
+    background: rgba(239, 239, 239, 0.8);
+    ;
     padding: 20px
 }
 .content h2 {
@@ -217,7 +218,7 @@ ul {
     top: 0;
     bottom: 0;
     width: 5px;
-    background: #eee;
+    background: #E2E2E2;
     left: 19%;
     margin-left: -8px
 }
@@ -307,6 +308,14 @@ ul {
     line-height: 30px;
     font-size: 0.625rem
 }
+.skills li a {
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+}
+.skills li a:visited {
+    color: #fff;
+}
 .skills li:last-child {
     margin-bottom: 0
 }
@@ -355,7 +364,7 @@ ul {
     height: 12px;
     border-radius: 12px;
     margin: 3px 2px;
-    background: rgba(72, 201, 176, 0.38);
+    background: #CCC;
 }
 .rt-spanbg {
     background: #2ecc71 !important
