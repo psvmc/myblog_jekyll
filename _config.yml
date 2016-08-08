@@ -40,6 +40,9 @@ nav:
   - text: GitHub
     url: https://github.com/psvmc
     target: _blank
+  - text: 我
+    url: /resume/index.html
+    target: _blank
 
 
 #theme config
