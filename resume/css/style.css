@@ -8,7 +8,7 @@
     margin: 0
 }
 .zj_resume_outer {
-    background-color: #eee;
+    background-color: #ddd;
 }
 .zj_resume_bg {
     position: absolute;
@@ -284,7 +284,7 @@ ul {
 }
 .sidebar h3 {
     padding-bottom: 10px;
-    border-bottom: 1px solid #2ecc71
+    border-bottom: 1px solid #F3F3F3;
 }
 .sidebar h3 span {
     margin-right: 5px

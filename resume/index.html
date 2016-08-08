@@ -1,16 +1,26 @@
-<link rel="stylesheet" href="css/normalize.min.css" />
-<link rel="stylesheet" href="css/style.css" />
-<script type='text/javascript' src='js/jquery-1.11.1.min.js'></script>
-<script type='text/javascript' src='js/jquery.particleground.min.js'></script>
-<script type="text/javascript">
-	$(function() {
-		$('.zj_resume_bg').particleground({
-			dotColor: '#ffffff',
-			lineColor: '#ffffff'
-		});
-	})
-</script>
-<meta charset="utf-8" />
+<head>
+	<meta charset="utf-8" />
+	<title itemprop="name">剑行者-关于我</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="keywords" content="剑行者 个人简历" />
+	<meta name="description" content="剑行者的个人简历" />
+	<meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="css/normalize.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<script type='text/javascript' src='js/jquery-1.11.1.min.js'></script>
+	<script type='text/javascript' src='js/jquery.particleground.min.js'></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.zj_resume_bg').particleground({
+				dotColor: '#ffffff',
+				lineColor: '#ffffff',
+				parallaxMultiplier: 8,
+				density: 15000
+			});
+		})
+	</script>
+
+</head>
 
 <body>
 	<div class="zj_resume_outer">
@@ -19,7 +29,7 @@
 			<div class="container_head">
 				<img src="./img/icon_512.jpg" alt="头像" class="headimg" />
 				<div class="headname">
-					<span>剑行者</span>
+					<span>张剑(♂)</span>
 				</div>
 				<div class="headtip">
 					<span>iOS Android Web全栈软件工程师</span>
