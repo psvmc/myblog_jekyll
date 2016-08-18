@@ -115,6 +115,8 @@ func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath i
 
 ### 设置
 
+Swift
+
 ```swift
 self.collectionView.registerNib(UINib.init(nibName: "YuyinCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "YuyinCollectionViewCell");
 self.collectionView.showsHorizontalScrollIndicator = false;
@@ -130,7 +132,32 @@ self.collectionView.dataSource = self;
 self.collectionView.delegate = self;
 ```
 
+OC
+
+```objc
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) NSMutableArray<NSMutableArray<OrderPicModel *> *> *tableData;
+```
+
+```objc
+[self.collectionView registerNib:[UINib nibWithNibName:@"OrderPicsCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"OrderPicsCollectionViewCell"];
+self.collectionView.showsHorizontalScrollIndicator = false;
+self.collectionView.showsVerticalScrollIndicator = false;
+self.collectionView.scrollEnabled = true;
+self.collectionView.pagingEnabled = true;
+    
+UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+flowLayout.minimumInteritemSpacing = 0;
+flowLayout.minimumLineSpacing = 0;
+self.collectionView.collectionViewLayout = flowLayout;
+self.collectionView.dataSource = self;
+self.collectionView.delegate = self;
+```
+
 ### 代理方法
+
+Swift
 
 ```swift
 func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -148,6 +175,39 @@ func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath ind
     
 func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     return CGSizeMake(self.collectionView.frame.width, self.collectionView.frame.height);
+}
+```
+
+OC
+
+```objc
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return self.tableData.count;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.tableData[section].count;
+}
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    OrderPicModel *model = self.tableData[indexPath.section][indexPath.row];
+    OrderPicsCollectionViewCell *picCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OrderPicsCollectionViewCell" forIndexPath:indexPath];
+    picCell.imageView.image = [UIImage imageNamed:model.imageUrl];
+    return picCell;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+  didEndDisplayingCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath {
+    // 获取当前显示的cell的下标
+    NSIndexPath *firstIndexPath = [[self.collectionView indexPathsForVisibleItems] firstObject];
+    // 赋值给记录当前坐标的变量
+    self.pageControl.currentPage = firstIndexPath.row;
 }
 ```
 
