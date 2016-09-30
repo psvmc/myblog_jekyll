@@ -347,3 +347,10 @@ expdp或impdp命令时，可暂不指出用户名/密码@实例名 as 身份，
 在 `Windows server 2012` 上安装`Oracle 11G`老是最后报一个错误  导致没发远程连接数据库，原因就是系统没安装`.NET Framework 3.5`
 
 安装方法 见[百度经验](http://jingyan.baidu.com/article/14bd256e26b714bb6d26128a.html)
+
+
+## 查询数据库字符编码
+
+```
+select userenv('language') from dual;
+```
