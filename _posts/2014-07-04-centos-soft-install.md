@@ -6,6 +6,7 @@ description: CentOS服务器常用软件安装
 keywords: 
     - CentOS
     - 服务器部署
+    - yum
 category: linux
 
 ---
@@ -433,4 +434,12 @@ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
 ##### 端口转发  
 
 `iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 `  
+
+## 安装php5.4
++ 添加源   
+`wget -q -O - http://www.atomicorp.com/installers/atomic | sh`
++ 安装  
+`yum install php php-cli php-gd php-mysql php-eaccelerator php-zend-optimizer  php-pear php-snmp php-bcmath php-mcrypt php-mhash php-soap php-xml php-xmlrpc`
++ 查询版本  
+`yum info php | grep Version` 
  
