@@ -251,7 +251,7 @@ enabled=1
 
 ```
 <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">  
-	</Host>  
+</Host>  
 <Host name="www.aa.com"  appBase="webapps" unpackWARs="true" autoDeploy="true">  
     <Alias>www.aa.com</Alias>  
     <Context path="" docBase="/data/webapps/aa" debug="0"/>  
@@ -304,7 +304,6 @@ enabled=1
 # make
 # cp jsvc ../..
 # cd ../..
-
 ```
 
 打开daemon.sh
@@ -354,7 +353,6 @@ CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m"
 
 ```
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-
 ```
 重启防火墙
 
