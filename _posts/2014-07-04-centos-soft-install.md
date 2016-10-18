@@ -30,22 +30,37 @@ ssh root@112.112.112.112
 ## JDK  
  
 用wget下载   
-`wget -c -P /root/Downloads --no-check-certificate --no-cookie --header "Cookie: s_nr=1420682671945; s_cc=true; oraclelicense=accept-securebackup-cookie; gpw_e24=http%3A%2F%2Fwww.oracle.com%2Ftechnetwork%2Fjava%2Fjavase%2Fdownloads%2Fjdk7-downloads-1880260.html;s_sq=%5B%5BB%5D%5D" http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm`  
+
+```bash
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm
+``` 
  
-更改文件权限       
-`chmod 755 jdk-7u71-linux-x64.rpm`   
-安装     
-`rpm -ivh jdk-7u71-linux-x64.rpm`  
-删除文件    
-`rm  jdk-7u71-linux-x64.rpm`  
+更改文件权限
+       
+```bash
+chmod 755 jdk-7u71-linux-x64.rpm
+```   
+
+安装  
+   
+```bash
+rpm -ivh jdk-7u71-linux-x64.rpm
+```
+ 
+删除文件  
+  
+```bash
+rm  jdk-7u71-linux-x64.rpm
+```  
 
 配置java-home  
-查询java版本 java -version  如果版本不对则配置java-home  
+查询java版本 `java -version`  如果版本不对则配置java-home  
  
-打开文件/etc/profile    
-在profile文件末尾加入：       
+打开文件`/etc/profile`  
+  
+在`profile`文件末尾加入：       
 
-```
+```bash
 export JAVA_HOME=/usr/java/jdk1.7.0_71  
 export PATH=$JAVA_HOME/bin:$PATH   
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  
@@ -54,7 +69,7 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 上述配置环境`JAVA_HOME`需要重启生效  
 重启命令
 
-```
+```bash
 reboot
 ```
      
@@ -70,17 +85,21 @@ reboot
    
 设置mysql密码    
 
-	mysql
-	mysql>; USE mysql;   
-	mysql>; UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
-	mysql>; FLUSH PRIVILEGES;
+```bash
+mysql
+mysql>; USE mysql;   
+mysql>; UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
+mysql>; FLUSH PRIVILEGES;
+```
   
 设置允许远程登录      
 
-	mysql -u root -p   
-	Enter Password: <your new password>   
-	mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
-	mysql>FLUSH   PRIVILEGES;   
+```bash
+mysql -u root -p   
+Enter Password: <your new password>   
+mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
+mysql>FLUSH PRIVILEGES; 
+```  
  
 设为开机启动  
     
