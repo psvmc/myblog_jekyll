@@ -25,14 +25,13 @@ rpm -aq | grep yum | xargs rpm -e --nodeps
 
 `http://mirrors.163.com/centos/6/os/x86_64/Packages/`
 
-用的 wget。
-需要下载的包列表：
+需要用 `wget` 下载的包列表：
 
 ```bash
-http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm
-http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
-http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-69.el6.centos.noarch.rpm
-http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-30.el6.noarch.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/python-iniparse-0.3.1-2.1.el6.noarch.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-3.2.29-73.el6.centos.noarch.rpm
+wget http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.30-37.el6.noarch.rpm
 ```
 
 ### 安装 yum
@@ -40,7 +39,7 @@ http://mirrors.163.com/centos/6/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.
 ```bash
 rpm -ivh python-iniparse-0.3.1-2.1.el6.noarch.rpm
 rpm -ih yum-metadata-parser-1.1.2-16.el6.x86_64.rpm
-rpm -ivh yum-3.2.29-69.el6.centos.noarch.rpm yum-plugin-fastestmirror-1.1.30-30.el6.noarch.rpm
+rpm -ivh yum-3.2.29-73.el6.centos.noarch.rpm yum-plugin-fastestmirror-1.1.30-37.el6.noarch.rpm
 ```
 
 注意最后两个安装包一定要一块安装，否则会因为相互依赖而安装失败！
