@@ -1,11 +1,9 @@
 ---
 
 layout: post
-title: CentOS服务器部署
-description: CentOS服务器常用软件安装
+title: CentOS服务器部署(yum)
+description: CentOS服务器常用软件安装(yum)
 keywords: 
-    - CentOS
-    - 服务器部署
     - yum
 category: linux
 
