@@ -10,22 +10,23 @@ category: git
 
 我的iOS开发时的忽略文件配置
 
-	# Xcode
+```git
+# Xcode
 
-	*.xccheckout
-	UserInterfaceState.xcuserstate
-	contents.xcworkspacedata
-	build/
+*.xccheckout
+UserInterfaceState.xcuserstate
+contents.xcworkspacedata
+build/
 
-	*.moved-aside
-	DerivedData
-	*.hmap
-	*.ipa
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
 
-	# CocoaPods
+# CocoaPods
 
-	Pods/
-	.idea/
-	*.xcbkptlist
-	Podfile.lock
+Pods/
+.idea/
+*.xcbkptlist
+```
 
