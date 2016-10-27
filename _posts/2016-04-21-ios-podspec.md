@@ -133,3 +133,11 @@ pod search RxSwift-SwiftyJSON
 pod 'RxSwift-SwiftyJSON'，'~>1.0'
 ```
 
+## 5.Xcode 8 and iOS 10
+
+如果要提交的组件为`swift3.0`的 就必须满足以下条件
+
++ `CocoaPods` 升级为 `1.1.0` 及以上
++ 根目录添加`.swift-version`文件 内容写`3.0`
+
+[详细介绍](http://blog.cocoapods.org/CocoaPods-1.1.0/)
