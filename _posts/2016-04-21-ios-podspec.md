@@ -112,7 +112,7 @@ pod trunk register 183518918@qq.com 'psvmc'
 上传
 
 ```
-pod trunk push RxSwift-SwiftyJSON.podspec --allow-warnings
+pod trunk push *.podspec --allow-warnings
 ```
 
 这个过程可能会比较耗时，原因你懂的
