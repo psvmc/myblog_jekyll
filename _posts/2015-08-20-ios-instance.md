@@ -17,6 +17,12 @@ Swift
 self.tableView.registerNib(UINib.init(nibName: "ImageLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "ImageLabelTableViewCell");
 ```
 
+Swift3
+
+```swift
+self.tableView.register(UINib.init(nibName: "IndexTableViewCell", bundle: nil), forCellReuseIdentifier: "IndexTableViewCell");
+```
+
 OC
 
 ```objc
@@ -29,6 +35,12 @@ Swift
 
 ```swift
 let  cell = tableView.dequeueReusableCellWithIdentifier("ImageLabelTableViewCell", forIndexPath: indexPath) as! ImageLabelTableViewCell;
+```
+
+Swift3
+
+```swift
+let  cell = tableView.dequeueReusableCell(withIdentifier: "IndexTableViewCell", for: indexPath) as! IndexTableViewCell;
 ```
 
 OC
