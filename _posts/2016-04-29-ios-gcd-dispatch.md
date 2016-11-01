@@ -33,10 +33,17 @@ block就不用说了
 
 dispatch队列的生成有三种方式
 
+OC
+
 + `dispatch_get_main_queue()`
 + `dispatch_get_global_queue(long identifier, unsigned long flags)`
 + `dispatch_queue_create(const char *label, dispatch_queue_attr_t attr)`
 
+Swift3.0
+
++ `DispatchQueue.main`
++ `DispatchQueue.global(qos: .userInitiated)`
++ `DispatchQueue(label: "myBackgroundQueue")`
 
 这三种方式又可以分为两大类  
 
@@ -49,19 +56,47 @@ dispatch队列的生成有三种方式
 
 ### 1) 主线程队列 
 
+OC
+
 ```objc
 dispatch_queue_t mainQueue = dispatch_get_main_queue();
+```
+
+Swift3.0
+
+```swift
+DispatchQueue.main.async { [weak self] in
+      yourcoderunsin mainthread
+}
 ```
 
 获得`主线程`的dispatch队列，它`没有参数`，实际是一个`串行队列`。`无法控制`主线程`dispatch队列的执行继续或中断`。
 
 ### 2) 全局队列
 
+OC
+
 ```objc
 dispatch_queue_t highQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
 dispatch_queue_t dafaultQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 dispatch_queue_t lowQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
 dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+```
+
+Swift3.0
+
+```swift
+DispatchQueue.global(qos: .userInitiated).async {
+}
+```
+
+参数对应
+
+```
+ DISPATCH_QUEUE_PRIORITY_HIGH:        .userInitiated
+ DISPATCH_QUEUE_PRIORITY_DEFAULT:     .default
+ DISPATCH_QUEUE_PRIORITY_LOW:         .utility
+ DISPATCH_QUEUE_PRIORITY_BACKGROUND:  .background
 ```
 
 + 获得程序进程缺省产生的`并行队列`，可设定优先级来选择`高`>`默认`>`低`>`后台`四个个优先级队列。  
@@ -72,9 +107,25 @@ dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIO
 
 ### 3) 自定义队列
 
+OC
+
 ```objc
 dispatch_queue_t mySerialQueue = dispatch_queue_create("cn.psvmc.task1", DISPATCH_QUEUE_SERIAL);//串行
 dispatch_queue_t myConcurrentQueue = dispatch_queue_create("cn.psvmc.task2", DISPATCH_QUEUE_CONCURRENT);//并行
+```
+
+Swift3.0
+
+最简单直接的办法是这样：
+
+```swift
+let queue = DispatchQueue(label: "myBackgroundQueue")
+```
+
+可以指定优先级以及队列类别：
+
+```swift
+let queue = DispatchQueue(label: "myBackgroundQueue", qos: .userInitiated, attributes: .concurrent)
 ```
 
 第一个参数是队列的名称，不能重复  
@@ -215,6 +266,8 @@ void dispatch_after(dispatch_time_t when, dispatch_queue_t queue, dispatch_block
 
 例子
 
+OC
+
 ```objc
  // 延迟2秒执行：
 double delayInSeconds = 2.0;
@@ -222,6 +275,14 @@ dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC
 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
      // code to be executed on the main queue after delay
 });
+```
+
+Swift3.0
+
+```swift
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
+    print("after!")
+}
 ```
 
 ### 调度执行  
@@ -314,6 +375,34 @@ dispatch_group_async(group, serialQueue, ^{
 dispatch_group_wait(group, DISPATCH_TIME_FOREVER);  
 dispatch_release(group);
 dispatch_release(serialQueue);
+```
+
+---
+
+Swift
+
+对于组，现在你可以使用这样的语法直接创建一个组：
+
+```swift
+let group = DispatchGroup()
+```
+
+至于使用，则是这样的：
+
+```swift
+let group = DispatchGroup()
+ 
+let queue = DispatchQueue(label: "myBackgroundQueue")
+ 
+queue.async(group:group) {
+    print("background working")
+}
+```
+
+那么，如果有多个并发队列在同一个组里，我们需要它们完成了再继续呢？
+
+```swift
+group.wait()
 ```
 
 ## 不再使用锁(Lock)
