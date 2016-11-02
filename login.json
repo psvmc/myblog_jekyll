@@ -1,0 +1,9 @@
+{
+	"success" : true ,
+	"msg":"登录成功",
+	"obj" : {
+				"name":"剑行者",
+				"website":"http://www.psvmc.cn/"
+			}
+
+}
