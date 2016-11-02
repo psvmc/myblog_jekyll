@@ -142,6 +142,35 @@ NSLog(@"---获取到的NSString格式的结果--%@",resultStr);
 
 所以还是建议添加序列化方式 自己处理
 
+### 设置cookie
+
+思路  
+
++ 请求之前设置cookie   
++ 请求回调之后保存cookie
+
+代码如下
+
+```objc
+//保存cookie
+- (void)saveCookies{
+    NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject: cookiesData forKey: @"sessionCookies"];
+    [defaults synchronize];
+}
+
+//设置cookie
+- (void)loadCookies{
+    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData: [[NSUserDefaults standardUserDefaults] objectForKey: @"sessionCookies"]];
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    
+    for (NSHTTPCookie *cookie in cookies){
+        [cookieStorage setCookie: cookie];
+    }
+}
+```
+
 ##  文件下载
 
 ```objc
