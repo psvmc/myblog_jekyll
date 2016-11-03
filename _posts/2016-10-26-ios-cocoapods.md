@@ -62,6 +62,7 @@ Operation not permitted - /usr/bin/update_rubygems
 
 + 安装 [`Homebrew`](http://brew.sh/)
 + 安装gem `brew install ruby`
++ 重启`终端` 否则查看版本还会是之前的版本
 + 查看gem版本 `gem -v`
 
 
