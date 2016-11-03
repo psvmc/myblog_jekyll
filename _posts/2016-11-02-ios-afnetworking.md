@@ -46,6 +46,12 @@ NSMutableDictionary *parametersDic = [NSMutableDictionary dictionary];
    }];
 ```
 
+### 添加认证头
+
+```objc
+[manager.requestSerializer setValue:[NSString stringWithFormat:@"%@ %@", @"Bearer", @"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"] forHTTPHeaderField:@"Authorization"];
+```
+
 ### 指定Request的序列化方式
 
 ```objc
