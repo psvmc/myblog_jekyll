@@ -136,6 +136,10 @@ manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
 如果返回格式不固定 或者自己处理  就添加上面的序列化方式
 
+> 建议  
+> 如果结果确定为JSON 就不添加上面的代码  
+> 不确定 自己处理就需要添加
+
 #### 自己序列化的代码
 
 ```objc

@@ -93,6 +93,16 @@ ZJResult.m
 ZJResult<ZJUser *> *result = [[ZJResult<ZJUser *> alloc]init];
 ```
 
+配合`AFNetworking`代码  
+也就是`泛形`的部分 重新转换 并赋值
+
+```objc
+ZJResult<ZJUser *> *result = [ZJResult<ZJUser *> yy_modelWithJSON:responseObject];
+result.data = [ZJUser yy_modelWithJSON:responseObject[@"data"]];
+NSLog(@"%@",result.message);
+NSLog(@"%@",result.data.name);
+```
+
 ### Swift泛形
 
 #### 配合SwiftyJSON
