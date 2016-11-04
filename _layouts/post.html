@@ -167,7 +167,7 @@ comment: true
 	}
 	categoryCreater('main-article-contant');
 	</script>
-	{% if page.comment %} {% if site.disqus.config %}
+	{% if site.disqus.config %}
 	<script type="text/javascript">
 	        //disqus
 	        var disqus_shortname = '{{ site.disqus.id }}';
@@ -190,7 +190,7 @@ comment: true
                     || document.getElementsByTagName('body')[0]).appendChild(ds);
                 })();
             </script>
-	{% endif %} {% endif %} {% endif %}
+	{% endif %} {% endif %} 
 </body>
 </html>
 
