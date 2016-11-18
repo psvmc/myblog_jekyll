@@ -28,12 +28,20 @@ compile 'com.android.support:support-v4:23.0.0'
 |[`retrofit`](https://github.com/square/retrofit)|`compile 'com.squareup.retrofit2:retrofit:2.1.0'`|`★★`|
 |[`xUtils3`](https://github.com/wyouflf/xUtils3)|`compile 'org.xutils:xutils:3.3.38'`|`★★`|
 
+### JSON解析
+
+|名称|引用方式|个人推荐|
+|---|---|---|
+|[`fastjson`](https://github.com/alibaba/fastjson)|`compile 'com.alibaba:fastjson:1.2.21'`|`★★★`|
+|[`gson`](https://github.com/google/gson)|`compile 'com.google.code.gson:gson:2.8.0'`|`★★★`|
+
+
 ### 事件总线
 
 |名称|引用方式|个人推荐|
 |---|---|---|
 |[`EventBus`](https://github.com/greenrobot/EventBus)|`compile 'org.greenrobot:eventbus:3.0.0'`|`★★★`|
-|[`RxBus`](https://github.com/AndroidKnife/RxBus)|`compile 'com.hwangjr.rxbus:rxbus:1.0.5'`|`★★`|
+|[`RxBus`](https://github.com/AndroidKnife/RxBus)|`compile 'com.hwangjr.rxbus:rxbus:1.0.5'`|`★★★`|
 |[`otto`](https://github.com/square/otto)|`compile 'com.squareup:otto:1.3.8'`|`★★`|
 
 ### 数据库
@@ -58,10 +66,21 @@ compile 'com.android.support:support-v4:23.0.0'
 |[`Glide`](https://github.com/bumptech/glide)|`见官网`|`★★★`|
 |[`xUtils3`](https://github.com/wyouflf/xUtils3)|`compile 'org.xutils:xutils:3.3.38'`|`★★`|
 
-### 事件绑定
+### 事件视图绑定
 
 |名称|引用方式|个人推荐|
 |---|---|---|
 |[`butterknife`](https://github.com/JakeWharton/butterknife)|`见官网`|`★★★`|
 |[`xUtils3`](https://github.com/wyouflf/xUtils3)|`compile 'org.xutils:xutils:3.3.38'`|`★★`|
+
+### RxAndroid
+
+[RxAndroid](https://github.com/ReactiveX/RxAndroid)
+
+```
+compile 'io.reactivex:rxandroid:1.2.1'
+compile 'io.reactivex:rxjava:1.1.6'
+```
+
+
 
