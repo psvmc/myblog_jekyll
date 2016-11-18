@@ -84,15 +84,11 @@ comment: true
 				</div>
 			</nav>
 			<div class="comment">
-				{% if site.disqus.config %}
+				{% if site.duoshuo.config %}
 				<div class="comment-cnt">
-					<div id="disqus_thread"></div>
+					<div class="ds-thread" data-thread-key="{{ page.path }}" data-title="{{ page.title }}" ></div>
 				</div>
-				{% else %} {% if site.duoshuo.config %}
-				<div class="comment-cnt">
-					<div class="ds-thread"></div>
-				</div>
-				{% endif %} {% endif %}
+				{% endif %}
 			</div>
 		</section>
 		<footer class="foot" id="ztheme-foot">
