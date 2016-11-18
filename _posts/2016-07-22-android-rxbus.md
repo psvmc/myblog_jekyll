@@ -13,8 +13,13 @@ category: android
 
 经常我们会有这样的需求，B页面操作后，要求A页面处理相关数据，像这样一般我们都是，要么B页面保留A页面的引用，要么使用广播，但是写起来还是想对麻烦的，用`Rxbus`就可以很容易和优雅的解决  
 
-相同功能的组件用的比较多的有[`Otto`](https://github.com/square/otto)和[`EventBus`](https://github.com/greenrobot/EventBus)  
-但是如果我们的项目使用[`Rxjava`](https://github.com/ReactiveX/RxJava)的话 我就比较推荐用[`Rxbus`](https://github.com/AndroidKnife/RxBus)了
++ 相同功能的组件用的比较多的有[`Otto(不再维护不推荐使用)`](https://github.com/square/otto)和[`EventBus`](https://github.com/greenrobot/EventBus)  
+
++ 如果我们的项目使用[`Rxjava`](https://github.com/ReactiveX/RxJava)的话 我就比较推荐用[`Rxbus`](https://github.com/AndroidKnife/RxBus)了  
+
++ 如果项目中没有使用[`Rxjava`](https://github.com/ReactiveX/RxJava) 那还是使用[`EventBus`](https://github.com/greenrobot/EventBus) 吧 毕竟[`Rxbus`](https://github.com/AndroidKnife/RxBus)只有500+的Star 而[`EventBus`](https://github.com/greenrobot/EventBus)可是1W+  而且[`Rxbus`](https://github.com/AndroidKnife/RxBus)`很多地方还不完善
+
+
 
 ## 使用
 
