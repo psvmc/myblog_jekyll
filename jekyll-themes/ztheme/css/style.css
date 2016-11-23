@@ -912,10 +912,10 @@ a.toTop:hover {
 
 .header_background{
 	background-color: #08C;
-	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#08C,endColorStr=#09C); /*IE*/ 
-	background:-moz-linear-gradient(top,#15A216,#fafafa);/*火狐*/ 
-	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#08C), to(#09C));/*谷歌*/ 
-	background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #08C),color-stop(1, #09C));/* Safari & Chrome*/ 
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#08C', endColorstr='#09C'); /*IE6 & IE7*/ 
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#08C', endColorstr='#09C')"; /* IE8 */ 
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#08C,endColorStr=#09E); /*IE*/ 
+	background:-moz-linear-gradient(top,#08C,#09E);/*火狐*/ 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#08C), to(#09E));/*谷歌*/ 
+	background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #08C),color-stop(1, #09E));/* Safari & Chrome*/ 
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#08C', endColorstr='#09E'); /*IE6 & IE7*/ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#08C', endColorstr='#09E')"; /* IE8 */ 
 }
