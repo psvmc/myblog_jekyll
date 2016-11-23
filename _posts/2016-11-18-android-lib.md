@@ -24,6 +24,7 @@ compile 'com.android.support:support-v4:23.0.0'
 
 |名称|引用方式|个人推荐|
 |---|---|---|
+|[`okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo)|`见官网`|`★★★`|
 |[`okhttputils`](https://github.com/hongyangAndroid/okhttputils)|`compile 'com.zhy:okhttputils:2.6.2'`|`★★★`|
 |[`retrofit`](https://github.com/square/retrofit)|`compile 'com.squareup.retrofit2:retrofit:2.1.0'`|`★★`|
 |[`xUtils3`](https://github.com/wyouflf/xUtils3)|`compile 'org.xutils:xutils:3.3.38'`|`★★`|
