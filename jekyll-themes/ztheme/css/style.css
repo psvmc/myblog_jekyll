@@ -95,11 +95,6 @@ caption,th {
 	text-align: left;
 }
 
-h1,h2,h3,h4,h5,h6 {
-	font-size: 100%;
-	font-weight: 500;
-}
-
 q:before,q:after {
 	content: '';
 }
@@ -638,7 +633,7 @@ a:hover {
 	margin-top: 36px;
 	margin-bottom: 20px;
 	padding: 10px 0px;
-    	font-weight: 800;
+    font-weight: 600;
 }
 
 .main-article h2 {
@@ -646,10 +641,10 @@ a:hover {
 	margin-top: 30px;
 	margin-bottom: 20px;
 	padding: 10px 0px;
-    	border-bottom-color: #D2D2D2;
-    	border-bottom-width: 1px;
-    	border-bottom-style: solid;
-    	font-weight: 700;
+	border-bottom-color: #D2D2D2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	font-weight: 500;
 }
 
 .main-article h3 {
@@ -688,9 +683,9 @@ a:hover {
 
 .main-article code {
 	padding: 2px 4px;
-    	font-size: 90%;
-    	color: #c7254e;
-    	border-radius: 4px;
+	font-size: 90%;
+	color: #c7254e;
+	border-radius: 4px;
 	font-family: Monaco,Consolas, Helvetica, Open Sans, "Microsoft YaHei", sans-serif;
 
 }
