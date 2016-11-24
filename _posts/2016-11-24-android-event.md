@@ -1,7 +1,7 @@
 ---
 
 layout: post
-title: Android点击视图外部,隐藏键盘 及 事件传递机制(dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent)
+title: Android点击视图外部,隐藏键盘 及 事件传递机制
 description: Android点击视图外部,隐藏键盘 及 事件传递机制(dispatchTouchEvent、onInterceptTouchEvent、onTouchEvent)
 keywords: android
 categories: android
