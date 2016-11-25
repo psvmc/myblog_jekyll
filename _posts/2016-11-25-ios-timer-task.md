@@ -52,6 +52,13 @@ dispatch_source_set_event_handler(_timer, ^{
 dispatch_resume(_timer);
 ```
 
+停止方式
+
+```objc
+dispatch_cancel(_timer);
+_timer = nil;
+```
+
 ### NSTimer方式
 
 创建方式
