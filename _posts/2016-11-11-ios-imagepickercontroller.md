@@ -4,7 +4,7 @@ layout: post
 title: iOS 自定义UIImagePickerController
 description: iOS 自定义UIImagePickerController
 keywords: ios
-categories: swift ios
+categories: ios
 
 ---
 
