@@ -54,7 +54,7 @@ private void stopRecord(){
 }
 ```
 
-每200毫秒反复掉用 获取声音大小
+每200毫秒反复调用 获取声音大小
 
 ```java
 Handler handler=new Handler();
@@ -92,8 +92,8 @@ player.start();
 ### 2、从文件系统播放
 
 ```java
-MediaPlayer   player  =   new MediaPlayer();
-String  path   =  "/sdcard/test.mp3";
+MediaPlayer player = new MediaPlayer();
+String path = "/sdcard/test.mp3";
 player.setDataSource(path);
 player.prepare();
 player.start();
@@ -106,14 +106,14 @@ player.start();
 ```java
 String path="http://**************.mp3";     //这里给一个歌曲的网络地址就行了
 Uri  uri  =  Uri.parse(path);
-MediaPlayer   player  =   new MediaPlayer.create(this,uri);
+MediaPlayer player = new MediaPlayer.create(this,uri);
 player.start();
 ```
 
 (2)通过设置数据源的方式：
 
 ```java
-MediaPlayer   player  =   new MediaPlayer.create();
+MediaPlayer player = new MediaPlayer.create();
 String path="http://**************.mp3";          //这里给一个歌曲的网络地址就行了
 player.setDataSource(path);
 player.prepare();
