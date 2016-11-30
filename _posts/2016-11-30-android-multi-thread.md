@@ -130,3 +130,4 @@ protected void onDestroy() {
 }
 ```
 
+总的来说现在`Rx`越来越流行了  推荐新项目都用上`Rx`
