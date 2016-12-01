@@ -12,41 +12,56 @@ categories: android
 ## 拍照
 
 ```java
-private static final int CAMERA = 0;
+private static final int TAKE_PICTURE = 0;
 
-void take_photo_layout_click(){
-   Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-   startActivityForResult(camera, CAMERA);
+void takePhotoClick() {
+   if (Build.VERSION.SDK_INT >= 23) {
+       requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+   } else {
+       startActivityForResult(new Intent("android.media.action.IMAGE_CAPTURE"), TAKE_PICTURE);
+   }
+}
+
+@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+   switch (requestCode) {
+       case REQUEST_CODE_ASK_PERMISSIONS:
+           if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+               startActivityForResult(new Intent("android.media.action.IMAGE_CAPTURE"), TAKE_PICTURE);
+           } else {
+               // 没有打开相机的权限
+               Toast.makeText(TakePhotoActivity.this, "没有打开照相机权限", Toast.LENGTH_SHORT).show();
+           }
+           break;
+       default:
+           super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+   }
 }
 ```
 
 回调
 
 ```java
-@Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-   super.onActivityResult(requestCode, resultCode, data);
-
-   if(requestCode == CAMERA && resultCode == Activity.RESULT_OK && null != data){
-       String sdState=Environment.getExternalStorageState();
-       if(!sdState.equals(Environment.MEDIA_MOUNTED)){
+   if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK && null != data) {
+       String sdState = Environment.getExternalStorageState();
+       if (!sdState.equals(Environment.MEDIA_MOUNTED)) {
            return;
        }
-       new DateFormat();
-       String name= DateFormat.format("yyyyMMdd_hhmmss", Calendar.getInstance(Locale.CHINA))+".jpg";
+       String name = DateFormat.format("yyyyMMdd_hhmmss", Calendar.getInstance(Locale.CHINA)) + ".jpg";
        Bundle bundle = data.getExtras();
        //获取相机返回的数据，并转换为图片格式
-       Bitmap bitmap = (Bitmap)bundle.get("data");
+       Bitmap bitmap = (Bitmap) bundle.get("data");
        FileOutputStream fout = null;
-       File file = new File("/sdcard/pintu/");
+       File file = new File("/sdcard/pics/");
        file.mkdirs();
-       String filename=file.getPath()+name;
+       String filename = file.getPath() + name;
        try {
            fout = new FileOutputStream(filename);
-           bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fout);
+           bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fout);
        } catch (FileNotFoundException e) {
            e.printStackTrace();
-       }finally{
+       } finally {
            try {
                fout.flush();
                fout.close();
