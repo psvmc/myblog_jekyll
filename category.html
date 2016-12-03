@@ -1,66 +1,58 @@
----
+--- 
+
 layout: common 
 title: 分类归档 
-description: 按分类对文章分类
-keywords: java,Linux,php,jekyll
-isArchive: true
+description: 按分类对文章分类 
+keywords: java,Linux,php,jekyll 
+isArchive: true 
+
 ---
+
 <article class="main-article main-article-page">
-	<div class="ztheme-title">
-		<h3 class="ztheme-title-item">
+    <div class="ztheme-title">
+        <h3 class="ztheme-title-item">
 			分类归档
 			<span>(共{{ site.posts | size }}篇)</span>
 		</h3>
-	</div>
-	<div class="ztheme-post">
-		<div class="main-article-contant">
-
-			<div class="categoryGroup">
-				<ul>
-					{% for category in site.categories %}
-					<li>
-						<a href="#{{ category | first }}">
-							<span class="left_dian"></span>
-							{{ category | first }}
-							<sup>{{ category | last | size }}</sup>
-						</a>
-					</li>
-					{% endfor %}
-				</ul>
-			</div>
-			
-			<div class="clear"></div>
-
-			{% for category in site.categories %}
-			<h3 id="{{ category | first }}" >{{ category | first }} 共{{ category | last | size }}篇</h3>
-			{% capture tempCategory %}{{category | first}}{% endcapture %}
-			<ul class="article-year fn-clear">
-				{% for post in site.posts %}
-					{% for post_category in post.categories %}
-						{% if post_category == tempCategory %}
-						<li>
-						<a href="{{ post.url }}">
-							<div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
-							<div class="post_title">{{ post.title }}</div>
-							<div class="post_keywords">
-								{% for keyword in post.keywords %}
-									{{ keyword }} 
-								{% endfor %}
-							</div>
-						</a>
-						</li>
-						{% endif %}
-					{% endfor %}
-				{% endfor %}
-			</ul>
-			{% endfor %}
-			<!-- 随机色块 -->
-			<script type="text/javascript" src="{{ site.themes }}/js/randomColor.js"></script>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					randomColor();
-				});
-			</script>
-		</div>
-	</div>
+    </div>
+    <div class="ztheme-post">
+        <div class="main-article-contant">
+            <div class="categoryGroup">
+                <ul>
+                    {% for category in site.categories %}
+                    <li>
+                        <a href="#{{ category | first }}">
+                            <span class="left_dian"></span> {{ category | first }}
+                            <sup>{{ category | last | size }}</sup>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="clear"></div>
+            {% for category in site.categories %}
+            <h3 id="{{ category | first }}">{{ category | first }} 共{{ category | last | size }}篇</h3> {% capture tempCategory %}{{category | first}}{% endcapture %}
+            <ul class="article-year fn-clear">
+                {% for post in site.posts %} {% for post_category in post.categories %} {% if post_category == tempCategory %}
+                <li>
+                    <a href="{{ post.url }}">
+                        <div class="post_date">{{ post.date | date_to_utc | date: '%Y-%m-%d' }}</div>
+                        <div class="post_title">{{ post.title }}</div>
+                        <div class="post_keywords">
+                            {% for keyword in post.keywords %} {{ keyword }} {% endfor %}
+                        </div>
+                    </a>
+                </li>
+                {% endif %} {% endfor %} {% endfor %}
+            </ul>
+            {% endfor %}
+            <!-- 随机色块 -->
+            <script type="text/javascript" src="{{ site.themes }}/js/randomColor.js"></script>
+            <script type="text/javascript">
+            $(document).ready(function() {
+                randomColor();
+            });
+            </script>
+        </div>
+    </div>
 </article>
