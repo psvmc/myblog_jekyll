@@ -66,6 +66,7 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 + `SidebarEnhancements`  
    在侧边栏的文件上右击时，这个插件提供了大量更多的选择。`打开` `查找` `复制`和`粘贴`，等等。  
 + `jQuery` jQ函数提示
++ `Autoprefixer` CSS自动添加兼容前缀插件
 
 ### 推荐几个主题
 
