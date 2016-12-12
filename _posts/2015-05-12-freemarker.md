@@ -95,3 +95,9 @@ if-elseif-else
 ```
 ${((article.content)!)?html}
 ```
+
+## 日期格式化
+
+```
+${(mailVo.date)?string("yyyy-MM-dd HH:mm:ss")}
+```
