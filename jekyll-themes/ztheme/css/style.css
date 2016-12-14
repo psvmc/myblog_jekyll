@@ -362,9 +362,14 @@ a:hover {
 }
 
 .main-article {
-    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: auto;
     background: #f6f6f6;
+    border: #E6E6E6 1px solid;
+    border-radius: 2px;
 }
 
 .main-article:nth-child(2n) {

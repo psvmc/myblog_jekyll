@@ -25,7 +25,7 @@ category: ios
 + 移除默认镜像  
 `gem sources --remove https://rubygems.org/`   
 + 添加 taobao Mirror 不然被墙掉没办法下载  
-`gem sources -a https://ruby.taobao.org/`
+`gem sources -a https://gems.ruby-china.org/`
 + 查看用到的镜像  
 `gem sources -l`   
 + 安装  
