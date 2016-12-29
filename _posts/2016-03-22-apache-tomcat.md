@@ -183,10 +183,10 @@ Apache中多了`ProxyPassReverseCookiePath /aaa /`
 
 建议每一个apache配置都建一个`httpd-vhosts-a.psvmc.cn.conf`文件  放在`/etc/httpd/conf.d`目录下 这样方便管理
 
-### 两个Tomcat上的配置
+### Tomcat的配置
 
-开启**粘性Session**时**jvmRoute**的配置是必须的   
-只做负载均衡时(如app接口 不需要Session)就不用配**jvmRoute**
+开启**粘性Session**时**jvmRoute**的配置不是必须的   
+**jvmRoute**只是为了测试时方便查看用的哪个`Tomcat`
 两个Tomcat**端口的修改**是因为放在**同一台服务器**上了，**不同服务器**就**不用修改**
 
 TomcatA
@@ -232,7 +232,9 @@ TomcatB
   </Service>
 </Server>
 ```
-### 注意点
+
+### Apache及Tomcat的注意点
+
 0) 修改tomcat的server.xml
 
 添加`jvmRoute="tomcat7_8080"`
@@ -313,7 +315,9 @@ SessionID的后面都会显示我们在**Tomcat**的**server.xml**中配置的**
 + 如果只配置了**负载均衡**和**粘性Session** 我们会发现**SessionID**是不会变的，除非重启浏览器
 + 如果配置了**负载均衡**和**Session复制**并且**取消粘性Session**  我们会发现**SessionID**变化的只会是**.**后面的**jvmRoute**   
 
-## 集群
+## Session复制
+
+上面说的是集群时Session的处理方式是**粘性Session**。下面要说的就是另一种**Session复制** 当然还有很多其他方式
 
 如果设置**Session复制**,最好取消**粘性Session**，因为设置**Session复制**后，各个服务器上Session已经同步了，就没必要让同一个用户只访问一个服务器了   
 
@@ -329,7 +333,7 @@ Tomcat Session复制很简单 只需要两步
 
 ### 第一步
 
-只需要把所有参与集群的Tomcat的配置文件server.xml中的一下配置取消注释就行了
+只需要把所有参与集群的Tomcat的配置文件`server.xml`中的一下配置取消注释就行了
 
 `<Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>`  
 
