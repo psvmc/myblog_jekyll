@@ -51,6 +51,8 @@ include D:/soft/nginx-1.8.1/conf/conf.d/*.conf;
 include conf.d/*.conf;
 ```
 
+> 上面的配置要在`http`内部
+
 但是以下两种是**错误**的
 
 ```
