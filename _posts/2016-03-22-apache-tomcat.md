@@ -44,7 +44,37 @@ Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_
 
 我把上面的配置直接放在`/etc/httpd/conf.modules.d`文件夹下的`00-proxy.conf`配置中了(注意：不同apache版本不一样)
 
-### 添加负载均衡配置
+#### apache2.4版本注意事项
+
+`httpd.conf`中的配置
+
+要配置`SRVROOT` 必须为绝对路径
+
+```
+Define SRVROOT "C:\Software\Apache24"
+```
+
+去掉以下的注释
+
+```
+Include conf/extra/httpd-vhosts.conf
+LoadModule slotmem_shm_module modules/mod_slotmem_shm.so
+```
+
+
+## 添加负载均衡配置
+
+建议在`httpd.conf`的同级目录创建文件夹`conf.d` 里面放自定义配置 `httpd.conf`中添加引用
+
+```
+Include conf/conf.d/*.conf
+```
+
+### 配置示例(Tomcat下单个项目)
+
+> 即：访问项目时直接通过域名或IP就可以访问 不需要添加项目名的情况下
+
+新建文件 `vhost_a.psvmc.cn.conf`
 
 ```xml
 #虚拟机配置,负载均衡配置
@@ -79,6 +109,8 @@ ProxyRequests Off
 
 ### Tomcat下多个项目配置
 
+> 即webapp目录下有多个项目 访问项目需要添加项目名的情况下
+
 如果Tomcat下时多个项目该怎么配
 
 先说一种错误配法
@@ -96,7 +128,8 @@ Tomcat中又配置了多个Host节点
 	<Context path="/" docBase="" debug="0"/>
 </Host>
 ```
-这样配置的话大部分情况下是没问题的，但是如果页面上有验证码的话 会生成两个SessionID，导致验证码不可用
+
+这样配置的话大部分情况下是没问题的，但是如果页面上有验证码的话 会生成两个`SessionID`，导致验证码不可用
 
 #### 正确的配法
 
