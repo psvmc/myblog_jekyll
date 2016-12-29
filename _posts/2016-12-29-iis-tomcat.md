@@ -10,20 +10,20 @@ categories: iis
 
 ## 前言
 
-之前说过用`Apache`和`Nginx`做代理来访问`Tomcat`中的项目  
+之前说过用`Apache`和`Nginx`做代理来访问`Tomcat`中的项目.   
 现在因工作需要 只能用IIS作为Web服务器来把请求转发到Tomcat  
 
 我现在知道的共有四种实现方式  
 
 + 使用`isapi_redirect.dll`实现
 + Weblogic的插件包中的`iisforward.dll`、`iisproxy.dll`来实现
-+ ARR(Application Request Routing)
-+ HttpPlatformHandler
++ `ARR(Application Request Routing)`
++ `HttpPlatformHandler`
 
 我最终使用的是第三种方式 下面说一下各个方式的优缺点  
 
 + 第一种方式需要修改注册表（网上说的也可以不用添加注册表 我通过这种方式没有成功）  
-+ 第二种方式 新版本的Weblogic的插件包中不包含**iisforward.dll**
++ 第二种方式 新版本的`Weblogic`的插件包中不包含**iisforward.dll**
 + 第三种只支持IIS7以上
 + 第四种 相当于 Tomcat由IIS托管 不但要配置IIS 还有修改Tomcat的默认配置 所以不建议
 
@@ -75,8 +75,8 @@ IIS中要配置**URL地址的入站规则** 和 **HTTP响应头或内容的出�
 </Host>  
 ```
 
-需要注意的是 appBase一定要换一个路径 因为每个`Host` 中 `appBase`中的项目 在`Tomcat`启动时会重新加载  
-所以多个`Host`中的`appBase`一样的话 就会导致一个项目被加载多遍
+需要注意的是 `appBase`一定要换一个路径 因为每个`Host` 中 `appBase`中的项目 在`Tomcat`启动时会重新加载  
+所以多个`Host`中的`appBase`一样的话 就**会导致一个项目被加载多遍**
 
 这样 网站目前可以用`www.aaa.com:8080`访问
 
@@ -91,7 +91,7 @@ IIS中要配置**URL地址的入站规则** 和 **HTTP响应头或内容的出�
 添加规则 选择`入站规则`中的`空白规则`  
 
 |设置项名称|设置项内容|
-|-|-| 
+|:-------------:|:-------------:| 
 |名称|随便写|
 |模式|{SERVER_PORT}设置为80  {HTTP_HOST}设置为www.aaa.com|
 |条件|(.*)|
@@ -99,12 +99,12 @@ IIS中要配置**URL地址的入站规则** 和 **HTTP响应头或内容的出�
 
 #### 出站规则
 
-所谓的出站规则就是返回的html内容根据规则替换里面的url
+所谓的出站规则就是`返回的html内容`根据规则`替换里面的url`
 
 添加规则 选择`出站规则`中的`空白规则`  
 
 |设置项名称|设置项内容|
-|-|-| 
+|:-------------:|:-------------:| 
 |名称|随便写|
 |匹配范围|响应|
 |匹配一下范围中的内容|除自定义外全选|
