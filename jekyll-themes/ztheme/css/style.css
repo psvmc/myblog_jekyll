@@ -370,6 +370,7 @@ a:hover {
     background: #f6f6f6;
     border: #E6E6E6 1px solid;
     border-radius: 2px;
+    overflow: hidden;
 }
 
 .main-article:nth-child(2n) {
