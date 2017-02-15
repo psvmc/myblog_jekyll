@@ -63,8 +63,8 @@ compile 'com.android.support:support-v4:23.0.0'
 
 |名称|引用方式|个人推荐|
 |---|---|---|
-|[`Picasso`](https://github.com/square/picasso)|`compile 'compile 'com.squareup.picasso:picasso:2.5.2'`|`★★★`|
-|[`Glide`](https://github.com/bumptech/glide)|`见官网`|`★★★`|
+|[`Glide`](https://github.com/bumptech/glide)|`compile 'com.github.bumptech.glide:glide:3.7.0'`|`★★★`|
+|[`Picasso`](https://github.com/square/picasso)|`compile 'compile 'com.squareup.picasso:picasso:2.5.2'`|`★★`自定义ImageView无法加载图片|
 |[`xUtils3`](https://github.com/wyouflf/xUtils3)|`compile 'org.xutils:xutils:3.3.38'`|`★★`|
 
 ### 事件视图绑定
