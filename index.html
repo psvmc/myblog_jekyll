@@ -6,6 +6,8 @@ keywords: java,swift,android
 isIndex: true
 ---
 
+{{ paginator.posts|size }}
+
 {% for rpost in paginator.posts %}
 <article class="main-article" onClick="javascript:location.href='{{ rpost.url }}';">
     <div class="ztheme-post-list">
