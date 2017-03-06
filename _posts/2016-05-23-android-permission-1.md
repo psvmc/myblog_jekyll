@@ -29,12 +29,14 @@ android小组也知道这事儿。7年了！权限系统终于被重新设计了
 
 ## 正文
 
-新版的权限可以分为两大类`PROTECTION_NORMAL类权限`和`运行时权限`  
-只有运行时权限需要询问用户，`PROTECTION_NORMAL类权限`只要在`AndroidManifest.xml`中声明就好了，安装应用时会自动赋予
+新版的权限可以分为两大类`普通权限`和`运行时权限`
+  
++ `运行时权限`需要`询问用户`
++ `普通权限`只要在`AndroidManifest.xml`中声明就好了，安装应用时会自动赋予
 
-### PROTECTION_NORMAL类权限
+### 普通权限
 
-PROTECTION_NORMAL类权限包含以下权限
+`普通权限`包含以下权限
 
 ```java
 android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
@@ -77,9 +79,7 @@ com.android.launcher.permission.INSTALL_SHORTCUT
 com.android.launcher.permission.UNINSTALL_SHORTCUT
 ```
 
-### 让你的app支持新运行时权限
-
-所有运行时权限
+### 运行时权限
 
 <table>
 
@@ -193,39 +193,14 @@ android {
 }
 ```
 
+## 请求单个权限
+
 假如我们要添加联系人
 
 ```java
 //添加联系人的方法
 private void insertDummyContact() {
-    // Two operations are needed to insert a new contact.
-    ArrayList<ContentProviderOperation> operations = new ArrayList<ContentProviderOperation>(2);
- 
-    // First, set up a new raw contact.
-    ContentProviderOperation.Builder op =
-            ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
-                    .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
-                    .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null);
-    operations.add(op.build());
- 
-    // Next, set the name for the contact.
-    op = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
-            .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-            .withValue(ContactsContract.Data.MIMETYPE,
-                    ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-            .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME,
-                    "__DUMMY CONTACT from runtime permissions sample");
-    operations.add(op.build());
- 
-    // Apply the operations.
-    ContentResolver resolver = getContentResolver();
-    try {
-        resolver.applyBatch(ContactsContract.AUTHORITY, operations);
-    } catch (RemoteException e) {
-        Log.d(TAG, "Could not add a new contact: " + e.getMessage());
-    } catch (OperationApplicationException e) {
-        Log.d(TAG, "Could not add a new contact: " + e.getMessage());
-    }
+
 }
 ```
 
@@ -237,17 +212,28 @@ private void insertDummyContact() {
 
 光是这样的话还是没有权限，所以我们要询问用户授权
 
+定义全局变量
+
 ```java
 final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
- 
+```
+
+```java
 private void insertDummyContactWrapper() {
-    int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_CONTACTS);
-    if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-        requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS},
-                REQUEST_CODE_ASK_PERMISSIONS);
-        return;
+    if (Build.VERSION.SDK_INT >= 23) {
+        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_CONTACTS);
+        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+            //未赋与权限  请求权限
+            requestPermissions(new String[]{Manifest.permission.WRITE_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS);
+            return;
+        }else{
+            //已赋予权限
+            insertDummyContact();
+        }
+    }else{
+        //低于Android6.0
+        insertDummyContact();
     }
-    insertDummyContact();
 }
 ```
 
@@ -261,12 +247,11 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
     switch (requestCode) {
         case REQUEST_CODE_ASK_PERMISSIONS:
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission Granted
+                // 已授权
                 insertDummyContact();
             } else {
-                // Permission Denied
-                Toast.makeText(MainActivity.this, "通讯录没有写入权限", Toast.LENGTH_SHORT)
-                        .show();
+                // 未授权成功
+                Toast.makeText(MainActivity.this, "通讯录没有写入权限", Toast.LENGTH_SHORT).show();
             }
             break;
         default:
@@ -275,7 +260,7 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 }
 ```
 
-### 处理 “不再提醒”
+### 处理 用户点击了“不再提醒”的情况
 
 如果用户拒绝某授权。下一次弹框，用户会有一个“不再提醒”的选项的来防止app以后继续请求授权。
 
@@ -283,43 +268,44 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 这将是很差的用户体验，用户做了操作却得不到响应。这种情况需要好好处理一下。在请求`requestPermissions`前，我们通过activity的`shouldShowRequestPermissionRationale`方法来检查是否需要弹出请求权限的提示对话框
 
 + 1. 第一次请求权限时，用户拒绝了，下一次：`shouldShowRequestPermissionRationale()`  返回 `true`，应该显示一些为什么需要这个权限的说明
-+ 2.第二次请求权限时，用户拒绝了，并选择了“不在提醒”的选项时：`shouldShowRequestPermissionRationale()`  返回 `false`
++ 2. 第二次请求权限时，用户拒绝了，并选择了“不在提醒”的选项时：`shouldShowRequestPermissionRationale()`  返回 `false`
 + 3. 设备的策略`禁止`当前应用获取这个权限的授权：`shouldShowRequestPermissionRationale()`  返回 `false` 
 
 
 代码如下：
 
 ```java
-final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
- 
 private void insertDummyContactWrapper() {
-    int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_CONTACTS);
-    if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+    if (Build.VERSION.SDK_INT >= 23) {
+        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_CONTACTS);
+        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
             //用户彻底禁用了权限
             if (!shouldShowRequestPermissionRationale(Manifest.permission.WRITE_CONTACTS)) {
                 showMessageOKCancel("请从系统设置中开启访问通讯录的权限",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS},
-                                        REQUEST_CODE_ASK_PERMISSIONS);
+                                if (Build.VERSION.SDK_INT >= 23) {
+                                    requestPermissions(new String[]{Manifest.permission.WRITE_CONTACTS},
+                                            REQUEST_CODE_ASK_PERMISSIONS);
+                                }
                             }
                         });
-                return;
+            } else {
+                //用户没有彻底禁用了权限 请求权限
+                requestPermissions(new String[]{Manifest.permission.WRITE_CONTACTS}, REQUEST_CODE_ASK_PERMISSIONS);
             }
-             
-             //用户没有彻底禁用了权限  请求权限
-            requestPermissions(
-                new String[] {Manifest.permission.WRITE_CONTACTS},
-                REQUEST_CODE_ASK_PERMISSIONS
-            );
-        return;
+
+        } else {
+            insertDummyContact();
+        }
+    } else {
+        insertDummyContact();
     }
-    insertDummyContact();
 }
- 
+
 private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-    new AlertDialog.Builder(MainActivity.this)
+    new AlertDialog.Builder(IMChatActivity.this)
             .setMessage(message)
             .setPositiveButton("确认", okListener)
             .setNegativeButton("取消", null)
@@ -331,57 +317,84 @@ private void showMessageOKCancel(String message, DialogInterface.OnClickListener
 当一个权限第一次被请求和用户标记过不再提醒的时候,我们写的对话框被展示。
 最后一种情况，`onRequestPermissionsResult` 会收到`PERMISSION_DENIED` ，系统询问对话框不展示。
 
-### 一次请求多个权限
+## 一次请求多个权限
 
 当然了有时候需要好多权限，可以用上面方法一次请求多个权限。不要忘了为每个权限检查“不再提醒”的设置。
 修改后的代码：
 
+添加全局常量
+
 ```java
 final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
- 
+```
+
+```java
 private void insertDummyContactWrapper() {
-    List<String> permissionsNeeded = new ArrayList<String>();
- 
-    final List<String> permissionsList = new ArrayList<String>();
-    if (!addPermission(permissionsList, Manifest.permission.ACCESS_FINE_LOCATION))
-        permissionsNeeded.add("GPS");
-    if (!addPermission(permissionsList, Manifest.permission.READ_CONTACTS))
-        permissionsNeeded.add("读取通讯录");
-    if (!addPermission(permissionsList, Manifest.permission.WRITE_CONTACTS))
-        permissionsNeeded.add("写入通讯录");
- 
-    if (permissionsList.size() > 0) {
-        if (permissionsNeeded.size() > 0) {
-            // Need Rationale
-            String message = "You need to grant access to " + permissionsNeeded.get(0);
-            for (int i = 1; i < permissionsNeeded.size(); i++)
-                message = message + ", " + permissionsNeeded.get(i);
-            showMessageOKCancel(message,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
-                                    REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-                        }
-                    });
+    if (Build.VERSION.SDK_INT >= 23) {
+        //应用尚未赋予的权限 并且选择了不再提醒
+        List<String> permissionsNeeded = new ArrayList<String>();
+        //应用尚未赋予的权限
+        final List<String> permissionsList = new ArrayList<String>();
+
+        if (!addPermission(permissionsList, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            permissionsNeeded.add("GPS");
+        }
+
+        if (!addPermission(permissionsList, Manifest.permission.READ_CONTACTS)) {
+            permissionsNeeded.add("读取通讯录");
+        }
+
+        if (!addPermission(permissionsList, Manifest.permission.WRITE_CONTACTS)) {
+            permissionsNeeded.add("写入通讯录");
+        }
+
+        if (permissionsList.size() > 0) {
+            if (permissionsNeeded.size() > 0) {
+                String message = "应用需要以下权限,请手动打开：" + permissionsNeeded.get(0);
+                for (int i = 1; i < permissionsNeeded.size(); i++) {
+                    message += ", " + permissionsNeeded.get(i);
+                }
+                showMessageOKCancel(message,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (Build.VERSION.SDK_INT >= 23) {
+                                    requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+                                }
+                            }
+                        });
+                return;
+            }
+            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
             return;
         }
-        requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
-                REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-        return;
+
+        insertDummyContact();
+    } else {
+        insertDummyContact();
     }
- 
-    insertDummyContact();
 }
- 
+
 private boolean addPermission(List<String> permissionsList, String permission) {
-    if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-        permissionsList.add(permission);
-        // Check for Rationale Option
-        if (!shouldShowRequestPermissionRationale(permission))
-            return false;
+    if (Build.VERSION.SDK_INT >= 23) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+            if (!shouldShowRequestPermissionRationale(permission)) {
+                return false;
+            }
+        }
+        return true;
     }
     return true;
+}
+
+private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+    new AlertDialog.Builder(IMChatActivity.this)
+            .setMessage(message)
+            .setPositiveButton("确认", okListener)
+            .setNegativeButton("取消", null)
+            .create()
+            .show();
 }
 ```
 
@@ -391,17 +404,17 @@ private boolean addPermission(List<String> permissionsList, String permission) {
 @Override
 public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
     switch (requestCode) {
-        case REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS:
-            {
+        case REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS: {
             Map<String, Integer> perms = new HashMap<String, Integer>();
             // Initial
             perms.put(Manifest.permission.ACCESS_FINE_LOCATION, PackageManager.PERMISSION_GRANTED);
             perms.put(Manifest.permission.READ_CONTACTS, PackageManager.PERMISSION_GRANTED);
             perms.put(Manifest.permission.WRITE_CONTACTS, PackageManager.PERMISSION_GRANTED);
             // Fill with results
-            for (int i = 0; i < permissions.length; i++)
+            for (int i = 0; i < permissions.length; i++) {
                 perms.put(permissions[i], grantResults[i]);
-                
+            }
+
             if (perms.get(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     && perms.get(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
                     && perms.get(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
@@ -409,11 +422,10 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
                 insertDummyContact();
             } else {
                 // 没有权限
-                Toast.makeText(MainActivity.this, "没有赋予某些权限", Toast.LENGTH_SHORT)
-                        .show();
+                Toast.makeText(IMChatActivity.this, "没有赋予某些权限", Toast.LENGTH_SHORT).show();
             }
-            }
-            break;
+        }
+        break;
         default:
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
@@ -422,9 +434,9 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 
 条件灵活的，你自己设置。有的情况，一个权限没有授权，就不可用；但是也有情况，能工作，但是表现的是有所限制的。对于这个我不做评价，你自己设计吧。
 
-### 用兼容库使代码兼容旧版
+## 用兼容库来做兼容(非必需)
 
-以上代码在android 6.0以上运行没问题，但是23 api之前就不行了，因为没有那些方法。
+以上代码是通过`判断SDK的版本`来调用不同的方法来兼容不同的版本。当然也可以使用`兼容包`。
 
 我建议用v4兼容库，已对这个做过兼容，用这个方法代替：
 
@@ -472,9 +484,9 @@ private void insertDummyContactWrapper() {
 后两个方法，我们也可以在Fragment中使用，用v13兼容包:`FragmentCompat.requestPermissions()` 和`FragmentCompat.shouldShowRequestPermissionRationale()`和activity效果一样。
 
 
-### 第三方库简化代码
+## 第三方库简化代码
 
-以上代码真尼玛复杂。为解决这事，有许多第三方库已经问世了，真66溜真有速度。我试了很多最终找到了个满意的[hotchemi’s PermissionsDispatcher](https://github.com/hotchemi/PermissionsDispatcher)。
+以上代码真尼玛复杂。为解决这事，有许多第三方库已经问世了。我试了很多最终找到了个满意的[hotchemi’s PermissionsDispatcher](https://github.com/hotchemi/PermissionsDispatcher)。
 
 
 ### 结论建议
@@ -483,7 +495,8 @@ private void insertDummyContactWrapper() {
 
 但是你没得选择。新运行时权限已经在棉花糖中被使用了。我们没有退路。我们现在唯一能做的就是保证app适配新权限模型.  
 
-欣慰的是只有少数权限需要运行时权限模型。大多数常用的权限，例如，网络访问，属于**Normal Permission** 在安装时自动会授权，当然你要声明，以后无需检查。因此，只有少部分代码你需要修改。
+欣慰的是只有少数权限需要运行时权限模型。  
+大多数常用的权限，例如，网络访问，属于**普通权限** 在安装时自动会授权，当然你要声明，以后无需检查。因此，只有少部分代码你需要修改。
 
 两个建议： 
 
