@@ -489,7 +489,7 @@ private void insertDummyContactWrapper() {
 以上代码真尼玛复杂。为解决这事，有许多第三方库已经问世了。我试了很多最终找到了个满意的[hotchemi’s PermissionsDispatcher](https://github.com/hotchemi/PermissionsDispatcher)。
 
 
-### 结论建议
+## 结论建议
 
 我相信你对新权限模型已经有了清晰的认识。我相信你也意识到了问题的严峻。  
 
