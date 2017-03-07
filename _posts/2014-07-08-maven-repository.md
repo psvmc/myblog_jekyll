@@ -8,57 +8,80 @@ category: maven
 
 ---
 
-## 开源中国
-	<repository>
-		<id>nexus</id>
-		<name>local private nexus</name>
-		<url>http://maven.oschina.net/content/groups/public/</url>
-		<releases>
-			<enabled>true</enabled>
-		</releases>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-	</repository>
+## 阿里云
+
+```xml
+<repository>
+    <id>maven-ali</id>
+    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    <releases>
+        <enabled>true</enabled>
+    </releases>
+    <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+    </snapshots>
+</repository>
+```
+	
+
 ## sonatype
-	<repository>
-		<id>oss-sonatype-snapshots</id>
-		<name>OSS Sonatype Snapshots Repository</name>
-		<url>http://oss.sonatype.org/content/repositories/snapshots</url>
-		<releases>
-			<enabled>false</enabled>
-		</releases>
-		<snapshots>
-			<enabled>true</enabled>
-		</snapshots>
-	</repository>
+
+```xml
+<repository>
+	<id>oss-sonatype-snapshots</id>
+	<name>OSS Sonatype Snapshots Repository</name>
+	<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+	<releases>
+		<enabled>false</enabled>
+	</releases>
+	<snapshots>
+		<enabled>true</enabled>
+	</snapshots>
+</repository>
+```
+
 ## sun
-	<repository>
-		<id>sun</id>
-		<name>sun</name>
-		<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-		<releases>
-			<enabled>false</enabled>
-		</releases>
-		<snapshots>
-			<enabled>true</enabled>
-		</snapshots>
-	</repository>
+
+```xml
+<repository>
+	<id>sun</id>
+	<name>sun</name>
+	<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+	<releases>
+		<enabled>false</enabled>
+	</releases>
+	<snapshots>
+		<enabled>true</enabled>
+	</snapshots>
+</repository>
+```
+
+
 ## alfresco
-	<repository>
-		<id>alfresco.public</id>
-		<name>Alfresco Public Repository</name>
-		<url>https://maven.alfresco.com/nexus/content/groups/public</url>
-		<releases>
-			<enabled>true</enabled>
-		</releases>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-	</repository>
+
+```xml
+<repository>
+	<id>alfresco.public</id>
+	<name>Alfresco Public Repository</name>
+	<url>https://maven.alfresco.com/nexus/content/groups/public</url>
+	<releases>
+		<enabled>true</enabled>
+	</releases>
+	<snapshots>
+		<enabled>false</enabled>
+	</snapshots>
+</repository>
+```
+	
+
 ## spring
-	<repository>
-		<id>springsource-repo</id>
-		<name>SpringSource Repository</name>
-		<url>http://repo.springsource.org/release</url>
-	</repository>
+
+```xml
+<repository>
+	<id>springsource-repo</id>
+	<name>SpringSource Repository</name>
+	<url>http://repo.springsource.org/release</url>
+</repository>
+```
