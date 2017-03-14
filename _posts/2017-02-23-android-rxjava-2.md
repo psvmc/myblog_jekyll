@@ -8,7 +8,7 @@ category: android
 
 ---
 
-## 概念介绍
+## 库
 
 [`Android 中 RxJava 的使用`](http://www.psvmc.cn/android-rxjava.html)
 
