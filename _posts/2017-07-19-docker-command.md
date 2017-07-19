@@ -74,7 +74,7 @@ $docker run image_name echo "hello word"
 $docker run -i -t image_name /bin/bash  
   
   
-# 在容器(ubantu)中安装新的程序  
+# 在容器(ubuntu)中安装新的程序  
 $docker run image_name apt-get install -y app_name  
 ```
 
