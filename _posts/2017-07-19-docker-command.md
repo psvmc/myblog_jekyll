@@ -62,6 +62,22 @@ $docker rmi image_name
 $docker history image_name  
 ```
 
++ 保存和加载镜像（save、load）
+
+当需要把一台机器上的镜像迁移到另一台机器的时候，需要保存镜像与加载镜像。
+
+```
+# 保存镜像到一个tar包  
+$docker save image_name -o file_path  
+# 加载一个tar包格式的镜像  
+$docker load -i file_path  
+  
+# 机器a导出tar包 
+$docker save image_name > /home/save.tar  
+# 使用scp将save.tar拷到机器b上，然后：  
+$docker load < /home/save.tar 
+```
+
 ## 容器命令
 
 + 启动容器
@@ -117,10 +133,9 @@ $docker ps -a
 $docker ps -l  
 ```
 
-+ 保存对容器的修改（commit）
++ 容器保存为镜像（commit）
 
-```
-# 保存对容器的修改; -a, --author="" Author; -m, --message="" Commit message  
+``` 
 $docker commit ID new_image_name  
 ```
 
