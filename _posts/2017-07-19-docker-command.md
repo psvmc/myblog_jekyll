@@ -139,6 +139,14 @@ $docker ps -l
 $docker commit ID new_image_name  
 ```
 
+如：
+
+```
+docker commit 57c312bbaad1 psvmc/javaweb:0.1
+```
+
+该容器的 ID 是`57c312bbaad1`，所创建的镜像名是`psvmc/javaweb:0.1`，随后可使用镜像来启动 Java Web 容器。
+
 + 对容器的操作（rm、stop、start、kill、logs、diff、top、cp、restart、attach）
 
 ```
