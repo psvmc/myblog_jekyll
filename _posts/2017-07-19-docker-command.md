@@ -78,6 +78,12 @@ $docker save image_name > /home/save.tar
 $docker load < /home/save.tar 
 ```
 
++ 添加镜像的名字和tag
+
+```
+docker tag imageid name:tag
+```
+
 ## 容器命令
 
 + 启动容器
@@ -147,6 +153,16 @@ docker commit 57c312bbaad1 psvmc/javaweb:0.1
 
 该容器的 ID 是`57c312bbaad1`，所创建的镜像名是`psvmc/javaweb:0.1`，随后可使用镜像来启动 Java Web 容器。
 
++ 导入导出
+
+```
+#可以使用 docker export 命令，导出容器快照到本地文件。
+$ sudo docker export 7691a814370e > ubuntu.tar
+
+#可以使用 docker import 从容器快照文件中再导入为镜像
+$ sudo docker import - test/ubuntu:v1.0
+```
+
 + 对容器的操作（rm、stop、start、kill、logs、diff、top、cp、restart、attach）
 
 ```
@@ -177,7 +193,20 @@ $docker cp ID:/container_path to_path
 # 重启一个正在运行的容器; 
 $docker restart Name/ID  
   
-# 附加到一个运行的容器上面; 
+# 运行已运行容器的命令
 $docker attach ID 
+
+# 退出attach
+Ctrl+P+Q
 ```
+
+
+
+## 常见问题
+
++ 怎样在一运行的容器中添加端口映射？  
+	不能直接添加端口映射。只能先保存(commit)为镜像 再重新运行(run)
+	
++ import/export 与 save/load 的区别？   
+	import应用于容器 save应用于镜像
 
