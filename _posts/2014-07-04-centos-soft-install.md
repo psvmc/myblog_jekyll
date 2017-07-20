@@ -13,6 +13,10 @@ category: linux
 
 `chkconfig --list`
 
+## 查看应用位置
+
+`whereis nginx`
+
 ## 连接Linux
 
 ```
@@ -234,6 +238,16 @@ enabled=1
 安装tomcat  
 
 `yum -y install tomcat6` 
+
+tomcat7
+
+```bash
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
+#这个是jpackage依赖的包要先装
+yum -y install yum-priorities                                   
+rpm -Uvh http://mirrors.dotsrc.org/jpackage/6.0/generic/free/RPMS/jpackage-release-6-3.jpp6.noarch.rpm  
+yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat-native   
+```
   
 启动tomcat  
 
