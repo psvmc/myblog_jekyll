@@ -210,3 +210,23 @@ Ctrl+P+Q
 + import/export 与 save/load 的区别？   
 	import应用于容器 save应用于镜像
 
++ Docker 容器运行后 自动启动服务   
+	docker中的容器运行后 里面的服务就算设置了开机启动也不会启动。  
+	解决方式是建一个文件`/home/auto_service.sh`
+	
+	```
+	#!/bin/sh
+	service nginx start
+	service mysqld start
+	service tomcat7 start
+	/bin/bash
+	```
+	
+	第一行不能少 来标示文件的类型 最后一行也不能少 否则会在服务启动后自动退出容器
+	
+	运行命令
+	
+	```
+	docker run -i -t --name javaweb -p 80:80 -p 8080:8080  fec9183579a7 /home/auto_service.sh
+	```
+	
