@@ -230,3 +230,13 @@ Ctrl+P+Q
 	docker run -i -t --name javaweb -p 80:80 -p 8080:8080  fec9183579a7 /home/auto_service.sh
 	```
 	
+	
++ 无法`ping`容器的IP地址 无法用容器的ip `ssh登录`
+
+	```
+	I cannot ping my containers。 
+	Unfortunately, due to limitations in macOS, we’re unable to route traffic to containers, 	and from containers back to the host.
+	```
+
+	这是官网给的解释 由于`macOS的限制`。  
+	所以在mac上职能把内部的22端口映射到外部 直接通过映射出来的端口访问
