@@ -166,3 +166,10 @@ ln -s /data/webapps01 /usr/share/tomcat7/webapps
 然后就可以删除 `/usr/share/tomcat7/webapps`了  
 通过上面的方式 就相当于 `/usr/share/tomcat7/webapps`其实就是一个快捷方式  
 实际链接的路径为`/data/webapps01`
+
+
++ 查看哪些是软链接
+
+```
+ls -l
+```
