@@ -98,5 +98,48 @@ Codename:	Core
 `ifconfig | grep "inet " | grep -v 127.0.0.1`
 
 
+## 挂载硬盘
 
- 
+1）查看磁盘分区信息
+
+```
+fdisk -l
+```
+
+2) 假如磁盘为`/dev/vdb` 格式化分区
+
+```
+mkfs.ext4 /dev/vdb
+```
+
+3) 格式化后进行挂载
+
+```
+mkdir /data
+mount /dev/vdb /data
+```
+
+4) 开机自动挂载
+
+按照上面配置后开机后并不会自动挂载磁盘。
+自动挂载的配置如下
+
+```
+vim /etc/fstab
+```
+
+在文件的最后添加
+
+```
+/dev/vdb	/data	ext4	defaults	0 0 
+```
+
+保存退出 `ESC` `:wq`
+
+5) 查看磁盘的剩余空间
+
+```
+df -hl
+```
+
+
