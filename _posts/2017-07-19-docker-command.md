@@ -240,3 +240,26 @@ Ctrl+P+Q
 
 	这是官网给的解释 由于`macOS的限制`。  
 	所以在mac上职能把内部的22端口映射到外部 直接通过映射出来的端口访问
+	
++ Linux中设置docker文件的存储位置
+
+	停止docker服务
+	
+	```
+	service docker stop
+	```
+	
+	复制原文件到 `/data/docker` 并建立软链接
+	
+	```
+	cd /var/lib
+	cp -rf docker /data/docker
+	rm -rf docker
+	ln -s /data/docker docker
+	```
+	
+	重启服务
+	
+	```
+	service docker start
+	```

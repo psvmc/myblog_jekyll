@@ -142,4 +142,27 @@ vim /etc/fstab
 df -hl
 ```
 
+## 查看当前的路径
 
+```bash
+pwd
+```
+
+## 建立软链接
+
+有这样一种情况  
+为了便于服务器上我们项目的管理  
+我们可能需要修改里面所有的tomcat的配置   
+把项目的路径设置在我们的数据文件夹中  
+但这样修改起来就比较麻烦 当然我们也可以用软链接 `ln -s`. 
+比如
+
+```bash
+ln -s /data/webapps01 /usr/share/tomcat7/webapps
+```
+
+上面这个例子  
+我们可以先把`/usr/share/tomcat7/webapps`复制到`/data/webapps01`  
+然后就可以删除 `/usr/share/tomcat7/webapps`了  
+通过上面的方式 就相当于 `/usr/share/tomcat7/webapps`其实就是一个快捷方式  
+实际链接的路径为`/data/webapps01`
