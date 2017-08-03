@@ -31,6 +31,7 @@ $docker info
 
 ## 镜像命令
 
+下载镜像的地址[阿里云镜像地址](https://dev.aliyun.com/search.html)
 
 + 检索镜像  
 
@@ -123,6 +124,10 @@ docker run <相关参数> <镜像 ID> <初始命令>
 > + -d：表示以`守护模式`执行`/bin/bash`脚本，此时 Tomcat 控制台不会出现在输出终端上。
 > + -p：表示宿主机与容器的端口映射，此时将容器内部的 8080 端口映射为宿主机的 58080 端口，这样就向外界暴露了 58080 端口，可通过 Docker 网桥来访问容器内部的 8080 端口了。
 > + --name：表示容器名称，用一个有意义的名称命名即可。
+> +	使用在Docker run的时候使用`--restart`参数来设置。    
+	`no - container`：不重启.   
+	`on-failure` - container:退出状态非0时重启.    
+	`always`:始终重启. 
 
 > 需要说明的是，不一定要使用“镜像 ID”，也可以使用“仓库名:标签名”，例如：docker.cn/docker/centos:centos6。
 
@@ -198,8 +203,58 @@ $docker attach ID
 
 # 退出attach
 Ctrl+P+Q
+
+# 在运行中的容器里运行命令
+docker exec -t -i Name/ID /bin/bash
 ```
 
+
+## 实际操作
+
+下载`tomcat7`镜像
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/zuowenbo/tomcat7
+```
+
+运行镜像
+
+```
+docker run -d -p 8080:8080 --name tomcat01 --restart=always 75a8ce47ca4a
+```
+
+查看容器运行状态
+
+```
+docker ps -a
+```
+
+查看`tomcat7`启动日志
+
+```
+docker logs tomcat01
+```
+
+我们运行了tomcat 那么怎样进入`tomcat7`运行的环境呢
+
+```bash
+// docker exec意思是：在`tomcat01`下面运行一个命令，在这里，运行的是/bin/bash
+// -t 表示分配一个pseudo-TTY，-i 表示可交互
+// tomcat这个image的默认工作目录是/usr/local/tomcat
+docker exec -t -i tomcat01 /bin/bash
+```
+
+接下来 我们退出`tomcat7`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
+
+```
+docker cp /root/test.war tomcat01:/usr/local/tomcat/webapps/test.war
+```
+
+重启容器
+
+```
+docker restart tomcat01
+```
 
 
 ## 常见问题
