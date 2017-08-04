@@ -211,16 +211,16 @@ docker exec -t -i Name/ID /bin/bash
 
 ## 实际操作
 
-下载`tomcat7`镜像
+下载`tomcat`镜像
 
 ```
-docker pull registry.cn-hangzhou.aliyuncs.com/zuowenbo/tomcat7
+docker pull registry.cn-shanghai.aliyuncs.com/kylinfedora/centos-tomcat
 ```
 
 运行镜像
 
 ```
-docker run -d -p 8080:8080 --name tomcat01 --restart=always 75a8ce47ca4a
+docker run -d -p 8080:8080 --name tomcat01 --restart=always e85ea4917083
 ```
 
 查看容器运行状态
@@ -229,13 +229,13 @@ docker run -d -p 8080:8080 --name tomcat01 --restart=always 75a8ce47ca4a
 docker ps -a
 ```
 
-查看`tomcat7`启动日志
+查看`tomcat`启动日志
 
 ```
 docker logs tomcat01
 ```
 
-我们运行了tomcat 那么怎样进入`tomcat7`运行的环境呢
+我们运行了`tomcat` 那么怎样进入`tomcat`运行的环境呢
 
 ```bash
 // docker exec意思是：在`tomcat01`下面运行一个命令，在这里，运行的是/bin/bash
@@ -244,7 +244,7 @@ docker logs tomcat01
 docker exec -t -i tomcat01 /bin/bash
 ```
 
-接下来 我们退出`tomcat7`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
+接下来 我们退出`tomcat`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
 
 ```
 docker cp /root/test.war tomcat01:/usr/local/tomcat/webapps/test.war

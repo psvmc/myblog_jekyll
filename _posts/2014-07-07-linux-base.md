@@ -9,17 +9,11 @@ category: linux
 
 ## 查看系统信息
 
+`cat /etc/redhat-release`
+
+或
+
 `lsb_release -a`
-
-结果类似于
-
-```
-LSB Version:	:core-4.1-amd64:core-4.1-noarch
-Distributor ID:	CentOS
-Description:	CentOS Linux release 7.2.1511 (Core) 
-Release:	7.2.1511
-Codename:	Core
-```
 
 ## 清屏
 
