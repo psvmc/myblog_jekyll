@@ -109,6 +109,12 @@ mysql>FLUSH PRIVILEGES;
     
 `chkconfig mysqld on ` 
 
+设置表名不区分大小写
+
++ 修改 `/etc/my.cnf`
++ 在`[mysqld]`节点下,加入一行：`lower_case_table_names=1`
++ 重启MySQL即可 `service mysqld restart`
+
 ## Apache 
   
 安装Apache    

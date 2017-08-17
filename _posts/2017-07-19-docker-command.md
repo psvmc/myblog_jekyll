@@ -220,7 +220,7 @@ docker pull registry.cn-shanghai.aliyuncs.com/kylinfedora/centos-tomcat
 运行镜像
 
 ```
-docker run -d -p 8080:8080 --name tomcat01 --restart=always e85ea4917083
+docker run -d -p 8080:8080 --name tomcat01 -v /data/wwwroot/tomcat01/:/opt/tomcat/webapps --restart=always e85ea4917083
 ```
 
 查看容器运行状态
