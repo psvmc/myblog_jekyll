@@ -43,6 +43,7 @@ category: windows
 + 录音机：  
 `Get-AppxPackage *soundrec* | Remove-AppxPackage`
 
+---
 
 + 一次性把它们全都删掉，请输入（尽量不要用）：   
 `Get-AppxPackage -AllUsers | Remove-AppxPackage`
@@ -57,6 +58,7 @@ category: windows
 + 5、在“数值数据”框中，将原始数值`3`改成`4`。（如果想恢复对USB设备的支持，只需将该值改回`3`即可。）  
 + 6、退出注册表编辑器。
 
+---
 
 或者 保存一下内容为 `禁用USB.reg` 运行即可
 
