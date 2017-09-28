@@ -36,36 +36,45 @@ ssh root@112.112.112.112
 用wget下载   
 
 ```bash
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.rpm
 ``` 
  
 更改文件权限
        
 ```bash
-chmod 755 jdk-7u71-linux-x64.rpm
+chmod 755 jdk-8u144-linux-x64.rpm
 ```   
 
 安装  
    
 ```bash
-rpm -ivh jdk-7u71-linux-x64.rpm
+rpm -ivh jdk-8u144-linux-x64.rpm
 ```
+
+安装后的路径为`/usr/java/jdk1.8.0_144`
  
 删除文件  
   
 ```bash
-rm  jdk-7u71-linux-x64.rpm
+rm  jdk-8u144-linux-x64.rpm
 ```  
 
-配置java-home  
-查询java版本 `java -version`  如果版本不对则配置java-home  
- 
+查询java版本 `java -version`
+
+查看java-home
+
+```bash
+echo $JAVA_HOME
+```
+
+为空的话要配置`java-home`   否则无法配置`Tomcat`为服务
+   
 打开文件`/etc/profile`  
   
 在`profile`文件末尾加入：       
 
 ```bash
-export JAVA_HOME=/usr/java/jdk1.7.0_71  
+export JAVA_HOME=/usr/java/jdk1.8.0_144  
 export PATH=$JAVA_HOME/bin:$PATH   
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  
 ```
@@ -288,19 +297,19 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 
 下载地址不能用的话从`http://tomcat.apache.org/`获取新地址
 
-`wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.29/bin/apache-tomcat-7.0.29.tar.gz`
+`wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz`
 
 (2)安装
 
 ```
-# tar -xzvf apache-tomcat-7.0.29.tar.gz
-# mv apache-tomcat-7.0.29 /opt/tomcat7
+# tar -xzvf apache-tomcat-8.5.20.tar.gz
+# mv apache-tomcat-8.5.20 /opt/tomcat8_1
 ```
 
 运行
 
 ```
-# cd /opt/tomcat7/bin
+# cd /opt/tomcat8_1/bin
 # ./startup.sh  
 ```
   
@@ -309,17 +318,17 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 在生产环境用 root 是不安全的，所以
 
 ```
-# useradd -s /sbin/nologin tomcat7
-# chown -R tomcat:tomcat /opt/tomcat7
+# useradd -s /sbin/nologin tomcat
+# chown -R tomcat:tomcat /opt/tomcat8_1
 ```
 
 
 做为 service，和操作系统一起启动
 
 ```
-# cd /opt/tomcat7/bin
+# cd /opt/tomcat8_1/bin
 # tar -xzvf commons-daemon-native.tar.gz
-# cd commons-daemon-1.0.10-native-src/unix
+# cd commons-daemon-1.0.15-native-src/unix/
 # ./configure 
 # make
 # cp jsvc ../..
@@ -338,8 +347,8 @@ vim daemon.sh
 # chkconfig: 2345 10 90 
 # description: Starts and Stops the Tomcat daemon. 
 
-JAVA_HOME=/usr/java/jdk1.7.0_71
-CATALINA_HOME=/opt/tomcat7
+JAVA_HOME=/usr/java/jdk1.8.0_144
+CATALINA_HOME=/opt/tomcat8_1
 CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m" 
 ```
 
@@ -352,14 +361,14 @@ CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m"
 增加到 service
 
 ```
-# cp daemon.sh /etc/init.d/tomcat
-# chkconfig --add tomcat7
+# cp daemon.sh /etc/init.d/tomcat8_1
+# chkconfig --add tomcat8_1
 ```
 
 检查
 
 ```
-# chkconfig --list|grep tomcat7
+# chkconfig --list|grep tomcat8_1
 ```
 
 防火墙添加信任规则
@@ -383,7 +392,7 @@ CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m"
 启动服务
 
 ```
-service tomcat7 start
+service tomcat8_1 start
 ```
 
 
@@ -477,4 +486,14 @@ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
 `yum install php php-cli php-gd php-mysql php-eaccelerator php-zend-optimizer  php-pear php-snmp php-bcmath php-mcrypt php-mhash php-soap php-xml php-xmlrpc`
 + 查询版本  
 `yum info php | grep Version` 
+
+## 安装安全软件
+
+[悬镜服务器端](http://www.xmirror.cn/page/prodon)
+
+一键安装
+
+```bash
+wget -O install.sh http://dl.xmirror.cn/a/install.sh && sh install.sh
+```
  
