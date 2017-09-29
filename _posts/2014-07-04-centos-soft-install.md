@@ -248,19 +248,17 @@ enabled=1
 
 7) 查看安装版本 `nginx -v`
 
-## Tomcat
+## Tomcat(yum方式)
 
-安装tomcat  
-
-`yum -y install tomcat6` 
-
-tomcat7
+Tomcat7
 
 ```bash
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
 #这个是jpackage依赖的包要先装
 yum -y install yum-priorities                                   
 rpm -Uvh http://mirrors.dotsrc.org/jpackage/6.0/generic/free/RPMS/jpackage-release-6-3.jpp6.noarch.rpm  
+
+#安装tomcat7
 yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat-native   
 ```
   
@@ -276,22 +274,8 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 
 `/usr/share/tomcat6`  
 
-配置(tomcat/conf/server.xml)
 
-```
-<Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">  
-</Host>  
-<Host name="www.aa.com"  appBase="webapps" unpackWARs="true" autoDeploy="true">  
-    <Alias>www.aa.com</Alias>  
-    <Context path="" docBase="/data/webapps/aa" debug="0"/>  
-</Host>  
-<Host name="www.bb.com"  appBase="webapps" unpackWARs="true" autoDeploy="true">  
-    <Alias>www.bb.com</Alias>  
-    <Context path="" docBase="/data/webapps/bb" debug="0"/>  
-</Host>  
-```
-
-## 非yum方式
+## Tomcat(非yum方式)
 
 (1)下载
 
@@ -352,6 +336,14 @@ CATALINA_HOME=/opt/tomcat8_1
 CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m" 
 ```
 
+配置防止日志中文乱码
+
+找到`JAVA_OPTS=` 修改为
+
+```
+JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8"
+```
+
 保存并退出
 
 ```
@@ -371,6 +363,12 @@ CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m"
 # chkconfig --list|grep tomcat8_1
 ```
 
+启动服务
+
+```
+service tomcat8_1 start
+```
+
 防火墙添加信任规则
 
 打开文件
@@ -386,17 +384,10 @@ CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m"
 重启防火墙
 
 ```
-# service iptables restart 
+service iptables restart 
 ```
 
-启动服务
-
-```
-service tomcat8_1 start
-```
-
-
-## 防火墙
+## 防火墙(Centos6)
 
 ### 查看已生效的规则
 
@@ -424,9 +415,10 @@ service tomcat8_1 start
 
 ### 修改配置
 
-防火墙的配置可以输入命令，也可以直接修改配置  
-但是修改配置是重启后能继续生效的  
-输入命令则在下次重启后不再生效  
+防火墙的配置可以`输入命令`，也可以直接`修改配置文件` 
+ 
++ 修改配置是重启后能继续生效的  
++ 输入命令则在下次重启后不再生效  
 但可以把生效的配置写入配置文件`service iptables save`  
 这样下次重启依旧会生效
 
@@ -449,18 +441,15 @@ service tomcat8_1 start
 COMMIT
 # Completed on Sun Apr  3 11:34:02 2016
 ```
-
-修改完了怎么办？  
-这里很多人会想到`service iptables save`指令，但是一旦你这么干了你刚才的修改内容就白做了。。。  
-   
-具体方法是：  
-  
 修改好后调用`service iptables restart`就可以了
+
+千万不要用`service iptables save`  
+一旦你这么干了你刚才的修改内容就白做了。。。  
    
 因为`service iptables save`会把生效中的配置写入到`/etc/sysconfig/iptables`中  
 那么你的`/etc/sysconfig/iptables` 配置就回滚到上次启动服务的配置了，这点必须注意！！！  
 
-#### 输入命令法
+#### 二 输入命令法
 
 输入命令则在下次重启后不再生效  
 但可以把生效的配置写入配置文件`service iptables save`  
@@ -487,7 +476,45 @@ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
 + 查询版本  
 `yum info php | grep Version` 
 
-## 安装安全软件
+## 服务器安全软件(安装其一)
+
+### 安全狗
+
+下载并安装
+
+```
+wget http://down.safedog.cn/safedog_linux64.tar.gz
+tar xzvf safedog_linux64.tar.gz
+cd safedog_an_linux64_2.8.19005/
+chmod +x *.py
+./install.py
+```
+
+上一步中安装时缺少组件安装
+
++ Need system command 'locate' to install safedog for linux.    
+	`yum install -y mlocate`
++ Need system command 'lsof' to install safedog for linux.   
+	`yum install -y lsof`
++ Need system command 'dmidecode' to install safedog for linux.
+	`yum install -y dmidecode`
++ Need system command 'lspci' to install safedog for linux.   
+	`yum install -y pciutils`
+
+
+登录账号(暂时登不了)
+
+```
+sdcloud -u 服云帐号
+```
+
+进入操作界面
+
+```
+sdui
+```
+
+### 悬镜
 
 [悬镜服务器端](http://www.xmirror.cn/page/prodon)
 
@@ -496,4 +523,6 @@ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
 ```bash
 wget -O install.sh http://dl.xmirror.cn/a/install.sh && sh install.sh
 ```
+
+
  
