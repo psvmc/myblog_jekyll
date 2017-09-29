@@ -376,11 +376,13 @@ service tomcat8_1 start
 ```
 # vim /etc/sysconfig/iptables
 ```
+
 添加规则
 
 ```
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 ```
+
 重启防火墙
 
 ```
@@ -389,38 +391,29 @@ service iptables restart
 
 ## 防火墙(Centos6)
 
-### 查看已生效的规则
+### 常用命令
 
-`iptables -L -n`
++ 查看已生效的规则  
+	`iptables -L -n`
++ 配置保存  
+	`service iptables save`   
++ 防火墙启动   
+	`service iptables start` 
++ 防火墙关闭  
+	`service iptables stop`
++ 防火墙重启  
+	`service iptables restart` 
++ 防火墙开机启动   
+	`chkconfig iptables on`  
 
-### 配置保存  
-
-`service iptables save`   
- 
-### 防火墙启动
-  
-`service iptables start` 
-
-### 防火墙关闭
-  
-`service iptables stop`
-
-### 防火墙重启
-  
-`service iptables restart` 
-  
-### 防火墙开机启动 
- 
-`chkconfig iptables on`  
-
-### 修改配置
+### 防火墙配置
 
 防火墙的配置可以`输入命令`，也可以直接`修改配置文件` 
  
 + 修改配置是重启后能继续生效的  
 + 输入命令则在下次重启后不再生效  
-但可以把生效的配置写入配置文件`service iptables save`  
-这样下次重启依旧会生效
+	但可以把生效的配置写入配置文件`service iptables save`  
+	这样下次重启依旧会生效。
 
 #### 修改配置文件法
 
@@ -449,7 +442,7 @@ COMMIT
 因为`service iptables save`会把生效中的配置写入到`/etc/sysconfig/iptables`中  
 那么你的`/etc/sysconfig/iptables` 配置就回滚到上次启动服务的配置了，这点必须注意！！！  
 
-#### 二 输入命令法
+#### 输入命令法
 
 输入命令则在下次重启后不再生效  
 但可以把生效的配置写入配置文件`service iptables save`  
