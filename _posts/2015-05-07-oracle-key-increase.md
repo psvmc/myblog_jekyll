@@ -10,15 +10,23 @@ category: oracle
 
 ## 利用SEQUENCE和触发器
 
-例如：表名 user  主键名：userId
+例如：表名:`TBOOK`  主键名:`BOOKID`
 
-	create sequence s_userId increment by 1 start with 1 maxvalue 999999999; 
++ 创建序列
 
-创建一个基于该表的before insert触发器，在触发器中使用该SEQUENCE     
+```
+create sequence SEQ_BOOK increment by 1 start with 1 maxvalue 999999999; 
+```
 
-	create or replace trigger bef_ins_user 
-	before insert on user 
-	referencing old as old new as new for each row 
-	begin 
-	new.usrId=s_userId.nextval; 
-	end; 
++ 创建触发器
+
+创建一个基于该表的`before insert触发器`，在触发器中使用该SEQUENCE     
+	
+```	
+create or replace trigger TBOOK_TRIGGER       
+before insert on TBOOK       
+for each row       
+begin       
+select SEQ_BOOK.nextval into :new.BOOKID from dual;      
+end;
+``` 
