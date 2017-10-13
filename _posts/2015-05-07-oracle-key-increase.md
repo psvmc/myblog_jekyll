@@ -18,10 +18,8 @@ category: oracle
 create sequence SEQ_BOOK increment by 1 start with 1 maxvalue 999999999; 
 ```
 
-+ 创建触发器
++ 创建触发器实现主键自增   
 
-创建一个基于该表的`before insert触发器`，在触发器中使用该SEQUENCE     
-	
 ```	
 create or replace trigger TBOOK_TRIGGER       
 before insert on TBOOK       
