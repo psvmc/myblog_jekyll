@@ -23,7 +23,7 @@ LINPHONE_PUBLIC LinphoneProxyConfig * linphone_core_get_default_proxy_config(Lin
 ```objc
 LINPHONE_PUBLIC LINPHONE_DEPRECATED LinphoneStatus linphone_core_decline_call(LinphoneCore *lc, LinphoneCall * call, LinphoneReason reason);
 替换为
-
+LINPHONE_PUBLIC LinphoneStatus linphone_call_decline(LinphoneCall * call, LinphoneReason reason);
 ```
 
 ```objc
