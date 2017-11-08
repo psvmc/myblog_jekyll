@@ -32,3 +32,9 @@ LINPHONE_PUBLIC LINPHONE_DEPRECATED const char *linphone_proxy_config_get_identi
 LINPHONE_PUBLIC const LinphoneAddress *linphone_proxy_config_get_identity_address(const LinphoneProxyConfig *cfg);
 ```
 
+```objc
+ms_init();
+替换为
+ms_factory_new();
+ms_factory_new_with_voip();
+```

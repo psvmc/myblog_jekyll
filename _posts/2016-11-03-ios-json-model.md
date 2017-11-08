@@ -116,15 +116,16 @@ public protocol ZJSwiftyJSONAble {
 }
 ```
 
+`obj`为数组
+
 ```swift
 import Foundation
 import SwiftyJSON
 
-class ZJResult_S<T: ZJSwiftyJSONAble>: ZJSwiftyJSONAble {
+class ZJResultList<T: ZJSwiftyJSONAble>: ZJSwiftyJSONAble {
     var success: String!
     var msg: String!
     var obj: [T]?
-
 
     required init?(jsonData:JSON){
         self.success = jsonData["success"].stringValue
@@ -134,25 +135,39 @@ class ZJResult_S<T: ZJSwiftyJSONAble>: ZJSwiftyJSONAble {
 }
 ```
 
+`obj`为对象
+
 ```swift
 import Foundation
 import SwiftyJSON
 
-class ZJArticle_S: ZJSwiftyJSONAble {
-    var title: String!
-    var keywords: String!
-    var description: String!
-    var date: String!
-    var path: String!
-    var url: String!
-
+class ZJResultModel<T: ZJSwiftyJSONAble>: ZJSwiftyJSONAble {
+    var success: String!
+    var msg: String!
+    var obj: T?
 
     required init?(jsonData:JSON){
+        self.success = jsonData["success"].stringValue
+        self.msg = jsonData["msg"].stringValue
+        self.obj = T(jsonData: jsonData["obj"])
+    }
+}
+```
+
+对象
+
+```swift
+import Foundation
+import SwiftyJSON
+
+class ZJArticle: ZJSwiftyJSONAble {
+    var title: String!
+    var date: String!
+    var url: String!
+    
+    required init?(jsonData:JSON){
         self.title = jsonData["title"].stringValue
-        self.keywords = jsonData["keywords"].stringValue
-        self.description = jsonData["description"].stringValue
         self.date = jsonData["date"].stringValue
-        self.path = jsonData["path"].stringValue
         self.url = jsonData["url"].stringValue
     }
 }
@@ -161,9 +176,9 @@ class ZJArticle_S: ZJSwiftyJSONAble {
 使用方式
 
 ```swift
-// String --> JSON
-let result = ZJResult_S<ZJArticle_S>(jsonData:JSON(jsonObject));
-// JSON --> String
+// String --> model
+let result = ZJResultList<ZJArticle>(jsonData:json);
+// model --> String
 if let string = result.rawString() {
     
 }
@@ -222,7 +237,7 @@ struct ZJArticle: Mappable {
 使用方式
 
 ```swift
-// JSON --> Model
+// JSON String --> Model
 let result = Mapper<ZJResult<ZJArticle>>().map(JSONString: JSONString)
 // Model --> JSON String
 let JSONString = Mapper().toJSONString(result, prettyPrint: true)
