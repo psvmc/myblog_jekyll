@@ -1,7 +1,7 @@
 ---
 
 layout: post
-title: if we're in the real pre-commit handler we can't actually add any new fences due to CA restriction
+title: Xcode 不显示多余的日志
 description: if we're in the real pre-commit handler we can't actually add any new fences due to CA restriction
 keywords: ios
 category: ios
