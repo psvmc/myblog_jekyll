@@ -16,7 +16,7 @@ category: ios
 
 第一步
 
-![](http://image.psvmc.cn/20171109092526785.png!github)
+![](http://image.psvmc.cn/20171109092526786.png!github)
 
 第二步
 
