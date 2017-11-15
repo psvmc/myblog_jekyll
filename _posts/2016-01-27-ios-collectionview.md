@@ -118,19 +118,21 @@ func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath i
 Swift
 
 ```swift
-self.collectionView.registerNib(UINib.init(nibName: "YuyinCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "YuyinCollectionViewCell");
+self.collectionView.register(UINib.init(nibName: "MeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MeCollectionViewCell");
 self.collectionView.showsHorizontalScrollIndicator = false;
 self.collectionView.showsVerticalScrollIndicator = false;
-self.collectionView.backgroundColor = UIColor.clearColor();
-self.collectionView.scrollEnabled = false;
+self.collectionView.backgroundColor = UIColor.clear;
+self.collectionView.isScrollEnabled = false;
 let flowLayout = UICollectionViewFlowLayout();
-flowLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal;
+flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical;
 flowLayout.minimumInteritemSpacing = 0;
 flowLayout.minimumLineSpacing = 0;
 self.collectionView.collectionViewLayout = flowLayout;
 self.collectionView.dataSource = self;
 self.collectionView.delegate = self;
 ```
+
+---
 
 OC
 
@@ -160,21 +162,39 @@ self.collectionView.delegate = self;
 Swift
 
 ```swift
-func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+var colletcionData:[[String:String]] = [
+        ["type": "1","text":"签到","image":"uc_sign@3x.png"],
+        ["type": "2","text":"积分历史","image":"uc_integration@3x.png"],
+        ["type": "3","text":"更多","image":"uc_more@3x.png"]
+    ]
+```
+
+```swift
+func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1;
 }
     
-func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5;
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return colletcionData.count;
 }
     
-func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("YuyinCollectionViewCell", forIndexPath: indexPath) as! YuyinCollectionViewCell;
+func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let itemdata = colletcionData[indexPath.row];
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeCollectionViewCell", for: indexPath) as! MeCollectionViewCell;
+    cell.imageView.image = UIImage(named: itemdata["image"]!);
+    cell.textLabel.text = itemdata["text"];
+    if(indexPath.row+1 % 3 == 0){
+        cell.lineImageView.isHidden = true;
+    }
     return  cell;
 }
     
-func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    return CGSizeMake(self.collectionView.frame.width, self.collectionView.frame.height);
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: self.collectionView.frame.width/3, height: 100);
+}
+    
+func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
 }
 ```
 
