@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: Swift4 富文本AttributedString的总结
-description: Swift4 富文本AttributedString的总结
+title: 富文本AttributedString的总结
+description: 富文本AttributedString的总结
 keywords: ios
 category: ios
 
