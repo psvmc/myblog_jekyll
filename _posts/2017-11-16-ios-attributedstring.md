@@ -331,20 +331,15 @@ NSAttributedString *attr15 = [[NSAttributedString alloc]initWithString:str15 att
 ### 设置段落样式
 
 ```c
-//段落样式     
-NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc]init];
-//行间距     
-paragraph.lineSpacing = 10;
-//段落间距    
-paragraph.paragraphSpacing = 20;
-//对齐方式    
-paragraph.alignment = NSTextAlignmentLeft;
-//指定段落开始的缩进像素     
-paragraph.firstLineHeadIndent = 30;
-//调整全部文字的缩进像素    
-paragraph.headIndent = 10;
+NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc]init];//段落样式   
+paragraph.lineSpacing = 10;//行间距 
+paragraph.paragraphSpacing = 20;//段落间距 
+paragraph.alignment = NSTextAlignmentLeft;//对齐方式   
+paragraph.firstLineHeadIndent = 30;//指定段落开始的缩进像素 
+paragraph.headIndent = 10;//调整全部文字的缩进像素
 
 //添加段落设置    
+
 [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraph range:NSMakeRange(0, attributedString.length)];
 ```
 
@@ -353,12 +348,9 @@ paragraph.headIndent = 10;
 ```c
 UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(60, 100, 300, 0)];
 label.backgroundColor = [UIColor lightGrayColor];
-//自动换行  
-label.numberOfLines = 0;
-//设置label的富文本  
-label.attributedText = attributedString;
-//label高度自适应   
-[label sizeToFit];
+label.numberOfLines = 0;//自动换行  
+label.attributedText = attributedString;//设置label的富文本  
+[label sizeToFit];//label高度自适应  
 [self.view addSubview:label];
 ```
 
