@@ -218,7 +218,8 @@ NSAttributedString *attr7 = [[NSAttributedString alloc]initWithString:str7 attri
 ### 设置文本特殊效果
 
 ```objc
-//设置文本特殊效果，取值为NSString类型，目前只有一个可用效果     
+//设置文本特殊效果，取值为NSString类型，目前只有一个可用效果    
+ 
 //NSTextEffectLetterpressStyle（凸版印刷效果）   
 
 NSString *str8 = @"设置特殊效果\n";
@@ -231,6 +232,7 @@ NSAttributedString *attr8 = [[NSAttributedString alloc]initWithString:str8 attri
 
 ```oc
 //聊天的表情文字混排
+
 //设置文本附件，取值为NSTextAttachment对象，常用于文字的图文混排
 
 NSString *str9 = @"文字的图文混排\n";
@@ -298,7 +300,7 @@ NSAttributedString *attr13 = [[NSAttributedString alloc]initWithString:str13 att
 
 ### 设置文字的书写方向
 
-```objc
+```
 /*!
  NSWritingDirectionAttributeName 设置文字的书写方向，取值为以下组合
  @[@(NSWritingDirectionLeftToRight | NSWritingDirectionEmbedding)]
