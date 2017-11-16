@@ -66,5 +66,5 @@ disqus:
   id: psvmc
 
 duoshuo:
-  config: true
+  config: false
   id: psvmc
