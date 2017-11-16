@@ -229,7 +229,7 @@ NSAttributedString *attr8 = [[NSAttributedString alloc]initWithString:str8 attri
 
 ### 图文混排
 
-```objc
+```oc
 //聊天的表情文字混排
 //设置文本附件，取值为NSTextAttachment对象，常用于文字的图文混排
 
