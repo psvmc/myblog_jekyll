@@ -14,7 +14,7 @@ category: ios
 
 ```swift
 let  str = "窗前明月光,疑是地上霜";
-let length = str.endIndex.encodedOffset;
+let length = str.count;
 ```
 
 ### 正则获取字符串
