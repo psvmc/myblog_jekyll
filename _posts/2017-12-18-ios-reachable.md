@@ -10,11 +10,11 @@ category: ios
 
 # 前言
 
-iOS 常用的用于监听网络变化的有两个库[`Reachability`](https://github.com/tonymillion/Reachability)和[RealReachability](https://github.com/dustturtle/RealReachability)
+iOS 常用的用于监听网络变化的有两个库[`Reachability`](https://github.com/tonymillion/Reachability)和[`RealReachability`](https://github.com/dustturtle/RealReachability)
 
 ## Reachability的用法
 
-官方说的用原来的类名会导致应用上架不通过，解决方法是修改类名。
+原作者说的用原来的类名会导致应用上架不通过，解决方法是修改类名。
 所以这里修改为`ZJReachability`
 
 ### 监听网络状态(Notification形式)
