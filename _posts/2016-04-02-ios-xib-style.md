@@ -231,13 +231,6 @@ IB_DESIGNABLE  // 动态刷新
 `UIView+Border&CornerRadius.swift`
 
 ```swift
-//
-// UIView+Border&CornerRadius.swift
-//
-//  Created by 张剑 on 16/4/2.
-//  Copyright © 2016年 PSVMC. All rights reserved.
-//
-
 import Foundation
 import UIKit
 extension UIView {
@@ -265,12 +258,12 @@ extension UIView {
     @IBInspectable var borderColor: UIColor? {
         get {
             if let color = layer.borderColor {
-                return UIColor(CGColor: color)
+                return UIColor(cgColor: color)
             }
             return nil
         }
         set(newValue) {
-            layer.borderColor = newValue?.CGColor
+            layer.borderColor = newValue?.cgColor
         }
     }
     
@@ -279,7 +272,20 @@ extension UIView {
             return layer.borderWidth
         }
         set(newValue) {
-            layer.borderWidth = newValue
+            if(newValue != 0){
+                layer.borderWidth = newValue
+            }   
+        }
+    }
+    
+    @IBInspectable var borderPX: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set(newValue) {
+            if(newValue != 0){
+                layer.borderWidth = newValue / UIScreen.main.scale
+            }
         }
     }
 }
