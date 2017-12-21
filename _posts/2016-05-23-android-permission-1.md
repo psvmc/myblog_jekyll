@@ -520,6 +520,8 @@ private void questAllPersission(){
 }
 ```
 
+上面用到了`Lambda`表达式 具体参见：[`Android开发使用Lambda表达式`](http://www.psvmc.cn/android-lambda.html)
+
 ## 结论建议
 
 我相信你对新权限模型已经有了清晰的认识。我相信你也意识到了问题的严峻。  

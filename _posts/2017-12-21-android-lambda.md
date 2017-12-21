@@ -11,22 +11,79 @@ category: android
 
 ## 前言
 
-AndroidStudio从2.1开始官方通过Jack支持Java8，从而使用Lambda等特性。  
-Lambda表达式能有效减少代码量 使代码的结构更清晰 那么怎样在项目中使用呢。 
+  `AndroidStudio从2.1`开始官方通过`Jack`支持`Java8`，从而使用`Lambda`等特性。
+    
+  `Lambda`表达式能有效减少代码量 使代码的结构更清晰 那么怎样在项目中使用呢。 
 
 有两种方式：
 
 + 使用第三方的Java8兼容插件
 + 使用官方Jack支持Java8
 
+## 实例对比
 
+### 点击事件
 
++ 使用前
+
+```java
+btn = (Button) findViewById(R.id.btn);
+btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          Toast.makeText(getApplicationContext(), "按钮点击了", Toast.LENGTH_LONG).show()
+      }
+});
+```
+
++ 使用后
+
+```java
+btn = (Button) findViewById(R.id.btn);
+btn.setOnClickListener(v -> {
+    Toast.makeText(getApplicationContext(), "按钮点击了", Toast.LENGTH_LONG).show();
+});
+```
+
+Snackbar的点击事件
+
+```java
+final Snackbar snackbar = Snackbar.make(outLayoyt, "服务器地址尚未设置!", Snackbar.LENGTH_LONG);
+snackbar.setAction("设置",v -> {
+
+});
+```
+
+### 线程处理
+
++ 使用前
+
+```java
+new Thread(new Runnable() {
+    @Override
+    public void run() {
+        Log.i("TAG", "定义一个简单测试例子...");
+    }
+}).start();
+```
+
++ 使用后
+
+```java
+new Thread(
+    () -> {
+        Log.i("TAG", "使用Lambda表达式的例子...");
+    }
+).start();
+```
 
 ## 使用第三方的Java8兼容插件(建议)
 
 Github地址:[`retrolambda`](https://github.com/evant/gradle-retrolambda)
 
-在project的根build.gradle里添加：
++ 使用`JDK1.8`
+
++ 在project的根build.gradle里添加：
 
 ```
 dependencies {
@@ -34,7 +91,7 @@ dependencies {
 }
 ```
 
-然后在module的build.gradle里添加：
++ 然后在module的build.gradle里添加：
 
 ```
 apply plugin: 'me.tatarka.retrolambda'
