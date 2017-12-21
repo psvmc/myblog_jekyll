@@ -20,63 +20,6 @@ category: android
 + 使用第三方的Java8兼容插件
 + 使用官方Jack支持Java8
 
-## 实例对比
-
-### 点击事件
-
-+ 使用前
-
-```java
-btn = (Button) findViewById(R.id.btn);
-btn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-          Toast.makeText(getApplicationContext(), "按钮点击了", Toast.LENGTH_LONG).show()
-      }
-});
-```
-
-+ 使用后
-
-```java
-btn = (Button) findViewById(R.id.btn);
-btn.setOnClickListener(v -> {
-    Toast.makeText(getApplicationContext(), "按钮点击了", Toast.LENGTH_LONG).show();
-});
-```
-
-Snackbar的点击事件
-
-```java
-final Snackbar snackbar = Snackbar.make(outLayoyt, "服务器地址尚未设置!", Snackbar.LENGTH_LONG);
-snackbar.setAction("设置",v -> {
-
-});
-```
-
-### 线程处理
-
-+ 使用前
-
-```java
-new Thread(new Runnable() {
-    @Override
-    public void run() {
-        Log.i("TAG", "定义一个简单测试例子...");
-    }
-}).start();
-```
-
-+ 使用后
-
-```java
-new Thread(
-    () -> {
-        Log.i("TAG", "使用Lambda表达式的例子...");
-    }
-).start();
-```
-
 ## 使用第三方的Java8兼容插件(建议)
 
 Github地址:[`retrolambda`](https://github.com/evant/gradle-retrolambda)
@@ -185,4 +128,61 @@ Error:Execution failed for task ':app:jillDebugPackagedLibraries'.
 
 > We hope the new plan will pave a smooth path for everybody to take advantage of Java 8 language features on Android. We'll share more details when we release the new support in Android Studio.  
 
+
+## 实例对比
+
+### 点击事件
+
++ 使用前
+
+```java
+btn = (Button) findViewById(R.id.btn);
+btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          Toast.makeText(getApplicationContext(), "按钮点击了", Toast.LENGTH_LONG).show()
+      }
+});
+```
+
++ 使用后
+
+```java
+btn = (Button) findViewById(R.id.btn);
+btn.setOnClickListener(v -> {
+    Toast.makeText(getApplicationContext(), "按钮点击了", Toast.LENGTH_LONG).show();
+});
+```
+
+Snackbar的点击事件
+
+```java
+final Snackbar snackbar = Snackbar.make(outLayoyt, "服务器地址尚未设置!", Snackbar.LENGTH_LONG);
+snackbar.setAction("设置",v -> {
+
+});
+```
+
+### 线程处理
+
++ 使用前
+
+```java
+new Thread(new Runnable() {
+    @Override
+    public void run() {
+        Log.i("TAG", "定义一个简单测试例子...");
+    }
+}).start();
+```
+
++ 使用后
+
+```java
+new Thread(
+    () -> {
+        Log.i("TAG", "使用Lambda表达式的例子...");
+    }
+).start();
+```
 
