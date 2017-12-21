@@ -237,9 +237,11 @@ private void insertDummyContactWrapper() {
 }
 ```
 
-如果已有权限，`insertDummyContact()`会执行。否则，`requestPermissions`被执行来弹出请求授权对话框
+如果已有权限，`insertDummyContact()`会执行。  
+否则，`requestPermissions`被执行来弹出请求授权对话框
+不论用户同意还是拒绝，activity的`onRequestPermissionsResult`会被回调来通知结果(通过第三个参数: grantResults) 
 
-不论用户同意还是拒绝，activity的`onRequestPermissionsResult`会被回调来通知结果（通过第三个参数），grantResults,如下：
+如下：
 
 ```java
 @Override
@@ -262,10 +264,10 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 
 ### 处理 用户点击了“不再提醒”的情况
 
-如果用户拒绝某授权。下一次弹框，用户会有一个“不再提醒”的选项的来防止app以后继续请求授权。
-
-如果这个选项在拒绝授权前被用户勾选了。下次为这个权限请求`requestPermissions`时，对话框就不弹出来了，结果就是，app啥都不干。  
-这将是很差的用户体验，用户做了操作却得不到响应。这种情况需要好好处理一下。在请求`requestPermissions`前，我们通过activity的`shouldShowRequestPermissionRationale`方法来检查是否需要弹出请求权限的提示对话框
+如果用户拒绝某授权。下一次弹框，用户会有一个“不再提醒”的选项的来防止app以后继续请求授权。   
+如果这个选项在拒绝授权前被用户勾选了。下次为这个权限请求`requestPermissions`时，对话框就不弹出来了，结果就是，app啥都不干。   
+这将是很差的用户体验，用户做了操作却得不到响应。这种情况需要好好处理一下。  
+在请求`requestPermissions`前，我们通过activity的`shouldShowRequestPermissionRationale`方法来检查是否需要弹出请求权限的提示对话框
 
 + 1. 第一次请求权限时，用户拒绝了，下一次：`shouldShowRequestPermissionRationale()`  返回 `true`，应该显示一些为什么需要这个权限的说明
 + 2. 第二次请求权限时，用户拒绝了，并选择了“不在提醒”的选项时：`shouldShowRequestPermissionRationale()`  返回 `false`
@@ -319,7 +321,8 @@ private void showMessageOKCancel(String message, DialogInterface.OnClickListener
 
 ## 一次请求多个权限
 
-当然了有时候需要好多权限，可以用上面方法一次请求多个权限。不要忘了为每个权限检查“不再提醒”的设置。
+当然了有时候需要好多权限，可以用上面方法一次请求多个权限。  
+不要忘了为每个权限检查“不再提醒”的设置。   
 修改后的代码：
 
 添加全局常量
@@ -396,11 +399,7 @@ private void showMessageOKCancel(String message, DialogInterface.OnClickListener
             .create()
             .show();
 }
-```
 
-如果所有权限被授权，依然回调`onRequestPermissionsResult`，我用`hashmap`让代码整洁便于阅读。
-
-```java
 @Override
 public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
     switch (requestCode) {
@@ -432,7 +431,6 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 }
 ```
 
-条件灵活的，你自己设置。有的情况，一个权限没有授权，就不可用；但是也有情况，能工作，但是表现的是有所限制的。对于这个我不做评价，你自己设计吧。
 
 ## 用兼容库来做兼容(非必需)
 
@@ -481,13 +479,46 @@ private void insertDummyContactWrapper() {
 ```
 
 
-后两个方法，我们也可以在Fragment中使用，用v13兼容包:`FragmentCompat.requestPermissions()` 和`FragmentCompat.shouldShowRequestPermissionRationale()`和activity效果一样。
+> 我们也可以在`Fragment`中使用，用v13兼容包:  
+> `FragmentCompat.requestPermissions()`   
+> `FragmentCompat.shouldShowRequestPermissionRationale()`。
 
 
 ## 第三方库简化代码
 
-以上代码真尼玛复杂。为解决这事，有许多第三方库已经问世了。我试了很多最终找到了个满意的[hotchemi’s PermissionsDispatcher](https://github.com/hotchemi/PermissionsDispatcher)。
+以上代码真尼玛复杂。  
+为解决这事，有许多第三方库已经问世了。  
 
+项目没用`Rxjava` 建议用 [`hotchemi’s PermissionsDispatcher`](https://github.com/hotchemi/PermissionsDispatcher)。
+
+如果项目用了`Rxjava` 更建议用[`RxPermissions`](https://github.com/tbruyelle/RxPermissions)
+
+简单实例
+
+添加依赖
+
+```
+compile 'io.reactivex.rxjava2:rxjava:2.0.5'
+compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+```
+
+代码
+
+```java
+private void questAllPersission(){
+    RxPermissions rxPermissions = new RxPermissions(this);
+    rxPermissions
+            .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .subscribe(granted -> {
+                if (granted) {
+                    Toast.makeText(LoginActivity.this, "授权成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "授权失败 软件将不能正常使用", Toast.LENGTH_SHORT).show();
+                }
+            });
+}
+```
 
 ## 结论建议
 
