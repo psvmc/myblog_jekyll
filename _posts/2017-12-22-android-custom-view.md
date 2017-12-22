@@ -76,12 +76,28 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
 这里对比两个方法
 
-+ `getMeasuredHeight()` 获取测量的高度 可能和View真实的高度不一样
++ `getMeasuredHeight()` 获取测量的高度 可能和View真实的高度不一样  
+    如果我们不调用`requestLayout`重新`layout`的话 `getHeight()`获取的一直会是之前的高度
 + `getHeight()` 获取真实的高度
 
-### 自定义样式
+### 自定义属性
+
+1. 在`values`文件夹下，打开`attrs.xml`，其实这个文件名称可以是任意的，写在这里更规范一点
+2. 假设我们用到了两个属性一个宽度，一个颜色值的属性
+
+```xml
+<declare-styleable name="zjslide">
+  <attr name="slide_border_width" format="dimension"></attr>
+  <attr name="slide_border_color" format="color"></attr>
+</declare-styleable>
+```
+
+使用方式
 
 ```java
+int slideBorderWidth = Utils.dpToPx(1, getResources());
+int slideBorderColor = Color.parseColor("#1E88E5");
+
 public ZJSlideBar(Context context) {
     super(context);
 }
@@ -92,6 +108,10 @@ public ZJSlideBar(Context context, AttributeSet attrs) {
 
 public ZJSlideBar(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
+    TypedArray t = context.obtainStyledAttributes(attrs,R.styleable. zjslide, 0, 0);
+    slideBorderWidth = t.getDimensionPixelSize(R.styleable. slide_border_width, slideBorderWidth);
+    slideBorderColor = t.getColor(R.styleable. slide_border_color, slideBorderColor);
+    t.recycle();// we should always recycle after used
 }
 ```
 
@@ -107,7 +127,7 @@ layout_width="match_parent"
 layout_height="match_parent"/>
 ```
 
-+ 第三个方法，跟第二种类似，但是增加style属性设置，这时inflater布局时会调用第三个构造方法。
++ 第三个方法，跟第二种类似，但是增加`style`属性设置，这时inflater布局时会调用第三个构造方法。
 
 ```xml
 <View
@@ -115,6 +135,8 @@ style="@styles/MyCustomStyle"
 layout_width="match_parent"
 layout_height="match_parent"/>
 ```
+
+像上边的例子一样  为了避免代码冗余  我们把获取属性的代码都写在了第三个方法中了
 
 
 
