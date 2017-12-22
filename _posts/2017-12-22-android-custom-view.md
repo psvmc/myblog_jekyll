@@ -108,9 +108,9 @@ public ZJSlideBar(Context context, AttributeSet attrs) {
 
 public ZJSlideBar(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
-    TypedArray t = context.obtainStyledAttributes(attrs,R.styleable. zjslide, 0, 0);
-    slideBorderWidth = t.getDimensionPixelSize(R.styleable. slide_border_width, slideBorderWidth);
-    slideBorderColor = t.getColor(R.styleable. slide_border_color, slideBorderColor);
+    TypedArray t = context.obtainStyledAttributes(attrs,R.styleable.zjslide, 0, 0);
+    slideBorderWidth = t.getDimensionPixelSize(R.styleable.slide_border_width, slideBorderWidth);
+    slideBorderColor = t.getColor(R.styleable.slide_border_color, slideBorderColor);
     t.recycle();// we should always recycle after used
 }
 ```
