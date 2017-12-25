@@ -19,6 +19,31 @@ category: android
   
 ## Android获取视图的实例
 
+项目的配置文件
+
+```json
+buildscript {
+    ext.kotlin_version = '1.1.51'
+	//...
+    dependencies {
+		 //...
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+```
+
+模块的配置文件
+
+```json
+dependencies {
+	 //...
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+```
+
 直接用视图定义的ID即可  超级方便
  
  ```xml
