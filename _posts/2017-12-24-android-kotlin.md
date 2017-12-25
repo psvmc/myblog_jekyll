@@ -21,7 +21,7 @@ category: android
 
 项目的配置文件
 
-```json
+```
 buildscript {
     ext.kotlin_version = '1.1.51'
 	//...
@@ -34,7 +34,7 @@ buildscript {
 
 模块的配置文件
 
-```json
+```
 dependencies {
 	 //...
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
