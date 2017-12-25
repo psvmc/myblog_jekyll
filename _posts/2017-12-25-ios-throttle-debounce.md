@@ -4,7 +4,10 @@ layout: post
 title: 开发中使用throttle和debounce
 description: 开发中使用throttle和debounce
 keywords: ios android js web
-categories: ios
+categories: 
+        - ios
+        - android
+        - js
 
 ---
 
