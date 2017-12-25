@@ -24,9 +24,9 @@ category: android
 ```
 buildscript {
     ext.kotlin_version = '1.1.51'
-	//...
+    //...
     dependencies {
-		 //...
+        //...
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -36,7 +36,7 @@ buildscript {
 
 ```
 dependencies {
-	 //...
+    //...
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
