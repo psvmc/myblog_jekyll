@@ -53,6 +53,43 @@ RxView.clicks(btn_click)
         });
 ```
 
+## 搜索时防止短时内调用多次
+
+```java
+RxTextView.textChanges(etKey)
+    .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+    .subscribeOn(AndroidSchedulers.mainThread())// 对etKey[EditText]的监听操作 需要在主线程操作
+    //对用户输入的关键字进行过滤
+    .filter(new Func1<CharSequence, Boolean>() {
+        @Override
+        public Boolean call(CharSequence charSequence) {
+            Log.d("RxJava", "filter is main thread : " + (Looper.getMainLooper() == Looper.myLooper()));
+            return charSequence.toString().trim().length() > 0;
+        }
+    })
+    .flatMap(new Func1<CharSequence, Observable<List<String>>>() {
+        @Override
+        public Observable<List<String>> call(CharSequence charSequence) {
+            return searchApi.search(charSequence.toString());
+        }
+    })
+    .subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe(new Action1<List<String>>() {
+        @Override
+        public void call(List<String> strings) {
+            tvContent.setText("search result:\n\n");
+            tvContent.append(strings.toString());
+        }
+    }, new Action1<Throwable>() {
+        @Override
+        public void call(Throwable throwable) {
+            throwable.printStackTrace();
+            tvContent.append("Error:" + throwable.getMessage());
+        }
+    });
+```
+
 ## 监听CheckBox状态变化
 
 在用户登录界面时，如果用户未勾选同意用户协议，不允许登录
