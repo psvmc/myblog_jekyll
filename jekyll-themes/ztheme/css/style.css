@@ -980,12 +980,13 @@ code {
 }
 
 a.toTop {
-    font-size: 36px;
+    font-size: 24px;
     display: block;
     width: 40px;
     height: 40px;
+    line-height: 40px;
     text-align: center;
-    color: #fff;
+    color: #696969;
     border-radius: 3px 3px;
     background: rgba(0, 0, 0, .8);
 }
