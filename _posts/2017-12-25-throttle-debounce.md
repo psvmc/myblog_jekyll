@@ -52,7 +52,7 @@ categories:
 
 ### MessageThrottle实例
 
-在OC中使用
+#### 在OC中使用
 
 ```objc
 - (void)viewDidLoad {
@@ -96,7 +96,7 @@ categories:
 
 ---
 
-Swift实例
+#### 在Swift中使用
 
 ```swift
 self.usernameTextField.addTarget(self, action: #selector(updatePicImageView), for: UIControlEvents.editingChanged)
