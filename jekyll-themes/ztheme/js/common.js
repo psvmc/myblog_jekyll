@@ -51,7 +51,7 @@ $(document).ready(function() {
         },
         run: function() {
             var that = this,
-                topLink = $('<a id="' + that.nodeName + '" href="#" class="toTop"><i class="fa fa-chevron-up"></i></a>');
+                topLink = $('<a id="' + that.nodeName + '" href="#" class="toTop">@</a>');
             topLink.appendTo($('body'));
 
             topLink.css({
