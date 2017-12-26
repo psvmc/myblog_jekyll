@@ -733,9 +733,9 @@ a:hover {
     margin-top: 30px;
     margin-bottom: 20px;
     padding: 10px 0;
-    border-bottom-width: 1px;
+    border-bottom-width: 4px;
     border-bottom-style: solid;
-    border-bottom-color: #d2d2d2;
+    border-bottom-color: #f5f5f5;
 }
 
 .main-article h3 {
@@ -790,7 +790,7 @@ a:hover {
     line-height: 1.5;
     list-style-type: square;
     list-style-position: inside;
-    color: #ff5e5e;
+    color: #636363;
 }
 
 .main-article-contant ul {
@@ -817,7 +817,7 @@ a:hover {
 }
 
 .main-article blockquote {
-    font-style: italic;
+    font-style: normal;
     margin: 20px 10px;
     padding: 5px 10px;
     text-align: left;
@@ -827,7 +827,8 @@ a:hover {
 }
 
 .main-article blockquote p {
-    color: #8d8d8d;
+    color: #aaaaaa;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 500px) {
