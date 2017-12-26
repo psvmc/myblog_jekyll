@@ -88,6 +88,8 @@ categories:
 + rule.mode = MTPerformModeLast;
 + rule.mode = MTPerformModeDebounce;
 
+---
+
 + `MTPerformModeFirstly` 如果连续点击按钮 每5s的第一次生效
 + `MTPerformModeLast` 如果连续点击按钮 每5s的最后一次生效
 + `MTPerformModeDebounce` 如果连续点击按钮 则重置计时器 停止点击后5s操作生效

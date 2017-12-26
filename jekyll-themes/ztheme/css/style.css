@@ -56,7 +56,7 @@ hr {
     margin: 20px 0;
     padding: 0 0;
     border: none;
-    border-bottom: 1px dashed #08c;
+    border-bottom: 1px dashed #ddd;
 }
 
 article,
@@ -788,7 +788,9 @@ a:hover {
 .main-article ul {
     font-size: 16px;
     line-height: 1.5;
-    list-style-type: disc;
+    list-style-type: square;
+    list-style-position: inside;
+    color: #ff5e5e;
 }
 
 .main-article-contant ul {
@@ -820,7 +822,7 @@ a:hover {
     padding: 5px 10px;
     text-align: left;
     color: #8d8d8d;
-    border-left: 3px solid #08c;
+    border-left: 4px solid #eee;
     border-radius: 0 3px 3px 0;
 }
 

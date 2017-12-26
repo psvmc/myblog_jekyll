@@ -24,10 +24,10 @@
 .highlight pre,
 pre,
 .highlight .hll {
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
+    background-color: #e7fce3;
+    border: 4px solid #eee;
     padding: 6px 10px;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 .highlight .c {
