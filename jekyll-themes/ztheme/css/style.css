@@ -774,9 +774,13 @@ a:hover {
 .main-article code {
     font-family: Monaco, Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
     font-size: 90%;
-    padding: 2px 4px;
+    padding: 1px 4px;
     color: #c7254e;
     border-radius: 4px;
+    border-color: #efe8e8;
+    border-style: solid;
+    border-width: 1px;
+    margin-right: 4px;
 }
 
 .main-article pre code {
