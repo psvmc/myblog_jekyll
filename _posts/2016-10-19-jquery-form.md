@@ -4,13 +4,15 @@ layout: post
 title: JqueryForm的使用方式
 description: JqueryForm的使用方式
 keywords: js
-category: js
+categories: 
+        - js
+        - jquery
 
 ---
 
 ## 前言
 
-什么时候要用jqueryform呢？
+什么时候要用`jqueryform`呢？
 
 + 想把现有的表单的提交方式变成异步提交的方式
 + 异步上传文件

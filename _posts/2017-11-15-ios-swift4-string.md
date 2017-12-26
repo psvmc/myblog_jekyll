@@ -4,7 +4,9 @@ layout: post
 title: Swift4 String的用法
 description: Swift4 String的用法
 keywords: ios
-category: ios
+categories: 
+        - ios
+        - swift
 
 ---
 

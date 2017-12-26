@@ -4,7 +4,9 @@ layout: post
 title: Android 中 RxBus 的使用
 description: 经常我们会有这样的需求，B页面操作后，要求A页面处理相关数据，像这样一般我们都是，要么B页面保留A页面的引用，要么使用广播，但是写起来还是想对麻烦的，用Rxbus就可以很容易和优雅的解决
 keywords: rxbus
-category: android
+categories: 
+        - android
+        - rxbus
 
 ---
 

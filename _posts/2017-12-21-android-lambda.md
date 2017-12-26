@@ -4,7 +4,10 @@ layout: post
 title: Android开发使用Lambda表达式
 description: Android开发使用Lambda表达式
 keywords: android,java
-category: android
+categories: 
+        - android
+        - java
+        - lambda
 
 ---
 

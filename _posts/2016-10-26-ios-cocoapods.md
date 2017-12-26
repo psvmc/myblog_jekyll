@@ -4,7 +4,9 @@ layout: post
 title: Cocoapods 使用中遇到的问题及解决方法
 description: Cocoapods 使用中遇到的问题及解决方法
 keywords: ios
-category: ios
+categories: 
+        - ios
+        - pod
 
 ---
 

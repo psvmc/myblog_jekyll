@@ -10,7 +10,7 @@ category: android
 
 ## 输入法遮挡问题
 
-在非全屏模式下，将`activity`的`windowSoftInputMode`的属性设置为：`adjustResize`。同时在`View`的`onSizeChanged(int w, int h, int oldw, int oldh)`里可以得到变化后的尺寸，然后根据前后变化的结果来计算屏幕需要移动的距离。
+在`非全屏模式(即状态栏不透明)`下，将`activity`的`windowSoftInputMode`的属性设置为：`adjustResize`。同时在`View`的`onSizeChanged(int w, int h, int oldw, int oldh)`里可以得到变化后的尺寸，然后根据前后变化的结果来计算屏幕需要移动的距离。
 
 即添加：
 
@@ -18,7 +18,7 @@ category: android
 android:windowSoftInputMode="adjustResize"
 ```
 
-但是在全屏模式下，即使将`activity`的`windowSoftInputMode`的属性设置为：adjustResize。在键盘显示时它未将Activity的Screen向上推动，所以你`Activity`的`view`的根树的尺寸是没有变化的。在这种情况下，你也就无法得知键盘的尺寸，对根view的作相应的推移。  
+但是在`全屏模式`下，即使将`activity`的`windowSoftInputMode`的属性设置为：`adjustResize`。在键盘显示时它未将Activity的Screen向上推动，所以你`Activity`的`view`的根树的尺寸是没有变化的。在这种情况下，你也就无法得知键盘的尺寸，对根view的作相应的推移。  
 全屏下的键盘无法Resize的问题从2.1就已经存在了，直到现在google还未给予解决。
 
 如果你想了解android 软键盘普通情况下显示与隐藏的问题，你可以了解这篇博客android 软键盘的显示与隐藏问题的研究，它可以帮助你解决在非全屏下，软键盘的显示时，你不能很好地控制布局的问题。

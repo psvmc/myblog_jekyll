@@ -4,7 +4,9 @@ layout: post
 title: Android Kotlin启程
 description: Android Kotlin启程
 keywords: android
-category: android
+categories: 
+        - kotlin
+        - android
 
 ---
 

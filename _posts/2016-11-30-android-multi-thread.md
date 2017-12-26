@@ -4,7 +4,9 @@ layout: post
 title: Android 多线程的几种方式
 description: Android 多线程的几种方式
 keywords: android
-categories: android
+categories: 
+        - android
+        - thread
 
 ---
 

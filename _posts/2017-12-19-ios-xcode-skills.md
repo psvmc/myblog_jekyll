@@ -4,7 +4,9 @@ layout: post
 title: Xcode 常用技巧
 description: Xcode 常用技巧
 keywords: ios
-category: ios
+categories: 
+        - ios
+        - xcode
 
 ---
 

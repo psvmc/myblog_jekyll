@@ -4,7 +4,8 @@ layout: post
 title: Android 自定义View中的onMeasure onLayout onDraw
 description: Android 自定义View中的onMeasure onLayout onDraw
 keywords: android
-category: android
+categories: 
+        - android
 
 ---
 

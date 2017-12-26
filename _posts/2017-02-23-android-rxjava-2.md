@@ -4,7 +4,9 @@ layout: post
 title: Android 中 RxJava 的实际使用
 description: Android 中 RxJava 的实际使用
 keywords: rxjava
-category: android
+categories: 
+        - android
+        - rxjava
 
 ---
 

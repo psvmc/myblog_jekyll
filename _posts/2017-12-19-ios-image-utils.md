@@ -4,7 +4,9 @@ layout: post
 title: iOS 图片处理 生成文字图片
 description: 用于用户没有设置图片时 根据名字生成图片
 keywords: ios
-category: ios
+categories: 
+        - ios
+        - image
 
 ---
 

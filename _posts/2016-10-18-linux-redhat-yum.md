@@ -4,7 +4,9 @@ layout: post
 title: RedHat上配置Yum
 description: RedHat上配置Yum
 keywords: linux
-category: linux
+categories: 
+        - linux
+        - yum
 
 ---
 
