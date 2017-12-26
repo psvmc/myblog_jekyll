@@ -23,8 +23,11 @@ categories:
 
 ## WEB(JS)
 
-+ [`lodash`](https://lodash.com)
-+ [`lodash中文文档`](http://lodashjs.com/docs/)
++ [`lodash`](https://lodash.com)[`lodash中文文档`](http://lodashjs.com/docs/)
++ [`Underscore.js`](http://www.css88.com/doc/underscore1.4.2/)
++ [`jQuery throttle/debounce`](http://benalman.com/projects/jquery-throttle-debounce-plugin/)
++ [`RxJS`](https://github.com/Reactive-Extensions/RxJS)
+
 
 ## Android(Java)
 
@@ -34,7 +37,7 @@ categories:
 
 ## iOS(OC/Swift)
 
-+ OC中可以用[`MessageThrottle`](https://github.com/yulingtianxia/MessageThrottle)
++ OC中可以用(Swift不能用)[`MessageThrottle`](https://github.com/yulingtianxia/MessageThrottle)
 + Swift可以用[`RxSwift`](https://github.com/ReactiveX/RxSwift)
 
 
