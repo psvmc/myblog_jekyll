@@ -2,7 +2,7 @@
 
 layout: post
 title: iOS开源组件分类总结
-description: 之前有一篇总结了一次我常用的组件，但那次是按照语言的不同进行分组的，考虑到Swift和OC可以相互调用,所以这次就按功能来分类,并说明简要的用法
+description: iOS开源组件分类总结
 keywords: ios
 category: ios
 
