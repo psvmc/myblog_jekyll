@@ -52,6 +52,10 @@ ol li {
     line-height: 1.5;
 }
 
+li p{
+    display: inline-block;
+}
+
 hr {
     margin: 20px 0;
     padding: 0 0;
