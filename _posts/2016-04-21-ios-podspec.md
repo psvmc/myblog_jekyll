@@ -4,7 +4,9 @@ layout: post
 title: iOS开发 创建podspec文件，为自己的项目添加pod支持
 description: Cocoapods作为iOS开发的包管理器，给我们的开发带来了极大的便利，而且越来越多的第三方类库支持Pod，可以通过Pod傻瓜式的集成到自己的工程中，那么问题来了，我自己也有一系列的小工具类，怎么让它也支持pod集成进而让其他朋友方便的使用呢。
 keywords: ios
-category: ios
+categories: 
+        - ios
+        - pod
 
 ---
 
