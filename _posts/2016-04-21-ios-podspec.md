@@ -10,17 +10,17 @@ category: ios
 
 ## 1.上传项目源码
 
-把项目源码上传到gitHub仓库再clone到本地(以[RxSwift-SwiftyJSON](https://github.com/psvmc/RxSwift-SwiftyJSON)为例)， 如果项目本来就在gitHub的仓库中， 直接clone到本地即可
+把项目源码上传到gitHub仓库再clone到本地(以[`ZJRefreshControl`](https://github.com/psvmc/ZJRefreshControl)为例)， 如果项目本来就在gitHub的仓库中， 直接clone到本地即可
 
 ## 2.创建项目的podspec文件
 
 用终端命令cd到本地项目目录并执行如下命令:
 
 ```
-pod spec create RxSwift-SwiftyJSON
+pod spec create ZJRefreshControl
 ```
 
-这时候本地就生成一个`RxSwift-SwiftyJSON.podspec`文件
+这时候本地就生成一个`ZJRefreshControl.podspec`文件
 
 用编辑器打开`.podspec`文件 (我自己用Sublime Text)
 删除不必要的注释  
@@ -29,28 +29,33 @@ pod spec create RxSwift-SwiftyJSON
 
 ```
 Pod::Spec.new do |s|
-  s.name         = "RxSwift-SwiftyJSON"
-  s.version      = "1.0"
-  s.summary      = "SwiftyJSON bindings for RxSwift"
+  s.name         = "ZJRefreshControl"
+  s.version      = "1.1"
+  s.summary      = "ZJRefreshControl"
   s.description  = <<-EOS
-  Easy to use SwiftyJSON in RxSwift
+  ZJRefreshControl
   EOS
-  s.homepage     = "https://github.com/psvmc/RxSwift-SwiftyJSON"
+  s.homepage     = "https://github.com/psvmc/ZJRefreshControl"
   s.license      = { :type => "MIT", :file => "License" }
   s.author             = { "psvmc" => "183518918@qq.com" }
   s.ios.deployment_target = '8.0'
-  s.osx.deployment_target = '10.10'
-  s.watchos.deployment_target = '2.0'
-  s.tvos.deployment_target = '9.0'
-  s.source       = { :git => "https://github.com/psvmc/RxSwift-SwiftyJSON.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/psvmc/ZJRefreshControl.git", :tag => s.version }
   s.default_subspec = "Core"
 
   s.subspec "Core" do |ss|
-    ss.source_files  = "Source/RxSwift-SwiftyJSON/*.swift"
-    ss.dependency "RxSwift", "~> 2.4"
-    ss.dependency "SwiftyJSON", "~> 2.3.2"
+    ss.source_files  = "ZJRefreshControl/Lib/ZJRefreshControl/*.swift"
     ss.framework  = "Foundation"
   end
+end
+```
+
+假如依赖第三方库`RxSwift` 我们可以这样修改上面的配置
+
+```
+s.subspec "Core" do |ss|
+	ss.source_files  = "ZJRefreshControl/Lib/ZJRefreshControl/*.swift"
+	ss.framework  = "Foundation"
+	ss.dependency "RxSwift", "~> 4.0"
 end
 ```
 
@@ -67,9 +72,9 @@ pod lib lint --allow-warnings
 如果出现
 
 ```
--> RxSwift-SwiftyJSON (1.0)
+-> ZJRefreshControl (1.1)
 
-RxSwift-SwiftyJSON passed validation.
+ZJRefreshControl passed validation.
 ```
 
 则说明验证通过， 否则， 根据提示修改`podspec`文件再次验证直到验证通过
@@ -85,7 +90,7 @@ pod lib lint --verbose
 podspec文件中需要指定的tag， 完成上述操作后给项目打tag
 
 ```
-git tag -m"first release RxSwift-SwiftyJSON" "1.0"
+git tag -m"first release ZJRefreshControl" "1.1"
 git push --tags
 ```
 
@@ -122,7 +127,7 @@ pod trunk push *.podspec --allow-warnings
 如果一切顺利
 
 ```
-pod search RxSwift-SwiftyJSON
+pod search ZJRefreshControl
 ```
 
 就可以找到刚才的项目了    
@@ -130,14 +135,14 @@ pod search RxSwift-SwiftyJSON
 并且还有安装命令
 
 ```
-pod 'RxSwift-SwiftyJSON'，'~>1.0'
+pod 'ZJRefreshControl'，'~>1.1'
 ```
 
 ## 5.Xcode 8 and iOS 10
 
-如果要提交的组件为`swift3.0`的 就必须满足以下条件
+如果要提交的组件为`swift4.0`的 就必须满足以下条件
 
 + `CocoaPods` 升级为 `1.1.0` 及以上
-+ 根目录添加`.swift-version`文件 内容写`3.0`
++ 根目录添加`.swift-version`文件 内容写`4.0`
 
 [详细介绍](http://blog.cocoapods.org/CocoaPods-1.1.0/)
