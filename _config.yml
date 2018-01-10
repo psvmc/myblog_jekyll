@@ -6,6 +6,7 @@ paginate: 20
 paginate_path: "/page:num"
 baseurl: "/"
 exclude: ['vendor', 'README.md', 'Gemfile', 'Gemfile.lock', 'config.ru', 'unicorn.rb', 'Procfile']
+gems: [jekyll-paginate]
 
 #站点基础配置
 title: '剑行者'
