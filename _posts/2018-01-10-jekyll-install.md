@@ -10,9 +10,9 @@ categories:
 
 ---
 
-## 安装
+## 安装Jekyll
 
-安装最新版的jekyll [`参见网页`](http://jekyllcn.com/docs/installation/) 
+安装Jekyll [`参见网页`](http://jekyllcn.com/docs/installation/) 
  
 ```bash
 sudo gem install jekyll -n /usr/local/bin
@@ -32,7 +32,7 @@ sudo gem install jekyll-paginate
 gems: [jekyll-paginate]
 ```
 
-## 使用
+## 生成静态网页
 
 [详细介绍](http://jekyllcn.com/docs/usage/)
 
