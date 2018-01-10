@@ -10,7 +10,7 @@ categories:
 
 ---
 
-##  查看所有表的注释
+## 查看所有表的注释
 
 ```sql
 SELECT
