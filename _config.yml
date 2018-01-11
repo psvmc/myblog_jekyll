@@ -35,9 +35,6 @@ nav:
   - text: 第三方插件
     url: /otplugin/index.html
     target: _self
-  - text: 示例演示
-    url: /zjdemo/index.html
-    target: _self
   - text: GitHub
     url: https://github.com/psvmc
     target: _blank

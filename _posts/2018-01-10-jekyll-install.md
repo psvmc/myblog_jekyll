@@ -10,15 +10,29 @@ categories:
 
 ---
 
-## 安装
+## 安装Jekyll
 
-安装最新版的jekyll [`参见网页`](http://jekyllcn.com/docs/installation/) 
+安装Jekyll [`参见网页`](http://jekyllcn.com/docs/installation/) 
  
 ```bash
 sudo gem install jekyll -n /usr/local/bin
 ```
 
-## 使用
+## 安装分页插件
+
+安装`jekyll-paginate`
+
+```bash
+sudo gem install jekyll-paginate
+```
+
+在配置文件`_config.yml`中添加
+
+```
+gems: [jekyll-paginate]
+```
+
+## 生成静态网页
 
 [详细介绍](http://jekyllcn.com/docs/usage/)
 
@@ -32,20 +46,6 @@ jekyll build
 
 ```
 jekyll build --watch
-```
-
-## 分页不起作用
-
-安装`jekyll-paginate`
-
-```bash
-sudo gem install jekyll-paginate
-```
-
-在配置文件`_config.yml`中添加
-
-```
-gems: [jekyll-paginate]
 ```
 
 
