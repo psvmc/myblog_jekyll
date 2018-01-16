@@ -105,7 +105,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
 ## Cell自动高度
 
-[参见文章：iOS 设置tableViewCell的高度](http://www.psvmc.cn/ios-tableviewcell-height.html)
+[参见文章：`iOS 设置tableViewCell的高度`](http://www.psvmc.cn/article/ios-tableviewcell-height.html)
 
 ## 代码中使用到的工具类
 
