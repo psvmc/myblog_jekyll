@@ -209,52 +209,6 @@ docker exec -t -i Name/ID /bin/bash
 ```
 
 
-## 实际操作
-
-下载`tomcat`镜像
-
-```
-docker pull registry.cn-shanghai.aliyuncs.com/kylinfedora/centos-tomcat
-```
-
-运行镜像
-
-```
-docker run -d -p 8080:8080 --name tomcat01 -v /data/wwwroot/tomcat01/:/opt/tomcat/webapps --restart=always e85ea4917083
-```
-
-查看容器运行状态
-
-```
-docker ps -a
-```
-
-查看`tomcat`启动日志
-
-```
-docker logs tomcat01
-```
-
-我们运行了`tomcat` 那么怎样进入`tomcat`运行的环境呢
-
-```bash
-// docker exec意思是：在`tomcat01`下面运行一个命令，在这里，运行的是/bin/bash
-// -t 表示分配一个pseudo-TTY，-i 表示可交互
-// tomcat这个image的默认工作目录是/usr/local/tomcat
-docker exec -t -i tomcat01 /bin/bash
-```
-
-接下来 我们退出`tomcat`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
-
-```
-docker cp /root/test.war tomcat01:/usr/local/tomcat/webapps/test.war
-```
-
-重启容器
-
-```
-docker restart tomcat01
-```
 
 
 ## 常见问题
@@ -318,3 +272,60 @@ docker restart tomcat01
 	```
 	service docker start
 	```
+	
+	## 实际操作
+
+下载`tomcat`镜像
+
+```
+docker pull registry.cn-shanghai.aliyuncs.com/kylinfedora/centos-tomcat
+```
+
+查看镜像ID
+
+```
+docker images
+```
+
+运行镜像
+
+```
+docker run -d -p 8080:8080 --name tomcat01 -v /data/wwwroot/tomcat01/:/opt/tomcat/webapps --restart=always e85ea4917083
+```
+
+```
+docker run -d -p 8084:8080 --name tomcat04 -v /data/wwwroot/tomcat04/:/opt/tomcat/webapps  -v /data/wwwroot/tomcat04_log/:/opt/tomcat/logs --restart=always e85ea4917083
+```
+
+查看容器运行状态
+
+```
+docker ps -a
+```
+
+查看`tomcat`启动日志
+
+```
+docker logs tomcat01
+```
+
+我们运行了`tomcat` 那么怎样进入`tomcat`运行的环境呢
+
+```bash
+// docker exec意思是：在`tomcat01`下面运行一个命令，在这里，运行的是/bin/bash
+// -t 表示分配一个pseudo-TTY，-i 表示可交互
+// tomcat这个image的默认工作目录是/usr/local/tomcat
+docker exec -t -i tomcat01 /bin/bash
+```
+
+接下来 我们退出`tomcat`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
+
+```
+docker cp /root/test.war tomcat01:/usr/local/tomcat/webapps/test.war
+```
+
+重启容器
+
+```
+docker restart tomcat01
+```
