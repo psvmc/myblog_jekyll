@@ -27,6 +27,6 @@ yum install memcached
 ## 运行Memcached
 
 ```bash
-/usr/bin/memcached -p 11211 -m 64m -d -uroot
+/usr/bin/memcached -p 11211 -m 128m -i 10.0.42.1 -d -uroot
 ```
 

@@ -210,7 +210,6 @@ docker exec -t -i Name/ID /bin/bash
 
 
 
-
 ## 常见问题
 
 + 怎样在一运行的容器中添加端口映射？  
@@ -273,7 +272,7 @@ docker exec -t -i Name/ID /bin/bash
 	service docker start
 	```
 	
-	## 实际操作
+## 实际操作
 
 下载`tomcat`镜像
 
