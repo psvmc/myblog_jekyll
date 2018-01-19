@@ -4,7 +4,9 @@ layout: post
 title: Docker常用命令
 description: Docker常用命令
 keywords: docker
-category: docker
+categories: 
+        - docker
+        - linux
 
 ---
 
@@ -31,7 +33,7 @@ $docker info
 
 ## 镜像命令
 
-下载镜像的地址[阿里云镜像地址](https://dev.aliyun.com/search.html)
+下载镜像的地址[`阿里云镜像地址`](https://dev.aliyun.com/search.html)
 
 + 检索镜像  
 
@@ -289,10 +291,6 @@ docker images
 运行镜像
 
 ```
-docker run -d -p 8080:8080 --name tomcat01 -v /data/wwwroot/tomcat01/:/opt/tomcat/webapps --restart=always e85ea4917083
-```
-
-```
 docker run -d -p 8084:8080 --name tomcat04 -v /data/wwwroot/tomcat04/:/opt/tomcat/webapps  -v /data/wwwroot/tomcat04_log/:/opt/tomcat/logs --restart=always e85ea4917083
 ```
 
@@ -305,26 +303,26 @@ docker ps -a
 查看`tomcat`启动日志
 
 ```
-docker logs tomcat01
+docker logs tomcat04
 ```
 
 我们运行了`tomcat` 那么怎样进入`tomcat`运行的环境呢
 
 ```bash
-// docker exec意思是：在`tomcat01`下面运行一个命令，在这里，运行的是/bin/bash
+// docker exec意思是：在`tomcat04`下面运行一个命令，在这里，运行的是/bin/bash
 // -t 表示分配一个pseudo-TTY，-i 表示可交互
 // tomcat这个image的默认工作目录是/usr/local/tomcat
-docker exec -t -i tomcat01 /bin/bash
+docker exec -t -i tomcat04 /bin/bash
 ```
 
 接下来 我们退出`tomcat`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
 
 ```
-docker cp /root/test.war tomcat01:/usr/local/tomcat/webapps/test.war
+docker cp /root/test.war tomcat04:/usr/local/tomcat/webapps/test.war
 ```
 
 重启容器
 
 ```
-docker restart tomcat01
+docker restart tomcat04
 ```
