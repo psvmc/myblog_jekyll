@@ -27,6 +27,17 @@ yum install memcached
 ## 运行Memcached
 
 ```bash
-/usr/bin/memcached -p 11211 -m 128m -i 10.0.42.1 -d -uroot
+service memcached start
 ```
 
+或者
+
+```bash
+/usr/bin/memcached -p 11211 -m 128m -d -uroot
+```
+
+## 设置开机自启
+
+```bash
+chkconfig memcached on
+```

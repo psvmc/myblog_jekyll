@@ -116,13 +116,24 @@ mysql>FLUSH PRIVILEGES;
  
 设为开机启动  
     
-`chkconfig mysqld on ` 
+`chkconfig mysqld on` 
 
-设置表名不区分大小写
++ 设置表名不区分大小写
 
-+ 修改 `/etc/my.cnf`
-+ 在`[mysqld]`节点下,加入一行：`lower_case_table_names=1`
-+ 重启MySQL即可 `service mysqld restart`
+修改 `/etc/my.cnf`  
+在`[mysqld]`节点下,加入一行：`lower_case_table_names=1`  
+ 
++ 设置编码
+
+在`[mysqld]`节点下,加入一行：`character_set_server = utf8` 
+
++ 设置连接数
+
+在`[mysqld]`节点下,加入一行：`max_connections = 1000`
+
++ 重启  
+
+`service mysqld restart`
 
 ## Apache 
   
@@ -264,15 +275,15 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
   
 启动tomcat  
 
-`service tomcat6 start `  
+`service tomcat7 start `  
 
 设为开机启动   
 
-`chkconfig tomcat6 on`  
+`chkconfig tomcat7 on`  
  
 默认的tomcat文件夹路径  
 
-`/usr/share/tomcat6`  
+`/usr/share/tomcat7`  
 
 
 ## Tomcat(非yum方式)
@@ -281,19 +292,19 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 
 下载地址不能用的话从`http://tomcat.apache.org/`获取新地址
 
-`wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz`
+`wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz`
 
 (2)安装
 
 ```
-# tar -xzvf apache-tomcat-8.5.20.tar.gz
-# mv apache-tomcat-8.5.20 /opt/tomcat8_1
+# tar -xzvf apache-tomcat-8.5.24.tar.gz
+# mv apache-tomcat-8.5.24 /opt/tomcat8
 ```
 
 运行
 
 ```
-# cd /opt/tomcat8_1/bin
+# cd /opt/tomcat8/bin
 # ./startup.sh  
 ```
   
@@ -303,16 +314,16 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 
 ```
 # useradd -s /sbin/nologin tomcat
-# chown -R tomcat:tomcat /opt/tomcat8_1
+# chown -R tomcat:tomcat /opt/tomcat8
 ```
 
 
 做为 service，和操作系统一起启动
 
 ```
-# cd /opt/tomcat8_1/bin
+# cd /opt/tomcat8/bin
 # tar -xzvf commons-daemon-native.tar.gz
-# cd commons-daemon-1.0.15-native-src/unix/
+# cd commons-daemon-1.1.0-native-src/unix/
 # ./configure 
 # make
 # cp jsvc ../..
@@ -332,7 +343,7 @@ vim daemon.sh
 # description: Starts and Stops the Tomcat daemon. 
 
 JAVA_HOME=/usr/java/jdk1.8.0_144
-CATALINA_HOME=/opt/tomcat8_1
+CATALINA_HOME=/opt/tomcat8
 CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m" 
 ```
 
@@ -353,20 +364,20 @@ JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8"
 增加到 service
 
 ```
-# cp daemon.sh /etc/init.d/tomcat8_1
-# chkconfig --add tomcat8_1
+# cp daemon.sh /etc/init.d/tomcat8
+# chkconfig --add tomcat8
 ```
 
 检查
 
 ```
-# chkconfig --list|grep tomcat8_1
+# chkconfig --list|grep tomcat8
 ```
 
 启动服务
 
 ```
-service tomcat8_1 start
+service tomcat8 start
 ```
 
 防火墙添加信任规则

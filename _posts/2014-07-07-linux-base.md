@@ -19,6 +19,16 @@ category: linux
 
 `clear` 
 
+## 服务开机自启
+
+`chkconfig mysqld on`
+
+## 查看所有服务
+
+`chkconfig`
+
+`chkconfig --list | grep "mysql*"`
+
 ## 创建文件夹
 
 `mkdir abc`
@@ -30,21 +40,21 @@ category: linux
 
 ## 复制
 
-`cp` 
+`cp -rf ./foldername ../foldername` 
  
 ## 查找 
 
-`find -name "*case.html*"`
+`whereis mysql`
 
 ## 删除文件
 
 `rm -rf ./a.txt`  
  
 - -r 递归删除
-- -f不提示
-- -i交互式删除  
+- -f 不提示
+- -i 交互式删除  
 
-## 移动
+## 移动/重命名
 
 `mv 1.txt 2.txt` `重命名`  
 `mv ./1.txt ./2/2.txt` `移动`
@@ -71,9 +81,11 @@ category: linux
 
 
 ## 查询内存信息
-`top`  
+`top -m` 
 
 + m:按内存占用率排序  
+
+`free -m`
 
 ## 根据端口查询进程id
 
@@ -167,3 +179,14 @@ ln -s /data/webapps01 /usr/share/tomcat7/webapps
 ```
 ls -l
 ```
+
+
+## 常用位置
+
+下面软件的安装位置一般为`yum`安装后的位置
+
++ `服务位置`:`/etc/init.d/`
++ `apache`:`/etc/httpd/conf/`
++ `nginx`:`/etc/nginx/`
++ `tomcat7`:`/usr/share/tomcat7`
++ `mysql`:`/etc/my.cnf`
