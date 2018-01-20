@@ -282,6 +282,12 @@ docker exec -t -i Name/ID /bin/bash
 docker pull registry.cn-shanghai.aliyuncs.com/kylinfedora/centos-tomcat
 ```
 
+我自己的镜像
+
+```
+docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
+```
+
 查看镜像ID
 
 ```
