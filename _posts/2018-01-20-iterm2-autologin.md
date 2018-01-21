@@ -15,6 +15,22 @@ categories:
 
 + [`iTerm2`](http://www.iterm2.com/)系统终端增强版
 
+
+
+该软件有个小问题：复制粘贴时如果缩放窗口会导致粘贴的内容错乱  
+
+解决方式：  
+
+
+
+![20180121151654529428877.jpg](http://image.psvmc.cn/20180121151654529428877.jpg)
+
+
+
+![20180121151654541579314.jpg](http://image.psvmc.cn/20180121151654541579314.jpg)
+
+其实就是让窗口`底部全屏`了  这样就不能缩放了
+
 ##  配置文件
 
 ```bash
@@ -44,4 +60,4 @@ chmod 777 /usr/local/bin/login.exp
 ![5a62db3fb27da.jpg](https://i.loli.net/2018/01/20/5a62db3fb27da.jpg)
 
 
- 
+
