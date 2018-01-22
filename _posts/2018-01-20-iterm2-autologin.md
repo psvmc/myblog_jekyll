@@ -51,7 +51,7 @@ interact
 
 设置访问权限 
 
-```
+```bash
 chmod 777 /usr/local/bin/login.exp
 ```
 
