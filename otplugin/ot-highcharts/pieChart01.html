@@ -20,7 +20,7 @@
 				type : 'pie',
 				options3d : {
 					enabled : true,
-					alpha : 45
+					alpha : 50
 				}
 			},
 			title : {
@@ -32,9 +32,11 @@
 			plotOptions : {
 				pie : {
 					//内圈半径
-					innerSize : 100,
-					depth : 30,
+					innerSize : 0,
+					depth : 80,
 					allowPointSelect : true,
+					animation:true,
+					animationLimit:100,
 					cursor : 'pointer',
 					dataLabels : {
 						enabled : true
@@ -43,10 +45,22 @@
 				}
 			},
 			series : [ {
-				name : '牛掰程度',
-				data : [ [ '中国', 8 ], [ '美国', 3 ], [ '日本', 1 ], [ '新加坡', 2 ] ]
-			} ]
-		});
+				name : '',
+				data: [{
+				    y: 53,
+				    name: "困难",
+				    color: "#f45f20"
+				}, {
+				    y: 30,
+				    name: "普通",
+				    color: "#00ebfd"
+				},{
+				    y: 10,
+				    name: "容易",
+				    color: "#f9fb06"
+				}]
+				} ]
+			});
 	});
 </script>
 </html>
