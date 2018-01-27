@@ -46,29 +46,29 @@ rm -rf fonts
 
 + 配置ZSH
 
-打开配置文件`~/.zshrc` 修改主题配置
+  打开配置文件`~/.zshrc` 修改主题配置
 
-默认
+  默认
 
-```bash
-ZSH_THEME="robbyrussell"
-```
+  ```bash
+  ZSH_THEME="robbyrussell"
+  ```
 
-修改为
+  修改为
 
-```bash
-ZSH_THEME="agnoster"
-```
+  ```bash
+  ZSH_THEME="agnoster"
+  ```
 
 + 配置`iTerm2`
 
   ![2018012715170166582377.jpg](http://image.psvmc.cn/2018012715170166582377.jpg)
 
-这里的配色选择`Solarized Dark`
+  这里的配色选择`Solarized Dark`
 
-![20180127151701674890404.jpg](http://image.psvmc.cn/20180127151701674890404.jpg)
+  ![20180127151701674890404.jpg](http://image.psvmc.cn/20180127151701674890404.jpg)
 
-这里一定要把半透明取消  否则很难看
+  这里一定要把半透明取消  否则很难看
 
 + 配置`iTerm2字体` 任何已`Powerline`结束的字体均可   
 
@@ -90,13 +90,11 @@ cd ~/.ohmyzsh-powerline
 
 - 配置ZSH
 
-打开配置文件`~/.zshrc` 修改主题配置
+  打开配置文件`~/.zshrc` 修改主题配置
 
-```bash
-ZSH_THEME="powerline"
-```
-
-
+  ```bash
+  ZSH_THEME="powerline"
+  ```
 
 ## 终端中配置
 
