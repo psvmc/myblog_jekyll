@@ -1,13 +1,9 @@
 ---
-
 layout: post
 title: iTerm2设置自动登录
 description: iTerm2设置自动登录
-keywords: 
-    - centos
-categories: 
-        - centos
-        - iterm
+keywords: mac iterm
+categories: centos iterm mac
 
 ---
 
