@@ -57,3 +57,4 @@ chmod 777 /usr/local/bin/login.exp
 
 
 
+> 注意登录密码如果有特殊符号  要整体用`单引号`引起来
