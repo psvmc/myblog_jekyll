@@ -11,53 +11,60 @@ category: linux
 
 ## 查看开机启动服务
 
-`chkconfig --list`
+```bash
+chkconfig --list
+```
 
 ## 查看应用位置
 
-`whereis nginx`
+```bash
+whereis nginx
+```
 
 ## 连接Linux
 
-```
+```bash
 ssh root@112.112.112.112
 ```
 
 `root` 为用户名  
 `112.112.112.112`为服务器ip
 
-
 ## 重启系统
 
 `reboot`
 
 ## JDK  
- 
+
 用wget下载   
 
 ```bash
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.rpm
-``` 
- 
-更改文件权限
-       
-```bash
-chmod 755 jdk-8u144-linux-x64.rpm
-```   
-
-安装  
-   
-```bash
-rpm -ivh jdk-8u144-linux-x64.rpm
+wget -O jdk-8u162-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.rpm?AuthParam=1517389632_ef9de4e09806f227ffd96a6d7422c3d6 
 ```
 
-安装后的路径为`/usr/java/jdk1.8.0_144`
- 
-删除文件  
-  
 ```bash
-rm  jdk-8u144-linux-x64.rpm
-```  
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz
+```
+
+更改文件权限
+
+```bash
+chmod 755 jdk-8u162-linux-x64.rpm
+```
+
+安装  
+
+```bash
+rpm -ivh jdk-8u162-linux-x64.rpm
+```
+
+安装后的路径为`/usr/java/jdk1.8.0_162`
+
+删除文件  
+
+```bash
+rm  jdk-8u162-linux-x64.rpm
+```
 
 查询java版本 `java -version`
 
@@ -68,34 +75,40 @@ echo $JAVA_HOME
 ```
 
 为空的话要配置`java-home`   否则无法配置`Tomcat`为服务
-   
+
 打开文件`/etc/profile`  
-  
+
 在`profile`文件末尾加入：       
 
 ```bash
-export JAVA_HOME=/usr/java/jdk1.8.0_144  
+export JAVA_HOME=/usr/java/jdk1.8.0_162  
 export PATH=$JAVA_HOME/bin:$PATH   
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar  
 ```
 
-上述配置环境`JAVA_HOME`需要重启生效  
+配置立即生效
+
+```bash
+source /etc/profile
+```
+
+也可以重启生效`JAVA_HOME` 
 重启命令
 
 ```bash
 reboot
 ```
-     
+
 ## Mysql
 
 安装mysql
-      
+​      
 `yum install mysql mysql-server mysql-devel `     
 
 启动mysql   
- 
+
 `service mysqld start `  
-   
+
 设置mysql密码    
 
 ```bash
@@ -104,7 +117,7 @@ mysql>; USE mysql;
 mysql>; UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
 mysql>; FLUSH PRIVILEGES;
 ```
-  
+
 设置允许远程登录      
 
 ```bash
@@ -112,17 +125,17 @@ mysql -u root -p
 Enter Password: <your new password>   
 mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
 mysql>FLUSH PRIVILEGES; 
-```  
- 
+```
+
 设为开机启动  
-    
+​    
 `chkconfig mysqld on` 
 
 + 设置表名不区分大小写
 
 修改 `/etc/my.cnf`  
 在`[mysqld]`节点下,加入一行：`lower_case_table_names=1`  
- 
+
 + 设置编码
 
 在`[mysqld]`节点下,加入一行：`character_set_server = utf8` 
@@ -136,13 +149,13 @@ mysql>FLUSH PRIVILEGES;
 `service mysqld restart`
 
 ## Apache 
-  
+
 安装Apache    
- 
+
 `yum install httpd httpd-devel`  
 
 卸载  
-  
+
 `yum -y remove httpd*`  
 
 启动apache  
@@ -150,7 +163,7 @@ mysql>FLUSH PRIVILEGES;
 `service httpd start`   
 
 设为开机启动  
- 
+
 `chkconfig httpd on`  
 
 重新加载配置
@@ -160,13 +173,13 @@ mysql>FLUSH PRIVILEGES;
 查看版本
 
 `httpd -v`
-  
+
 配置 文件位置`/etc/httpd/conf/httpd.conf`  
 
 设置虚拟主机目录  
 在文件的最后添加  
 
-```
+```xml
 Listen 9999  
 NameVirtualHost *:9999  
 <VirtualHost *:9999>  
@@ -183,7 +196,7 @@ NameVirtualHost *:9999
 
 
 卸载  
-  
+
 `yum -y remove nginx*`  
 
 启动
@@ -195,7 +208,7 @@ NameVirtualHost *:9999
 `service nginx stop`
 
 设为开机启动  
- 
+
 `chkconfig nginx on`  
 
 重新加载配置
@@ -206,6 +219,8 @@ NameVirtualHost *:9999
 
 `nginx -v`
 
+配置文件路径`/etc/nginx/`
+
 ### Nginx无可用源
 
 #### 使用第三方的yum源
@@ -213,7 +228,7 @@ NameVirtualHost *:9999
 nginx位于第三方的yum源里面，而不在centos官方yum源里面
 
 解决方法：
- 
+
 安装epel(Extra Packages for Enterprise Linux)
 
 1）下载
@@ -225,10 +240,10 @@ centos5.x,cpu是`x86_64`，所以我下载的是
 
 如果是centos6.x,cpu是`x86_64` 则应该下载   
 `wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`
-       
+​       
 2）安装epel
 
-`rpm -ivh epel-release-5-4.noarch.rpm`
+`rpm -ivh epel-release-6-8.noarch.rpm`
 
 再次执行 `yum install nginx`,则会提示安装成功了
 
@@ -272,7 +287,7 @@ rpm -Uvh http://mirrors.dotsrc.org/jpackage/6.0/generic/free/RPMS/jpackage-relea
 #安装tomcat7
 yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat-native   
 ```
-  
+
 启动tomcat  
 
 `service tomcat7 start `  
@@ -280,7 +295,7 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 设为开机启动   
 
 `chkconfig tomcat7 on`  
- 
+
 默认的tomcat文件夹路径  
 
 `/usr/share/tomcat7`  
@@ -290,59 +305,73 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 
 (1)下载
 
-下载地址不能用的话从`http://tomcat.apache.org/`获取新地址
+下载地址不能用的话从[`http://tomcat.apache.org/`](http://tomcat.apache.org/)获取新地址
 
-`wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz`
+```bash
+wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.27/bin/apache-tomcat-8.5.27.tar.gz
+```
 
 (2)安装
 
-```
-# tar -xzvf apache-tomcat-8.5.24.tar.gz
-# mv apache-tomcat-8.5.24 /opt/tomcat8
+```bash
+tar -xzvf apache-tomcat-8.5.27.tar.gz
+mv apache-tomcat-8.5.27 /opt/tomcat8
 ```
 
 运行
 
+```bash
+cd /opt/tomcat8/bin
+./startup.sh  
 ```
-# cd /opt/tomcat8/bin
-# ./startup.sh  
-```
-  
+
 (3)配置
 
 在生产环境用 root 是不安全的，所以
 
-```
-# useradd -s /sbin/nologin tomcat
-# chown -R tomcat:tomcat /opt/tomcat8
+```bash
+useradd -s /sbin/nologin tomcat
+chown -R tomcat:tomcat /opt/tomcat8
 ```
 
 
 做为 service，和操作系统一起启动
 
+```bash
+cd /opt/tomcat8/bin
+tar -xzvf commons-daemon-native.tar.gz
+cd commons-daemon-1.1.0-native-src/unix/
+./configure 
+make
+cp jsvc ../..
+cd ../..
 ```
-# cd /opt/tomcat8/bin
-# tar -xzvf commons-daemon-native.tar.gz
-# cd commons-daemon-1.1.0-native-src/unix/
-# ./configure 
-# make
-# cp jsvc ../..
-# cd ../..
+
+错误1
+
+```bash
+configure: error: no acceptable C compiler found in $PATH
+```
+
+解决1
+
+```bash
+yum -y install gcc
 ```
 
 打开daemon.sh
 
-```
+```bash
 vim daemon.sh
 ```
 
 正文最开始也就是注释的下面增加下边五行内容
 
-```
+```bash
 # chkconfig: 2345 10 90 
 # description: Starts and Stops the Tomcat daemon. 
 
-JAVA_HOME=/usr/java/jdk1.8.0_144
+JAVA_HOME=/usr/java/jdk1.8.0_162
 CATALINA_HOME=/opt/tomcat8
 CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m" 
 ```
@@ -351,32 +380,32 @@ CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m"
 
 找到`JAVA_OPTS=` 修改为
 
-```
+```bash
 JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8"
 ```
 
 保存并退出
 
-```
+```bash
 :wq
 ```
 
 增加到 service
 
-```
-# cp daemon.sh /etc/init.d/tomcat8
-# chkconfig --add tomcat8
+```bash
+cp daemon.sh /etc/init.d/tomcat8
+chkconfig --add tomcat8
 ```
 
 检查
 
-```
-# chkconfig --list|grep tomcat8
+```bash
+chkconfig --list|grep tomcat8
 ```
 
 启动服务
 
-```
+```bash
 service tomcat8 start
 ```
 
@@ -384,8 +413,8 @@ service tomcat8 start
 
 打开文件
 
-```
-# vim /etc/sysconfig/iptables
+```bash
+vim /etc/sysconfig/iptables
 ```
 
 添加规则
@@ -405,26 +434,26 @@ service iptables restart
 ### 常用命令
 
 + 查看已生效的规则  
-	`iptables -L -n`
+  `iptables -L -n`
 + 配置保存  
-	`service iptables save`   
+  `service iptables save`   
 + 防火墙启动   
-	`service iptables start` 
+  `service iptables start` 
 + 防火墙关闭  
-	`service iptables stop`
+  `service iptables stop`
 + 防火墙重启  
-	`service iptables restart` 
+  `service iptables restart` 
 + 防火墙开机启动   
-	`chkconfig iptables on`  
+  `chkconfig iptables on`  
 
 ### 防火墙配置
 
 防火墙的配置可以`输入命令`，也可以直接`修改配置文件` 
- 
+
 + 修改配置是重启后能继续生效的  
 + 输入命令则在下次重启后不再生效  
-	但可以把生效的配置写入配置文件`service iptables save`  
-	这样下次重启依旧会生效。
+  但可以把生效的配置写入配置文件`service iptables save`  
+  这样下次重启依旧会生效。
 
 #### 修改配置文件法
 
@@ -449,7 +478,7 @@ COMMIT
 
 千万不要用`service iptables save`  
 一旦你这么干了你刚才的修改内容就白做了。。。  
-   
+
 因为`service iptables save`会把生效中的配置写入到`/etc/sysconfig/iptables`中  
 那么你的`/etc/sysconfig/iptables` 配置就回滚到上次启动服务的配置了，这点必须注意！！！  
 
@@ -474,11 +503,11 @@ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT
 
 ## 安装php5.4
 + 添加源   
-`wget -q -O - http://www.atomicorp.com/installers/atomic | sh`
+  `wget -q -O - http://www.atomicorp.com/installers/atomic | sh`
 + 安装  
-`yum install php php-cli php-gd php-mysql php-eaccelerator php-zend-optimizer  php-pear php-snmp php-bcmath php-mcrypt php-mhash php-soap php-xml php-xmlrpc`
+  `yum install php php-cli php-gd php-mysql php-eaccelerator php-zend-optimizer  php-pear php-snmp php-bcmath php-mcrypt php-mhash php-soap php-xml php-xmlrpc`
 + 查询版本  
-`yum info php | grep Version` 
+  `yum info php | grep Version` 
 
 ## 服务器安全软件(安装其一)
 
@@ -497,13 +526,13 @@ chmod +x *.py
 上一步中安装时缺少组件安装
 
 + Need system command 'locate' to install safedog for linux.    
-	`yum install -y mlocate`
+  `yum install -y mlocate`
 + Need system command 'lsof' to install safedog for linux.   
-	`yum install -y lsof`
+  `yum install -y lsof`
 + Need system command 'dmidecode' to install safedog for linux.
-	`yum install -y dmidecode`
+  `yum install -y dmidecode`
 + Need system command 'lspci' to install safedog for linux.   
-	`yum install -y pciutils`
+  `yum install -y pciutils`
 
 
 登录账号(暂时登不了)
@@ -529,4 +558,4 @@ wget -O install.sh http://dl.xmirror.cn/a/install.sh && sh install.sh
 ```
 
 
- 
+
