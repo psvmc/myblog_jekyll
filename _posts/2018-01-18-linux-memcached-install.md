@@ -1,12 +1,9 @@
 ---
-
 layout: post
 title: Linux 安装Memcached
 description: Linux 安装Memcached
-keywords: memcached linux
-categories: 
-        - memcached
-        - linux
+keywords: memcached linux yum
+categories: memcached linux yum
 
 ---
 
@@ -73,5 +70,25 @@ get psvmc
 
 ```bash
 quit
+```
+
+## 防火墙添加信任规则
+
+打开文件
+
+```bash
+vim /etc/sysconfig/iptables
+```
+
+添加规则
+
+```
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 11211 -j ACCEPT
+```
+
+重启防火墙
+
+```
+service iptables restart 
 ```
 

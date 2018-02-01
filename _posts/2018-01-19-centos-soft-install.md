@@ -1,11 +1,9 @@
 ---
-
 layout: post
 title: CentOS服务器部署(yum)
 description: CentOS服务器常用软件安装(yum)
-keywords: 
-    - yum
-category: linux
+keywords: yum
+categories: linux yum
 
 ---
 
@@ -40,10 +38,6 @@ ssh root@112.112.112.112
 
 ```bash
 wget -O jdk-8u162-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.rpm?AuthParam=1517389632_ef9de4e09806f227ffd96a6d7422c3d6 
-```
-
-```bash
-wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz
 ```
 
 更改文件权限
@@ -92,22 +86,15 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 source /etc/profile
 ```
 
-也可以重启生效`JAVA_HOME` 
-重启命令
-
-```bash
-reboot
-```
-
 ## Mysql
 
-安装mysql
-​      
+安装mysql  
+
 `yum install mysql mysql-server mysql-devel `     
 
-启动mysql   
+启动mysql     
 
-`service mysqld start `  
+`service mysqld start `    
 
 设置mysql密码    
 
@@ -127,9 +114,7 @@ mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRAN
 mysql>FLUSH PRIVILEGES; 
 ```
 
-设为开机启动  
-​    
-`chkconfig mysqld on` 
+设为开机启动  `chkconfig mysqld on` 
 
 + 设置表名不区分大小写
 
@@ -146,7 +131,29 @@ mysql>FLUSH PRIVILEGES;
 
 + 重启  
 
-`service mysqld restart`
+```bash
+service mysqld restart
+```
+
+### 防火墙添加信任规则
+
+打开文件
+
+```bash
+vim /etc/sysconfig/iptables
+```
+
+添加规则
+
+```
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+```
+
+重启防火墙
+
+```
+service iptables restart 
+```
 
 ## Apache 
 
@@ -235,15 +242,23 @@ nginx位于第三方的yum源里面，而不在centos官方yum源里面
 
 下载地址可以去官方网站 `http://fedoraproject.org/wiki/EPEL`
 
-centos5.x,cpu是`x86_64`，所以我下载的是  
-`wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm`
+centos5.x,cpu是`x86_64`，下载的是  
+
+```bash
+wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+```
 
 如果是centos6.x,cpu是`x86_64` 则应该下载   
-`wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`
-​       
+
+```bash
+wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+```
+
 2）安装epel
 
-`rpm -ivh epel-release-6-8.noarch.rpm`
+```bash
+rpm -ivh epel-release-6-8.noarch.rpm
+```
 
 再次执行 `yum install nginx`,则会提示安装成功了
 
@@ -274,7 +289,7 @@ enabled=1
 
 7) 查看安装版本 `nginx -v`
 
-## Tomcat(yum方式)
+## Tomcat6/7(yum方式)
 
 Tomcat7
 
@@ -300,8 +315,7 @@ yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat
 
 `/usr/share/tomcat7`  
 
-
-## Tomcat(非yum方式)
+## Tomcat8(非yum方式)
 
 (1)下载
 
@@ -471,6 +485,7 @@ service iptables restart
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT 
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT 
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 3306 -j ACCEPT 
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 11211 -j ACCEPT 
 COMMIT
 # Completed on Sun Apr  3 11:34:02 2016
 ```

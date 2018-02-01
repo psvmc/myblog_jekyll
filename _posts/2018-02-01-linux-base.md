@@ -41,7 +41,7 @@ category: linux
 ## 复制
 
 `cp -rf ./foldername ../foldername` 
- 
+
 ## 查找 
 
 `whereis mysql`
@@ -49,7 +49,7 @@ category: linux
 ## 删除文件
 
 `rm -rf ./a.txt`  
- 
+
 - -r 递归删除
 - -f 不提示
 - -i 交互式删除  
@@ -68,11 +68,28 @@ category: linux
 `zip -r -s 100m ./test.zip ./test/`
 
 ## 解压缩 
- 
+
 `unzip -o ./test.zip `
 
+## 解压tar.xz
+
+这样的格式里层是tar打包方式 外面是xz压缩方式
+
+所以解压可以分步进行
+
+```bash
+xz -d ***.tar.xz
+tar -xvf ***.tar
+```
+
+也可以直接进行
+
+```bash
+tar xvJf ***.tar.xz
+```
+
 ## 查看文件/文件夹大小 
- 
+
 `du -sh /home`
 
 ## 查看端口占用  
@@ -96,7 +113,7 @@ category: linux
 `ps -ef | grep java`
 
 ## 结束PID为1000的进程 
- 
+
 `kill -9 1000`
 
 ## 查询IP地址
