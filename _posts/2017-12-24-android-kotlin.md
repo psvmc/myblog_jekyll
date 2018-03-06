@@ -16,9 +16,12 @@ categories:
   Android 官方已经推荐使用`Kotlin`   足以见`Kotlin`的优秀   
   并且可以在原项目中直接用`Kotlin` 完全没有什么可担心的  
   代码比`Swift`还好用 强烈推荐
-  
-  [`kotlin 官方文档翻译`](https://github.com/huanglizhuo/kotlin-in-chinese)
-  
+
+推荐
+
++ [`kotlin 官方文档翻译`](https://github.com/huanglizhuo/kotlin-in-chinese)
++ [`From Java to Kotlin(推荐)`](https://link.zhihu.com/?target=https%3A//fabiomsr.github.io/from-java-to-kotlin/)
+
 ## Android获取视图的实例
 
 项目的配置文件
@@ -47,7 +50,7 @@ apply plugin: 'kotlin-android-extensions'
 ```
 
 直接用视图定义的ID即可  超级方便
- 
+
  ```xml
 <EditText
     android:id="@+id/loginNameEditText"
@@ -60,10 +63,10 @@ apply plugin: 'kotlin-android-extensions'
     android:hint="请输入用户名"
     android:inputType="textPersonName"/>
  ```
- 
+
  如上不用再`findViewById(R.id. loginNameEditText)`  
  直接用`loginNameEditText`就行了
- 
+
 ## Set List Map
 
 首先要说的是没有`new`了  
