@@ -189,3 +189,22 @@ l.swap(0, 2)// 在 `swap()` 函数中 `this` 持有的值是 `l`
 ```
 
 > 扩展是被`静态解析`的
+
+## 类对比
+
+Java
+
+```java
+Intent t = new Intent();
+t.setClass(this,LoginActivity.class);
+startActivity(t);
+```
+
+Kotlin
+
+```kotlin
+val t = Intent()
+t.setClass(this, LoginActivity::class.java)
+startActivity(t)
+```
+
