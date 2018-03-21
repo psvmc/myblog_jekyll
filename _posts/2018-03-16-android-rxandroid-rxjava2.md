@@ -21,6 +21,8 @@ implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 
 ### 延迟执行
 
+Kotlin
+
 ```kotlin
 Observable.timer(1000, TimeUnit.MILLISECONDS)
         .observeOn(AndroidSchedulers.mainThread())
@@ -30,6 +32,8 @@ Observable.timer(1000, TimeUnit.MILLISECONDS)
 ### 多线程
 
 常用的方式是`分线程`中处理数据，`主线程`中使用数据生成页面
+
+Kotlin
 
 ```kotlin
 Observable
