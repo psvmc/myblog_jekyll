@@ -228,6 +228,21 @@ activity android:windowSoftInputMode = "stateAlwaysHidden | adjustPan"
   该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。相反，当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分。这个通常是不期望比调整大小，因为用户可能关闭软键盘以便获得与被覆盖内容的交互操作。
 
 
+### Kotlin语言Fragment中获取实例
+
+必须在`onViewCreated`中获取
+
+```kotlin
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    register_button?.setOnClickListener {
+        activity?.finish()
+    }
+}
+```
+
+
+
 
 ## 常用方法
 
