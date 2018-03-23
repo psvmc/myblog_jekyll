@@ -8,14 +8,14 @@ categories: android java
 
 
 
-## UI
+# 界面UI相关
 
 + `setBackgroundResource(0)` 可以移除 View 的背景色
 
 
 
 
-### 获取屏幕宽高
+## 获取屏幕宽高
 
 `Resources.getSystem().getDisplayMetrics().density` 可以不用 Context 也能获取屏幕密度哦
 
@@ -60,7 +60,7 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
 用原图上切图 在`853x533`尺寸上做标注
 
-### EditText
+## EditText
 
 + `EditText`去掉下划线 `android:background="@null"`
 
@@ -80,9 +80,24 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
   然后 `android:textCursorDrawable="@drawable/edit_cursor_color"`
 
+## Button
+
+- 去阴影
+
+  ```xml
+  style="?android:attr/borderlessButtonStyle"
+  ```
 
 
-### 背景涟漪效果
+- 去背景
+
+  ```xml
+  android:background="@null"
+  ```
+
+  ​
+
+## 涟漪效果
 
 drawable
 
@@ -107,7 +122,7 @@ drawable-v21
 
 
 
-### 背景圆角
+## 背景圆角
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -127,7 +142,7 @@ drawable-v21
 
 
 
-### Button背景圆角并有涟漪效果
+## Button背景圆角+涟漪
 
 涟漪效果用的色值`#9ccc`
 
@@ -175,7 +190,7 @@ drawable-v21
 </android.support.v7.widget.CardView>
 ```
 
-### 软键盘默认不弹出
+## 软键盘默认不弹出
 
 方法一：在`OnCreate()`函数中，加上下面的代码
 
@@ -228,7 +243,7 @@ activity android:windowSoftInputMode = "stateAlwaysHidden | adjustPan"
   该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。相反，当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分。这个通常是不期望比调整大小，因为用户可能关闭软键盘以便获得与被覆盖内容的交互操作。
 
 
-### Kotlin语言Fragment中获取实例
+## Kotlin中Fragment获取实例
 
 必须在`onViewCreated`中获取
 
@@ -243,13 +258,12 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
 
-
-## 常用方法
+# 常用方法
 
 + `TextUtils.isEmpty()` 如果传入的String 为NULL或者Length为0的话就返回 true
 
 
-## 华为设备不显示日志
+# 华为设备不显示日志
 
 + 华为手机无法显示log解决方案,.拨号界面输入 `*#*#2846579#*#*`
 
