@@ -8,8 +8,7 @@ categories: android
 
 ---
 
-
-### Android官方
+## Android官方
 
 ```
 compile 'com.android.support:appcompat-v7:23.0.0'
@@ -19,6 +18,10 @@ compile 'com.android.support:recyclerview-v7:23.0.0'
 compile 'com.android.support:design:23.0.0'
 compile 'com.android.support:support-v4:23.0.0'
 ```
+
+
+
+## 功能
 
 ### HTTP
 
@@ -79,9 +82,18 @@ compile 'com.android.support:support-v4:23.0.0'
 [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 
 ```
-compile 'io.reactivex:rxandroid:1.2.1'
-compile 'io.reactivex:rxjava:1.1.6'
+implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 ```
 
 
 
+## UI相关
+
+### 环形进度条
+
+ [`CircleProgressBar`](https://github.com/dinuscxj/CircleProgressBar)
+
+### 筛选器
+
+ 
