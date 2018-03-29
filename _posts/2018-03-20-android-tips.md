@@ -10,6 +10,50 @@ categories: android java
 
 # 界面UI相关
 
+## 状态栏透明(沉浸式体验)
+
+![016032813323867](https://ws2.sinaimg.cn/large/006tKfTcly1fptmrokuphj30lf0el42i.jpg)
+
+Style
+
+```xml
+<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowTranslucentStatus">
+        true
+    </item>
+    <!--设置方向-->
+    <item name="android:screenOrientation">portrait</item>
+</style>
+```
+
+Java
+
+```java
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    Window window = getWindow();
+    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.TRANSPARENT);
+}
+```
+
+Kotlin
+
+```kotlin
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    val window = window
+    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    window.statusBarColor = Color.TRANSPARENT
+}
+```
+
+
+
+## 移除 View 的背景色
+
 + `setBackgroundResource(0)` 可以移除 View 的背景色
 
 
@@ -93,6 +137,24 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
   ```xml
   android:background="@null"
+  ```
+
+
+
+
+## TextView
+
++ 行间距
+
+  ```xml
+  android:lineSpacingExtra="0dp"
+  android:lineSpacingMultiplier="1.3"
+  ```
+
++ 字间距
+
+  ```xml
+  android:letterSpacing="0.1"
   ```
 
   ​
