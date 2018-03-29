@@ -59,6 +59,12 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 
 
+## 添加阴影
+
+```xml
+android:elevation="2dp"
+```
+
 ## 获取屏幕宽高
 
 `Resources.getSystem().getDisplayMetrics().density` 可以不用 Context 也能获取屏幕密度哦
