@@ -59,6 +59,19 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 
 
+## Activity 背景透明
+
+```xml
+<style name="TransparentTheme" parent="AppTheme"> <!--window背景透明-->
+    <item name="android:windowBackground">@color/transparent</item>
+    <item name="android:colorBackgroundCacheHint">@null</item> <!--window透明-->
+    <item name="android:windowIsTranslucent">true</item> <!--去掉过渡动画-->
+    <item name="android:windowAnimationStyle">@null</item>
+</style>
+```
+
+
+
 ## 添加阴影
 
 ```xml
@@ -309,6 +322,31 @@ activity android:windowSoftInputMode = "stateAlwaysHidden | adjustPan"
 + adjustPan
 
   该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。相反，当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分。这个通常是不期望比调整大小，因为用户可能关闭软键盘以便获得与被覆盖内容的交互操作。
+
+
+
+
+## 点击空白隐藏键盘
+
+Kotlin
+
+```kotlin
+/**
+ * 点击空白区域隐藏键盘.
+ */
+override fun onTouchEvent(event: MotionEvent): Boolean {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    if (event.action == MotionEvent.ACTION_DOWN) {
+        if (this@LoginActivity.getCurrentFocus() != null) {
+            if (this@LoginActivity.getCurrentFocus().getWindowToken() != null) {
+                imm.hideSoftInputFromWindow(this@LoginActivity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
+            }
+        }
+    }
+    return super.onTouchEvent(event)
+}
+```
+
 
 
 ## Kotlin中Fragment获取实例

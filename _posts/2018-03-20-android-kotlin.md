@@ -119,6 +119,7 @@ Log.i("Kotlin", "$mMap")
 
 ```
 for (i in 1..4) print(i) //打印1234
+for (i in 1 until 4)print(i) //打印123
 for (i in 4 downTo 1 step 1) print(i) //打印4321
 ```
 
