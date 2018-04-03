@@ -364,6 +364,37 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
 
+## Fragment
+
+XML
+
+```xml
+<FrameLayout
+    android:id="@+id/main_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+```
+
+Kotlin
+
+```kotlin
+fun initFragment() {
+    var fragmentManager = mContext.supportFragmentManager
+    var fragmentTransaction = fragmentManager.beginTransaction()
+    if(null == fragmentManager.findFragmentByTag("question_card")) {
+        var questionCardFragment = SQuestionCardFragment()
+        fragmentTransaction.add(R.id.main_fragment,questionCardFragment,"question_card")
+        fragmentTransaction.commit()
+    }
+}
+```
+
+对于宿主Activity，`getSupportFragmentManager()`获取的`FragmentActivity`的`FragmentManager`对象;
+
+对于Fragment，`getFragmentManager()`是获取的是父Fragment(如果没有，则是FragmentActivity)的FragmentManager对象，而`getChildFragmentManager()`是获取自己的FragmentManager对象。
+
+
+
 # 常用方法
 
 + `TextUtils.isEmpty()` 如果传入的String 为NULL或者Length为0的话就返回 true

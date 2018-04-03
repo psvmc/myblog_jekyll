@@ -616,9 +616,13 @@ docker build -t psvmc/docker_tomcat8 .
 
 当然也可以用阿里云构建
 
-[`阿里云镜像地址`](https://cr.console.aliyun.com)
+
+
+在[`阿里云镜像地址`](https://cr.console.aliyun.com)自己创建镜像用[`Github地址`](https://github.com/psvmc/docker_tomcat8)的Dockerfile（jdk1.8+tomcat8+支持中文日志）
 
 
 
 
- 
+
+
+
