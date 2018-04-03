@@ -395,6 +395,114 @@ fun initFragment() {
 
 
 
+## BottomSheetBehavior使用
+
+用这种方式作出的BottomSheet效果可以拖动高度 要想禁止拖动还是要用`Popwindow`
+
+网上有说设置`behavior_hideable`的值 但其实上它只能禁止拖动关闭 拖动高度变高依旧没法禁用
+
+必须外层是`CoordinatorLayout`
+
+弹出的Layout用一下属性
+
+```xml
+app:behavior_hideable="true"
+app:behavior_peekHeight="400dp"
+app:elevation="4dp"
+app:layout_behavior="@string/bottom_sheet_behavior"
+```
+
+XML
+
+```xml
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+		<!--原页面-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            
+        </LinearLayout>
+        <!--弹出层-->
+        <LinearLayout
+            android:id="@+id/design_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/zj_blue_transparent"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="400dp"
+            app:elevation="4dp"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+```
+
+获取BottomSheetBehavior
+
+ ```kotlin
+var behavior = BottomSheetBehavior.from(design_bottom_sheet)
+    behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+ ```
+
+显示隐藏
+
+```kotlin
+private fun showBottomSheet(behavior: BottomSheetBehavior<LinearLayout>) {
+    if (behavior.state == BottomSheetBehavior.STATE_HIDDEN) {
+        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    } else {
+        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+    }
+}
+```
+
+
+
+## CustomPopWindow
+
+[`CustomPopWindow`](https://github.com/pinguo-zhouwei/CustomPopwindow)
+
+```kotlin
+private fun showPopListView() {
+    val contentView = LayoutInflater.from(this).inflate(R.layout.pop_list_view, null)
+    //处理popWindow 显示内容
+    handleListView(contentView)
+    //创建并显示popWindow
+    mPopWindow = CustomPopWindow.PopupWindowBuilder(this)
+        .setView(contentView)
+        .enableBackgroundDark(true)
+        .setAnimationStyle(R.style.CustomPopWindowStyle)
+        .size(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            (400 * resources.displayMetrics.density).toInt()
+        )
+        .create()
+    mPopWindow?.showAtLocation(
+        window.decorView,
+        Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
+        0,
+        0
+    )
+}
+
+private fun handleListView(contentView: View) {
+    val recyclerView = contentView.findViewById<View>(R.id.recyclerView) as RecyclerView
+    val manager = LinearLayoutManager(this)
+    manager.orientation = LinearLayoutManager.VERTICAL
+    recyclerView.layoutManager = manager
+    val adapter = MyAdapter()
+    adapter.setData(mockData())
+    recyclerView.adapter = adapter
+    adapter.notifyDataSetChanged()
+}
+```
+
 # 常用方法
 
 + `TextUtils.isEmpty()` 如果传入的String 为NULL或者Length为0的话就返回 true
