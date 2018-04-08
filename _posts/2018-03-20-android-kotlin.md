@@ -397,3 +397,39 @@ object L {
 }
 ```
 
+## 接口
+
+Java
+
+```java
+OkGo.<TUserBean>post("")
+    .params("","")
+    .execute(new JsonCallback<TUserBean>() {
+        @Override
+        public void onSuccess(Response<TUserBean> response) {
+
+        }
+
+        @Override
+        public void onFinish() {
+            super.onFinish();
+        }
+    });
+```
+
+Kotlin
+
+```kotlin
+OkGo.post<TUserBean>("")
+    .params("", "")
+    .execute(object : JsonCallback<TUserBean>() {
+        override fun onSuccess(response: Response<TUserBean>) {
+
+        }
+
+        override fun onFinish() {
+            super.onFinish()
+        }
+    })
+```
+

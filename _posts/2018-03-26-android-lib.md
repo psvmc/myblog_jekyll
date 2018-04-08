@@ -21,14 +21,14 @@ compile 'com.android.support:support-v4:23.0.0'
 
 
 
-## 功能
+## 功能相关
 
 ### HTTP
 
 |名称|引用方式|个人推荐|
 |---|---|---|
-|[`okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo)|`见官网`|`★★★`|
-|[`okhttputils`](https://github.com/hongyangAndroid/okhttputils)|`compile 'com.zhy:okhttputils:2.6.2'`|`★★★`|
+|[`okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo)|`compile 'com.lzy.net:okgo:3.0.4'`|`★★★`|
+|[`okhttputils`](https://github.com/hongyangAndroid/okhttputils)|`compile 'com.zhy:okhttputils:2.6.2'`|`★★`停止维护|
 |[`retrofit`](https://github.com/square/retrofit)|`compile 'com.squareup.retrofit2:retrofit:2.1.0'`|`★★`|
 |[`xUtils3`](https://github.com/wyouflf/xUtils3)|`compile 'org.xutils:xutils:3.3.38'`|`★★`|
 
@@ -36,16 +36,15 @@ compile 'com.android.support:support-v4:23.0.0'
 
 |名称|引用方式|个人推荐|
 |---|---|---|
-|[`fastjson`](https://github.com/alibaba/fastjson)|`compile 'com.alibaba:fastjson:1.2.21'`|`★★★`|
-|[`gson`](https://github.com/google/gson)|`compile 'com.google.code.gson:gson:2.8.0'`|`★★★`|
-
+|[`fastjson`](https://github.com/alibaba/fastjson)|`compile 'com.alibaba:fastjson:1.2.46'`|`★★★`|
+|[`gson`](https://github.com/google/gson)|`compile 'com.google.code.gson:gson:2.8.0'`|`★★`泛型支持不好|
 
 ### 事件总线
 
 |名称|引用方式|个人推荐|
 |---|---|---|
-|[`EventBus`](https://github.com/greenrobot/EventBus)|`compile 'org.greenrobot:eventbus:3.0.0'`|`★★★`|
-|[`RxBus`](https://github.com/AndroidKnife/RxBus)|`compile 'com.hwangjr.rxbus:rxbus:1.0.5'`|`★★★`|
+|[`EventBus`](https://github.com/greenrobot/EventBus)|`compile 'org.greenrobot:eventbus:3.0.0'`|`★★★`项目未使用Rxjava|
+|[`RxBus`](https://github.com/AndroidKnife/RxBus)|`compile 'com.hwangjr.rxbus:rxbus:1.0.5'`|`★★★`项目使用Rxjava|
 |[`otto`](https://github.com/square/otto)|`compile 'com.squareup:otto:1.3.8'`|`★★`|
 
 ### 数据库
@@ -81,7 +80,7 @@ compile 'com.android.support:support-v4:23.0.0'
 
 [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 
-```
+```bash
 implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 ```
@@ -90,10 +89,14 @@ implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 
 ## UI相关
 
-### 环形进度条
+| 作用 | 名称   | 引用方式     |
+| ------------------------------------------------------------ | ------------------------------------------------------- | -------- |
+|圆状进度 | [**CircleProgressBar**](https://github.com/dinuscxj/CircleProgressBar) | `implementation 'com.dinuscxj:circleprogressbar:1.1.1'` |
+| 图片圆角 | [**RoundedImageView**](https://github.com/vinc3m1/RoundedImageView) | `implementation 'com.makeramen:roundedimageview:2.3.0'` |
+| 背景圆角 | [**FlycoRoundView**](https://github.com/H07000223/FlycoRoundView) | `compile 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'` |
+|  |  |  |
+|  |  |  |
 
- [`CircleProgressBar`](https://github.com/dinuscxj/CircleProgressBar)
 
-### 筛选器
 
  

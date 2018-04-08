@@ -8,6 +8,37 @@ categories: android java
 
 
 
+# 环境
+
+## 引入外部jar
+
+```json
+android {
+    ......
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    ......
+}
+```
+
+## 支持HttpClient
+
+```json
+android {
+    ......
+    useLibrary 'org.apache.http.legacy'
+}
+```
+
+
+
 # 界面UI相关
 
 ## 状态栏透明(沉浸式体验)
@@ -506,6 +537,23 @@ private fun handleListView(contentView: View) {
 # 常用方法
 
 + `TextUtils.isEmpty()` 如果传入的String 为NULL或者Length为0的话就返回 true
+
++ `Fastjson` 转对象带泛型
+
+  Java
+
+  ```java
+  JSON.parseObject(bodyInfo, new TypeReference<ResultVo<TUserBean>>() {});
+  ```
+
+  Kotlin
+
+  ```kotlin
+  JSON.parseObject(bodyInfo, object : TypeReference<ResultVo<TUserBean>>() {
+  })
+  ```
+
+  ​
 
 
 # 华为设备不显示日志
