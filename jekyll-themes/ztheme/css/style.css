@@ -188,12 +188,12 @@ samp {
 --------------------------------------*/
 
 a:link {
-    color: #08c;
+    color: #33adef;
 }
 
 a:hover {
     text-decoration: none;
-    color: #08c;
+    color: #33adef;
 }
 
 ::-moz-selection {
@@ -398,7 +398,7 @@ a:hover {
 }
 
 .ztheme-title .ztheme-title-item {
-    font-size: 32px;
+    font-size: 28px;
     width: 95%;
     margin: 0 auto;
 }
