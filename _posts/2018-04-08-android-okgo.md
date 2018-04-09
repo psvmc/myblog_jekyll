@@ -9,14 +9,76 @@ categories: android
 
 
 
-## 依赖
+## 前言
+
+这里写了两种方式请求接口 (文中用了Java和Kotlin两种语言 没有特殊标示的都是Java)
+
++ 普通方式
++ Rx方式
+
+建议是用Rx方式
+
+## 常用调用方式
+
+### 依赖
 
 |名称|引用方式|作用|
 |---|---|---|
 |[`okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo)|`compile 'com.lzy.net:okgo:3.0.4'`|HTTP请求|
 |[`fastjson`](https://github.com/alibaba/fastjson)|`compile 'com.alibaba:fastjson:1.2.46'`|回调转JSON|
 
-## 自定义回调
+### 涉及的实体类
+
+```java
+public class ResultVo<T> {
+	private int code = 0;// 返回是否成功  0成功 1失败  2token不存在
+	private String msg = "";// 返回提示信息
+	private T obj;// 返回对象或者对象列表
+
+	public ResultVo() {
+	}
+
+	public ResultVo(int code, String msg, T list) {
+		super();
+		this.code = code;
+		this.msg = msg;
+		this.obj = list;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public Object getObj() {
+		return obj;
+	}
+
+	public void setObj(T obj) {
+		this.obj = obj;
+	}
+
+	@Override
+	public String toString() {
+		return "ResultVo [code=" + code + ", msg=" + msg + ", obj=" + obj + "]";
+	}
+}
+```
+
+
+
+### 自定义回调
 
 ZJJsonCallback
 
@@ -221,7 +283,7 @@ public abstract class ZJStringCallback extends AbsCallback<String> {
 }
 ```
 
-## 调用方式
+### 调用方式
 
 JsonCallback
 
@@ -256,5 +318,97 @@ OkGo.post<String>(ApiConfig.userapi_login)
             L.i(response!!.body())
         }
     })
+```
+
+
+
+## Rx方式
+
+### 依赖
+
+| 名称                                                      | 引用方式                                                     | 作用       |
+| --------------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| [`Okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo) | `compile 'com.lzy.net:okgo:3.0.4'`<br />`compile 'com.lzy.net:okrx2:2.0.2'` | HTTP请求   |
+| [`Fastjson`](https://github.com/alibaba/fastjson)         | `compile 'com.alibaba:fastjson:1.2.46'`                      | 回调转JSON |
+| [`Rxjava`](https://github.com/ReactiveX/RxJava)           | `implementation 'io.reactivex.rxjava2:rxjava:2.1.10'`        | Rx         |
+| [`RxAndroid`](https://github.com/ReactiveX/RxAndroid)     | `implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'`      | Rx         |
+
+### 转换器
+
+```java
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.lzy.okgo.convert.Converter;
+
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+
+public class ZJJsonConvert<T> implements Converter<T> {
+
+    TypeReference<T> type;
+
+    public ZJJsonConvert(TypeReference<T> type) {
+        this.type = type;
+    }
+
+    @Override
+    public T convertResponse(Response response) throws Throwable {
+        ResponseBody body = response.body();
+        if (body == null) return null;
+        String bodyStr = body.string();
+        return JSON.parseObject(bodyStr, type);
+    }
+}
+```
+
+### 封装接口
+
+```java
+import com.alibaba.fastjson.TypeReference;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.convert.StringConvert;
+import com.lzy.okrx2.adapter.ObservableBody;
+
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
+
+public class ZJUserApi {
+    public static Observable<ResultVo<TUserBean>> userapi_login(
+        String loginname,
+        String userpwd
+    ) {
+        Observable<ResultVo<TUserBean>> obs =
+            OkGo.<ResultVo<TUserBean>>post(ApiConfig.userapi_login)
+            .params("loginname", loginname)
+            .params("userpwd", userpwd)
+            .params("device", "pad")
+            .converter(
+                new ZJJsonConvert<>(
+                    new TypeReference<ResultVo<TUserBean>>() {}
+                )
+            )
+            .adapt(new ObservableBody<ResultVo<TUserBean>>())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+        return obs;
+    }
+}
+```
+
+
+
+### 调用方式
+
+Kotlin
+
+```java
+ZJUserApi.userapi_login("zhangjian", "wangning")
+    .subscribe {
+        L.i(it.msg)
+    }
 ```
 

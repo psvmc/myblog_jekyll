@@ -10,7 +10,6 @@ categories:
 
 ---
 
-
 ## 前言
 
   Android 官方已经推荐使用`Kotlin`   足以见`Kotlin`的优秀   
@@ -22,7 +21,7 @@ categories:
 + [`kotlin 官方文档翻译`](https://github.com/huanglizhuo/kotlin-in-chinese)
 + [`From Java to Kotlin(推荐)`](https://link.zhihu.com/?target=https%3A//fabiomsr.github.io/from-java-to-kotlin/)
 
-## Android获取视图的实例
+## Android获取视图实例
 
 项目的配置文件
 
@@ -67,7 +66,7 @@ apply plugin: 'kotlin-android-extensions'
  如上不用再`findViewById(R.id. loginNameEditText)`  
  直接用`loginNameEditText`就行了
 
-## Set List Map
+## Set/List/Map
 
 首先要说的是没有`new`了  
 
@@ -397,7 +396,7 @@ object L {
 }
 ```
 
-## 接口
+## 接口写法对比
 
 Java
 
@@ -431,5 +430,67 @@ OkGo.post<TUserBean>("")
             super.onFinish()
         }
     })
+```
+
+
+
+## 静态属性和方法
+
+Kotlin中定义
+
+```kotlin
+class ApiModel {
+    companion object {
+        val baseUrl = "http://www.psvmc.cn"
+
+        fun getName(): String {
+            return "小明"
+        }
+    }
+}
+```
+
+Kotlin中调用
+
+```kotlin
+ApiModel.baseUrl
+ApiModel.getName()
+```
+
+Java中调用
+
+```java
+ApiModel.Companion.getBaseUrl();
+ApiModel.Companion.getName();
+```
+
+> 所以建议静态属性和方法建议还用`Java`来写
+
+
+
+## 可见修饰符
+
++ private：同一类或文件（针对包级别定义）中可见
+
+
++ protected：同private 加子类可见
++ internal：在同一个模块中可见（如果声明范围的所有者是可见的）
++ public：公共，所有都可见
+
+## 继承
+
+自定义组件
+
+```kotlin
+open class SpliterLinearLayout : LinearLayoutCompat {
+    
+    constructor(context: Context) : super(context) {
+
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+
+    }
+}
 ```
 
