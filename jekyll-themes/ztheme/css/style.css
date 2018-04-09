@@ -865,8 +865,7 @@ code {
 .main-article table th,
 .main-article table td {
     line-height: 2;
-    padding: 0 2px;
-    text-indent: 6px;
+    padding: 0 6px;
     border-right: 1px solid rgba(208, 208, 208, .38);
     border-bottom: 1px solid rgba(208, 208, 208, .38);
 }

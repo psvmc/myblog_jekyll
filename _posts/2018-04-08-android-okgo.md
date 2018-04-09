@@ -406,7 +406,7 @@ public class ZJUserApi {
 Kotlin
 
 ```java
-ZJUserApi.userapi_login("zhangjian", "wangning")
+ZJUserApi.userapi_login("zhangjian", "123456")
     .subscribe {
         L.i(it.msg)
     }
