@@ -379,12 +379,12 @@ import io.reactivex.schedulers.Schedulers;
 public class ZJUserApi {
     public static Observable<ResultVo<TUserBean>> userapi_login(
         String loginname,
-        String userpwd
+        String loginpwd
     ) {
         Observable<ResultVo<TUserBean>> obs =
             OkGo.<ResultVo<TUserBean>>post(ApiConfig.userapi_login)
             .params("loginname", loginname)
-            .params("userpwd", userpwd)
+            .params("loginpwd", loginpwd)
             .params("device", "pad")
             .converter(
                 new ZJJsonConvert<>(
