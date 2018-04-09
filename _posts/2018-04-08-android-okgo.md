@@ -403,7 +403,7 @@ public class ZJUserApi {
 
 ### 调用方式
 
-Kotlin
+`Kotlin`
 
 ```java
 ZJUserApi.userapi_login("zhangjian", "123456")
@@ -412,3 +412,60 @@ ZJUserApi.userapi_login("zhangjian", "123456")
     }
 ```
 
+
+
+### 页面销毁取消请求
+
+要想页面销毁时取消网络请求 就要做如下修改
+
+定义Activity的基类(请忽略`onCreate`中的方法 只是用来去掉状态栏的背景)
+
+`Kotlin`
+
+```kotlin
+open class SBaseActivity : AppCompatActivity() {
+
+    var compositeDisposable: CompositeDisposable? = null
+
+    fun addDisposable(disposable: Disposable) {
+        if (null == compositeDisposable) {
+            compositeDisposable = CompositeDisposable()
+        }
+        compositeDisposable?.add(disposable)
+    }
+
+    fun dispose(){
+        compositeDisposable?.dispose()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dispose()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = Color.TRANSPARENT
+        }
+    }
+}
+```
+
+调用的方法改成如下(`Kotlin`)
+
+```kotlin
+var disposable = ZJUserApi.userapi_login(
+    "zhangjian",
+    "wangning")
+    .subscribe {
+        L.i(it.msg)
+    }
+addDisposable(disposable)
+```
+
+这样页面在销毁时 就会取消请求了
