@@ -1,12 +1,11 @@
 ---
-
 layout: post
 title: Android 中 RxBus 的使用
 description: 经常我们会有这样的需求，B页面操作后，要求A页面处理相关数据，像这样一般我们都是，要么B页面保留A页面的引用，要么使用广播，但是写起来还是想对麻烦的，用Rxbus就可以很容易和优雅的解决
 keywords: rxbus
 categories: 
         - android
-        - rxbus
+        - rxjava
 
 ---
 
@@ -32,7 +31,7 @@ categories:
 添加引用
 
 ```gradle
-compile 'com.hwangjr.rxbus:rxbus:1.0.4'
+implementation 'com.hwangjr.rxbus:rxbus:2.0.0'
 ```
 
 ### 注册与取消注册
@@ -77,7 +76,7 @@ public ArrayList<String> produce02() {
 接收方 会根据 设置的`Tag`和返回的`数据类型`来调用相应的方法，于方法名无关  
 
 当然也可以不写`tags`和`thread` 
- 
+
 + 默认`tags`为`rxbus_default_tag`
 + 默认`thread `为`EventThread.MAIN_THREAD`
 

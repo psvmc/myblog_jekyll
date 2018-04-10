@@ -89,13 +89,16 @@ implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 
 ## UI相关
 
-| 作用 | 名称   | 引用方式     |
-| ------------------------------------------------------------ | ------------------------------------------------------- | -------- |
-|圆状进度 | [**CircleProgressBar**](https://github.com/dinuscxj/CircleProgressBar) | `implementation 'com.dinuscxj:circleprogressbar:1.1.1'` |
-| 图片圆角 | [**RoundedImageView**](https://github.com/vinc3m1/RoundedImageView) | `implementation 'com.makeramen:roundedimageview:2.3.0'` |
-| 背景圆角 | [**FlycoRoundView**](https://github.com/H07000223/FlycoRoundView) | `compile 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'` |
-|  |  |  |
-|  |  |  |
+我常用的UI组件
+
+| 作用         | 名称                                                         | 引用方式                                                     |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 圆状进度     | [**CircleProgressBar**](https://github.com/dinuscxj/CircleProgressBar) | `implementation 'com.dinuscxj:circleprogressbar:1.1.1'`      |
+| 图片圆角     | [**RoundedImageView**](https://github.com/vinc3m1/RoundedImageView) | `implementation 'com.makeramen:roundedimageview:2.3.0'`      |
+| 背景圆角     | [**FlycoRoundView**](https://github.com/H07000223/FlycoRoundView) | `compile 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'` |
+| 加载处理图片 | [**glide-transformations**](https://github.com/wasabeef/glide-transformations) | `implementation 'jp.wasabeef:glide-transformations:3.1.1'`    <br />`implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'` |
+| 消息提示     | [**Toasty**](https://github.com/GrenderG/Toasty)             | `implementation 'com.github.GrenderG:Toasty:1.2.8'`          |
+|              |                                                              |                                                              |
 
 
 

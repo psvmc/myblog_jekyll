@@ -1,10 +1,11 @@
 ---
-
 layout: post
 title: Android 中 RxJava 的使用
 description: Android原生的多线程和异步处理简直糟透了，反复的嵌套让代码看起来十分不明了，多线程上也没有iOS的dispatch好用，但是用了Rxjava后就会有所改善，虽然代码量看起来会多一点，但是逻辑就清晰多了
 keywords: rxjava
-category: android
+categories: 
+        - android
+        - rxjava
 
 ---
 

@@ -3,7 +3,9 @@ layout: post
 title: Android OkGo网络请求库 自定义回调支持带泛型的对象
 description: Android OkGo网络请求库 自定义回调支持带泛型的对象
 keywords: android
-categories: android
+categories: 
+        - android
+        - rxjava
 
 ---
 
