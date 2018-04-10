@@ -21,6 +21,8 @@ categories:
 + [`kotlin 官方文档翻译`](https://github.com/huanglizhuo/kotlin-in-chinese)
 + [`From Java to Kotlin(推荐)`](https://link.zhihu.com/?target=https%3A//fabiomsr.github.io/from-java-to-kotlin/)
 
+
+
 ## Android获取视图实例
 
 项目的配置文件
