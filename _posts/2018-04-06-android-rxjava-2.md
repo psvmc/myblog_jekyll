@@ -244,29 +244,29 @@ RxTextView.textChanges(username_edittext)
             return s;
         }
     })
-.subscribeOn(Schedulers.io())
-.observeOn(AndroidSchedulers.mainThread())
-.subscribe(new Observer<char[]>() {
-    @Override
-    public void onSubscribe(Disposable d) {
+    .subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe(new Observer<char[]>() {
+        @Override
+        public void onSubscribe(Disposable d) {
 
-    }
+        }
 
-    @Override
-    public void onNext(char[] chars) {
+        @Override
+        public void onNext(char[] chars) {
 
-    }
+        }
 
-    @Override
-    public void onError(Throwable e) {
+        @Override
+        public void onError(Throwable e) {
 
-    }
+        }
 
-    @Override
-    public void onComplete() {
+        @Override
+        public void onComplete() {
 
-    }
-});
+        }
+    });
 ```
 
 
