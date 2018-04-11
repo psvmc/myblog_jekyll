@@ -85,7 +85,11 @@ implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 ```
 
+### 权限
 
+| 名称                                                         | 引用方式 | 个人推荐 |
+| ------------------------------------------------------------ | -------- | -------- |
+| [`PermissionsDispatcher`](https://github.com/permissions-dispatcher/PermissionsDispatcher) | `见官网` | `★★★`    |
 
 ## UI相关
 
