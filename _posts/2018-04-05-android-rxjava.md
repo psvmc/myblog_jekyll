@@ -24,7 +24,7 @@ Android原生的`多线程和异步`处理简直糟透了，反复的嵌套让�
 + 订阅者（Subscriber）
 + 中转站（Subject）
 + 线程（Scheduler）
-+ 转换/过滤/运算
++ 操作符
 
 ---
 
@@ -34,7 +34,7 @@ Android原生的`多线程和异步`处理简直糟透了，反复的嵌套让�
 + `订阅者` 就相当于 `用户`
 + `中转站` 就相当于 `报亭` 它既是`订阅者` 又是`发布者` 
 + `线程` 是指定在哪个线程上处理  
-+ `转换/过滤/运算` 则是把发布者的数据进行处理，再给订阅者
++ `操作符` 则是把发布者的数据进行处理，再给订阅者
 
 ---
 
@@ -81,9 +81,9 @@ Android原生的`多线程和异步`处理简直糟透了，反复的嵌套让�
 
 发布者发布事件 可以手动创建也可以调用内置方法  
 
-### create()
 
-#### Observable
+
+### Observable
 
 ```java
 Observable
@@ -116,7 +116,7 @@ Observable
     });
 ```
 
-#### Flowable
+### Flowable
 
 ```java
 Flowable
@@ -151,7 +151,7 @@ Flowable
 
 
 
-#### Single
+### Single
 
 ```java
 Single
@@ -179,7 +179,7 @@ Single
     });
 ```
 
-#### Completable
+### Completable
 
 ```java
 Completable
@@ -205,38 +205,6 @@ Completable
 
         }
     });
-```
-
-### just()
-
-```java
-Observable observable = Observable.just("好好学习", "天天向上");
-// 将会依次调用：
-// onNext("好好学习");
-// onNext("天天向上");
-// onCompleted();
-```
-
-### range()
-
-```java
-Observable.range(1,10);
-```
-
-### fromArray()
-
-```java
-String[] quotations = {"好好学习", "天天向上"};
-Observable observable = Observable.fromArray(quotations);
-```
-
-### interval()/timer()
-
-```java
-//延迟10s每10s发送一次
-Observable.interval(10,10, TimeUnit.SECONDS);
-//延迟10s发送一次
-Observable.timer(10,TimeUnit.SECONDS);
 ```
 
 
@@ -320,35 +288,83 @@ Observable
     });
 ```
 
-## 转换/过滤/运算
+## 操作符
+
+| 名称                             | 解析                                                         |
+| -------------------------------- | ------------------------------------------------------------ |
+| amb()<br />ambArray<br />ambWith | 给定多个Observable，只让第一个发射数据的Observable发射全部数据 |
+| defaultIfEmpty()                 | 发射来自原始Observable的数据，如果原始Observable没有发射数据，就发射一个默认数据 |
+| switchIfEmpty()                  | 如果原始Observable没有发射数据，它发射一个备用Observable的发射物 |
+| skipUntil()                      | 跳过原始Observable发射的数据，直到第二个Observable发射了一个数据，<br />然后发射原始Observable的剩余数据 |
+| skipWhile()                      | 判断成功的都跳过 一旦为假  发送剩余的所有数据                |
+| takeUntil()                      | 发送为真包括以前的数据 不再处理后续数据                      |
+| takeWhile()                      | 发送为真的数据 一旦为假就不再处理后续数据                    |
+
+### create
+
+参见面发布者部分
+
+### just
+
+```java
+Observable observable = Observable.just("好好学习", "天天向上");
+// 将会依次调用：
+// onNext("好好学习");
+// onNext("天天向上");
+// onCompleted();
+```
+
+### range
+
+```java
+Observable.range(1,10);
+```
+
+### fromArray
+
+```java
+String[] quotations = {"好好学习", "天天向上"};
+Observable observable = Observable.fromArray(quotations);
+```
+
+### interval/timer
+
+```java
+//延迟10s每10s发送一次
+Observable.interval(10,10, TimeUnit.SECONDS);
+//延迟10s发送一次
+Observable.timer(10,TimeUnit.SECONDS);
+```
+
+### throttleFirst/throttleLast
+
+`throttleFirst`操作符：仅发送指定时间段内的第一个信号
+
+`throttleLast`操作符：仅发送指定时间段内的第一个信号
+
+```java
+RxView.clicks(mBtn)
+      .throttleFirst(1, TimeUnit.SECONDS);
+```
+
+### debounce
+
+指定时间段内没有新的信号时 则发出最后一个信号
+
+比如监听文本变化进行搜索
+
+```java
+RxTextView.textChanges(etKey)
+          .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread());
+```
+
+
 
 ### map
 
 类型变换
 
 ```java
-Observer<Integer> observer = new Observer<Integer>() {
-    @Override
-    public void onSubscribe(Disposable d) {
-
-    }
-
-    @Override
-    public void onNext(Integer s) {
-
-    }
-
-    @Override
-    public void onError(Throwable e) {
-
-    }
-
-    @Override
-    public void onComplete() {
-
-    }
-};
-
 String[] strs = {"11","22","33"};
 Observable
     .fromArray(strs)
@@ -398,7 +414,7 @@ flatMap和concatMap最大的区别是concatMap发射的数据集是有序的，f
 
 `过滤`  
 
-假如我们要大于5的🌲
+假如我们要大于5的数
 
 ```java
 Integer[] nums = {3, 4, 5, 6, 7};
@@ -421,6 +437,192 @@ Observable
         }
     });
 ```
+
+### defaultIfEmpty
+
+当未发送`onNext`直接发送`onComplete`时 `onNext`收到的默认值
+
+```java
+Observable
+    .create(new ObservableOnSubscribe<String>() {
+        @Override
+        public void subscribe(ObservableEmitter<String> e) throws Exception {
+            e.onComplete();
+        }
+    })
+    .defaultIfEmpty("默认数据")
+    .subscribe(new Consumer<String>() {
+        @Override
+        public void accept(@NonNull String s) throws Exception {
+            Log.e(TAG, "accept: " + s);
+        }
+    });
+```
+
+### switchEmpty
+
+如果发射源没有发射数据就完成了，就发射switchIfEmpty里面新的Observable发射源
+
+```java
+Observable
+    .create(new ObservableOnSubscribe<String>() {
+        @Override
+        public void subscribe(ObservableEmitter<String> e) throws Exception {
+            e.onComplete();
+        }
+    })
+    .switchIfEmpty(Observable.just("a", "b", "c"))
+    .subscribe(new Consumer<String>() {
+        @Override
+        public void accept(@NonNull String s) throws Exception {
+            Log.e(TAG, "accept: " + s);
+        }
+    });
+```
+
+
+
+### zip
+
+```java
+Observable
+    .zip(
+        Observable.just("100", "200"),
+        Observable.just("1","2","3"),
+        new BiFunction<String, String, Integer>() {
+            @Override
+            public Integer apply(String s, String s2) throws Exception {
+                return Integer.valueOf(s) + Integer.valueOf(s2);
+            }
+        })
+    .subscribe(new Consumer<Integer>() {
+        @Override
+        public void accept(Integer integer) throws Exception {
+            L.i(""+integer);
+        }
+    });
+```
+
+上面的代码会收到 101、202
+
+也就是说多个`Observable`都发送时 才处理数据
+
+### amb/ambArray/ambWith
+
+给定多个Observable，只让第一个发射数据的Observable发射全部数据。
+
+### take/takeWhile/takeUntil
+
+take
+
+```java
+//取前两个信号
+.take(2);
+//取后两个信号
+.takeLast(2);
+//取前1s的信号
+.take(1,TimeUnit.SECONDS);
+//取后1s的信号
+.takeLast(1,TimeUnit.SECONDS);
+```
+
+------
+
+takeWhile
+
+```java
+//发送为真的数据 一旦为假就不再处理后续数据
+//会收到1、2
+Observable
+    .just(1, 2, 3,2)
+    .takeWhile(new Predicate<Integer>() {
+        @Override
+        public boolean test(Integer integer) throws Exception {
+            return integer<3;
+        }
+    });
+```
+
+------
+
+takeUntil
+
+```java
+//发送为真包括以前的数据 不再处理后续数据
+//会收到1、2
+Observable
+    .just(1, 2, 3,2)
+    .takeUntil(new Predicate<Integer>() {
+        @Override
+        public boolean test(Integer integer) throws Exception {
+            return integer >1;
+        }
+    })
+  
+//获取原始Observable发射的数据，直到第二个Observable发射了一个数据,不再发送原始Observable的剩余数据
+//会收到1,2,3,2
+Observable
+    .just(1, 2, 3,2)
+    .takeUntil(Observable.just("3").delay(1,TimeUnit.SECONDS))
+    .subscribe(new Consumer<Integer>() {
+        @Override
+        public void accept(Integer integer) throws Exception {
+            L.i("" + integer);
+        }
+    });
+```
+
+
+
+### skip/skipWhile/skipUntil
+
+skip
+
+```java
+//取前两个信号
+.skip(2);
+//取后两个信号
+.skipLast(2);
+//取前1s的信号
+.skip(1,TimeUnit.SECONDS);
+//取后1s的信号
+.skipLast(1,TimeUnit.SECONDS);
+```
+
+------
+
+skipWhile:判断成功的都跳过 一旦为假  发送剩余的所有数据
+
+```java
+Observable
+    .just(1, 2, 3,2)
+    .skipWhile(new Predicate<Integer>() {
+        @Override
+        public boolean test(Integer integer) throws Exception {
+            return integer<2;
+        }
+    })
+```
+
+会收到2、3、2  判断成功的都跳过 一旦为假  发送剩余的所有数据
+
+------
+
+skipUntil:跳过原始Observable发射的数据，直到第二个Observable发射了一个数据,然后发射原始Observable的剩余数据
+
+```java
+Observable
+    .just(1, 2, 3,2)
+    .skipUntil(Observable.just("3").delay(1,TimeUnit.SECONDS))
+    .subscribe(new Consumer<Integer>() {
+        @Override
+        public void accept(Integer integer) throws Exception {
+            L.i("" + integer);
+        }
+    });
+```
+
+ 收不到数据 因为第二个Observable延迟1s结束后 原始Observable已经没有剩余数据了
 
 ## 中转站（Subject）
 

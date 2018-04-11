@@ -48,11 +48,11 @@ Rx相关的库
 `Java`
 
 ```java
-//1.对于button的防抖处理 2秒内只截取第一次的点击事件，还有一个截取最后一次的方法
+//对于button的防抖处理 1秒内只截取第一次的点击事件，还有一个截取最后一次的方法
 //throttleFirst(2, TimeUnit.SECONDS) 截取第一个事件
 //throttleWithTimeout(2,TimeUnit.SECONDS) 事件延迟两秒执行
 RxView.clicks(register_button)
-    .throttleLast(2, TimeUnit.SECONDS)
+    .throttleFirst(1, TimeUnit.SECONDS)
     .subscribeOn(AndroidSchedulers.mainThread())
     .subscribe(new Observer() {
         @Override
@@ -83,7 +83,7 @@ RxView.clicks(register_button)
 
 ```kotlin
 RxView.clicks(register_button)
-    .throttleLast(2, TimeUnit.SECONDS)
+    .throttleFirst(1, TimeUnit.SECONDS)
     .subscribeOn(AndroidSchedulers.mainThread())
     .subscribe({
 
