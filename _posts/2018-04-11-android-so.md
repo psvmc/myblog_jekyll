@@ -70,7 +70,7 @@ android {
             // 3. 如果自己创建的so不需要重新编译,可以将(app/build/intermediates/transforms)生成的so拷贝到这个目录
             jniLibs.srcDirs = ['libs']
         }    
-	}
+    }
 }
 ```
 
