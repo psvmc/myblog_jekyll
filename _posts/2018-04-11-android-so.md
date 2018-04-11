@@ -50,7 +50,7 @@ so文件也会影响编译出的apk大小（将apk解压出来，lib目录下就
 
 使用 app源根文件夹下`build.gradle`文件的配置：
 
-```json
+```
 android {
     defaultConfig {
         // 不声明ndk标签,项目默认会创建一个libapp.so的文件
