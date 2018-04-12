@@ -21,8 +21,6 @@ implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
 implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
 implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
-//事件总线
-implementation 'com.hwangjr.rxbus:rxbus:2.0.0'
 //网络请求库
 implementation 'com.lzy.net:okgo:3.0.4'
 implementation 'com.lzy.net:okrx2:2.0.2'

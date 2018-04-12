@@ -8,7 +8,11 @@ categories: android java
 
 
 
-# 获取蓝牙设备
+# 蓝牙设备连接
+
+蓝牙的连接过程
+
+`获取`->`配对`->`连接`
 
 ## 权限
 
@@ -26,7 +30,7 @@ categories: android java
 
 
 
-## 连接蓝牙
+## 获取可用蓝牙设备
 
 ### 引包
 
@@ -59,6 +63,10 @@ if(!mBluetoothAdapter.isEnabled()){
 ```
 
 ### 获取本地蓝牙信息和已配对设备
+
+连接中的设备不能在搜索回调中获取 
+
+只能在以配对设备中获取
 
 ```java
 //获取本机蓝牙名称  
@@ -116,13 +124,28 @@ private BroadcastReceiver mBluetoothReceiver = new BroadcastReceiver(){
             //蓝牙设备名称  
             String name = scanDevice.getName();  
             if(name != null && name.equals(BLUETOOTH_NAME)){  
-                mBluetoothAdapter.cancelDiscovery();  
                 //取消扫描  
-                mProgressDialog.setTitle(getResources().getString(R.string.progress_connecting));                   //连接到设备。  
-                mBlthChatUtil.connect(scanDevice);  
+                mBluetoothAdapter.cancelDiscovery();  
+               
             }  
         }else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)){  
 			//扫描结束
+        }
+        else if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
+            //状态改变时
+            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            switch (device.getBondState()) {
+                case BluetoothDevice.BOND_BONDING://正在配对
+                    Log.d("BlueToothTestActivity", "正在配对......");
+                    break;
+                case BluetoothDevice.BOND_BONDED://配对结束
+                    Log.d("BlueToothTestActivity", "完成配对");
+                    break;
+                case BluetoothDevice.BOND_NONE://取消配对/未配对
+                    Log.d("BlueToothTestActivity", "取消配对");
+                default:
+                    break;
+            }
         }  
     }  
 
@@ -156,6 +179,14 @@ if (mBluetoothAdapter.isEnabled()) {
         startActivity(discoverableIntent);  
     }  
 } 
+```
+
+## 配对
+
+```java
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+    btDev.createBond();
+}
 ```
 
 

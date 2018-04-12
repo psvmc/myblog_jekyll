@@ -44,7 +44,7 @@ compile 'com.android.support:support-v4:23.0.0'
 |名称|引用方式|个人推荐|
 |---|---|---|
 |[`EventBus`](https://github.com/greenrobot/EventBus)|`compile 'org.greenrobot:eventbus:3.0.0'`|`★★★`项目未使用Rxjava|
-|[`RxBus`](https://github.com/AndroidKnife/RxBus)|`compile 'com.hwangjr.rxbus:rxbus:1.0.5'`|`★★★`项目使用Rxjava|
+|[`RxBus`](https://github.com/AndroidKnife/RxBus)|`compile 'com.hwangjr.rxbus:rxbus:1.0.5'`|`★★`项目使用Rxjava <br />作者好长时间未更新|
 |[`otto`](https://github.com/square/otto)|`compile 'com.squareup:otto:1.3.8'`|`★★`|
 
 ### 数据库
