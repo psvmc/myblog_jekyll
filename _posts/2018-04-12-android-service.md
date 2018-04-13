@@ -11,6 +11,13 @@ categories:
 
 
 
+## 前言
+
+service可以通过两种方式创建：`startService()`和`bindService()`.
+
++ startService()：一般用于在后台上传文件或者下载文件等，不跟其他组件通信，就算启动它的应用被销毁了，它仍然会欢快的在后台执行，直到完成任务的时候自刎（自己调用stopSelf()）或者被其他人下黑手(调用stopService()).
++ bindService()：允许其他组件跟它进行通信，允许多个客户端绑定到同一个service上，当所有的客户端都解除绑定后，该service就销毁了。
+
 ## 定义Service
 
 
@@ -53,7 +60,7 @@ public class PenService extends Service {
 
 ## Activity绑定
 
-
+`bindService()`
 
 ```java
 public class MyApplication extends Application {
