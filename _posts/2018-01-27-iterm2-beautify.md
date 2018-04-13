@@ -68,13 +68,19 @@ rm -rf fonts
 
   ![20180127151701674890404.jpg](http://image.psvmc.cn/20180127151701674890404.jpg)
 
-  这里一定要把半透明取消  否则很难看
+  注意：
 
-+ 配置`iTerm2字体` 任何已`Powerline`结束的字体均可   
+  + 这里一定要把半透明取消  否则很难看
 
-  推荐使用`Droid Sans Mono Dotted for Powerline`显示效果较好  
+  + 配置`iTerm2字体` 任何以`Powerline`结束的字体均可   
 
-  当然系统`终端`的字体也要修改 否则`终端`里的显示效果就很丑
+    推荐使用`Droid Sans Mono Dotted for Powerline`显示效果较好  
+
+    当然系统`终端`的字体也要修改 否则`终端`里的显示效果就很丑
+
+  + 注意上图中的`Style`配置 要配置为`Full-Width Bottom of Screen`
+
+    否则在窗口拖动大小后文字会错乱
 
 ### Powerline 主题
 
