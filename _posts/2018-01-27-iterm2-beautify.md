@@ -17,7 +17,7 @@ categories: centos iterm mac
 
 ![20180127151701695132778.jpg](http://image.psvmc.cn/20180127151701695132778.jpg)
 
-## 美化开始
+## iTerm2美化
 
 ### 安装
 
@@ -94,17 +94,18 @@ cd ~/.ohmyzsh-powerline
 ./install_in_omz.sh
 ```
 
-- 配置ZSH
+配置ZSH
 
-  打开配置文件`~/.zshrc` 修改主题配置
+打开配置文件`~/.zshrc` 修改主题配置
 
-  ```bash
-  ZSH_THEME="powerline"
-  ```
-
-## 终端中配置
+```bash
+ZSH_THEME="powerline"
+```
+## 终端美化
 
 如果你压根就不想用 `iTerm2` 那么你也可以配置`终端`
+
+当然还是要下载`Oh My ZSH!` 方法同上
 
 自体配置
 
