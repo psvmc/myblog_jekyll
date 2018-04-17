@@ -174,6 +174,68 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
   然后 `android:textCursorDrawable="@drawable/edit_cursor_color"`
 
+## 登录自动切换输入框
+
+```xml
+<EditText
+    android:id="@+id/username_edittext"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:hint="请输入您的账号"
+    android:imeOptions="actionNext"
+    android:nextFocusForward="@+id/userpwd_edittext"
+    android:paddingLeft="110dp"
+    android:paddingRight="10dp"
+    android:singleLine="true"
+    android:textCursorDrawable="@null" />
+<EditText
+    android:id="@+id/userpwd_edittext"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:hint="请输入您的密码"
+    android:imeOptions="actionDone"
+    android:inputType="textPassword"
+    android:nextFocusForward="@+id/login_button"
+    android:paddingLeft="110dp"
+    android:paddingRight="10dp"
+    android:singleLine="true"
+    android:textCursorDrawable="@null" />
+<Button
+    android:id="@+id/login_button"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_button_bg_anim"
+    android:text="立即登录"
+    android:textColor="@color/zj_blue"
+    android:textSize="23sp" />
+```
+
+主要是这几行
+
+```
+//账号输完 键盘中就可以跳转到下一个输入框
+android:imeOptions="actionNext"
+android:nextFocusForward="@+id/userpwd_edittext"
+//密码输完后 把焦点放到登录按钮上
+android:imeOptions="actionDone"
+android:nextFocusForward="@+id/login_button"
+```
+
+但是这样并没有点击登录 要想密码输入后也触发提交 就添加如下代码
+
+```kotlin
+userpwd_edittext.setOnEditorActionListener { textView, i, keyEvent ->
+    if (i == EditorInfo.IME_ACTION_DONE) {
+        toLogin()
+    }
+    false
+}
+```
+
+
+
 ## Button
 
 - 去阴影

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: linux基本操作
-description: linux基本操作
+title: Linux基本操作
+description: Linux基本操作
 keywords: 
     - linux
 category: linux

@@ -115,6 +115,17 @@ mMap["aa"] = "AA"
 Log.i("Kotlin", "$mMap")
 ```
 
+## vararg传值
+
+```kotlin
+//普通传递： 
+varargFun(1,"aaa","bbb","ccc","ddd","fff")
+//数组传递：
+val strArray = arrayOf("aaa","bbb","ccc","ddd","fff")
+varargFun(1,*strArray)
+```
+
+
 
 ## 循环
 
@@ -122,6 +133,8 @@ Log.i("Kotlin", "$mMap")
 for (i in 1..4) print(i) //打印1234
 for (i in 1 until 4)print(i) //打印123
 for (i in 4 downTo 1 step 1) print(i) //打印4321
+for (i in (1..4).reversed()) print(i) // prints "4321"
+for (i in (1..4).reversed() step 2) print(i) // prints "42"
 ```
 
 ## 数据类(pojo)
