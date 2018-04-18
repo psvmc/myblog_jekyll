@@ -22,8 +22,7 @@ a {
 }
 
 div.Canvas {
-	position: absolute;
-	top: 340px;
+	display: inline-block;
 	font-family: Lucida Console, Georgia;
 	font-size: 13px;
 	background-color: #ECECEC;
