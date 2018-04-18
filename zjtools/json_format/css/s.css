@@ -10,7 +10,7 @@
 
 .ControlsRow_div {
 	margin: 10px auto;
-	width: 620px;
+	width: 760px;
 }
 
 div.ControlsRow,div.HeadersRow {
@@ -22,12 +22,15 @@ a {
 }
 
 div.Canvas {
+	position: absolute;
+	top: 340px;
 	font-family: Lucida Console, Georgia;
 	font-size: 13px;
 	background-color: #ECECEC;
 	color: #000000;
 	border: solid 1px #CECECE;
 	min-height: 200px;
+	min-width: 100%;
 }
 
 .ObjectBrace {
@@ -47,6 +50,7 @@ div.Canvas {
 
 .String {
 	color: #007777;
+	white-space:nowrap;
 }
 
 .Number {
@@ -88,7 +92,7 @@ PRE.CodeContainer img {
 
 #ControlsRow {
 	white-space: nowrap;
-	font: 11px Georgia;
+	font: 16px Georgia;
 }
 
 #TabSizeHolder {
@@ -102,12 +106,14 @@ PRE.CodeContainer img {
 }
 
 #HeaderSubTitle {
-	margin-bottom: 2px;
-	margin-top: 0px
+	margin-left: 20px
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 30px;
 }
 
 #RawJson {
-	width: 99%;
+	width: 100%;
 	min-height: 200px;
 }
 
@@ -118,4 +124,12 @@ A.OtherToolsLink {
 
 A.OtherToolsLink:hover {
 	text-decoration: underline;
+}
+
+#format_button{
+	font-size: 16px;
+}
+
+#TabSize{
+	font-size: 16px;
 }
