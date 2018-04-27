@@ -304,7 +304,9 @@ Observable
 
 参见面发布者部分
 
-### just
+### just/range/fromArray
+
++ just
 
 ```java
 Observable observable = Observable.just("好好学习", "天天向上");
@@ -314,13 +316,13 @@ Observable observable = Observable.just("好好学习", "天天向上");
 // onCompleted();
 ```
 
-### range
++ range
 
 ```java
 Observable.range(1,10);
 ```
 
-### fromArray
++ fromArray
 
 ```java
 String[] quotations = {"好好学习", "天天向上"};
@@ -394,6 +396,7 @@ Observable
             for (char c:s.toCharArray()){
                 subject.onNext(Integer.valueOf(""+c));
             }
+            subject.onComplete();
             return subject;
         }
     }).subscribe(new Consumer<Integer>() {
@@ -405,6 +408,35 @@ Observable
 ```
 
 用 `map()` 显然是不行的，因为 `map()` 是一对一的转化，而我现在的要求是一对多的转化，就需要用 `flatMap()` 了
+
+Kotlin
+
+```kotlin
+Observable
+    .create<Int> {
+        for (i in 0 until 4) {
+            it.onNext(i)
+        }
+        it.onComplete()
+    }
+    .concatMap {
+        L.i("concatMap:${it}")
+        var value = it
+        return@concatMap Observable.create<String> {
+            Thread.sleep((Math.random() * 1000).toLong())
+            it.onNext("${value + 100}")
+            it.onComplete()
+        }
+    }.subscribe({
+        L.i("最后：${it}")
+    }, {
+
+    }, {
+        L.i("事件完成")
+    })
+```
+
+> 注意`concatMap`中一定要发送`onComplete`事件
 
 ### flatMap
 

@@ -300,6 +300,19 @@ Observable.timer(3, TimeUnit.SECONDS)
     });
 ```
 
+`Kotlin`
+
+```kotlin
+Observable.timer(100,TimeUnit.MILLISECONDS)
+    .compose(this.bindToLifecycle())
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe {
+
+    }
+```
+
+
+
 ## 循环执行
 
 `Java`
@@ -316,6 +329,19 @@ Observable.interval(3,3,TimeUnit.SECONDS)
         }
     });
 ```
+
+`Kotlin`
+
+```kotlin
+Observable.interval(1,1,TimeUnit.SECONDS)
+    .compose(this.bindToLifecycle())
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe { 
+
+    }
+```
+
+
 
 ## 分线程操作
 

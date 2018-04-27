@@ -174,6 +174,14 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
   然后 `android:textCursorDrawable="@drawable/edit_cursor_color"`
 
+### 获取资源
+
+```java
+ContextCompat.getDrawable(context, drawableId);
+```
+
+
+
 ## 登录自动切换输入框
 
 ```xml
@@ -626,4 +634,40 @@ private fun handleListView(contentView: View) {
 
 + 华为平板 打开计算器 横屏状态 输入`()()2846579()()`
 
+
+
+
+
+
+# Eventbus
+
+注册
+
+```kotlin
+override fun onStart() {
+    super.onStart()
+    EventBus.getDefault().register(this)
+}
+
+override fun onStop() {
+    EventBus.getDefault().unregister(this)
+    super.onStop()
+}
+```
+
+发送粘性事件
+
+```kotlin
+EventBus.getDefault().postSticky(questionBean)
+```
+
+接收粘性事件
+
+```kotlin
+@Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+fun onMessageEvent(event: TQuestionBean) {
+    questionBean = event;
+    initView()
+}
+```
 
