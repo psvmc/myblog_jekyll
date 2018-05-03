@@ -24,7 +24,7 @@ Docker就是一个容器，但是这个容器里什么都没有，所以我们�
 ``` 
 $docker version  
 ```
-  
+
 + 显示docker系统的信息  
 
 ```
@@ -39,26 +39,26 @@ $docker info
 
 ```
 $docker search image_name
-```  
-  
+```
+
 + 下载镜像  
 
 ```
 $docker pull image_name 
-``` 
-  
+```
+
 + 列出镜像列表
 
 ```
 $docker images
 ```
-  
+
 + 删除一个或者多个镜像 
 
 ``` 
 $docker rmi image_name 
-``` 
-  
+```
+
 + 显示一个镜像的历史
 
 ``` 
@@ -126,7 +126,7 @@ docker run <相关参数> <镜像 ID> <初始命令>
 > + -d：表示以`守护模式`执行`/bin/bash`脚本，此时 Tomcat 控制台不会出现在输出终端上。
 > + -p：表示宿主机与容器的端口映射，此时将容器内部的 8080 端口映射为宿主机的 58080 端口，这样就向外界暴露了 58080 端口，可通过 Docker 网桥来访问容器内部的 8080 端口了。
 > + --name：表示容器名称，用一个有意义的名称命名即可。
-> +	使用在Docker run的时候使用`--restart`参数来设置。    
+> 		使用在Docker run的时候使用`--restart`参数来设置。    
 	`no - container`：不重启.   
 	`on-failure` - container:退出状态非0时重启.    
 	`always`:始终重启. 
@@ -221,26 +221,25 @@ docker exec -t -i Name/ID /bin/bash
 	import应用于容器 save应用于镜像
 
 + Docker 容器运行后 自动启动服务   
-	docker中的容器运行后 里面的服务就算设置了开机启动也不会启动。  
-	解决方式是建一个文件`/home/auto_service.sh`
-	
-	```
-	#!/bin/sh
-	service nginx start
-	service mysqld start
-	service tomcat7 start
-	/bin/bash
-	```
-	
-	第一行不能少 来标示文件的类型 最后一行也不能少 否则会在服务启动后自动退出容器
-	
-	运行命令
-	
-	```
-	docker run -i -t --name javaweb -p 80:80 -p 8080:8080  fec9183579a7 /home/auto_service.sh
-	```
-	
-	
+  docker中的容器运行后 里面的服务就算设置了开机启动也不会启动。  
+  解决方式是建一个文件`/home/auto_service.sh`
+
+  ```
+  #!/bin/sh
+  service nginx start
+  service mysqld start
+  service tomcat7 start
+  /bin/bash
+  ```
+
+  第一行不能少 来标示文件的类型 最后一行也不能少 否则会在服务启动后自动退出容器
+
+  运行命令
+
+  ```
+  docker run -i -t --name javaweb -p 80:80 -p 8080:8080  fec9183579a7 /home/auto_service.sh
+  ```
+
 + 无法`ping`容器的IP地址 无法用容器的ip `ssh登录`
 
 	```
@@ -276,13 +275,13 @@ docker exec -t -i Name/ID /bin/bash
 	
 ## 实际操作
 
-下载`tomcat`镜像
+下载`tomcat`镜像(以下都是在该镜像的基础上操作的)
 
 ```
 docker pull registry.cn-shanghai.aliyuncs.com/kylinfedora/centos-tomcat
 ```
 
-我自己的镜像
+我自己的镜像(操作方式见[自定义Dockerfile构建镜像](http://www.psvmc.cn/article/docker-dockerfile.html))
 
 ```
 docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
@@ -321,7 +320,9 @@ docker logs tomcat04
 docker exec -t -i tomcat04 /bin/bash
 ```
 
-接下来 我们退出`tomcat`的运行环境(`Ctrl+P+Q`)  把文件拷贝到容器中
+接下来 我们退出`tomcat`的运行环境(`Ctrl+P+Q`)  
+
+把文件拷贝到容器中
 
 ```
 docker cp /root/test.war tomcat04:/usr/local/tomcat/webapps/test.war

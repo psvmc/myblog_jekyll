@@ -86,6 +86,163 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 source /etc/profile
 ```
 
+## Tomcat6/7(yum方式)
+
+Tomcat7
+
+```bash
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
+#这个是jpackage依赖的包要先装
+yum -y install yum-priorities                                   
+rpm -Uvh http://mirrors.dotsrc.org/jpackage/6.0/generic/free/RPMS/jpackage-release-6-3.jpp6.noarch.rpm  
+
+#安装tomcat7
+yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat-native   
+```
+
+启动tomcat  
+
+`service tomcat7 start `  
+
+设为开机启动   
+
+`chkconfig tomcat7 on`  
+
+默认的tomcat文件夹路径  
+
+`/usr/share/tomcat7`  
+
+
+
+## Tomcat8(非yum方式)
+
+(1)下载
+
+下载地址不能用的话从[`http://tomcat.apache.org/`](http://tomcat.apache.org/)获取新地址
+
+```bash
+wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.30/bin/apache-tomcat-8.5.30.tar.gz
+```
+
+(2)安装
+
+```bash
+tar -xzvf apache-tomcat-8.5.30.tar.gz
+mv apache-tomcat-8.5.30 /opt/tomcat8
+```
+
+运行
+
+```bash
+cd /opt/tomcat8/bin
+./startup.sh  
+```
+
+(3)配置
+
+在生产环境用 root 是不安全的，所以
+
+```bash
+useradd -s /sbin/nologin tomcat
+chown -R tomcat:tomcat /opt/tomcat8
+```
+
+为 service，和操作系统一起启动
+
+```bash
+cd /opt/tomcat8/bin
+tar -xzvf commons-daemon-native.tar.gz
+cd commons-daemon-1.1.0-native-src/unix/
+./configure 
+make
+cp jsvc ../..
+cd ../..
+```
+
+错误1
+
+```bash
+configure: error: no acceptable C compiler found in $PATH
+```
+
+解决1
+
+```bash
+yum -y install gcc
+```
+
+打开daemon.sh
+
+```bash
+vim daemon.sh
+```
+
+正文最开始也就是注释的下面增加下边五行内容
+
+```bash
+# chkconfig: 2345 10 90 
+# description: Starts and Stops the Tomcat daemon. 
+
+JAVA_HOME=/usr/java/jdk1.8.0_162
+CATALINA_HOME=/opt/tomcat8
+CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m" 
+```
+
+配置防止日志中文乱码
+
+找到`JAVA_OPTS=` 修改为
+
+```bash
+JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8"
+```
+
+保存并退出
+
+```bash
+:wq
+```
+
+增加到 service
+
+```bash
+cp daemon.sh /etc/init.d/tomcat8
+chkconfig --add tomcat8
+```
+
+检查
+
+```bash
+chkconfig --list|grep tomcat8
+```
+
+启动服务
+
+```bash
+service tomcat8 start
+```
+
+防火墙添加信任规则
+
+打开文件
+
+```bash
+vim /etc/sysconfig/iptables
+```
+
+添加规则
+
+```
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+```
+
+重启防火墙
+
+```
+service iptables restart 
+```
+
+
+
 ## Mysql
 
 安装mysql  
@@ -289,159 +446,7 @@ enabled=1
 
 7) 查看安装版本 `nginx -v`
 
-## Tomcat6/7(yum方式)
 
-Tomcat7
-
-```bash
-rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm  
-#这个是jpackage依赖的包要先装
-yum -y install yum-priorities                                   
-rpm -Uvh http://mirrors.dotsrc.org/jpackage/6.0/generic/free/RPMS/jpackage-release-6-3.jpp6.noarch.rpm  
-
-#安装tomcat7
-yum -y --nogpgcheck install tomcat7 tomcat7-webapps tomcat7-admin-webapps tomcat-native   
-```
-
-启动tomcat  
-
-`service tomcat7 start `  
-
-设为开机启动   
-
-`chkconfig tomcat7 on`  
-
-默认的tomcat文件夹路径  
-
-`/usr/share/tomcat7`  
-
-## Tomcat8(非yum方式)
-
-(1)下载
-
-下载地址不能用的话从[`http://tomcat.apache.org/`](http://tomcat.apache.org/)获取新地址
-
-```bash
-wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.27/bin/apache-tomcat-8.5.27.tar.gz
-```
-
-(2)安装
-
-```bash
-tar -xzvf apache-tomcat-8.5.27.tar.gz
-mv apache-tomcat-8.5.27 /opt/tomcat8
-```
-
-运行
-
-```bash
-cd /opt/tomcat8/bin
-./startup.sh  
-```
-
-(3)配置
-
-在生产环境用 root 是不安全的，所以
-
-```bash
-useradd -s /sbin/nologin tomcat
-chown -R tomcat:tomcat /opt/tomcat8
-```
-
-
-做为 service，和操作系统一起启动
-
-```bash
-cd /opt/tomcat8/bin
-tar -xzvf commons-daemon-native.tar.gz
-cd commons-daemon-1.1.0-native-src/unix/
-./configure 
-make
-cp jsvc ../..
-cd ../..
-```
-
-错误1
-
-```bash
-configure: error: no acceptable C compiler found in $PATH
-```
-
-解决1
-
-```bash
-yum -y install gcc
-```
-
-打开daemon.sh
-
-```bash
-vim daemon.sh
-```
-
-正文最开始也就是注释的下面增加下边五行内容
-
-```bash
-# chkconfig: 2345 10 90 
-# description: Starts and Stops the Tomcat daemon. 
-
-JAVA_HOME=/usr/java/jdk1.8.0_162
-CATALINA_HOME=/opt/tomcat8
-CATALINA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m" 
-```
-
-配置防止日志中文乱码
-
-找到`JAVA_OPTS=` 修改为
-
-```bash
-JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8"
-```
-
-保存并退出
-
-```bash
-:wq
-```
-
-增加到 service
-
-```bash
-cp daemon.sh /etc/init.d/tomcat8
-chkconfig --add tomcat8
-```
-
-检查
-
-```bash
-chkconfig --list|grep tomcat8
-```
-
-启动服务
-
-```bash
-service tomcat8 start
-```
-
-防火墙添加信任规则
-
-打开文件
-
-```bash
-vim /etc/sysconfig/iptables
-```
-
-添加规则
-
-```
--A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-```
-
-重启防火墙
-
-```
-service iptables restart 
-```
 
 ## 防火墙(Centos6)
 
