@@ -209,6 +209,12 @@ cp daemon.sh /etc/init.d/tomcat8
 chkconfig --add tomcat8
 ```
 
+开机启动
+
+````bash
+chkconfig tomcat8 on
+````
+
 检查
 
 ```bash
@@ -220,6 +226,17 @@ chkconfig --list|grep tomcat8
 ```bash
 service tomcat8 start
 ```
+
+删除服务
+
+```bash
+service tomcat8 stop
+chkconfig tomcat8 off
+chkconfig --del tomcat8
+rm -rf /etc/init.d/tomcat8
+```
+
+
 
 防火墙添加信任规则
 
