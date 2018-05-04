@@ -8,6 +8,15 @@ categories: android
 
 ---
 
+## 所需权限
+
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.CAMERA" />
+```
+
+
+
 ## 默认方式(缩略图 图片模糊)
 
 定义全局变量
@@ -60,6 +69,49 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 }
 ```
+
+Kotlin
+
+```kotlin
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (requestCode == CAMERA && resultCode == Activity.RESULT_OK && data != null) {
+        doAsync {
+            val name = DateFormat.format(
+                "yyyyMMdd_hhmmss",
+                Calendar.getInstance(Locale.CHINA)
+            ).toString() + ".jpg"
+
+            val bundle = data.extras
+            //获取相机返回的数据，并转换为图片格式
+            val bitmap = bundle.get("data") as Bitmap
+            var fout: FileOutputStream? = null
+            val file_path = ZJBitmapUtil.getSavePath(mContext) + name
+            val file = File(file_path)
+            file.getParentFile().mkdirs()
+
+            try {
+                fout = FileOutputStream(file_path)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fout)
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            } finally {
+                try {
+                    fout!!.flush()
+                    fout!!.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+
+            }
+            uiThread {
+                head_imageview.setImageBitmap(ZJBitmapUtil.getLoacalBitmap(file_path))
+            }
+        }
+    }
+}
+```
+
 
 
 ## 返回原图(解决图片模糊)
@@ -130,6 +182,55 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             });
     }
 
+}
+```
+
+## 相册中选取图片
+
+Kotlin
+
+```kotlin
+var PHOTO = 10000;
+
+val photo = Intent(
+    Intent.ACTION_PICK,
+    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+)
+startActivityForResult(photo, PHOTO)
+```
+
+回调
+
+```kotlin
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (requestCode == PHOTO && resultCode == Activity.RESULT_OK && data != null) {
+        try {
+            doAsync {
+                var path = ""
+                val selectedImage = data.data //获取系统返回的照片的Uri
+                val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+                val cursor = contentResolver.query(
+                    selectedImage,
+                    filePathColumn,
+                    null,
+                    null,
+                    null
+                )
+                //从系统表中查询指定Uri对应的照片
+                cursor!!.moveToFirst()
+                val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                path = cursor.getString(columnIndex)  //获取照片路径
+                cursor.close()
+                val bitmap = BitmapFactory.decodeFile(path)
+                uiThread {
+                    head_imageview.setImageBitmap(bitmap)
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }
 ```
 
