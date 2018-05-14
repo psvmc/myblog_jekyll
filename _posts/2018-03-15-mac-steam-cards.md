@@ -60,7 +60,11 @@ Mac上可以用[`AnotherSteamCommunityFix`](https://steamcn.com/t339641-1-1)
 
 QQ浏览器下载 `暴力猴` 插件:浏览器加载运行JS
 
-[`Steam-Economy-Enhancer`](https://github.com/Sneer-Cat/Steam-Economy-Enhancer)：添加批量卖卡按钮的JS
+火狐搜索 [`Tampermonkey`](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/) 
+
+[`Steam-Economy-Enhancer`](https://github.com/Sneer-Cat/Steam-Economy-Enhancer/raw/master/code.user.js)：添加批量卖卡按钮的脚本
+
+脚本搜索网站 [Greasy Fork](https://greasyfork.org/zh-CN)
 
 
 

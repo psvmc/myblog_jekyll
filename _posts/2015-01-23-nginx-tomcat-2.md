@@ -10,7 +10,7 @@ category: nginx
 
 ## Nginx虚拟主机配置
 
-```json
+```nginx
 server {
     listen       80;
     server_name  www.yojob.cn; 

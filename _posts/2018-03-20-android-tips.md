@@ -494,6 +494,47 @@ fun initFragment() {
 
 对于Fragment，`getFragmentManager()`是获取的是父Fragment(如果没有，则是FragmentActivity)的FragmentManager对象，而`getChildFragmentManager()`是获取自己的FragmentManager对象。
 
+## 跑马灯效果
+
+```xml
+<TextView    
+    android:layout_width="fill_parent"    
+    android:layout_height="wrap_content"    
+    android:ellipsize="marquee"    
+    android:focusable="true"    
+    android:focusableInTouchMode="true"    
+    android:marqueeRepeatLimit="marquee_forever"    
+    android:scrollHorizontally="true"    
+    android:singleLine="true"    
+    android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"    
+    android:textSize="17sp" /> 
+```
+
+主要属性
+
+```xml
+//设置为跑马灯显示
+android:ellipsize="marquee"
+//获取焦点
+android:focusable="true"
+//可以通过toucth来获得focus
+android:focusableInTouchMode="true"
+//设置重复的次数
+android:marqueeRepeatLimit="marquee_forever"
+//单行显示文字
+android:singleLine="true"
+```
+
+
+
+## getColor getDrawable 的替代方法
+
+Kotlin
+
+```kotlin
+ContextCompat.getColor(mContext,android.R.color.background_light)
+```
+
 
 
 ## BottomSheetBehavior使用

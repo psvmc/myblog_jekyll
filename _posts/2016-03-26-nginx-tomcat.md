@@ -14,7 +14,7 @@ Nginx和Tomcat的负载均衡配置 只能用http 协议  但是nginx的优秀�
 
 ## 负载均衡
 
-```json
+```nginx
 upstream a_psvmc {  
       server a.psvmc.cn:8080;  
       server a.psvmc.cn:9080;   
@@ -69,7 +69,7 @@ Tomcat中又配置了多个Host节点
 
 Nginx中
 
-```json
+```nginx
 upstream a_psvmc {  
       server a.psvmc.cn:8080;  
       server a.psvmc.cn:9080;
@@ -111,7 +111,7 @@ Tomcat中用默认的配置
 
 变动项有
 
-```
+```nginx
 proxy_pass http://a_psvmc/test/;  
 proxy_cookie_path /test/ /;
 proxy_redirect  /test/ /; 
@@ -148,7 +148,7 @@ ip_hash简单易用，但有如下问题：
 来自同一局域网的客户端会被转发到同一个后端服务器，可能导致负载失衡；  
 不适用于CDN网络，不适用于前段还有代理的情况。  
 
-```json
+```nginx
 upstream a_psvmc {  
     ip_hash;
      server a.psvmc.cn:8080;  
