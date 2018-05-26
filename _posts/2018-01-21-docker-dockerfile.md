@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: Docker 自定义Dockerfile构建镜像
 description: Docker 自定义Dockerfile构建镜像
@@ -118,7 +117,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
     Options: 
   	--details 显示更多的信息 
   	-f, --follow 跟踪实时日志 
-  	--since string 显示自某个timestamp之后的日志，或相对时间，如42m（即42分钟） 
+  	--since string 显示自某个timestamp之后的日志 
   	--tail string 从日志末尾显示多少行日志， 默认是all 
   	-t, --timestamps 显示时间戳 
   	--until string 显示自某个timestamp之前的日志，或相对时间，如42m（即42分钟）
@@ -130,12 +129,6 @@ docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
 
   ```bash
   docker logs -f -t --since="2018-02-08" --tail=100 CONTAINER_ID/NAMES
-  ```
-
-  查看最近30分钟的日志:
-
-  ```bash
-  docker logs --since 30m CONTAINER_ID/NAMES
   ```
 
   查看某时间之后的日志：
