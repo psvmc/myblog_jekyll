@@ -253,3 +253,11 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
++ 应用崩溃检测服务 [`Bugly`](https://bugly.qq.com)
+
+  ```bash
+  compile 'com.tencent.bugly:crashreport:latest.release'
+  ```
+
+  
+

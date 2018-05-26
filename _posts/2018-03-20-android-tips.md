@@ -174,7 +174,15 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
   然后 `android:textCursorDrawable="@drawable/edit_cursor_color"`
 
-### 获取资源
++ 页面显示时不显示输入法
+
+  ```kotlin
+  getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+  ```
+
+  
+
+## 获取资源
 
 ```java
 ContextCompat.getDrawable(context, drawableId);
