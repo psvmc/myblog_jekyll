@@ -8,6 +8,55 @@ category: linux
 
 ---
 
+
+
+## 阿里时间同步(推荐)
+
+### 1. 安装chrony（时间同步客户端）
+
+ubuntu/debian:
+
+```
+apt-get install chrony
+```
+Centos/redhat/alios:
+
+```
+yum install chrony
+```
+
+### 2. 删除默认Server
+
+```
+sed -i "/server/d" /etc/chrony.conf
+```
+
+### 3. 打开/etc/chrony.conf，新增一行:
+
+```
+server ntp.aliyun.com iburst
+```
+
+### 4. 重启chrony
+
+```
+/etc/init.d/chronyd restart
+```
+
+或者
+
+```
+systemctl restart chronyd
+```
+
+### 5. 查看是否正常
+
+```
+chronyc tracking
+```
+
+
+
 ## 时间设置
 
 ### 查看当前时间
@@ -55,7 +104,7 @@ category: linux
 ### 设置系统时间为当前的硬件时间
 
 `hwclock --hctosys`  
- 
+
 或者   
 
 `clock --hctosys`   
@@ -63,7 +112,7 @@ category: linux
 或者
 
 `hwclock -s`  
- 
+
 或者   
 
 `clock -s`   
@@ -74,7 +123,7 @@ category: linux
 ### 设置硬件时间为当前的系统时间
 
 `hwclock --systohc` 
- 
+
 或者
 
 `clock --systohc`  
