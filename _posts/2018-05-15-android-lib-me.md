@@ -23,7 +23,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ Kotlin & [`anko`](https://github.com/Kotlin/anko)
+### Kotlin & anko
+
+ [`anko`](https://github.com/Kotlin/anko)
 
   project - build.gradle
 
@@ -53,7 +55,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 权限 [`PermissionsDispatcher`](https://github.com/permissions-dispatcher/PermissionsDispatcher)
+### 权限
+
+[`PermissionsDispatcher`](https://github.com/permissions-dispatcher/PermissionsDispatcher)
 
   Kotlin
 
@@ -69,9 +73,19 @@ implementation 'com.android.support:support-v4:27.1.1'
   }
   ```
 
-  
+  注解
 
-+ Adapter [`BaseRecyclerViewAdapterHelper`](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
+| Annotation            | Required | Description                                                  |
+| --------------------- | -------- | ------------------------------------------------------------ |
+| `@RuntimePermissions` | **✓**    | Register an `Activity` or `Fragment`(we support both) to handle permissions |
+| `@NeedsPermission`    | **✓**    | Annotate a method which performs the action that requires one or more permissions |
+| `@OnShowRationale`    |          | Annotate a method which explains why the permission/s is/are needed. It passes in a `PermissionRequest` object which can be used to continue or abort the current permission request upon user input |
+| `@OnPermissionDenied` |          | Annotate a method which is invoked if the user doesn't grant the permissions |
+| `@OnNeverAskAgain`    |          | Annotate a method which is invoked if the user chose to have the device "never ask again" about a permission |
+
+### Adapter
+
+ [`BaseRecyclerViewAdapterHelper`](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
 
   ```bash
   implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
@@ -79,7 +93,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ RX [`RxAndroid`](https://github.com/ReactiveX/RxAndroid)
+### RX
+
+ [`RxAndroid`](https://github.com/ReactiveX/RxAndroid)
 
   ```bash
   implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
@@ -91,7 +107,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ HTTP [`okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo)  JSON[`fastjson`](https://github.com/alibaba/fastjson)
+### HTTP & JSON
+
+ [`okhttp-OkGo`](https://github.com/jeasonlzy/okhttp-OkGo)  [`fastjson`](https://github.com/alibaba/fastjson)
 
   ```bash
   //网络请求
@@ -103,7 +121,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ 数据库 [`android-lite-orm`](https://github.com/litesuits/android-lite-orm)
+### 数据库 
+
+[`android-lite-orm`](https://github.com/litesuits/android-lite-orm)
 
   ```bash
   引用Jar包
@@ -111,7 +131,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 事件总线 [`EventBus`](https://github.com/greenrobot/EventBus)
+### 事件总线 
+
+[`EventBus`](https://github.com/greenrobot/EventBus)
 
   ```bash
   implementation 'org.greenrobot:eventbus:3.0.0'
@@ -119,7 +141,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 图片加载[`Glide`](https://github.com/bumptech/glide) OR [`glide-transformations`](https://github.com/wasabeef/glide-transformations) 选其一
+### 图片加载
+
+[`Glide`](https://github.com/bumptech/glide) OR [`glide-transformations`](https://github.com/wasabeef/glide-transformations) 选其一
 
   ```bash
   //Glide
@@ -131,7 +155,11 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 图片圆角[`RoundedImageView`](https://github.com/vinc3m1/RoundedImageView) 背景圆角[`FlycoRoundView`](https://github.com/H07000223/FlycoRoundView)
+### 图片圆角&背景圆角
+
+图片圆角[`RoundedImageView`](https://github.com/vinc3m1/RoundedImageView) 
+
+背景圆角[`FlycoRoundView`](https://github.com/H07000223/FlycoRoundView)
 
   ```bash
   //图片圆角
@@ -142,7 +170,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 消息提示 [`Toasty`](https://github.com/GrenderG/Toasty)
+### 消息提示 
+
+[`Toasty`](https://github.com/GrenderG/Toasty)
 
   ```bash
   implementation 'com.github.GrenderG:Toasty:1.2.8'
@@ -150,7 +180,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ 弹出窗口 [`Material Dialogs`](https://github.com/afollestad/material-dialogs)
+### 弹出窗口 
+
+[`Material Dialogs`](https://github.com/afollestad/material-dialogs)
 
   ```bash
   dependencies {
@@ -160,7 +192,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 事件视图绑定 [`Butterknife`](https://github.com/JakeWharton/butterknife)
+### 事件视图绑定 
+
+[`Butterknife`](https://github.com/JakeWharton/butterknife)
 
   ```bash
   dependencies {
@@ -173,7 +207,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ 圆状进度 [`CircleProgressBar`](https://github.com/dinuscxj/CircleProgressBar)
+### 圆状进度
+
+ [`CircleProgressBar`](https://github.com/dinuscxj/CircleProgressBar)
 
   ```bash
   //圆状进度
@@ -182,7 +218,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ Banner [`BGABanner-Android`](https://github.com/bingoogolapple/BGABanner-Android)
+### Banner 
+
+[`BGABanner-Android`](https://github.com/bingoogolapple/BGABanner-Android)
 
   ```bash
   //Banner
@@ -191,7 +229,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ 标签云 [`TagCloudView`](https://github.com/kingideayou/TagCloudView)
+### 标签云 
+
+[`TagCloudView`](https://github.com/kingideayou/TagCloudView)
 
   ```bash
   //标签云
@@ -200,7 +240,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ 多条件筛选菜单  [`DropDownMenu`](https://github.com/dongjunkun/DropDownMenu)
+### 多条件筛选菜单 
+
+ [`DropDownMenu`](https://github.com/dongjunkun/DropDownMenu)
 
   ```bash
   allprojects {
@@ -217,7 +259,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 仿iOS Segment [`SHSegmentControl`](https://github.com/7heaven/SHSegmentControl)  
+### 仿iOS Segment 
+
+[`SHSegmentControl`](https://github.com/7heaven/SHSegmentControl)
 
   ```bash
   implementation 'com.7heaven.widgets:segmentcontrol:1.17'
@@ -225,7 +269,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-+ 加载HTML的TextView [`html-textview`](https://github.com/psvmc/html-textview)
+### 加载HTML的TextView 
+
+[`html-textview`](https://github.com/psvmc/html-textview)
 
   ```bash
   dependencies {
@@ -235,7 +281,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 自定义弹出层 [`CustomPopwindow`](https://github.com/pinguo-zhouwei/CustomPopwindow)
+### 自定义弹出层
+
+ [`CustomPopwindow`](https://github.com/pinguo-zhouwei/CustomPopwindow)
 
   ```bash
   allprojects {
@@ -253,7 +301,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
   
 
-+ 应用崩溃检测服务 [`Bugly`](https://bugly.qq.com)
+### 应用崩溃检测服务
+
+ [`Bugly`](https://bugly.qq.com)
 
   ```bash
   compile 'com.tencent.bugly:crashreport:latest.release'

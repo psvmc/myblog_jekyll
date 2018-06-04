@@ -30,7 +30,7 @@ android小组也知道这事儿。7年了！权限系统终于被重新设计了
 ## 正文
 
 新版的权限可以分为两大类`普通权限`和`运行时权限`
-  
+
 + `运行时权限`需要`询问用户`
 + `普通权限`只要在`AndroidManifest.xml`中声明就好了，安装应用时会自动赋予
 
@@ -535,6 +535,57 @@ private void questAllPersission(){
 
 + 1.严肃对待新权限模型
 + 2.如果你代码没支持新权限，不要设置**targetSdkVersion 23**。尤其是当你在Studio新建工程时，不要忘了修改！
+
+## Kotlin
+
+申请权限
+
+```kotlin
+ActivityCompat.requestPermissions(
+    this,
+    arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_PHONE_STATE
+    ),
+    REQUEST_CODE_ASK_PERMISSIONS
+)
+```
+
+回调
+
+```kotlin
+override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    when (requestCode) {
+        REQUEST_CODE_ASK_PERMISSIONS -> {
+            for (i in 0 until permissions.size) {
+                var mpermission = permissions.get(i)
+                var mgrant = grantResults.get(i)
+                if (mgrant == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    when(mpermission){
+                        Manifest.permission.READ_EXTERNAL_STORAGE->{
+                            Toasty.warning(mContext, "扩展存储授权失败").show()
+                        }
+                        Manifest.permission.CAMERA->{
+                            Toasty.warning(mContext, "相机授权失败").show()
+                        }
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE->{
+                            Toasty.warning(mContext, "写入存储授权失败").show()
+                        }
+                        Manifest.permission.READ_PHONE_STATE->{
+                            Toasty.warning(mContext, "读取手机状态授权失败").show()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 
 
