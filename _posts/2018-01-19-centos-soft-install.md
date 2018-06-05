@@ -202,7 +202,7 @@ docker version
 
 假设新路径为`/data/tools/docker`
 
-#### 方案一 修改默认存放路径(推荐)
+#### 方案一 修改默认路径(推荐)
 
 1) 修改配置
 
@@ -210,44 +210,20 @@ docker version
 
 但是不同系统下配置的位置不同
 
-- CentOS7
-
-  修改`docker.service`文件，使用`--graph`参数指定存储位置
-
-  ```bash
-  sudo vim /usr/lib/systemd/system/docker.service
-  ```
-
-  文本内容：`ExecStart=/usr/bin/dockerd`下面添加如下内容：
-
-  ```bash
-  --graph /data/tools/docker
-  ```
-
-  ![](https://ws1.sinaimg.cn/large/006tKfTcly1fs0fk21l5dj30hq07hgmv.jpg)
-
-- CentOS6 
+- CentOS 
 
   位置 `/etc/sysconfig/docker` 添加下面这行
 
+  修改
+
   ```bash
-  OPTIONS=--graph="/data/tools/docker"--selinux-enabled -H fd://
+  OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false'
   ```
 
-  
-
-- Ubuntu
-
-  位置`/etc/default/docker`添加下面这行
+  修改为
 
   ```bash
-  OPTIONS=--graph="/root/data/docker" -H fd://
-  ```
-
-  或者
-
-  ```bash
-  DOCKER_OPTS="-g /root/data/docker"
+  OPTIONS='--graph=/data/tools/docker --selinux-enabled --log-driver=journald --signature-verification=false'
   ```
 
   
@@ -267,7 +243,7 @@ sudo systemctl  restart docker.service
 4) 查看信息
 
 ```bash
-docker info
+sudo docker info | grep "Docker Root Dir" 
 ```
 
 出现一下则证明成功了
@@ -278,7 +254,7 @@ Docker Root Dir: /data/tools/docker
 
 
 
-#### 方案二 设置软连接(不推荐)
+#### 方案二 设置软链接(不推荐)
 
 1.首先停掉Docker服务：
 
@@ -318,7 +294,7 @@ ls -al /var/lib/docker
 
 6.启动Docker
 
-这时候启动Docker时发现存储目录依旧是/var/lib/docker，但是实际上是存储在数据盘的，你可以在数据盘上看到容量变化。
+这时候启动Docker时发现存储目录依旧是`/var/lib/docker`，但是实际上是存储在数据盘的，你可以在数据盘上看到容量变化。
 
 ```bash
 sudo systemctl start docker
@@ -333,8 +309,6 @@ sudo systemctl start docker
 ```bash
 docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
 ```
-
-
 
 
 
