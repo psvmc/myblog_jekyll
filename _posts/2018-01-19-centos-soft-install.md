@@ -7,6 +7,337 @@ categories: linux yum
 
 ---
 
+## 查看已挂载磁盘空间大小
+
+```bash
+df -h
+```
+
+
+
+## 挂载磁盘
+
+1）查看磁盘分区信息
+
+```bash
+fdisk -l
+```
+
+出现类似
+
+```
+磁盘 /dev/vdb：1073.7 GB, 1073741824000 字节，2097152000 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+```
+
+2) 假如磁盘为`/dev/vdb` 格式化分区
+
+```
+mkfs.ext4 /dev/vdb
+```
+
+3) 格式化后进行挂载
+
+```
+mkdir /data
+mount /dev/vdb /data
+```
+
+4) 开机自动挂载
+
+按照上面配置后开机后并不会自动挂载磁盘。 自动挂载的配置如下
+
+```
+vim /etc/fstab
+```
+
+在文件的最后添加
+
+```
+/dev/vdb    /data    ext4    defaults    0    0 
+```
+
+保存退出 `ESC` `:wq`
+
+5) 查看磁盘的剩余空间
+
+```
+df -hl
+```
+
+
+
+## 设置阿里yum镜像
+
+### 1) 备份
+
+```bash
+ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+```
+
+
+
+### 2) 下载新的CentOS-Base.repo 到/etc/yum.repos.d/
+
+
+
++ CentOS 5
+
+  ```bash
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+  ```
+
+   
+
++ CentOS 6
+
+  ```bash
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+  ```
+
+  
+
++ CentOS 7
+
+  ```bash
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+  ```
+
+  
+
+### 3) 生成缓存
+
+```
+yum makecache
+```
+
+
+
+## 配置时间同步
+
+### 1. 安装chrony（时间同步客户端）
+
+ubuntu/debian:
+
+```bash
+apt-get install chrony
+```
+Centos/redhat/alios:
+
+```bash
+yum install chrony
+```
+
+### 2. 删除默认Server
+
+```bash
+sed -i "/server/d" /etc/chrony.conf
+```
+
+### 3. 打开/etc/chrony.conf，新增一行
+
+```bash
+vim /etc/chrony.conf
+```
+
+添加
+
+```bash
+server ntp.aliyun.com iburst
+```
+
+### 4. 重启chrony
+
+```bash
+systemctl restart chronyd
+```
+
+或者
+
+```bash
+service chronyd restart
+```
+
+
+
+### 5. 查看是否正常
+
+```bash
+chronyc tracking
+```
+
+
+
+## Docker
+
+### 安装Docker
+
+搜索
+
+```bash
+yum search docker
+```
+
+安装
+
+```bash
+yum install -y docker
+```
+
+启动
+
+```bash
+systemctl start docker
+```
+
+查看版本
+
+```bash
+docker version
+```
+
+### 设置镜像保存位置
+
+假设新路径为`/data/tools/docker`
+
+#### 方案一 修改默认存放路径(推荐)
+
+1) 修改配置
+
+指定镜像和容器存放路径的参数是`--graph=/var/lib/docker`
+
+但是不同系统下配置的位置不同
+
+- CentOS7
+
+  修改`docker.service`文件，使用`--graph`参数指定存储位置
+
+  ```bash
+  sudo vim /usr/lib/systemd/system/docker.service
+  ```
+
+  文本内容：`ExecStart=/usr/bin/dockerd`下面添加如下内容：
+
+  ```bash
+  --graph /data/tools/docker
+  ```
+
+  ![](https://ws1.sinaimg.cn/large/006tKfTcly1fs0fk21l5dj30hq07hgmv.jpg)
+
+- CentOS6 
+
+  位置 `/etc/sysconfig/docker` 添加下面这行
+
+  ```bash
+  OPTIONS=--graph="/data/tools/docker"--selinux-enabled -H fd://
+  ```
+
+  
+
+- Ubuntu
+
+  位置`/etc/default/docker`添加下面这行
+
+  ```bash
+  OPTIONS=--graph="/root/data/docker" -H fd://
+  ```
+
+  或者
+
+  ```bash
+  DOCKER_OPTS="-g /root/data/docker"
+  ```
+
+  
+
+2) 修改完成后重载配置文件
+
+```bash
+sudo systemctl daemon-reload
+```
+
+3) 重启docker服务
+
+```bash
+sudo systemctl  restart docker.service
+```
+
+4) 查看信息
+
+```bash
+docker info
+```
+
+出现一下则证明成功了
+
+```bash
+Docker Root Dir: /data/tools/docker
+```
+
+
+
+#### 方案二 设置软连接(不推荐)
+
+1.首先停掉Docker服务：
+
+```bash
+sudo systemctl stop docker
+```
+
+或者
+
+```bash
+service docker stop
+```
+
+2.对之前的数据做个文件备份
+
+```bash
+tar czvf /mnt/docker-backup.tar /var/lib/docker
+```
+
+3.然后迁移整个/var/lib/docker目录到目的路径：
+
+```bash
+mv /var/lib/docker /data/tools/docker
+```
+
+4.建立symlink软链接
+
+```bash
+ln -s /data/tools/docker /var/lib/docker
+```
+
+5.确认文件夹类型为symlink 类型
+
+```bash
+ls -al /var/lib/docker
+```
+
+6.启动Docker
+
+这时候启动Docker时发现存储目录依旧是/var/lib/docker，但是实际上是存储在数据盘的，你可以在数据盘上看到容量变化。
+
+```bash
+sudo systemctl start docker
+```
+
+
+
+### 下载镜像
+
+具体[`参见`](http://www.psvmc.cn/article/docker-dockerfile.html)
+
+```bash
+docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
+```
+
+
+
+
+
 ## 查看开机启动服务
 
 ```bash

@@ -14,44 +14,56 @@ category: linux
 
 ### 1. 安装chrony（时间同步客户端）
 
-ubuntu/debian:
-
-```
-apt-get install chrony
-```
 Centos/redhat/alios:
 
-```
+```bash
 yum install chrony
 ```
 
+
+
+ubuntu/debian:
+
+```bash
+apt-get install chrony
+```
+
+
 ### 2. 删除默认Server
 
-```
+```bash
 sed -i "/server/d" /etc/chrony.conf
 ```
 
 ### 3. 打开/etc/chrony.conf，新增一行:
 
+```bash
+vim /etc/chrony.conf
 ```
+
+添加
+
+```bash
 server ntp.aliyun.com iburst
 ```
 
 ### 4. 重启chrony
 
-```
-/etc/init.d/chronyd restart
+```bash
+systemctl restart chronyd
 ```
 
 或者
 
+```bash
+service chronyd restart
 ```
-systemctl restart chronyd
-```
+
+
 
 ### 5. 查看是否正常
 
-```
+```bash
 chronyc tracking
 ```
 
