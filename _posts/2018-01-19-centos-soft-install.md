@@ -74,22 +74,20 @@ df -hl
 ### 1) 备份
 
 ```bash
- mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 ```
 
 
 
 ### 2) 下载新的CentOS-Base.repo 到/etc/yum.repos.d/
 
-
-
-+ CentOS 5
++ CentOS 7
 
   ```bash
-  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
   ```
 
-   
+  
 
 + CentOS 6
 
@@ -99,13 +97,14 @@ df -hl
 
   
 
-+ CentOS 7
++ CentOS 5
 
   ```bash
-  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
   ```
 
-  
+   
+
 
 ### 3) 生成缓存
 
@@ -119,16 +118,18 @@ yum makecache
 
 ### 1. 安装chrony（时间同步客户端）
 
+Centos/redhat/alios:
+
+```bash
+yum install -y chrony
+```
+
 ubuntu/debian:
 
 ```bash
 apt-get install chrony
 ```
-Centos/redhat/alios:
 
-```bash
-yum install chrony
-```
 
 ### 2. 删除默认Server
 
@@ -168,6 +169,122 @@ service chronyd restart
 chronyc tracking
 ```
 
+或
+
+```bash
+date
+```
+
+
+
+### 6.开机启动
+
+CentOS7
+
+```bash
+systemctl enable chronyd.service
+```
+
+CentOS6
+
+```bash
+chkconfig chronyd on
+```
+
+
+
+## 服务操作命令
+
+| 功能           | CentOS7                                                      | CentOS6               |
+| -------------- | ------------------------------------------------------------ | --------------------- |
+| 查看自启动服务 | ls /etc/systemd/system/multi-user.target.wants/<br/>systemctl list-unit-files | chkconfig --list      |
+| 开机自启       | systemctl enable nginx.service                               | chkconfig nginx on    |
+| 取消开机自启   | systemctl disable nginx.service                              | chkconfig nginx off   |
+| 启动服务       | systemctl start nginx.service                                | service nginx start   |
+| 停止服务       | systemctl stop nginx.service                                 | service nginx stop    |
+| 重启服务       | systemctl restart nginx.service                              | service nginx restart |
+| 加载失败的服务 | systemctl --failed                                           |                       |
+| 重新加载       | systemctl reload nginx.service                               |                       |
+| 查看状态       | systemctl status nginx.service                               |                       |
+
+
+
+## 查看应用位置
+
+```bash
+whereis nginx
+```
+
+## 连接Linux
+
+```bash
+ssh root@112.112.112.112
+```
+
+`root` 为用户名  
+`112.112.112.112`为服务器ip
+
+## 重启系统
+
+```bash
+reboot
+```
+
+## Nginx
+
+安装 
+
+```bash
+yum install -y nginx
+```
+
+
+卸载  
+
+```bash
+yum -y remove nginx*
+```
+
+启动
+
+```bash
+service nginx start
+```
+
+停止
+
+```bash
+service nginx stop
+```
+
+设为开机启动  
+
+```bash
+chkconfig nginx on
+```
+
+或
+
+```bash
+systemctl enable nginx.service
+```
+
+
+
+重新加载配置
+
+```bash
+service nginx reload
+```
+
+查看版本
+
+```bash
+nginx -v
+```
+
+配置文件路径`/etc/nginx/`
+
 
 
 ## Docker
@@ -204,6 +321,14 @@ docker version
 
 #### 方案一 修改默认路径(推荐)
 
+0) 停止服务
+
+```bash
+systemctl stop docker
+```
+
+
+
 1) 修改配置
 
 指定镜像和容器存放路径的参数是`--graph=/var/lib/docker`
@@ -213,6 +338,10 @@ docker version
 - CentOS 
 
   位置 `/etc/sysconfig/docker` 添加下面这行
+
+  ```bash
+  vim /etc/sysconfig/docker
+  ```
 
   修改
 
@@ -300,6 +429,14 @@ ls -al /var/lib/docker
 sudo systemctl start docker
 ```
 
+如果像换成第一种方式就要先删除软链接
+
+```
+rm -rf /var/lib/docker
+```
+
+
+
 
 
 ### 下载镜像
@@ -310,34 +447,311 @@ sudo systemctl start docker
 docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
 ```
 
-
-
-## 查看开机启动服务
+启动镜像
 
 ```bash
-chkconfig --list
+docker run -d -p 8081:8080 --name tomcat01 -v /data/wwwroot/tomcat01/:/opt/tomcat8/webapps/  -v /data/wwwroot/tomcat01_log/:/opt/tomcat8/logs/ --restart=always 71dc929e155c
 ```
 
-## 查看应用位置
+## Memcached
+
+### 安装Memcached
+
+安装依赖
 
 ```bash
-whereis nginx
+yum install -y libevent libevent-deve
 ```
 
-## 连接Linux
+安装MemCached
 
 ```bash
-ssh root@112.112.112.112
+yum install memcached
 ```
 
-`root` 为用户名  
-`112.112.112.112`为服务器ip
+### 运行Memcached
 
-## 重启系统
+CentOS7
 
-`reboot`
+```bash
+systemctl restart memcached
+```
 
-## JDK  
+CentOS6
+
+```bash
+service memcached start
+```
+
+或者
+
+```bash
+/usr/bin/memcached -p 11211 -u root -m 256 -c 10240
+```
+
+
+
+**memcached的基本设置**：
+
+- -p 监听的端口
+- -l 连接的IP地址, 默认是本机
+- -d start 启动memcached服务
+- -d restart 重起memcached服务
+- -d stop|shutdown 关闭正在运行的memcached服务
+- -d install 安装memcached服务
+- -d uninstall 卸载memcached服务
+- -u 以的身份运行 (仅在以root运行的时候有效)
+- -m 最大内存使用，单位MB。默认64MB
+- -M 内存耗尽时返回错误，而不是删除项
+- -c 最大同时连接数，默认是1024
+- -f 块大小增长因子，默认是1.25
+- -n 最小分配空间，key+value+flags默认是48
+- -h 显示帮助
+
+
+
+### 配置路径
+
+CentOS7
+
+```bash
+vim /etc/sysconfig/memcached
+```
+
+CentOS6
+
+```bash
+vim /etc/init.d/memcached
+```
+
+
+
+### 关闭
+
+```bash
+pkill -9 memcached
+```
+
+
+
+### 设置开机自启
+
+CentOS7
+
+```bash
+systemctl enable memcached.service
+```
+
+CentOS6
+
+```bash
+chkconfig memcached on
+```
+
+### 取消开机启动
+
+CentOS7
+
+```bash
+systemctl disable memcached.service
+```
+
+CentOS6
+
+```bash
+chkconfig memcached off
+```
+
+## Mysql
+
+
+
+### 安装配置
+
+Step1: 检测系统是否自带安装MySQL
+
+```bash
+yum list installed | grep mysql
+```
+
+Step2: 删除系统自带的mysql及其依赖 命令：
+
+```bash
+yum -y remove mysql-libs.x86_64
+```
+
+Step3: 给CentOS添加rpm源
+
+```bash
+wget -i http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+yum -y install mysql57-community-release-el7-7.noarch.rpm
+yum repolist enabled | grep mysql
+```
+
+Step4:安装mysql 服务器 命令：
+
+```bash
+yum install -y mysql-community-server
+```
+
+Step5: 启动mysql 命令:
+
+```bash
+service mysqld start
+```
+
+Step6: 查看mysql是否自启动,并且设置开启自启动 命令:
+
+```bash
+chkconfig --list | grep mysqld
+chkconfig mysqld on
+```
+
+Step7:  默认root密码查看 修改
+
+```bash
+grep "password" /var/log/mysqld.log
+
+mysql -uroot -p
+
+mysql> set global validate_password_policy=0;
+mysql> SET PASSWORD = PASSWORD('输入新密码');
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> quit
+```
+
+Step8: 设置允许远程登录 
+
+```bash
+mysql -u root -p   
+Enter Password: <your new password>   
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
+mysql> FLUSH PRIVILEGES; 
+mysql> quit
+```
+
+### 基本配置
+
+设置表名不区分大小写/字符编码/连接数
+
+修改 `/etc/my.cnf`  
+
+```bash
+vim /etc/my.cnf
+```
+
+添加以下的三行
+
+```bash
+[mysqld]
+lower_case_table_names=1
+character_set_server = utf8
+max_connections = 1000
+```
+
+重启  
+
+```bash
+service mysqld restart
+```
+
+
+
+### 修改密码
+
+```bash
+mysql -uroot -p
+mysql> USE mysql;  
+mysql> UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
+mysql> FLUSH PRIVILEGES;
+```
+
+
+
+### 忘记密码
+
+```bash
+vi /etc/my.cnf
+```
+
+在`[mysqld]`的段中加上一句：`skip-grant-tables`
+例如：
+
+```bash
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+skip-grant-tables
+```
+
+保存并且退出vi。
+
+```bash
+service mysqld restart
+
+mysql
+mysql> update user set authentication_string=password('123456') where user='root';
+mysql> alter user 'root'@'localhost' identified by '123456';
+```
+
+
+
+### 启动失败
+
+```
+[root@root ~]# /etc/init.d/mysqld start
+Starting mysqld (via systemctl):  Job for mysqld.service failed because the control process exited with error code. See "systemctl status mysqld.service" and "journalctl -xe" for details.
+```
+
+解决方式
+
+```bash
+mkdir -p /var/run/mysqld/
+chown mysql.mysql /var/run/mysqld/
+```
+
+
+
+### 卸载
+
+```bash
+chkconfig mysqld off
+service mysqld stop
+yum remove mysql-community-server
+```
+
+
+
+### 防火墙添加信任规则
+
+打开文件
+
+```bash
+vim /etc/sysconfig/iptables
+```
+
+添加规则
+
+```basic
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+```
+
+重启防火墙
+
+```bash
+service iptables restart 
+```
+
+
+
+## JDK
 
 用wget下载   
 
@@ -565,75 +979,6 @@ service iptables restart
 
 
 
-## Mysql
-
-安装mysql  
-
-`yum install mysql mysql-server mysql-devel `     
-
-启动mysql     
-
-`service mysqld start `    
-
-设置mysql密码    
-
-```bash
-mysql
-mysql>; USE mysql;   
-mysql>; UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
-mysql>; FLUSH PRIVILEGES;
-```
-
-设置允许远程登录      
-
-```bash
-mysql -u root -p   
-Enter Password: <your new password>   
-mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
-mysql>FLUSH PRIVILEGES; 
-```
-
-设为开机启动  `chkconfig mysqld on` 
-
-+ 设置表名不区分大小写
-
-修改 `/etc/my.cnf`  
-在`[mysqld]`节点下,加入一行：`lower_case_table_names=1`  
-
-+ 设置编码
-
-在`[mysqld]`节点下,加入一行：`character_set_server = utf8` 
-
-+ 设置连接数
-
-在`[mysqld]`节点下,加入一行：`max_connections = 1000`
-
-+ 重启  
-
-```bash
-service mysqld restart
-```
-
-### 防火墙添加信任规则
-
-打开文件
-
-```bash
-vim /etc/sysconfig/iptables
-```
-
-添加规则
-
-```
--A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
-```
-
-重启防火墙
-
-```
-service iptables restart 
-```
-
 ## Apache 
 
 安装Apache    
@@ -674,99 +1019,6 @@ NameVirtualHost *:9999
 </VirtualHost> 
 ```
 
-## Nginx
-
-安装 
-
-`yum install nginx`
-
-
-卸载  
-
-`yum -y remove nginx*`  
-
-启动
-
-`service nginx start`
-
-停止
-
-`service nginx stop`
-
-设为开机启动  
-
-`chkconfig nginx on`  
-
-重新加载配置
-
-`service nginx reload`
-
-查看版本
-
-`nginx -v`
-
-配置文件路径`/etc/nginx/`
-
-### Nginx无可用源
-
-#### 使用第三方的yum源
-
-nginx位于第三方的yum源里面，而不在centos官方yum源里面
-
-解决方法：
-
-安装epel(Extra Packages for Enterprise Linux)
-
-1）下载
-
-下载地址可以去官方网站 `http://fedoraproject.org/wiki/EPEL`
-
-centos5.x,cpu是`x86_64`，下载的是  
-
-```bash
-wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
-```
-
-如果是centos6.x,cpu是`x86_64` 则应该下载   
-
-```bash
-wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-```
-
-2）安装epel
-
-```bash
-rpm -ivh epel-release-6-8.noarch.rpm
-```
-
-再次执行 `yum install nginx`,则会提示安装成功了
-
-#### 添加官方源
-
-使用上面的方法是可以安装  但是版本只有1.0.15，那要用yum安装新版本的源怎么办  
-我们可以添加官方源
-
-1) `cd /etc/yum.repos.d/`
-
-2) `vim nginx.repo`
-
-3) 填写如下文件内容 
-
-```
-[nginx] 
-name=nginx repo 
-baseurl=http://nginx.org/packages/centos/$releasever/$basearch/ 
-gpgcheck=0 
-enabled=1
-```
-
-4) 保存退出 `Esc` -> `:wq`
-
-5) 查看可用版本 `yum list nginx`
-
-6) 安装 `yum install nginx`
-
-7) 查看安装版本 `nginx -v`
 
 
 
