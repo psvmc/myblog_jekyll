@@ -40,16 +40,24 @@ category: git
 ## git提交方式
 
 + 进入项目的根目录   
-`cd  ／xx／xx`
+  `cd  ／xx／xx`
 + 把远程的pull过来  
-`git pull origin master`
+  `git pull origin master`
 + 修改文件  
 + 添加修改的文件  
-`git add .`
+  `git add .`
 + 提交已添加的文件  
-`git commit -m "注释信息"`
+  `git commit -m "注释信息"`
 + 修改push到远程  
-`git push origin master`
+  `git push origin master`
+
+## 修改提交的备注
+
+```bash
+git commit --amend
+```
+
+
 
 ## git分支
 
@@ -126,7 +134,7 @@ git reset --hard origin/master
 
 	git config --get user.name
 	git config --get user.email
-	
+
 
 ## 禁止提交文件
 
@@ -140,7 +148,7 @@ git reset --hard origin/master
 
 ```
 git rm --cached 123.txt
-``` 
+```
 
 在提交
 
@@ -173,7 +181,7 @@ git update-index --assume-unchanged <PATH>
 ## Tag操作
 
  git跟其它版本控制系统一样，可以打标签(tag), 作用是标记一个点为一个版本号，打标签的操作发生在我们`commit修改到本地仓库之后`
- 
+
 ### 添加标签
 
 ```
