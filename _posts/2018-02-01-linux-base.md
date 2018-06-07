@@ -9,25 +9,48 @@ category: linux
 
 ## 查看系统信息
 
-`cat /etc/redhat-release`
+```bash
+cat /etc/redhat-release
+```
 
 或
 
-`lsb_release -a`
+```bash
+lsb_release -a
+```
+
+
 
 ## 清屏
 
-`clear` 
+```bash
+clear
+```
 
-## 服务开机自启
+ 
 
-`chkconfig mysqld on`
+## 服务开机自启/取消
+
+```bash
+chkconfig mysqld on
+chkconfig mysqld off
+```
+
+
 
 ## 查看所有服务
 
-`chkconfig`
+```bash
+chkconfig
+```
 
-`chkconfig --list | grep "mysql*"`
+查询mysql服务
+
+```bash
+chkconfig --list | grep "mysql*"
+```
+
+
 
 ## 创建文件夹
 
@@ -44,11 +67,19 @@ category: linux
 
 ## 查找 
 
-`whereis mysql`
+```bash
+whereis mysql
+```
+
+
 
 ## 删除文件
 
-`rm -rf ./a.txt`  
+```bash
+rm -rf ./a.txt
+```
+
+  
 
 - -r 递归删除
 - -f 不提示
@@ -56,20 +87,46 @@ category: linux
 
 ## 移动/重命名
 
-`mv 1.txt 2.txt` `重命名`  
-`mv ./1.txt ./2/2.txt` `移动`
+ `重命名`  
+
+```bash
+mv 1.txt 2.txt
+```
+
+移动
+
+```bash
+mv ./1.txt ./2/2.txt
+```
+
+
 
 ## 压缩
 
-`zip -r  ./aa.zip ./aa`
+```bash
+yum install -y zip
+zip -r  ./aa.zip ./aa
+```
+
+
 
 ## 分卷压缩  
 
-`zip -r -s 100m ./test.zip ./test/`
+```bash
+yum install -y zip
+zip -r -s 100m ./test.zip ./test/
+```
+
+
 
 ## 解压缩 
 
-`unzip -o ./test.zip `
+```bash
+yum install -y unzip
+unzip -o ./test.zip
+```
+
+
 
 ## 解压tar.xz
 
@@ -98,46 +155,70 @@ tar xvJf ***.tar.xz
 
 
 ## 查询内存信息
-`top -m` 
+```bash
+top -m
+```
+
+
 
 + m:按内存占用率排序  
 
-`free -m`
+  ```bash
+  free -m
+  ```
+
+  
 
 ## 根据端口查询进程id
 
-`lsof -i:8080`
+```bash
+lsof -i:8080
+```
+
+
 
 ## 根据进程名查询进程id
 
-`ps -ef | grep java`
+```bash
+ps -ef | grep java
+```
+
+
 
 ## 结束PID为1000的进程 
 
-`kill -9 1000`
+```bash
+kill -9 1000
+```
+
+
 
 ## 查询IP地址
 
-`ifconfig | grep "inet " | grep -v 127.0.0.1`
+```bash
+ifconfig | grep "inet " | grep -v 127.0.0.1
+```
+
+
 
 
 ## 挂载硬盘
 
 1）查看磁盘分区信息
 
-```
+```bash
 fdisk -l
 ```
 
 2) 假如磁盘为`/dev/vdb` 格式化分区
 
-```
+```bash
 mkfs.ext4 /dev/vdb
 ```
 
 3) 格式化后进行挂载
 
-```
+```bash
 mkdir /data
 mount /dev/vdb /data
 ```
@@ -147,13 +228,13 @@ mount /dev/vdb /data
 按照上面配置后开机后并不会自动挂载磁盘。
 自动挂载的配置如下
 
-```
+```bash
 vim /etc/fstab
 ```
 
 在文件的最后添加
 
-```
+```bash
 /dev/vdb	/data	ext4	defaults	0 0 
 ```
 
@@ -161,7 +242,7 @@ vim /etc/fstab
 
 5) 查看磁盘的剩余空间
 
-```
+```bash
 df -hl
 ```
 
@@ -193,7 +274,7 @@ ln -s /data/webapps01 /usr/share/tomcat7/webapps
 
 + 查看哪些是软链接
 
-```
+```bash
 ls -l
 ```
 
