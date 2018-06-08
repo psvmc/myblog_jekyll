@@ -19,11 +19,11 @@ categories: sublime
 
 #### Sublime Text 3 3143 下载
 
-+ [Mac 版](https://download.sublimetext.com/Sublime%20Text%20Build%203143.dmg) 或 [`百度云下载地址`](https://pan.baidu.com/s/1x0xo8rVN5bJklVNISVmqmg)  密码:`7nc9`
-+ [Windows 版](https://download.sublimetext.com/Sublime%20Text%20Build%203143%20Setup.exe)
-+ [Windows 版 64位](https://download.sublimetext.com/Sublime%20Text%20Build%203143%20x64%20Setup.exe)
-+ [Linux 版 64位](https://download.sublimetext.com/sublime_text_3_build_3170_x64.tar.bz2)
-+ [Linux 版 32位](https://download.sublimetext.com/sublime_text_3_build_3170_x32.tar.bz2)
++ [`Mac 版`](https://download.sublimetext.com/Sublime%20Text%20Build%203143.dmg) 或 [`百度云下载地址`](https://pan.baidu.com/s/1x0xo8rVN5bJklVNISVmqmg)  密码:`7nc9`
++ [`Windows 版`](https://download.sublimetext.com/Sublime%20Text%20Build%203143%20Setup.exe)
++ [`Windows 版 64位`](https://download.sublimetext.com/Sublime%20Text%20Build%203143%20x64%20Setup.exe)
++ [`Linux 版 64位`](https://download.sublimetext.com/sublime_text_3_build_3170_x64.tar.bz2)
++ [`Linux 版 32位`](https://download.sublimetext.com/sublime_text_3_build_3170_x32.tar.bz2)
 
 ### 禁止更新 验证
 
