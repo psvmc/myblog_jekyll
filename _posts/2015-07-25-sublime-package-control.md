@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sublime text 安装插件管理器 及 常用插件
+title: Sublime text 安装 及 插件安装
 description: Sublime text 安装package control 及 常用插件
 keywords: sublime,插件
 categories: sublime
@@ -9,7 +9,7 @@ categories: sublime
 
 
 
-## 安装Sublime text 3
+## 安装
 
 ### 下载
 
