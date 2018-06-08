@@ -227,7 +227,7 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 
 ## 我的配置
 
-```
+```json
 {
 	"color_scheme": "Packages/Color Scheme - Default/Monokai Bright.tmTheme",
 	"font_size": 14,
