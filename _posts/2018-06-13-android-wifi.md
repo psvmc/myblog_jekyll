@@ -112,7 +112,8 @@ wifiManager = (WifiManager) context
 wifiManager.setWifiEnabled(true)
 ```
 
-true表示打开wifi开关，false表示关闭，该方法的返回值仅代表操作是否成功，不代表wifi状态的变化； 
+true表示打开wifi开关，false表示关闭，该方法的返回值仅代表操作是否成功，不代表wifi状态的变化；
+
 通过监听广播`WifiManager.WIFI_STATE_CHANGED_ACTION` ，来判断真正的wifi开关变化,该广播带有一个int型的值来表示wifi状态：
 
 ```java
