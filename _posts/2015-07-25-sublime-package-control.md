@@ -126,9 +126,9 @@ import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed
 
 可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：
 
-1. 点击Preferences > Browse Packages菜单
-2. 进入打开的目录的上层目录，然后再进入Installed Packages/目录
-3. 下载 Package Control.sublime-package 并复制到Installed Packages/目录
+1. 点击`Preferences` > `Browse Packages`菜单
+2. 进入打开的目录的上层目录，然后再进入`Installed Packages/`目录
+3. 下载 `Package Control.sublime-package` 并复制到`Installed Packages/`目录
 4. 重启Sublime Text。
 
 Package Control 主文件下载地址：[https://github.com/wbond/sublime_package_control](https://github.com/wbond/sublime_package_control)
@@ -140,85 +140,192 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 ## 常用插件
 
 + `SublimeCodeIntel`  代码自动提示
+
 + `Bracket Highlighter`  
    类似于代码匹配，可以匹配括号，引号等符号内的范围。
+
 + `ConvertToUTF8` 转换文件编码
+
 + `GBK Support` 支持GBK编码的文件
+
 + `Git` 基本上实现了git的所有功能
+
 + `GitGutter` 这是一个小巧有用的插件，它会告诉你自上次`git commit`以来已经改变的行。一个指示器显示在行号的旁边。
+
 + `HTML-CSS-JS Prettify`  
     格式化html  需要`nodejs`支持  安装方式 `brew install node`
+
 + `CssComb` CSS属性进行排序和格式化插件 需要`nodejs`支持
+
 + `Autoprefixer`  CSS3前缀补充插件  需要`nodejs`支持   
    在输入`CSS3`属性后（冒号前）按`Tab`键
+
 + `Colorpicker` 颜色选择器  
+
 + `Alignment` （代码对齐）   
     一个非常简单和易于使用的插件,使你的代码组织和美观。当您重温代码时候非常有用。
-使用方法：选中要调整的行，然后按 `Ctrl`+ `Alt` + `A`
+    使用方法：选中要调整的行，然后按 `Ctrl`+ `Alt` + `A`
+
 + `Emmet`  
    `Emmet`绝对的节省时间。您可以轻松快速地编写HTML。  
     使用方法: `ctrl` + `alt` + `enter` ,并且开始输入`Emmet`风格的HTML  
+
 + `DocBlockr`  
    一个真正简单的方式来轻松地创建许多语言包括`JavaScript`，`PHP`和`CoffeeScript`的文档块。只要在函数的上面输入`/**`，按`Tab`就可以了。  
    `DocBlockr`会观察函数需要的变量名和类型，并创建文档块。
+
 + `SidebarEnhancements`  
    在侧边栏的文件上右击时，这个插件提供了大量更多的选择。`打开` `查找` `复制`和`粘贴`，等等。  
+
 + `jQuery` jQ函数提示
+
 + `Autoprefixer` CSS自动添加兼容前缀插件 需要`nodejs`支持  
 
-```json
-{
-    "browsers": ["last 2 version", "> 1%","ie 6-11"]
-}
+   ```json
+   {
+       "browsers": ["last 2 version", "> 1%","ie 6-11"]
+   }
+   ```
+
+   比如上面的配置就是`所有浏览器最新的两个版本` 或者 `全球范围市场占有1%以上的` 或者 `IE6-11`的所有浏览器的适配
+
+
+
+## 推荐几个主题
+
+### Boxy
+
+```bash
+"color_scheme": "Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme",
+"theme": "Boxy Monokai.sublime-theme",
 ```
 
-比如上面的配置就是`所有浏览器最新的两个版本` 或者 `全球范围市场占有1%以上的` 或者 `IE6-11`的所有浏览器的适配
+浅色
 
-### 推荐几个主题
+```bash
+"color_scheme": "Packages/Boxy Theme/schemes/Boxy Yesterday.tmTheme",
+"theme": "Boxy Yesterday.sublime-theme",
+```
 
-+ `Theme - Afterglow`
+
+
+### ayu
+
+Light:
+
+  ```json
+"theme": "ayu-light.sublime-theme",
+"color_scheme": "Packages/ayu/ayu-light.tmTheme",
+  ```
+
+Mirage:
+  ```json
+"theme": "ayu-mirage.sublime-theme",
+"color_scheme": "Packages/ayu/ayu-mirage.tmTheme",
+  ```
+
+Dark:
+  ```json
+"theme": "ayu-dark.sublime-theme",
+"color_scheme": "Packages/ayu/ayu-dark.tmTheme",
+  ```
+
+
+### Material Theme
+
+深色
+
+```bash
+"theme": "Material-Theme.sublime-theme",
+"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+```
+
+浅色
+
+```bash
+"theme": "Material-Theme-Lighter.sublime-theme",
+"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Lighter.tmTheme",
+```
+
+
+
+### Agila
+
+#### Monokai theme
+
+```bash
+"color_scheme": "Packages/Theme - Asphalt/Asphalt.tmTheme",
+"theme": "Agila Monokai.sublime-theme",
+```
+
+
+
+#### Default theme
 
 ```json
+"theme": "Agila.sublime-theme",
+"color_scheme": "Packages/Agila Theme/Agila Oceanic Next.tmTheme",
+```
+
+#### Classic theme
+
+```json
+"theme": "Agila Classic.sublime-theme",
+"color_scheme": "Packages/Agila Theme/Agila Classic Oceanic Next.tmTheme",
+```
+
+#### Light theme
+
+```json
+"theme": "Agila Light.sublime-theme",
+"color_scheme": "Packages/Agila Theme/Agila Light Solarized.tmTheme",
+```
+
+
+
+### Theme - Afterglow
+
+```bash
 "theme": "Afterglow.sublime-theme",
 "color_scheme": "Packages/Theme - Afterglow/Afterglow-monokai.tmTheme",
 ```
 
-+ `Theme - itg.flat`
+### Theme - itg.flat
 
-```json
+```bash
 "theme": "itg.flat.dark.sublime-theme",
 "color_scheme": "Packages/Theme - itg.flat/itg.dark.tmTheme",
 ```
 
-+ `Theme - Spacegray`
+### Theme - Spacegray
 
-```json
+```bash
 "theme": "Spacegray.sublime-theme",
 "color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
 ```
 
-+ `Theme - Piatto`
+### Theme - Piatto
 
-```json
+```bash
 "theme": "Piatto Dark.sublime-theme",
 "color_scheme": "Packages/Theme - Piatto/Piatto Dark.tmTheme",
 ```
 
-+ `Theme - Asphalt`
+### Theme - Asphalt
 
-```json
+```bash
 "theme": "Asphalt.sublime-theme",
 "color_scheme": "Packages/Theme - Asphalt/Asphalt.tmTheme",
 ```
 
-```json
+```bash
 "theme": "Asphalt-orange.sublime-theme",
 "color_scheme": "Packages/Theme - Asphalt/Asphalt.tmTheme",
 ```
 
-+ `Theme - Brogrammer`
+### Theme - Brogrammer
 
-```json
+```bash
 "theme": "Brogrammer.sublime-theme",
 "color_scheme": "Packages/Theme - Brogrammer/brogrammer.tmTheme",
 ```
@@ -230,6 +337,7 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 ```json
 {
 	"color_scheme": "Packages/Color Scheme - Default/Monokai Bright.tmTheme",
+    "font_face":"Monaco",
 	"font_size": 14,
 	"highlight_line": true,
 	"hot_exit": false,
@@ -239,4 +347,18 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 	"word_wrap": "false"
 }
 ```
+
+Mac编程字体推荐
+
++ Menlo
+
++ Monaco
+
++ Courier New Blod
+
+  
+
+Win编程字体推荐
+
++ Consolas
 
