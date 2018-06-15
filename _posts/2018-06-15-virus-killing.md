@@ -3,7 +3,9 @@ layout: post
 title: Centos上病毒查杀方式
 description: Centos上病毒查杀方式
 keywords: centos
-categories: centos linux
+categories: 
+        - centos
+        - linux
 
 ---
 
