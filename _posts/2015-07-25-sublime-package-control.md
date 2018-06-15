@@ -36,8 +36,10 @@ categories: sublime
 添加
 
 ```
-127.0.0.1       www.sublimetext.com
-127.0.0.1       license.sublimehq.com
+127.0.0.1 www.sublimetext.com
+127.0.0.1 license.sublimehq.com
+127.0.0.1 45.55.41.223
+127.0.0.1 45.55.255.55
 ```
 
 #### 修改配置
