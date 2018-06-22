@@ -698,7 +698,6 @@ service mysqld restart
 
 mysql
 mysql> update user set authentication_string=password('123456') where user='root';
-mysql> alter user 'root'@'localhost' identified by '123456';
 ```
 
 
