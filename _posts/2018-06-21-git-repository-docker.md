@@ -46,5 +46,4 @@ docker run -d --name=gitea -p 10022:22 -p 10080:3000 -v /data/gitea:/data gitea/
 然后 容器已经运行成功，在浏览器中访问 <http://hostname:10080> 就可以看到界面了
 
 
-
 配置的时候如果要用`mysql`数据库 就要先在服务器上安装`mysql`

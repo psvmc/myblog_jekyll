@@ -141,6 +141,17 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 
 ## 常用插件
 
++ `HTML-CSS-JS Prettify`  
+   格式化html  需要`nodejs`支持  安装方式 `brew install node
+
++ `Emmet`  
+   `Emmet`绝对的节省时间。您可以轻松快速地编写HTML。  
+    使用方法: `ctrl` + `alt` + `enter` ,并且开始输入`Emmet`风格的HTML  
+
++ `DocBlockr`  
+   一个真正简单的方式来轻松地创建许多语言包括`JavaScript`，`PHP`和`CoffeeScript`的文档块。只要在函数的上面输入`/**`，按`Tab`就可以了。  
+   `DocBlockr`会观察函数需要的变量名和类型，并创建文档块。
+
 + `SublimeCodeIntel`  代码自动提示
 
 + `Bracket Highlighter`  
@@ -154,9 +165,6 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 
 + `GitGutter` 这是一个小巧有用的插件，它会告诉你自上次`git commit`以来已经改变的行。一个指示器显示在行号的旁边。
 
-+ `HTML-CSS-JS Prettify`  
-    格式化html  需要`nodejs`支持  安装方式 `brew install node`
-
 + `CssComb` CSS属性进行排序和格式化插件 需要`nodejs`支持
 
 + `Autoprefixer`  CSS3前缀补充插件  需要`nodejs`支持   
@@ -167,14 +175,6 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 + `Alignment` （代码对齐）   
     一个非常简单和易于使用的插件,使你的代码组织和美观。当您重温代码时候非常有用。
     使用方法：选中要调整的行，然后按 `Ctrl`+ `Alt` + `A`
-
-+ `Emmet`  
-   `Emmet`绝对的节省时间。您可以轻松快速地编写HTML。  
-    使用方法: `ctrl` + `alt` + `enter` ,并且开始输入`Emmet`风格的HTML  
-
-+ `DocBlockr`  
-   一个真正简单的方式来轻松地创建许多语言包括`JavaScript`，`PHP`和`CoffeeScript`的文档块。只要在函数的上面输入`/**`，按`Tab`就可以了。  
-   `DocBlockr`会观察函数需要的变量名和类型，并创建文档块。
 
 + `SidebarEnhancements`  
    在侧边栏的文件上右击时，这个插件提供了大量更多的选择。`打开` `查找` `复制`和`粘贴`，等等。  
@@ -195,7 +195,34 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 
 ## 推荐几个主题
 
+### ayu
+
+Light(推荐):
+
+```json
+"theme": "ayu-light.sublime-theme",
+"color_scheme": "Packages/ayu/ayu-light.tmTheme",
+```
+
+Mirage:
+
+```json
+"theme": "ayu-mirage.sublime-theme",
+"color_scheme": "Packages/ayu/ayu-mirage.tmTheme",
+```
+
+Dark:
+
+```json
+"theme": "ayu-dark.sublime-theme",
+"color_scheme": "Packages/ayu/ayu-dark.tmTheme",
+```
+
+
+
 ### Boxy
+
+暗色(推荐)
 
 ```bash
 "color_scheme": "Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme",
@@ -209,28 +236,6 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 "theme": "Boxy Yesterday.sublime-theme",
 ```
 
-
-
-### ayu
-
-Light:
-
-  ```json
-"theme": "ayu-light.sublime-theme",
-"color_scheme": "Packages/ayu/ayu-light.tmTheme",
-  ```
-
-Mirage:
-  ```json
-"theme": "ayu-mirage.sublime-theme",
-"color_scheme": "Packages/ayu/ayu-mirage.tmTheme",
-  ```
-
-Dark:
-  ```json
-"theme": "ayu-dark.sublime-theme",
-"color_scheme": "Packages/ayu/ayu-dark.tmTheme",
-  ```
 
 
 ### Material Theme
