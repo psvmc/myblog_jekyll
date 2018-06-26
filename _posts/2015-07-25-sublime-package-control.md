@@ -142,7 +142,7 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 ## 常用插件
 
 + `HTML-CSS-JS Prettify`  
-   格式化html  需要`nodejs`支持  安装方式 `brew install node
+   格式化html  需要`nodejs`支持  安装方式 `brew install node`
 
 + `Emmet`  
    `Emmet`绝对的节省时间。您可以轻松快速地编写HTML。  
