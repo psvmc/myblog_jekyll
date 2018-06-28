@@ -183,7 +183,7 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 
 + `Autoprefixer` CSS自动添加兼容前缀插件 需要`nodejs`支持  
 
-   ```json
+   ```bash
    {
        "browsers": ["last 2 version", "> 1%","ie 6-11"]
    }
@@ -199,21 +199,21 @@ Package Control 主文件下载地址：[https://github.com/wbond/sublime_packag
 
 Light(推荐):
 
-```json
+```bash
 "theme": "ayu-light.sublime-theme",
 "color_scheme": "Packages/ayu/ayu-light.tmTheme",
 ```
 
 Mirage:
 
-```json
+```bash
 "theme": "ayu-mirage.sublime-theme",
 "color_scheme": "Packages/ayu/ayu-mirage.tmTheme",
 ```
 
 Dark:
 
-```json
+```bash
 "theme": "ayu-dark.sublime-theme",
 "color_scheme": "Packages/ayu/ayu-dark.tmTheme",
 ```
@@ -269,21 +269,21 @@ Dark:
 
 #### Default theme
 
-```json
+```bash
 "theme": "Agila.sublime-theme",
 "color_scheme": "Packages/Agila Theme/Agila Oceanic Next.tmTheme",
 ```
 
 #### Classic theme
 
-```json
+```bash
 "theme": "Agila Classic.sublime-theme",
 "color_scheme": "Packages/Agila Theme/Agila Classic Oceanic Next.tmTheme",
 ```
 
 #### Light theme
 
-```json
+```bash
 "theme": "Agila Light.sublime-theme",
 "color_scheme": "Packages/Agila Theme/Agila Light Solarized.tmTheme",
 ```
@@ -341,7 +341,7 @@ Dark:
 
 ## 我的配置
 
-```json
+```bash
 {
 	"color_scheme": "Packages/Color Scheme - Default/Monokai Bright.tmTheme",
     "font_face":"Monaco",

@@ -4,8 +4,8 @@ title: Nginx安装配置注意点
 description: Nginx安装配置注意点
 keywords: nginx linux
 categories: 
-        - nginx
-        - linux
+	    - nginx
+	    - linux
 
 ---
 
@@ -192,3 +192,5 @@ index index.html;
 ```
 
 不添加的话 部分浏览器访问不到默认首页
+
+
