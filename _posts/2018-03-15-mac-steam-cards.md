@@ -56,15 +56,56 @@ Mac上可以用[`AnotherSteamCommunityFix`](https://steamcn.com/t339641-1-1)
 
 
 
-## 批量卖卡
+## 插件脚本地址
 
-QQ浏览器下载 `暴力猴` 插件:浏览器加载运行JS
+脚本搜索网站
 
-火狐搜索 [`Tampermonkey`](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/) 
++ [`Greasy Fork`](https://greasyfork.org/zh-CN)
 
-[`Steam-Economy-Enhancer`](https://github.com/Sneer-Cat/Steam-Economy-Enhancer/raw/master/code.user.js)：添加批量卖卡按钮的脚本
+Chrome
 
-脚本搜索网站 [Greasy Fork](https://greasyfork.org/zh-CN)
+- [`Tampermonkey`](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) 
+-  [`Violent monkey`](https://chrome.google.com/webstore/detail/violent-monkey/jinjaccalgkegednnccohejagnlnfdag)
+
+火狐
+
+- [`Violentmonkey`](https://addons.mozilla.org/zh-CN/firefox/addon/violentmonkey/)
+
+- [`Tampermonkey`](https://addons.mozilla.org/zh-CN/firefox/addon/tampermonkey/) 
+
+Safari
+
++ [`Tampermonkey`](http://tampermonkey.net/?browser=safari)
+
+Microsoft Edge
+
++ [`Tampermonkey`](https://www.microsoft.com/store/p/tampermonkey/9nblggh5162s)
+
+Opera
+
++ [`Tampermonkey`](https://addons.opera.com/extensions/details/tampermonkey-beta/)
+
+Maxthon 
+
++ [`Violentmonkey`](http://extension.maxthon.com/detail/index.php?view_id=1680)
+
+QQ浏览器
+
++ `暴力猴` 插件
+
+
+
+## 常用插件
+
+
+
++ 批量卖卡[`Steam-Economy-Enhancer`](https://github.com/Sneer-Cat/Steam-Economy-Enhancer/raw/master/code.user.js)：添加批量卖卡按钮的脚本
++ 显示游戏最低价格及进包次数[`SteamHistoryLowestPrice`](https://greasyfork.org/zh-CN/scripts/30877-steamhistorylowestprice)
++ 批量刮开 激活[`Steam Bundle Sites Extension`](https://github.com/clancy-chao/Steam-Bundle-Sites-Extension/raw/master/SBSE.user.js)
++ [`Steam自动探索队列`](https://greasyfork.org/zh-CN/scripts/369701-steam%E8%87%AA%E5%8A%A8%E6%8E%A2%E7%B4%A2%E9%98%9F%E5%88%97)
++ [`Steam 绿光/创意工坊图片修复`](https://greasyfork.org/zh-CN/scripts/955-steam-%E7%BB%BF%E5%85%89-%E5%88%9B%E6%84%8F%E5%B7%A5%E5%9D%8A%E5%9B%BE%E7%89%87%E4%BF%AE%E5%A4%8D)
++ [`Steam Gems-to-Price Helper`](https://greasyfork.org/zh-CN/scripts/25735-steam-gems-to-price-helper)
++ 批量激活[`SteamRedeemKeys`](https://greasyfork.org/zh-CN/scripts/32718-steamredeemkeys)
 
 
 
