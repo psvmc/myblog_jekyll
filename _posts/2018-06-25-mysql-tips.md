@@ -53,51 +53,7 @@ Step6: 查看mysql是否自启动,并且设置开启自启动 命令:
 chkconfig --list | grep mysqld
 chkconfig mysqld on
 ```
-
-Step7:  默认root密码查看 修改
-
-```bash
-grep "password" /var/log/mysqld.log
-
-mysql -uroot -p
-
-mysql> set global validate_password_policy=0;
-mysql> SET PASSWORD = PASSWORD('输入新密码');
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-
-mysql> ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> flush privileges;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> quit
-```
-
-Step8: 设置允许远程登录 
-
-```bash
-mysql -u root -p   
-Enter Password: <your new password>   
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
-mysql> FLUSH PRIVILEGES; 
-mysql> quit
-```
-
-
-
-### 修改密码
-
-```bash
-mysql -uroot -p
-mysql> USE mysql;  
-mysql> UPDATE user SET Password=PASSWORD('123456') WHERE user='root';   
-mysql> FLUSH PRIVILEGES;
-```
-
-
-
-### 忘记密码
+Step7:修改密码
 
 ```bash
 vi /etc/my.cnf
@@ -122,7 +78,15 @@ mysql
 mysql> update user set authentication_string=password('123456') where user='root';
 ```
 
+Step8: 设置允许远程登录 
 
+```bash
+mysql -u root -p   
+Enter Password: <your new password>   
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
+mysql> FLUSH PRIVILEGES; 
+mysql> quit
+```
 
 ### 卸载
 
@@ -170,7 +134,7 @@ mkdir -p /var/run/mysqld/
 chown mysql.mysql /var/run/mysqld/
 ```
 
-### 表名/编码/连接数
+### 表名/编码/连接数/数据包大小
 
 设置表名不区分大小写/字符编码/连接数
 
@@ -180,13 +144,14 @@ chown mysql.mysql /var/run/mysqld/
 vim /etc/my.cnf
 ```
 
-添加以下的三行
+添加以下的4行
 
 ```bash
 [mysqld]
 lower_case_table_names=1
 character_set_server = utf8
 max_connections = 1000
+max_allowed_packet = 100M
 ```
 
 重启  

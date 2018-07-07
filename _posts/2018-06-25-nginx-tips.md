@@ -4,8 +4,8 @@ title: Nginx安装配置注意点
 description: Nginx安装配置注意点
 keywords: nginx linux
 categories: 
-	    - nginx
-	    - linux
+        - nginx
+        - linux
 
 ---
 
