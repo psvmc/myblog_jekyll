@@ -53,7 +53,36 @@ Step6: 查看mysql是否自启动,并且设置开启自启动 命令:
 chkconfig --list | grep mysqld
 chkconfig mysqld on
 ```
-Step7:修改密码
+
+Step7: 配置修改: 表名/编码/连接数/数据包大小
+
+设置表名不区分大小写/字符编码/连接数
+
+修改 `/etc/my.cnf`  
+
+```bash
+vim /etc/my.cnf
+```
+
+添加以下的4行
+
+```bash
+[mysqld]
+lower_case_table_names=1
+character_set_server = utf8
+max_connections = 1000
+max_allowed_packet = 100M
+```
+
+重启  
+
+```bash
+service mysqld restart
+```
+
+
+
+Step8:修改密码
 
 ```bash
 vi /etc/my.cnf
@@ -75,10 +104,11 @@ skip-grant-tables
 service mysqld restart
 
 mysql
+mysql> use mysql;
 mysql> update user set authentication_string=password('123456') where user='root';
 ```
 
-Step8: 设置允许远程登录 
+Step9: 设置允许远程登录 
 
 ```bash
 mysql -u root -p   
@@ -134,31 +164,6 @@ mkdir -p /var/run/mysqld/
 chown mysql.mysql /var/run/mysqld/
 ```
 
-### 表名/编码/连接数/数据包大小
-
-设置表名不区分大小写/字符编码/连接数
-
-修改 `/etc/my.cnf`  
-
-```bash
-vim /etc/my.cnf
-```
-
-添加以下的4行
-
-```bash
-[mysqld]
-lower_case_table_names=1
-character_set_server = utf8
-max_connections = 1000
-max_allowed_packet = 100M
-```
-
-重启  
-
-```bash
-service mysqld restart
-```
 
 
 
