@@ -23,16 +23,45 @@ yum install memcached
 
 ## 运行Memcached
 
+### 服务形式
+
+
+#### CentOS7
+
+启动
+
+```bash
+systemctl restart memcached.service
+```
+
+配置文件路径
+
+```bash
+vi /etc/sysconfig/memcached
+```
+
+#### CentOS6
+
+启动
+
 ```bash
 service memcached start
 ```
 
-服务形式配置路径`vim /etc/init.d/memcached`
-
-或者
+配置文件路径
 
 ```bash
-/usr/bin/memcached -p 11211 -m 128m -d -uroot
+vi /etc/init.d/memcached
+```
+
+
+
+### 非服务形式
+
+启动
+
+```bash
+/usr/bin/memcached -p 11211 -u root -m 256 -c 10240
 ```
 
 
@@ -56,13 +85,7 @@ service memcached start
 
 
 
-```bash
-/usr/bin/memcached -p 11211 -u root -m 256 -c 10240
-```
-
-
-
-## 关闭
+关闭
 
 ```bash
 pkill -9 memcached
