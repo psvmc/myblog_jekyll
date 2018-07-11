@@ -72,6 +72,7 @@ lower_case_table_names=1
 character_set_server = utf8
 max_connections = 1000
 max_allowed_packet = 100M
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 ```
 
 重启  
@@ -100,9 +101,15 @@ skip-grant-tables
 
 保存并且退出vi。
 
-```bash
-service mysqld restart
+重启
 
+```
+service mysqld restart
+```
+
+修改密码
+
+```bash
 mysql
 mysql> use mysql;
 mysql> update user set authentication_string=password('123456') where user='root';
@@ -163,8 +170,6 @@ Starting mysqld (via systemctl):  Job for mysqld.service failed because the cont
 mkdir -p /var/run/mysqld/
 chown mysql.mysql /var/run/mysqld/
 ```
-
-
 
 
 ### 长时间未访问 断开

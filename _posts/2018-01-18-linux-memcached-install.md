@@ -12,7 +12,7 @@ categories: memcached linux yum
 安装依赖
 
 ```bash
-yum install libevent libevent-deve
+yum install -y libevent libevent-deve
 ```
 
 安装MemCached
@@ -28,17 +28,41 @@ yum install memcached
 
 #### CentOS7
 
+配置文件路径
+
+```bash
+vi /etc/sysconfig/memcached
+```
+
+配置为
+
+```bash
+PORT="11211"
+USER="memcached"
+MAXCONN="2048"
+CACHESIZE="256"
+OPTIONS=""
+```
+
 启动
 
 ```bash
 systemctl restart memcached.service
 ```
 
-配置文件路径
+停止
 
 ```bash
-vi /etc/sysconfig/memcached
+systemctl stop memcached.service
 ```
+
+卸载
+
+```
+yum remove memcached
+```
+
+
 
 #### CentOS6
 
@@ -61,7 +85,7 @@ vi /etc/init.d/memcached
 启动
 
 ```bash
-/usr/bin/memcached -p 11211 -u root -m 256 -c 10240
+/usr/bin/memcached -d -p 11211 -u root -m 512 -c 10240
 ```
 
 
@@ -98,6 +122,15 @@ pkill -9 memcached
 ```bash
 chkconfig memcached on
 ```
+
+## 查看运行状态
+
+```
+telnet 127.0.0.1 11211
+stats
+```
+
+
 
 ## 验证
 
