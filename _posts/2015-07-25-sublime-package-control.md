@@ -55,26 +55,6 @@ categories: sublime
 Sublime text 3 `3176` 可用注册码
 
 ```bash
------ BEGIN LICENSE -----
-sgbteam
-Single User License
-EA7E-1153259
-8891CBB9 F1513E4F 1A3405C1 A865D53F
-115F202E 7B91AB2D 0D2A40ED 352B269B
-76E84F0B CD69BFC7 59F2DFEF E267328F
-215652A3 E88F9D8F 4C38E3BA 5B2DAAE4
-969624E7 DC9CD4D5 717FB40C 1B9738CF
-20B3C4F1 E917B5B3 87C38D9C ACCE7DD8
-5F7EF854 86B9743C FADC04AA FB0DA5C0
-F913BE58 42FEA319 F954EFDD AE881E0B
------- END LICENSE ------
-```
-
-Sublime text 3 `3143`版本 可用注册码
-
-注册码1
-
-```bash
 —– BEGIN LICENSE —–
 TwitterInc
 200 User License
@@ -90,24 +70,6 @@ E36B85CC 84991F19 7575D828 470A92AB
 —— END LICENSE ——
 ```
 
-注册码2
-
-```
------ BEGIN LICENSE -----
-eldon
-Single User License
-EA7E-1122628
-C0360740 20724B8A 30420C09 6D7E046F
-3F5D5FBB 17EF95DA 2BA7BB27 CCB14947
-27A316BE 8BCF4BC0 252FB8FF FD97DF71
-B11A1DA9 F7119CA0 31984BB9 7D71700C
-2C728BF8 B952E5F5 B941FF64 6D7979DA
-B8EB32F8 8D415F8E F16FE657 A35381CC
-290E2905 96E81236 63D2B06D E5F01A69
-84174B79 7C467714 641A9013 94CA7162
------- END LICENSE ------
-```
-
 
 
 ## 安装插件管理器
@@ -116,13 +78,13 @@ B8EB32F8 8D415F8E F16FE657 A35381CC
 
 ### Sublime Text 3
 
-```py
+```python
 import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 ```
 
 ### Sublime Text 2
 
-```py
+```python
 import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), 'wb' ).write( urllib2.urlopen( 'http://sublime.wbond.net/' +pf.replace( ' ','%20' )).read()); print( 'Please restart Sublime Text to finish installation')
 ```
 
