@@ -124,4 +124,7 @@ end if;
 
 ## 查看触发器
 
-	SHOW TRIGGERS;
+```mysql
+SHOW TRIGGERS;
+```
+
