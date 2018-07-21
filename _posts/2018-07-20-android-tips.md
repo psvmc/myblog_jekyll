@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Android开发小贴士
-description: Android开发小贴士
+title: Android开发常用的知识点
+description: Android开发常用的知识点
 keywords: android
 categories: android java
 ---
@@ -83,6 +83,43 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 
 
+## 设置横屏竖屏
+
+### 代码中配置
+
+```java
+//设置横屏代码
+setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//横屏
+//设置竖屏代码
+setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
+```
+
+ 因为横屏有两个方向的横法，而这个设置横屏的语句，如果不是默认的横屏方向，会把已经横屏的屏幕旋转180°。
+
+ 所以可以先判断是否已经为横屏了，如果不是再旋转，不会让用户觉得转的莫名其妙啦！代码如下：
+
+```java
+if(this.getResources().getConfiguration().orientation ==Configuration.ORIENTATION_PORTRAIT){
+  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+}
+```
+
+### XML中配置
+
+在`AndroidManifest.xml`中配置
+
+找到你所指定的`activity`中加上`android:screenOrientation`属性，它有以下几个参数：
+
++ unspecified--默认值，由系统来判断显示方向.判定的策略是和设备相关的，所以不同的设备会有不同的显示方向 
++ landscape--横屏显示（宽比高要长） 
++ portrait--竖屏显示(高比宽要长) 
++ user--用户当前首选的方向 
++ behind--和该Activity下面的那个Activity的方向一致(在Activity堆栈中的) 
++ sensor--有物理的感应器来决定。如果用户旋转设备这屏幕会横竖屏切换
++ nosensor--忽略物理感应器，这样就不会随着用户旋转设备而更改了（"unspecified"设置除外）
+
+
+
 ## 移除 View 的背景色
 
 + `setBackgroundResource(0)` 可以移除 View 的背景色
@@ -107,7 +144,117 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 ```xml
 android:elevation="2dp"
+android:translationZ="4dp"
 ```
+
+`translationZ` 相当于灯光的高度 值越大 阴影约淡也越大
+
+
+
+## 绘制虚线
+
+### 代码方式
+
+```java
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Shader;
+import android.util.AttributeSet;
+import android.view.View;
+
+public class DashLineView extends View {
+    private Paint mPaint;
+    private Path mPath;
+
+    public DashLineView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(Color.LTGRAY); // 需要加上这句，否则画不出东西
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(3);
+        mPaint.setPathEffect(new DashPathEffect(new float[]{15, 5}, 0));
+        mPath = new Path();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        int centerY = getHeight() / 2;
+        mPath.reset();
+        mPath.moveTo(0, centerY);
+        mPath.lineTo(getWidth(), centerY);
+        canvas.drawPath(mPath, mPaint);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        // 前四个参数没啥好讲的，就是起点和终点而已。
+        // color数组的意思是从浅灰 -> 灰 -> 灰 -> 浅灰。
+        // float数组与color数组对应：
+        // 0 -> 0.3 (变深)
+        // 0.3 - 0.7 (不变色)
+        // 0.7 -> 1 (变浅)
+        mPaint.setShader(
+                new LinearGradient(
+                        0,
+                        0,
+                        getWidth(),
+                        0,
+                        new int[]{
+                                Color.argb(255,220,220,220),
+                                Color.LTGRAY,
+                                Color.LTGRAY,
+                                Color.argb(255,220,220,220)
+                        },
+                        new float[]{0, 0.3f, 0.7f, 1f},
+                        Shader.TileMode.CLAMP
+                )
+        );
+    }
+}
+```
+
+> `onSizeChanged` 方法是为了做渐变
+
+### XML方式
+
+建一个 `shape_line_dash.xml` 放在 `drawable` 目录中
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+
+    <!--线宽为dashWith，线之间空隙dashGap，dashGap=0dp时，是实线 -->
+    <stroke
+        android:width="1px"
+        android:color="#dfdfdf"
+        android:dashGap="2dp"
+        android:dashWidth="3dp" />
+</shape>
+```
+
+使用方式
+
+```xml
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/shape_line_dash"
+    android:layerType="software" />
+```
+
+> 注意点
+>
+> + View的高度要比虚线的`android:width="1px"`的值大 相等是不显示的
+> + 要添加 `android:layerType="software"`关闭硬件加速 否则显示为实线
 
 ## 获取屏幕宽高
 
