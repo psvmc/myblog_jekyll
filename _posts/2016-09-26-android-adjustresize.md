@@ -86,7 +86,7 @@ public class AndroidBug5497Workaround {
 
 ### 使用方法
 
-在你的`Activity`的o`nCreate()`方法里调用
+在你的`Activity`的`onCreate()`方法里调用
 
 ```java
 AndroidBug5497Workaround.assistActivity(this);

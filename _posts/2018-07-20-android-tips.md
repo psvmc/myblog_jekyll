@@ -303,29 +303,68 @@ Log.d(TAG,"densityDpi:$densityDpi")
 
 ## EditText
 
-+ `EditText`去掉下划线 `android:background="@null"`
+### 去掉下划线 
 
-+ `EditText `光标颜色和文字一样 `android:textCursorDrawable="@null"`
+```
+android:background="@null"
+```
+
+### 光标颜色和文字一样 
+
+```xml
+android:textCursorDrawable="@null"
+```
+
+### 自定义光标颜色
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+  android:shape="rectangle" >
+  <size android:width="2dp" />
+  <solid android:color="#ff7200" />
+</shape>
+```
+
+然后 `android:textCursorDrawable="@drawable/edit_cursor_color"`
 
 
-  自定义光标颜色
 
-  ```xml
-  <?xml version="1.0" encoding="utf-8"?>
-  <shape xmlns:android="http://schemas.android.com/apk/res/android"
-      android:shape="rectangle" >
-      <size android:width="2dp" />
-      <solid android:color="#ff7200" />
-  </shape>
-  ```
+### 光标置顶
 
-  然后 `android:textCursorDrawable="@drawable/edit_cursor_color"`
+```xml
+android:gravity="top"
+```
 
-+ 页面显示时不显示输入法
 
-  ```kotlin
-  getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-  ```
+
+### 软键盘不遮挡
+
+[`解决Android软键盘在全屏下设置adjustResize无效的问题`](http://www.psvmc.cn/article/android-adjustresize.html)
+
+### 页面显示时不显示输入法
+
+```kotlin
+getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+```
+
+### 键盘上显示搜索
+
+```xml
+android:imeOptions="actionSearch"
+android:maxLines="1"
+```
+
+Kotlin代码
+
+```kotlin
+search_edittext.setOnEditorActionListener { textView, i, keyEvent ->
+  if (i == EditorInfo.IME_ACTION_SEARCH) {
+
+  }
+  false
+}
+```
 
   
 
@@ -334,6 +373,20 @@ Log.d(TAG,"densityDpi:$densityDpi")
 ```java
 ContextCompat.getDrawable(context, drawableId);
 ```
+
+
+
+## ScrollView 设置内部充满全屏
+
+```xml
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+```
+
+
 
 
 
@@ -578,6 +631,25 @@ activity android:windowSoftInputMode = "stateAlwaysHidden | adjustPan"
 + adjustPan
 
   该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。相反，当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分。这个通常是不期望比调整大小，因为用户可能关闭软键盘以便获得与被覆盖内容的交互操作。
+
+
+
+## 隐藏软键盘
+
+Kotlin
+
+```kotlin
+object ZJInputUtils {
+    fun hideInput(activity: Activity) {
+        //得到InputMethodManager的实例
+        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (imm.isActive) {
+            //如果开启
+            imm.hideSoftInputFromWindow(activity.window.decorView.windowToken, 0)
+        }
+    }
+}
+```
 
 
 
