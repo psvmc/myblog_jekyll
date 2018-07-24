@@ -891,10 +891,20 @@ private fun handleListView(contentView: View) {
   })
   ```
 
-  ​
 
 
-# 华为设备不显示日志
+
+## ListView获取子视图
+
+`ListView`有一个`getChildAt()`方法，参数传的不是子视图的`position`，而是当前显示区域的位置，所以正确的获取`position`位置视图的方法为
+
+```java
+int firstVisiblePosition = mListView.getFirstVisiblePosition();
+mListView.getChildAt(position - firstVisiblePosition));
+```
+
+
+## 华为设备不显示日志
 
 + 华为手机无法显示log解决方案,.拨号界面输入 `*#*#2846579#*#*`
 

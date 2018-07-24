@@ -8,7 +8,7 @@ category: git
 
 ---
 
-我的iOS开发时的忽略文件配置
+## 我的iOS开发时的忽略文件配置
 
 ```git
 # Xcode
