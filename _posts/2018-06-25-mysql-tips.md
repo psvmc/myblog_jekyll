@@ -11,9 +11,52 @@ categories:
 
 
 
-## 安装
 
-### 安装配置
+
+## 设置阿里yum镜像
+
+### (1) 备份
+
+```bash
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+```
+
+### (2) 查看系统版本
+
+```bash
+cat /etc/redhat-release
+```
+
+###  (3) 下载
+
+下载新的CentOS-Base.repo 到/etc/yum.repos.d/
+
++ CentOS 7
+
+  ```bash
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+  ```
+
++ CentOS 6
+
+  ```bash
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+  ```
+
++ CentOS 5
+
+  ```bash
+  wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+  ```
+
+
+### (4) 生成缓存
+
+```
+yum makecache
+```
+
+## 安装
 
 Step1: 检测系统是否自带安装MySQL
 
@@ -54,7 +97,9 @@ chkconfig --list | grep mysqld
 chkconfig mysqld on
 ```
 
-Step7: 配置修改: 表名/编码/连接数/数据包大小
+## 配置
+
+(1): 配置修改: 表名/编码/连接数/数据包大小
 
 设置表名不区分大小写/字符编码/连接数
 
@@ -81,9 +126,7 @@ sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 service mysqld restart
 ```
 
-
-
-Step8:修改密码
+(2): 修改密码
 
 ```bash
 vi /etc/my.cnf
@@ -103,11 +146,19 @@ skip-grant-tables
 
 重启
 
-```
+```bash
 service mysqld restart
 ```
 
-修改密码
+5.1
+
+```mysql
+mysql
+mysql> use mysql;
+mysql> UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
+```
+
+5.7
 
 ```bash
 mysql
@@ -115,7 +166,7 @@ mysql> use mysql;
 mysql> update user set authentication_string=password('123456') where user='root';
 ```
 
-Step9: 设置允许远程登录 
+(3): 设置允许远程登录 
 
 ```bash
 mysql -u root -p   
@@ -125,7 +176,9 @@ mysql> FLUSH PRIVILEGES;
 mysql> quit
 ```
 
-### 卸载
+
+
+## 卸载
 
 ```bash
 chkconfig mysqld off
@@ -135,7 +188,15 @@ yum remove mysql-community-server
 
 
 
-### 防火墙添加信任规则
+## 数据库文件存储位置
+
+```mysql
+show global variables like "%datadir%";
+```
+
+
+
+## 防火墙添加信任规则
 
 打开文件
 
