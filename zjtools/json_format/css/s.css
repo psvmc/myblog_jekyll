@@ -102,6 +102,9 @@ div.Canvas {
 PRE.CodeContainer {
     margin-top: 0px;
     margin-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
 PRE.CodeContainer img {
@@ -144,6 +147,7 @@ PRE.CodeContainer img {
     color: #666;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 10px;
 }
 
 A.OtherToolsLink {
