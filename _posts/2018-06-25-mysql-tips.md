@@ -171,9 +171,30 @@ mysql> update user set authentication_string=password('123456') where user='root
 ```bash
 mysql -u root -p   
 Enter Password: <your new password>   
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;   
+mysql> set global validate_password_policy=0;
+mysql> SET PASSWORD = PASSWORD('你的密码');
+mysql> ALTER USER 'root'@'%' PASSWORD EXPIRE NEVER;
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '你的密码' WITH GRANT OPTION;   
 mysql> FLUSH PRIVILEGES; 
 mysql> quit
+```
+
+
+
+You must reset your password using ALTER USER statement before executing this statement
+
+```mysql
+SET PASSWORD = PASSWORD('your new password');
+ALTER USER 'root'@'%' PASSWORD EXPIRE NEVER;
+flush privileges;
+```
+
+
+
+Your password does not satisfy the current policy requirements
+
+```mysql
+set global validate_password_policy=0;
 ```
 
 
