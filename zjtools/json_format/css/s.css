@@ -142,7 +142,8 @@ PRE.CodeContainer img {
     height: 100%;
     border:none;
     color: #666;
-    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 A.OtherToolsLink {
