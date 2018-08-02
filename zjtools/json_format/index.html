@@ -1,78 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>原生json格式化及高亮</title>
-
-    <meta charset="UTF-8"> <!-- for HTML5 -->
+    <meta charset="UTF-8">
+    <!-- for HTML5 -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="JSON格式化及高亮">
     <meta name="keywords" content="json,格式化,高亮">
-    <script src="js/c.js" type="text/javascript"></script>
     <link href="css/s.css" type="text/css" rel="stylesheet"></link>
 </head>
+
 <body style="padding: 0px;margin: 0px;">
-<div class="HeadersRow" id="HeadersRow">
-    <h3 id="HeaderSubTitle">JSON格式化工具</h3>
-</div>
-<div class="json_format" id="json_format">
-    <div class="json_format_left" id="json_format_left">
-        <textarea id="RawJson" place-holder="请输入JSON字符串" oninput="Process()"></textarea>
+    <div class="HeadersRow" id="HeadersRow">
+        <h3 id="HeaderSubTitle">JSON格式化工具</h3>
     </div>
-    <div class="json_format_right" id="json_format_right">
-        <div id="ControlsRow">
-            <div class="ControlsRow_div">
-                <input type="Button" value="格式化" id="format_button" onclick="Process()" class="hidden" />
-                <span id="TabSizeHolder" class="hidden"> 缩进量 </span>
-                <select id="TabSize" onchange="TabSizeChanged()" class="hidden">
-                    <option value="1">1</option>
-                    <option value="2" selected="true">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-                <label for="QuoteKeys" class="hidden">
-                    <input type="checkbox" id="QuoteKeys" onclick="QuoteKeysClicked()" checked="true" />
-                    引号
-                </label>
-                &nbsp;
-                <a href="javascript:void(0);" onclick="SelectAllClicked()">全选</a>
-                &nbsp;
-                <span id="CollapsibleViewHolder">
-				<label for="CollapsibleView">
-					<input type="checkbox" id="CollapsibleView" onclick="CollapsibleViewClicked()" checked="true" />
-					显示控制
-				</label>
-			</span>
-                <span id="CollapsibleViewDetail">
-				(
-				<a href="javascript:void(0);" onclick="ExpandAllClicked()">展开</a>
-				<a href="javascript:void(0);" onclick="CollapseAllClicked()">叠起</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(3)">2级</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(4)">3级</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(5)">4级</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(6)">5级</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(7)">6级</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(8)">7级</a>
-				<a href="javascript:void(0);" onclick="CollapseLevel(9)">8级</a>
-				)
-			</span>
-            </div>
+    <div class="json_format" id="json_format">
+        <div class="json_format_left" id="json_format_left">
+            <textarea id="RawJson" place-holder="请输入JSON字符串" oninput="Process()"></textarea>
         </div>
-        <div id="Canvas" class="Canvas"></div>
+        <div class="json_format_right" id="json_format_right">
+            <div id="ControlsRow">
+                <div class="ControlsRow_div">
+                    <input type="Button" value="格式化" id="format_button" onclick="Process()" class="hidden" />
+                    <span id="TabSizeHolder" class="hidden"> 缩进量 </span>
+                    <select id="TabSize" onchange="TabSizeChanged()" class="hidden">
+                        <option value="1">1</option>
+                        <option value="2" selected="true">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <label for="QuoteKeys" class="hidden">
+                        <input type="checkbox" id="QuoteKeys" onclick="QuoteKeysClicked()" checked="true" /> 引号
+                    </label>
+                    &nbsp;
+                    <a href="javascript:void(0);" onclick="SelectAllClicked()">全选</a> &nbsp;
+                    <span id="CollapsibleViewHolder">
+                <label for="CollapsibleView">
+                    <input type="checkbox" id="CollapsibleView" onclick="CollapsibleViewClicked()" checked="true" />
+                    显示控制
+                </label>
+            </span>
+                    <span id="CollapsibleViewDetail">
+                (
+                <a href="javascript:void(0);" onclick="ExpandAllClicked()">展开</a>
+                <a href="javascript:void(0);" onclick="CollapseAllClicked()">叠起</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(3)">2级</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(4)">3级</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(5)">4级</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(6)">5级</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(7)">6级</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(8)">7级</a>
+                <a href="javascript:void(0);" onclick="CollapseLevel(9)">8级</a>
+                )
+            </span>
+                </div>
+            </div>
+            <div id="Canvas" class="Canvas"></div>
+        </div>
     </div>
-</div>
-
-<script type="text/javascript" src="js/m.js"></script>
-
-<script type="text/javascript">
+    <script type="text/javascript">
     function autodivheight() {
         //获取浏览器窗口高度
         var winHeight = 0;
         if (window.innerHeight) {
             winHeight = window.innerHeight;
-        }
-        else if ((document.body) && (document.body.clientHeight)) {
+        } else if ((document.body) && (document.body.clientHeight)) {
             winHeight = document.body.clientHeight;
         }
 
@@ -92,7 +87,9 @@
     }
     window.onresize = autodivheight; //浏览器窗口发生变化时同时变化DIV高度
     autodivheight();
-</script>
+    </script>
+    <script src="js/c.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/m.js"></script>
 </body>
-</html>
 
+</html>
