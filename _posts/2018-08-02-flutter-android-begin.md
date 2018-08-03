@@ -13,27 +13,13 @@ category: flutter
 
 
 
-### 下载Dark SDK
-
-> [`Dark SDK`](https://www.dartlang.org/tools/sdk/)
-
-```bash
-brew tap dart-lang/dart
-brew install dart --devel
-brew info dart
-```
-
-国内下载不了 下面设置的国内镜像`flutter doctor`会自动下载
-
-所以这步可跳过
-
 ### 下载Flutter
 
 ```bash
 cd ~
 git clone -b beta https://github.com/flutter/flutter.git
-export PUB_HOSTED_URL=https://pub.flutter-io.cn //国内用户需要设置
-export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn //国内用户需要设置
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PATH=`pwd`/flutter/bin:$PATH
 ```
 
@@ -77,15 +63,15 @@ flutter config --no-analytics
 
 
 
-## 安装插件
+### 安装插件
 
-Android Studio中`Plugins` 查找`dart`和`flutter`并安装。
+`Android Studio`中`Plugins` 查找`dart`和`flutter`并安装。
 
 ## 问题
 
 Waiting for another flutter command to release the startup lock
 
-+ 1、打开flutter的安装目录/bin/cache/  
-+ 2、删除lockfile文件   
-+ 3、重启AndroidStudio
++ 1、打开`flutter`的安装目录`/bin/cache/`  
++ 2、删除`lockfile`文件   
++ 3、重启`AndroidStudio`
 
