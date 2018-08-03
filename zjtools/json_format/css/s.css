@@ -8,9 +8,11 @@
     width: 100%;
     height: 100%;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
+
 .json_format_left {
     width: 36%;
     height: 100%;
@@ -52,7 +54,7 @@ div.Canvas {
     font-size: 13px;
     background-color: #ECECEC;
     color: #000000;
-    border: solid 1px #CECECE;
+
     min-height: 200px;
     min-width: 100%;
 }
@@ -120,6 +122,7 @@ PRE.CodeContainer img {
 #ControlsRow {
     white-space: nowrap;
     font: 16px Georgia;
+    border-bottom: solid #dedede 1px;
 }
 
 #TabSizeHolder {
@@ -143,11 +146,8 @@ PRE.CodeContainer img {
 #RawJson {
     width: 100%;
     height: 100%;
-    border:none;
+    border: none;
     color: #666;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
 }
 
 A.OtherToolsLink {
@@ -163,7 +163,7 @@ A.OtherToolsLink:hover {
     font-size: 16px;
     background: #00AA00;
     color: white;
-    border:none;
+    border: none;
 }
 
 #TabSize {
