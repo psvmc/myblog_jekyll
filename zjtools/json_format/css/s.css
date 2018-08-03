@@ -31,7 +31,7 @@
 #ControlsRow {
     width: 100%;
     line-height: 40px;
-    background: #eeeeee;
+    background: #f5f5f5;
 }
 
 .ControlsRow_div {
@@ -102,8 +102,8 @@ div.Canvas {
 }
 
 PRE.CodeContainer {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -115,8 +115,18 @@ PRE.CodeContainer img {
     margin-bottom: -1px;
 }
 
+.select_all {
+    color: #0093e2;
+}
+
+#CollapsibleViewDetail {
+    color: #0093e2;
+}
+
 #CollapsibleViewDetail a {
-    padding-left: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #0093e2;
 }
 
 #ControlsRow {
