@@ -22,6 +22,12 @@ git clone -b beta https://github.com/flutter/flutter.git
 
 > 克隆的地址也可以从[`码云`](https://gitee.com/search?utf8=%E2%9C%93&q=flutter&type=)上找
 
+查看PATH
+
+```bash
+echo $PATH
+```
+
 
 
 临时设置
@@ -35,8 +41,25 @@ export PATH=`pwd`/flutter/bin:$PATH
 
 永久设置
 
+```
+cd ~
+pwd
+```
+
+比如我的是`/Users/psvmc`
+
+打开配置文件 
+
+如果用的是`bash shell`
+
 ```bash
 vi .bash_profile
+```
+
+如果用的是`zsh`
+
+```bash
+open ~/.zshrc
 ```
 
 添加以下配置
@@ -44,7 +67,7 @@ vi .bash_profile
 ```bash
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-export PATH=~/flutter/bin:$PATH
+export PATH="/Users/psvmc/flutter/bin:$PATH"
 ```
 
 让配置立即生效
@@ -101,8 +124,6 @@ flutter
 flutter config --no-analytics
 ```
 
-
-
 ## 终端创建项目
 
 ```bash
@@ -114,6 +135,7 @@ flutter create my_flutter_app
 连接上手机 运行项目
 
 ```bash
+cd my_flutter_app
 flutter run
 ```
 
