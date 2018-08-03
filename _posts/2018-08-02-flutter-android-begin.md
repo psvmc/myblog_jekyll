@@ -15,15 +15,34 @@ category: flutter
 
 ### 下载Flutter
 
+
+
 ```bash
 cd ~
 git clone -b beta https://github.com/flutter/flutter.git
+```
+
+> 克隆的地址也可以从[`码云`](https://gitee.com/search?utf8=%E2%9C%93&q=flutter&type=)上找
+
+```bash
+vi .bash_profile
+```
+
+添加以下配置
+
+```bash
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PATH=`pwd`/flutter/bin:$PATH
 ```
 
-> 克隆的地址也可以从[`码云`](https://gitee.com/search?utf8=%E2%9C%93&q=flutter&type=)上找
+让配置立即生效
+
+```bash
+source .bash_profile
+```
+
+
 
 Windows执行如下操作
 
@@ -33,6 +52,8 @@ Windows执行如下操作
 PUB_HOSTED_URL      https://pub.flutter-io.cn
 FLUTTER_STORAGE_BASE_URL     https://storage.flutter-io.cn
 ```
+
+
 
 接下来运行
 
@@ -51,14 +72,30 @@ flutter
 
 第一次运行`flutter`它会自动下载一些依赖，并且进行自动编译。
 
-随后再次运行flutter就会跳过这些步骤。
+随后再次运行`flutter`就会跳过这些步骤。
 
 
 
-安装完flutter以后google analytics默认是自动打开的，如果有同学不喜欢flutter在后台默默上传你的使用数据和错误信息可以选择关闭：
+安装完flutter以后`google analytics`默认是自动打开的，国内建议选择关闭：
 
 ```bash
 flutter config --no-analytics
+```
+
+
+
+## 终端创建项目
+
+```bash
+cd ~
+cd Downloads
+flutter create my_flutter_app
+```
+
+连接上手机 运行项目
+
+```bash
+flutter run
 ```
 
 
