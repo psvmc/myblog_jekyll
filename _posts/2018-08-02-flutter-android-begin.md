@@ -155,21 +155,51 @@ flutter packages get
 
 ## 问题
 
-(1) Waiting for another flutter command to release the startup lock
+### 运行卡住
+
+Waiting for another flutter command to release the startup lock
 
 + 1、打开`flutter`的安装目录`/bin/cache/`  
 + 2、删除`lockfile`文件   
 + 3、重启`AndroidStudio`
 
 ```bash
-cd ~
-rm -rf ./flutter/bin/cache/lockfile
+rm -rf ~/flutter/bin/cache/lockfile
 ```
 
 
 
-(2) Android studio安装插件后没有`New Flutter Project`选项的
+### 插件安装不生效
+
+Android studio安装插件后没有`New Flutter Project`选项的
 
 + Android Studio更新到`3.0.0`以上的版本
 + 并去`File`-`>Setting`-`>Plugins`更新`Flutter`和`Drat`插件即可
 
+
+
+### 环境变量不生效
+
+解决 Mac 下配置环境变量在 ZSH 中无效的问题
+
+在配置 gradle 的时候, 发现在 `/etc/profiles` 中设置了环境变量后, 还是不能在 `zsh` 中使用. 
+
+但在 Terminal 中可以正常使用. 后来发现是因为没有在 `.zshrc` 中配置.
+
+在终端中输入: 
+
+```bash
+open ~/.zshrc
+```
+
+以此来查看 `.zshrc` 文件, 找到里面的 `# User configuration` 部分. 可以看到当前 zsh 支持的所有本地已配置环境变量.
+
+```bash
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export PATH="/Users/zhangjian/flutter/bin:$PATH"
+```
+
+里面追加一条想要配置的环境变量路径.
+
+重启 item2 即可。
