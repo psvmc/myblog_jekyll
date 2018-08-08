@@ -1,8 +1,7 @@
 ---
-
 layout: post
-title: mysql触发器
-description: mysql触发器
+title: Mysql触发器
+description: Mysql触发器
 keywords: mysql
 category: mysql
 
