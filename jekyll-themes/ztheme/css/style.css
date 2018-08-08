@@ -438,7 +438,7 @@ a:hover {
     transition: background .4s ease-in-out;
     text-align: center;
     color: #fff;
-    border-radius: 4px 16px;
+    border-radius: 4px 4px;
     background: #0b9953;
     border: solid 2px white;
 }
@@ -505,14 +505,13 @@ a:hover {
 
 #ztheme-foot {
     width: 100%;
-    height: 160px;
     border-top: 1px solid #007b06;
     background: #0e9322;
 }
 
 .footer {
     width: 80%;
-    height: 100px;
+    height: 140px;
     margin: 0 auto;
 }
 

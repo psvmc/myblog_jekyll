@@ -48,8 +48,6 @@ themes: /jekyll-themes/ztheme
 
 #关注我
 follow:
-  - class: fa-github
-    url: https://github.com/psvmc
   - class: fa-rss
     url: /atom.xml
 
