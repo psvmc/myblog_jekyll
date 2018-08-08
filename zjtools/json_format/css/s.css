@@ -1,7 +1,5 @@
 @charset "utf-8";
 
-/* CSS Document */
-
 * {
     font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
 }
@@ -119,21 +117,21 @@ PRE.CodeContainer img {
 }
 
 .select_all {
-    color: #0093e2;
+    color: #ed5418;
 }
 
 .copy_all {
-    color: #0093e2;
+    color: #ed5418;
 }
 
 #CollapsibleViewDetail {
-    color: #0093e2;
+    color: #ed5418;
 }
 
 #CollapsibleViewDetail a {
     padding-left: 4px;
     padding-right: 4px;
-    color: #0093e2;
+    color: #ed5418;
 }
 
 #ControlsRow {
