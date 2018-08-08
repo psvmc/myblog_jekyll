@@ -191,6 +191,19 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
 
 
+## 取消配对
+
+```java
+static public boolean removeBond(BluetoothDevice btDevice)
+    throws Exception {
+    Method removeBondMethod = btDevice.getClass().getMethod("removeBond");
+    Boolean returnValue = (Boolean) removeBondMethod.invoke(btDevice);
+    return returnValue.booleanValue();
+}
+```
+
+
+
 # 服务端
 
 android 蓝牙之间可以通过SDP协议建立连接进行通信，通信方式类似于平常使用socket。

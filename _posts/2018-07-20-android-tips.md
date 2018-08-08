@@ -338,6 +338,14 @@ android:gravity="top"
 
 
 
+### 光标显示在最后
+
+```kotlin
+name_edittext.setSelection(name_edittext.text.toString().length)
+```
+
+
+
 ### 软键盘不遮挡
 
 [`解决Android软键盘在全屏下设置adjustResize无效的问题`](http://www.psvmc.cn/article/android-adjustresize.html)
