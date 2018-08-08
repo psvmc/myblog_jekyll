@@ -224,3 +224,34 @@ git push origin --all --force
 注意 这也会对`当前的分支进行操作`  
 也就是说  上述的例子也会删除当前分支的图片  
 如果只想删除历史文件 就要当前的文件先备份一下
+
+
+
+## 取消跟踪已版本控制的文件
+
+不再追踪文件改动 
+
+```bash
+git update-index --assume-unchanged filePath
+```
+
+恢复追踪文件改动 
+
+```bash
+git update-index —no-assume-unchanged filePath
+```
+
+删除被管理的文件 
+
+```bash
+git rm —cached filePath
+```
+
+删除被管理的文件夹 
+
+```bash
+git rm -r -f —cached filePath
+```
+
+
+
