@@ -3,7 +3,7 @@ layout: post
 title: Android开发常用的知识点
 description: Android开发常用的知识点
 keywords: android
-categories: android java
+categories: android
 ---
 
 
