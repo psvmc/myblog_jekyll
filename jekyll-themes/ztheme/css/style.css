@@ -188,6 +188,8 @@ samp {
 
 
 
+
+
 /* =Common
 --------------------------------------*/
 
@@ -250,6 +252,8 @@ a:hover {
 .fn-webkit-adjust {
     -webkit-text-size-adjust: none;
 }
+
+
 
 
 
@@ -514,8 +518,8 @@ a:hover {
 
 #ztheme-foot {
     width: 100%;
-    border-top: 1px solid #007b06;
-    background: #0e9322;
+    border-top: 1px solid #fc8f27;
+    background: #ed5418;
 }
 
 .footer {
@@ -957,6 +961,8 @@ code {
     color: #fff;
     background-color: #333;
 }
+
+
 
 
 
