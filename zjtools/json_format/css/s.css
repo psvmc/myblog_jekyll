@@ -41,7 +41,11 @@
 
 div.ControlsRow,
 div.HeadersRow {
-    background: #ed5418;
+    background-color: #ed5418;
+    background: -moz-linear-gradient(top, #ed5418, #fc8f27);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ed5418), to(#fc8f27));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#ed5418', endColorstr='#fc8f27');
+    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=\'#ed5418\', endColorstr=\'#fc8f27\')';
     color: white;
 }
 
