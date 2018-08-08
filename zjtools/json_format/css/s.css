@@ -1,5 +1,7 @@
 @charset "utf-8";
+
 /* CSS Document */
+
 * {
     font-family: "Microsoft YaHei", "Arial", simsun, sans-serif;
 }
@@ -39,8 +41,9 @@
     width: 760px;
 }
 
-div.ControlsRow, div.HeadersRow {
-    background: #0093e2;
+div.ControlsRow,
+div.HeadersRow {
+    background: #ed5418;
     color: white;
 }
 
