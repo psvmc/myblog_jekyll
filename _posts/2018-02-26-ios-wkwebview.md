@@ -3,7 +3,7 @@ layout: post
 title: 使用WKWebView替换UIWebView
 description: 使用WKWebView替换UIWebView
 keywords: webview
-categories: ios webview js
+categories: ios webview
 ---
 
 
