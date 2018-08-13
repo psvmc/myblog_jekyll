@@ -106,4 +106,33 @@ implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 
 
 
- 
+ ## 相册图片选择
+
+[`PictureSelector`](https://github.com/LuckSiege/PictureSelector) 
+
+所需权限
+
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.CAMERA" />
+```
+
+项目根目录build.gradle加入
+
+```bash
+allprojects {
+   repositories {
+      jcenter()
+      maven { url 'https://jitpack.io' }
+   }
+}
+```
+
+compile引入
+
+```bash
+dependencies {
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+}
+```
