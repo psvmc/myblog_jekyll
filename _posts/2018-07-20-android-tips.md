@@ -12,7 +12,7 @@ categories: android
 
 ## 引入外部jar
 
-```json
+```bash
 android {
     ......
     sourceSets {
@@ -30,7 +30,7 @@ dependencies {
 
 ## 支持HttpClient
 
-```json
+```bash
 android {
     ......
     useLibrary 'org.apache.http.legacy'
