@@ -149,6 +149,12 @@ docker pull registry.cn-hangzhou.aliyuncs.com/psvmc/oraclejdk-tomcat8
 
 
 
+## 开机启动
+
+```bash
+systemctl enable docker.service
+```
+
 
 
 

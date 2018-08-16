@@ -150,20 +150,20 @@ skip-grant-tables
 service mysqld restart
 ```
 
-5.1
-
-```mysql
-mysql
-mysql> use mysql;
-mysql> UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
-```
-
 5.7
 
 ```bash
 mysql
 mysql> use mysql;
 mysql> update user set authentication_string=password('123456') where user='root';
+```
+
+5.1
+
+```mysql
+mysql
+mysql> use mysql;
+mysql> UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
 ```
 
 (3): 设置允许远程登录 
@@ -238,6 +238,26 @@ service iptables restart
 ```
 
 ## 常见问题
+
+
+
+### 默认文件存储位置
+
+```bash
+cd /var/lib/mysql
+```
+
+日志文件位置
+
+```bash
+vi /var/log/mysqld.log
+```
+
+fssfs
+
+```bash
+innodb_force_recovery = 6
+```
 
 ### 启动失败
 

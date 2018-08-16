@@ -34,13 +34,13 @@ docker pull gitea/gitea:latest
 其中`data`目录是自己建的
 
 ```bash
-sudo mkdir -p /data/gitea
+sudo mkdir -p /data/tools/gitea
 ```
 
 然后就可以运行 docker 容器了，这很简单。 当然你需要定义端口数数据目录：
 
 ```bash
-docker run -d --name=gitea -p 10022:22 -p 10080:3000 -v /data/gitea:/data gitea/gitea:latest
+docker run -d --name=gitea -p 10022:22 -p 10080:3000 -v /data/tools/gitea:/data --restart=always gitea/gitea:latest
 ```
 
 然后 容器已经运行成功，在浏览器中访问 <http://hostname:10080> 就可以看到界面了
