@@ -396,6 +396,35 @@ ContextCompat.getDrawable(context, drawableId);
 
 
 
+## RecycleView
+
+### 禁止上下滑动
+
+Kotlin
+
+```kotlin
+val linearLayoutManager = object : LinearLayoutManager(mContext,
+    LinearLayoutManager.VERTICAL,
+    false) {
+    override fun canScrollVertically(): Boolean {
+        return false
+    }
+}
+
+m_recycleView?.layoutManager = linearLayoutManage
+```
+
+Java
+
+```java
+LinearLayoutManager  linearLayoutManager = new LinearLayoutManager(context) {
+    @Override
+    public boolean canScrollVertically() {
+        return false;
+    }
+};
+```
+
 
 
 ## 登录自动切换输入框

@@ -32,7 +32,7 @@ implementation 'com.android.support:support-v4:27.1.1'
   ```bash
   buildscript {
       ext.kotlin_version = '1.1.51'
-  	//....
+  	  //....
       dependencies {
           //...
           classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -154,6 +154,16 @@ implementation 'com.android.support:support-v4:27.1.1'
   ```
 
   
+
+### Gif加载
+
+ [`android-gif-drawable`](https://github.com/koral--/android-gif-drawable)
+
+```bash
+implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+```
+
+
 
 ### 图片圆角&背景圆角
 
