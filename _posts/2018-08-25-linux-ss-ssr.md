@@ -2,7 +2,7 @@
 layout: post
 title: Linux搭建SS/SSR代理服务器
 description: Linux搭建SS/SSR代理服务器
-keywords: linux
+keywords: linux 科学上网
 categories: linux ss ssr
 
 ---
