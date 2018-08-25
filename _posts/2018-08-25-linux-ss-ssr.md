@@ -13,13 +13,13 @@ categories: linux ss ssr
 
 `shadowsocks`/`shadowsocksR`这两个**只需要搭建一个**就可以了！！！！
 
-SS VS SSR一直是各有各的说法，互相看不起对方。
+`SS` vs `SSR`一直是各有各的说法，互相看不起对方。
 
-我用的是SS，因为SS的iOS版本比较容易下载，并且并没有觉得ss容易被探查到。
+我用的是`SS`，因为`SS`的`iOS`版本比较容易下载，并且并没有觉得`SS`容易被探查到。
 
 
 
-Shadowsocks 的数据传输是建立在 SOCKS5 协议之上的，SOCKS5 是 TCP/IP 层面的网络代理协议。 ss-server 端解密出来的数据就是采用 SOCKS5 协议封装的，通过 SOCKS5 协议 ss-server 端能读出本机软件想访问的服务的真正地址以及要传输的原数据
+`Shadowsocks` 的数据传输是建立在 `SOCKS5` 协议之上的，`SOCKS5` 是 `TCP/IP` 层面的网络代理协议。 `ss-server` 端解密出来的数据就是采用 `SOCKS5` 协议封装的，通过 `SOCKS5` 协议 `ss-server` 端能读出本机软件想访问的服务的真正地址以及要传输的原数据
 
 
 
@@ -87,6 +87,16 @@ ss-fly/ss-fly.sh -uninstall
 **PAC模式**是指国内可以访问的站点直接访问，不能直接访问的再走shadowsocks代理~  
 
 OK！一键脚本搭建shadowsocks完毕！科学上网吧，兄弟！[Google](https://www.google.com/)
+
+
+
+### 查看连接
+
+```bash
+netstat -an | grep 1024
+```
+
+
 
 ## SSR的搭建
 
@@ -158,3 +168,9 @@ ss-fly/ss-fly.sh -ssr
 **PAC模式**是指国内可以访问的站点直接访问，不能直接访问的再走**shadowsocksR**代理~  
 
 OK！一键脚本搭建**shadowsocksR**完毕！科学上网吧，兄弟！[Google](https://www.google.com/)
+
+### 查看连接
+
+```bash
+netstat -an | grep 1024
+```
