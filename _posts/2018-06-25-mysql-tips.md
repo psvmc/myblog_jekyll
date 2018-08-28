@@ -253,11 +253,7 @@ cd /var/lib/mysql
 vi /var/log/mysqld.log
 ```
 
-fssfs
 
-```bash
-innodb_force_recovery = 6
-```
 
 ### 启动失败
 
