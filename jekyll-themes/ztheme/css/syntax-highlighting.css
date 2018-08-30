@@ -1,5 +1,26 @@
+@font-face {
+    font-family: 'Boxed';
+    src: local('Boxed Light'), local('Boxed-Light'), url(Boxed-Light-webfont.woff2) format('woff2'), url(Boxed-Light-webfont.woff) format('woff');
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Boxed';
+    src: local('Boxed Regular'), local('Boxed-Regular'), url(Boxed-Regular-webfont.woff2) format('woff2'), url(Boxed-Regular-webfont.woff) format('woff');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Boxed';
+    src: local('Boxed DemiBold'), local('Boxed-DemiBold'), url(Boxed-DemiBold-webfont.woff2) format('woff2'), url(Boxed-DemiBold-webfont.woff) format('woff');
+    font-weight: 500;
+    font-style: normal
+}
+
 .highlight * {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace, "Microsoft YaHei", sans-serif;
+    font-family: Boxed, Menlo, Monaco, Consolas, "Courier New", monospace, "Microsoft YaHei", sans-serif;
     font-size: 14px;
 }
 
@@ -16,6 +37,7 @@
 }
 
 
+
 /*
  * GitHub style for Pygments syntax highlighter, for use with Jekyll
  * Courtesy of GitHub.com
@@ -25,12 +47,12 @@
 pre,
 .highlight .hll {
     background-color: #fbfbfb;
-	border: 2px solid #33adef;
-	border-style: dashed;
-	padding: 6px 10px;
-	border-radius: 6px;
-	max-width: 1000px;
-    overflow-x:auto;
+    border: 2px solid #33adef;
+    border-style: dashed;
+    padding: 6px 10px;
+    border-radius: 6px;
+    max-width: 1000px;
+    overflow-x: auto;
 }
 
 .highlight .c {
