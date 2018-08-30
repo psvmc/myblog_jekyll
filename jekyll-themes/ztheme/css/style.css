@@ -1,6 +1,29 @@
-* {
-    font-family: Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
+@font-face {
+    font-family: 'Boxed';
+    src: local('Boxed Light'), local('Boxed-Light'), url(Boxed-Light-webfont.woff2) format('woff2'), url(Boxed-Light-webfont.woff) format('woff');
+    font-weight: 300;
+    font-style: normal
 }
+
+@font-face {
+    font-family: 'Boxed';
+    src: local('Boxed Regular'), local('Boxed-Regular'), url(Boxed-Regular-webfont.woff2) format('woff2'), url(Boxed-Regular-webfont.woff) format('woff');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'Boxed';
+    src: local('Boxed DemiBold'), local('Boxed-DemiBold'), url(Boxed-DemiBold-webfont.woff2) format('woff2'), url(Boxed-DemiBold-webfont.woff) format('woff');
+    font-weight: 500;
+    font-style: normal
+}
+
+* {
+    font-family: Boxed, Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
+}
+
+
 
 html {
     color: #000;
@@ -191,6 +214,10 @@ samp {
 
 
 
+
+
+
+
 /* =Common
 --------------------------------------*/
 
@@ -253,6 +280,10 @@ a:hover {
 .fn-webkit-adjust {
     -webkit-text-size-adjust: none;
 }
+
+
+
+
 
 
 
@@ -963,6 +994,10 @@ code {
     color: #fff;
     background-color: #333;
 }
+
+
+
+
 
 
 
