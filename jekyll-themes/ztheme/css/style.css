@@ -218,6 +218,10 @@ samp {
 
 
 
+
+
+
+
 /* =Common
 --------------------------------------*/
 
@@ -280,6 +284,10 @@ a:hover {
 .fn-webkit-adjust {
     -webkit-text-size-adjust: none;
 }
+
+
+
+
 
 
 
@@ -695,7 +703,6 @@ a:hover {
 }
 
 .categoryGroup ul li a {
-    font-family: Monaco, Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
     font-size: 12px;
     display: block;
     width: auto;
@@ -718,7 +725,6 @@ a:hover {
 }
 
 .categoryGroup ul li a sup {
-    font-family: Monaco, Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
     font-size: 11px;
     color: #eee;
 }
@@ -831,7 +837,6 @@ code {
 }
 
 .main-article code {
-    font-family: Monaco, Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
     font-size: 90%;
     padding: 1px 4px;
     margin-right: 4px;
@@ -970,7 +975,6 @@ code {
 }
 
 .main-article .article-year li .post_keywords {
-    font-family: Monaco, Consolas, Helvetica, Open Sans, 'Microsoft YaHei', sans-serif;
     font-size: 11px;
     line-height: 20px;
     display: block;
@@ -996,6 +1000,10 @@ code {
     color: #fff;
     background-color: #333;
 }
+
+
+
+
 
 
 
