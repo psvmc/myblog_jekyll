@@ -78,13 +78,13 @@ F913BE58 42FEA319 F954EFDD AE881E0B
 
 ### Sublime Text 3
 
-```python
+```bash
 import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 ```
 
 ### Sublime Text 2
 
-```python
+```bash
 import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), 'wb' ).write( urllib2.urlopen( 'http://sublime.wbond.net/' +pf.replace( ' ','%20' )).read()); print( 'Please restart Sublime Text to finish installation')
 ```
 
@@ -92,10 +92,10 @@ import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed
 
 可能由于各种原因，无法使用代码安装，那可以通过以下步骤手动安装Package Control：
 
-1. 点击`Preferences` > `Browse Packages`菜单
-2. 进入打开的目录的上层目录，然后再进入`Installed Packages/`目录
-3. 下载 `Package Control.sublime-package` 并复制到`Installed Packages/`目录
-4. 重启Sublime Text。
++ 点击`Preferences` > `Browse Packages`菜单
++ 进入打开的目录的上层目录，然后再进入`Installed Packages/`目录
++ 下载 `Package Control.sublime-package` 并复制到`Installed Packages/`目录
++ 重启Sublime Text。
 
 Package Control 主文件下载地址：[https://github.com/wbond/sublime_package_control](https://github.com/wbond/sublime_package_control)
 
