@@ -3,9 +3,7 @@ layout: post
 title: RxJava2 多线程
 description: RxJava2 多线程
 keywords: rxjava
-categories: 
-        - rx
-        - rxjava
+categories: rxjava
 
 ---
 
