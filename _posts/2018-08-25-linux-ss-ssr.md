@@ -63,11 +63,19 @@ ss-fly/ss-fly.sh -uninstall
 
 ### 客户端下载
 
-1. Windows客户端下载地址：Windows对Framework的版本要求比价高，我的是4.0.2的要求Framework4.6.2。如果是XP或者Framework比较低的，可以直接下载低版本的ss（windows 2.3.1下载地址：[https://github.com/shadowsocks/shadowsocks-windows/releases?after=2.5.1](https://github.com/shadowsocks/shadowsocks-windows/releases?after=2.5.1)）。  
+1. Windows客户端下载地址：Windows对Framework的版本要求比价高，我的是4.0.2的要求Framework4.6.2。
+
+   如果是XP或者Framework比较低的，可以直接下载低版本的ss（[下载地址](https://github.com/shadowsocks/shadowsocks-windows/releases?after=2.5.1)）。  
+
 2. Mac客户端下载地址：[https://github.com/shadowsocks/ShadowsocksX-NG/releases](https://github.com/shadowsocks/ShadowsocksX-NG/releases)。  
+
 3. Linux客户端下载地址：[https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation](https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation)。  
+
 4. Android/安卓客户端下载地址：[https://github.com/shadowsocks/shadowsocks-android/releases](https://github.com/shadowsocks/shadowsocks-android/releases)。  
-5. iOS/苹果客户端直接在App Store里搜索shadowsock关键字（或者wingy关键字），软件经常被下架，我目前用的是Wingy & Shadowrocket~如果找不到，你也可以通过**PP助手**去下载Shadowrocket。
+
+5. iOS/苹果客户端直接在App Store里搜索shadowsock关键字（或者wingy关键字）
+
+   软件经常被下架，我目前用的是Wingy & Shadowrocket~如果找不到，你也可以通过**PP助手**去下载Shadowrocket。
 
 百度云地址 
 
@@ -124,15 +132,41 @@ ss-fly/ss-fly.sh -ssr
 
 ### 相关命令
 
+启动
+
 ```bash
-启动：/etc/init.d/shadowsocks start
-停止：/etc/init.d/shadowsocks stop
-重启：/etc/init.d/shadowsocks restart
-状态：/etc/init.d/shadowsocks status
+/etc/init.d/shadowsocks start
+```
+
+停止
+
+```bash
+/etc/init.d/shadowsocks stop
+```
+
+重启
+
+```bash
+/etc/init.d/shadowsocks restart
+```
+
+状态
+
+```bash
+/etc/init.d/shadowsocks status
+```
+
+
+
+### 常用路径
+
+```bash
 配置文件路径：/etc/shadowsocks.json
 日志文件路径：/var/log/shadowsocks.log
 代码安装目录：/usr/local/shadowsocks
 ```
+
+
 
 ### 卸载
 
