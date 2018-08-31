@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Jsoup抓去网页数据
-description: Jsoup抓去网页数据
+title: Jsoup抓取网页数据
+description: Jsoup抓取网页数据
 keywords: java jsoup
 categories: java jsoup
 
