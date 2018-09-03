@@ -799,6 +799,15 @@ Kotlin
 ContextCompat.getColor(mContext,android.R.color.background_light)
 ```
 
+### 屏幕常亮
+
+
+
+```java
+Window window = activity.getWindow();
+window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+```
+
 
 
 ## BottomSheetBehavior使用
