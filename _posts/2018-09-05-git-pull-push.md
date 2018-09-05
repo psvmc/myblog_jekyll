@@ -1,14 +1,14 @@
 ---
 
 layout: post
-title: git常用操作
-description: git常用操作
+title: Git常用操作
+description: Git常用操作
 keywords: git
 category: git
 
 ---
 
-## clone项目
+## Clone项目
 
 + 克隆   
 `git clone https://github.com/psvmc/RESideMenu_Swift.git ../RESideMenu_Swift`
@@ -49,7 +49,7 @@ git pull <远程主机名> <远程主机分支名>:<本地分支名>
 git pull origin next:master
 ```
 
-## git提交方式
+## Git提交方式
 
 + 进入项目的根目录   
   `cd  ／xx／xx`
@@ -85,7 +85,8 @@ git commit --amend
 
 
 
-## git分支
+
+## Git分支
 
 + 添加本地分支  
 `git branch <新分支名字>`
@@ -117,9 +118,42 @@ git commit --amend
      如果有冲突，会提示你，调用`git status`查看冲突文件。  
      解决冲突，然后调用`git add`或`git rm`将解决后的文件暂存。  
      所有冲突解决后，`git rebase --continue` 提交更改。  
+     
+## Tag操作
 
+ git跟其它版本控制系统一样，可以打标签(tag), 作用是标记一个点为一个版本号，打标签的操作发生在我们`commit修改到本地仓库之后`
 
-## egit冲突解决方法
+### 添加标签
+
+```
+git add .
+git commit -m "fixed some bugs"
+git tag -a 1.0 -m "Release version 1.0"
+```
+
+### 上传标签
+
+```
+git push origin master
+git push origin --tags
+```
+
+`--tags`参数表示提交所有tag至服务器 
+普通的`git push origin master`操作`不会推送标签到服务器端`
+
+### 删除本地标签
+
+```
+git tag -d 1.0
+```
+
+### 删除远程标签
+
+```
+git push origin :refs/tags/1.0
+```
+
+## 冲突解决(MyEclipse)
 
 + 提交至本地库  `commit`
 + 进行同步  `Synchronize Workspace`
@@ -128,7 +162,16 @@ git commit --amend
 + 选择第二项  `Use HEAD(the last local version) of conflicting files`
 + 手动解决冲突
 + 添加到git index中 `Add to Git index`
-+ commit并push `commit and push`
++ 提交并推送 `commit and push`
+
+
+
+## 冲突解决（命令）
+
++ 备份当前分支 `git branch master_backup`
++ 还原 `git reset --hard dca9073`
+
+
 
 ## 本地覆盖远程
 
@@ -136,27 +179,22 @@ git commit --amend
 git push origin master:master --force
 ```
 
-## git 放弃本地修改 强制更新
+## Git 放弃本地修改 强制更新
 
 ```
 git fetch --all
 git reset --hard origin/master
 ```
 
-## 冲突
-
-+ 新建分支 `git branch master_backup`
-+ 还原 `git reset --hard dca9073`
-
 
 ## 设置用户名与邮箱
 
-### 设置
+设置
 
 	git config --global user.name "psvmc"
 	git config --global user.email "183518918@qq.com"
 
-### 查看
+查看
 
 	git config --get user.name
 	git config --get user.email
@@ -204,41 +242,9 @@ git update-index --assume-unchanged <PATH>
 + 当你的工作告一段落决定可以提交的时候，重置改标识：`git update-index --no-assume-unchanged`，于是 `Git` 只需要做一次更新，这是完全可以接受的了；
 + 提交＋推送。
 
-## Tag操作
 
- git跟其它版本控制系统一样，可以打标签(tag), 作用是标记一个点为一个版本号，打标签的操作发生在我们`commit修改到本地仓库之后`
 
-### 添加标签
-
-```
-git add .
-git commit -m "fixed some bugs"
-git tag -a 1.0 -m "Release version 1.0"
-```
-
-### 上传标签
-
-```
-git push origin master
-git push origin --tags
-```
-
-`--tags`参数表示提交所有tag至服务器 
-普通的`git push origin master`操作`不会推送标签到服务器端`
-
-### 删除本地标签
-
-```
-git tag -d 1.0
-```
-
-### 删除远程标签
-
-```
-git push origin :refs/tags/1.0
-```
-
-### 改写历史
+## 改写历史
 
 ```
 git clone https://github.com/psvmc/psvmc.github.io.git
