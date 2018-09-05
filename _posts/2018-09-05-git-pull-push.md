@@ -24,18 +24,30 @@ category: git
 ## 第一次提交  
 
 + 进入项目的根目录  
-`cd  ／xx／xx`
+  `cd  ／xx／xx`
 + git初始化  
-`git init`
+  `git init`
 + 添加远程库  
-`git remote add origin https://github.com/psvmc/RESideMenu_Swift.git`
+  `git remote add origin https://github.com/psvmc/RESideMenu_Swift.git`
 + 输入账号密码
 + 添加修改的文件   
-`git add .`
+  `git add .`
 + 提交已添加的文件   
-`git commit -m "注释信息"`
+  `git commit -m "注释信息"`
 + 修改push到远程   
-`git push origin master`
+  `git push origin master`
+
+## git拉取
+
+```bash
+git pull <远程主机名> <远程主机分支名>:<本地分支名>
+```
+
+比如 取回`origin`主机的`next`分支，与本地的`master`分支合并，需要写成下面这样 
+
+```shell
+git pull origin next:master
+```
 
 ## git提交方式
 
@@ -50,6 +62,20 @@ category: git
   `git commit -m "注释信息"`
 + 修改push到远程  
   `git push origin master`
+
+
+
+```bash
+git push <远程主机名> <本地分支名>:<远程主机分支名>
+```
+
+比如 把本地的`master`分支推送到远程`my_master`
+
+```bash
+git push origin master:my_master
+```
+
+
 
 ## 修改提交的备注
 
