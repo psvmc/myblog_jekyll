@@ -208,13 +208,15 @@ spring
 [`RubyGems 镜像`](https://ruby.taobao.org/)
 
 ```bash
-$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
-$ gem sources -l
+gem sources -l
+gem sources --remove https://gems.ruby-china.org/
+gem sources --add https://gems.ruby-china.com/
+gem sources -l
 *** CURRENT SOURCES ***
 
-https://gems.ruby-china.org
-# 请确保只有 gems.ruby-china.org
-$ gem install rails
+https://gems.ruby-china.com/
+# 请确保只有 gems.ruby-china.com
+gem install rails
 ```
 
 

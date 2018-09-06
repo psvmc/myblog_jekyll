@@ -37,14 +37,9 @@ categories:
 ```bash
 gem sources -l
 gem sources --remove http://ruby.taobao.org/
-gem sources -a https://gems.ruby-china.org/
+gem sources --add https://gems.ruby-china.com/
 gem sources -l
 ```
-
-建议使用镜像地址  
-`gem sources -a https://gems.ruby-china.org/`
-
-`https://ruby.taobao.org/`不再继续维护 不建议使用
 
 ## 更新报错
 
@@ -77,7 +72,7 @@ Operation not permitted - /usr/bin/xcodeproj
 ```
 
  解决方法
- 
+
 ```bash
 sudo gem install -n /usr/local/bin cocoapods --pre
 ```
@@ -93,5 +88,5 @@ pod --version
 ```bash
 pod setup
 ```
- 
+
 
