@@ -8,6 +8,26 @@ category: mac
 
 ---
 
+
+
+### 显示复制文件夹路径
+
+显示路径在Finder：
+
+> 设置后要重启Finder才能显示
+
+```bash
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+```
+
+复制当前文件夹路径的快捷键
+
+```bash
+Option+Command+C
+```
+
+
+
 ### 显示隐藏文件
 
 + 显示：  
