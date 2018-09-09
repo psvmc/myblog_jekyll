@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: mac上开发常用的操作
-description: mac上开发常用的操作
+title: Mac上开发常用的操作
+description: Mac上开发常用的操作
 keywords: mac
 category: mac
 
