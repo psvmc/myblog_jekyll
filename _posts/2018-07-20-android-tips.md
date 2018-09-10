@@ -341,7 +341,40 @@ android:gravity="top"
 ### 光标显示在最后
 
 ```kotlin
-name_edittext.setSelection(name_edittext.text.toString().length)
+name_edittext.setSelection(name_edittext.text.length)
+```
+
+
+
+### 监听值变化
+
+```kotlin
+num_textview.addTextChangedListener(object : TextWatcher {
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun afterTextChanged(p0: Editable?) {
+        num_textview.setSelection(num_textview.text.length)
+    }
+
+})
+```
+
+
+
+### 监听焦点变化
+
+```kotlin
+num_textview.setOnFocusChangeListener { view, b ->
+    if(b){
+        num_textview.setSelection(num_textview.text.length)
+    }
+}
 ```
 
 
