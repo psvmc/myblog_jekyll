@@ -379,6 +379,17 @@ num_textview.setOnFocusChangeListener { view, b ->
 
 
 
+### 默认不获取焦点
+
+在非EditText的控件中找一个，设置成
+
+```bash
+android:focusable="true"
+android:focusableInTouchMode="true"
+```
+
+
+
 ### 软键盘不遮挡
 
 [`解决Android软键盘在全屏下设置adjustResize无效的问题`](http://www.psvmc.cn/article/android-adjustresize.html)

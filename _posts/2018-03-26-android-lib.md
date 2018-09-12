@@ -106,7 +106,7 @@ implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
 
 
 
- ## 相册图片选择
+## 相册图片选择
 
 [`PictureSelector`](https://github.com/LuckSiege/PictureSelector) 
 

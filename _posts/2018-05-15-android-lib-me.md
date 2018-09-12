@@ -19,7 +19,7 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 
 
-## 我的必备组件
+## 我的常用组件
 
 
 
@@ -57,31 +57,9 @@ implementation 'com.android.support:support-v4:27.1.1'
 
 ### 权限
 
-[`PermissionsDispatcher`](https://github.com/permissions-dispatcher/PermissionsDispatcher)
++ [`XPermission`](https://github.com/a5533348/XPermission) 最快最简单的方式适配Android6.0权限
 
-  Kotlin
-
-  ```bash
-  apply plugin: 'kotlin-kapt'
-  
-  dependencies {
-    compile("com.github.hotchemi:permissionsdispatcher:3.2.0") {
-        // if you don't use android.app.Fragment you can exclude support for them
-        exclude module: "support-v13"
-    }
-    kapt "com.github.hotchemi:permissionsdispatcher-processor:3.2.0"
-  }
-  ```
-
-  注解
-
-| Annotation            | Required | Description                                                  |
-| --------------------- | -------- | ------------------------------------------------------------ |
-| `@RuntimePermissions` | **✓**    | Register an `Activity` or `Fragment`(we support both) to handle permissions |
-| `@NeedsPermission`    | **✓**    | Annotate a method which performs the action that requires one or more permissions |
-| `@OnShowRationale`    |          | Annotate a method which explains why the permission/s is/are needed. It passes in a `PermissionRequest` object which can be used to continue or abort the current permission request upon user input |
-| `@OnPermissionDenied` |          | Annotate a method which is invoked if the user doesn't grant the permissions |
-| `@OnNeverAskAgain`    |          | Annotate a method which is invoked if the user chose to have the device "never ask again" about a permission |
++ [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) 不推荐使用
 
 ### Adapter
 
@@ -321,3 +299,6 @@ implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
 
   
 
+## 其他
+
+[`GitHub上受欢迎的Android UI Library`](https://hndeveloper.github.io/2017/github-android-ui.html)
