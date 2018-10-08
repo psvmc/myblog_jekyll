@@ -39,6 +39,8 @@ categories: android java maven
 
 ### 可用镜像
 
+
+
 阿里云的镜像站（首推，新站，速度暴快）
 
 ```xml
@@ -50,27 +52,27 @@ categories: android java maven
 </mirror>
 ```
 
-maven官方运维的2号仓库
-
+leancloud
 ```xml
 <mirror>
-    <id>repo2</id>
-    <name>Mirror from Maven Repo2</name>
-    <url>http://repo2.maven.org/maven2/</url>
+    <id>nexus-leancloud</id>
+    <name>Nexus leancloud</name>
+    <url>http://mvn.leancloud.cn/nexus/content/repositories/public</url>
     <mirrorOf>central</mirrorOf>
 </mirror>
 ```
 
-maven在UK架设的仓库（有时候速度会比官方2号仓库快）
+ibiblio
 
 ```xml
 <mirror>
-    <id>ui</id>
-    <name>Mirror from UK</name>
-    <url>http://uk.maven.org/maven2/</url>
-    <mirrorOf>central</mirrorOf>
+     <id>ibiblio.org</id>
+     <name>ibiblio Mirror of http://repo1.maven.org/maven2/</name>
+     <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+     <mirrorOf>central</mirrorOf>
 </mirror>
 ```
+
 
 JBoss的仓库
 
@@ -85,7 +87,7 @@ JBoss的仓库
 
 ### 使用方式
 
-修改`${maven.home}/conf`或者`${user.home}/.m2`文件夹下的`settings.xml`文件，
+修改`~/.m2`文件夹下的`settings.xml`文件，
 
 在`<mirrors>`标签下加入上述内容即可。如下：
 
@@ -101,20 +103,6 @@ JBoss的仓库
                 <mirrorOf>central</mirrorOf>
                 <name>aliyun maven</name>
                 <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
-            </mirror>
-            <!-- 中央仓库1 -->
-            <mirror>
-                <id>repo1</id>
-                <mirrorOf>central</mirrorOf>
-                <name>Human Readable Name for this Mirror.</name>
-                <url>http://repo1.maven.org/maven2/</url>
-            </mirror>
-            <!-- 中央仓库2 -->
-            <mirror>
-                <id>repo2</id>
-                <mirrorOf>central</mirrorOf>
-                <name>Human Readable Name for this Mirror.</name>
-                <url>http://repo2.maven.org/maven2/</url>
             </mirror>
         </mirrors>
     </settings>
