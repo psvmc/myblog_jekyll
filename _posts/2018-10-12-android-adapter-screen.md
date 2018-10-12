@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: Android 适配18：9全面屏适配
-description: Android 适配18：9全面屏适配
+title: Android 适配18:9全面屏适配
+description: Android 适配18:9全面屏适配
 keywords: android
 category: android
 
