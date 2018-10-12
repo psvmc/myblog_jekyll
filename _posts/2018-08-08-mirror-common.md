@@ -39,8 +39,6 @@ categories: android java maven
 
 ### 可用镜像
 
-
-
 阿里云的镜像站（首推，新站，速度暴快）
 
 ```xml
@@ -94,18 +92,28 @@ JBoss的仓库
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-        <mirrors>
-            <!-- 阿里云仓库 -->
-            <mirror>
-                <id>alimaven</id>
-                <mirrorOf>central</mirrorOf>
-                <name>aliyun maven</name>
-                <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
-            </mirror>
-        </mirrors>
-    </settings>
+    <mirrors>
+        <mirror>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        <!-- 中央仓库1 -->
+        <mirror>
+            <id>repo1</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Human Readable Name for this Mirror.</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </mirror>
+        <!-- 中央仓库2 -->
+        <mirror>
+            <id>repo2</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Human Readable Name for this Mirror.</name>
+            <url>http://repo2.maven.org/maven2/</url>
+        </mirror>
+    </mirrors>
 </settings>
 ```
 
