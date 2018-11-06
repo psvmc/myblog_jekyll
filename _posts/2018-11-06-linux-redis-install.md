@@ -153,5 +153,5 @@ redis-cli -h 127.0.0.1 -p 6379 -a myRedis
 
 使用`Redis Desktop Manager`连接Redis
 
-+ 下载地址:https://pan.baidu.com/s/1urtM9Uo7mS7InvIXHi56rg  
++ 下载地址:[`Redis Desktop Manager`](https://pan.baidu.com/s/1urtM9Uo7mS7InvIXHi56rg)  
 + 密码:h13m
