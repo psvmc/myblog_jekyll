@@ -120,7 +120,7 @@ sudo service redis restart
 
 
 
-## 设置访问密码
+## 设置连接密码
 
 yum方式安装的redis配置文件通常在`/etc/redis.conf`中，打开配置文件找到
 
@@ -149,10 +149,9 @@ redis-cli -h 127.0.0.1 -p 6379 -a myRedis
 
 
 
-## 连接             
+## 客户端下载 
 
 使用`Redis Desktop Manager`连接Redis
 
 + 下载地址:https://pan.baidu.com/s/1urtM9Uo7mS7InvIXHi56rg  
 + 密码:h13m
-
