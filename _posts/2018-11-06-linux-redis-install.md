@@ -96,6 +96,63 @@ get psvmc
 /etc/rc.d/init.d/iptables save  
 ```
 
+## 远程连接
+
+yum方式安装的redis配置文件通常在`/etc/redis.conf`中，打开配置文件找到
+
+注释`bind 127.0.0.1` 就可以远程访问 如下
+
+```bash
+# bind 127.0.0.1
+```
+
+Redis3.2之后还要修改`protected-mode` 默认的`yes`改为`no`
+
+```bash
+protected-mode no
+```
+
+重启
+```bash
+sudo service redis restart
+```
+
+
+
+
+## 设置访问密码
+
+yum方式安装的redis配置文件通常在`/etc/redis.conf`中，打开配置文件找到
+
+```bash
+#requirepass foobared  
+```
+
+去掉行前的注释，并修改密码为所需的密码,保存文件
+
+```bash
+requirepass myRedis
+```
+
+重启redis
+
+```bash
+sudo service redis restart
+```
+
+带密码连接
+
+```bash
+redis-cli -h 127.0.0.1 -p 6379 -a myRedis
+```
+
+
+
+
 ## 连接             
 
-使用redis  desktop manager连接redis
+使用`Redis Desktop Manager`连接Redis
+
++ 下载地址:https://pan.baidu.com/s/1urtM9Uo7mS7InvIXHi56rg  
++ 密码:h13m
+
