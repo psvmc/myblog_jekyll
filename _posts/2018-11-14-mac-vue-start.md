@@ -176,7 +176,7 @@ npm run build
 
 
 
-## 常用包的安装
+## 常用包
 
 ### axios
 

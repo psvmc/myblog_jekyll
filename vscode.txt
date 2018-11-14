@@ -1,5 +1,5 @@
 Vscode Settiongs
 
-GitHub Token: 35c9b9c329597e575b3976d10bcfe5429e5128c9
-GitHub Gist: ff59c73e07742d1ad02006bf3793b324
+GitHub Token: a4e9536ff8737e3f41d0a3af742a55f434d59588
+GitHub Gist: 0ff3febd8eb0cf93f5f0344e29cb1b0d
 GitHub Gist Type: Secret
