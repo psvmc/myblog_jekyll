@@ -180,7 +180,7 @@ npm run build
 
 ### axios
 
-[`axios下载地址`](https://www.kancloud.cn/yunye/axios/234845)
+[`axios文档`](https://www.kancloud.cn/yunye/axios/234845)
 
 ```bash
 cnpm install axios
