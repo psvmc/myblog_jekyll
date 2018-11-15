@@ -399,25 +399,24 @@ Vue.use(Vuex)
 
 而应用到的技术也是有很多，大体上我总结了四个，也是比较常用的：
 
-+ ssr,vue官方文档给出的服务器渲染方案，这是一套完整的构建vue服务端渲染应用的指南，具体参考https://cn.vuejs.org/v2/guide/ssr.html
++ ssr,vue官方文档给出的服务器渲染方案，这是一套完整的构建vue服务端渲染应用的指南，具体[参考网站](https://cn.vuejs.org/v2/guide/ssr.html)
 
-+ vue-meta-info，这个是针对单页面的meta SEO的另一种思路，参考网站 https://zhuanlan.zhihu.com/p/29148760
++ vue-meta-info，这个是针对单页面的meta SEO的另一种思路，[参考网站](https://zhuanlan.zhihu.com/p/29148760)
 
-+ nuxt 简单易用，参考网站 https://zh.nuxtjs.org/guide/installation
++ nuxt 简单易用，[参考网站](https://zh.nuxtjs.org/guide/installation)
 
-+ phantomjs 页面预渲染，具体参考 [http://phantomjs.org](http://phantomjs.org)
++ phantomjs 页面预渲染，具体[参考网站]([http://phantomjs.org](http://phantomjs.org)) 
 
 
 
 而市场上依靠vue做出来的唱功案例还是很多的：
 
-+ https://www.bilibili.com （bilibili）
-+ http://m.sohu.com （手机搜狐网）
-+ https://juejin.im/timeline （掘金）
-+ http://element.eleme.io/#/en-US 
-+ https://classics.autotrader.com （New&Used Classic Car for sale）
-+ http://qiqu.uc.cn （奇趣百科）
-+ https://m.uhouzz.com/apartments （异乡好居）
++  [bilibili](https://www.bilibili.com)
++ [手机搜狐网](http://m.sohu.com) 
++ [掘金](https://juejin.im/timeline)
++ [element](http://element.eleme.io/#/en-US) 
++ [奇趣百科](http://qiqu.uc.cn)
++ [异乡好居](https://m.uhouzz.com/apartments)
 
 
 
@@ -436,8 +435,8 @@ Vue.use(Vuex)
 + 3) Element在logo上加了首页的地址，并且只有logo是放在h1标签中。
 
 + 4) 有一些流量不太高的网站 比如
-  http://www.marshall.edu （Marshall University）做了seo社会化分享优化，在meta信息中出现了`property="og:title"`这种新东西；
+  [Marshall University](http://www.marshall.edu) 做了seo社会化分享优化，在meta信息中出现了`property="og:title"`这种新东西；
 
-  https://we.dji.com/zh-CN/campus （大疆招聘）使用了**Nuxt**
+  [大疆招聘](https://we.dji.com/zh-CN/campus) 使用了[**Nuxt**](https://zh.nuxtjs.org/guide/installation)
 
 
