@@ -33,9 +33,53 @@ vue.js有著名的全家桶系列，包含了vue-router，vuex， vue-resource�
 
 下载安装就行了[下载网址](https://nodejs.org/en/download/)
 
+或者
+
+用brew安装 先安装brew
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+替换及重置Homebrew默认源
+
+```bash
+//替换brew.git:
+cd "$(brew --repo)"
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+//替换homebrew-core.git:
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+```
+
+安装Node.js
+
+```bash
+brew install nodejs
+```
+
+macOS 10.14 报错 **chown: /usr/local: Operation not permitted**解决方法  卸载重新安装
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+```
+
+重新安装
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+查看node版本
+
+```bash
+node -v
+```
+
+
+
 安装后就可以用npm命令了
-
-
 
 cnpm就是npm的国内淘宝镜像 所有npm的命令 直接换成cnpm就行了
 
@@ -45,7 +89,7 @@ sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 
 
-也可以直接指定node.js的镜像地址  就不用使用cnpm了
+也可以直接指定node.js的镜像地址  就不用使用cnpm也能使用淘宝镜像
 
 ```bash
 //设置镜像地址
@@ -90,7 +134,7 @@ webpack -v
 sudo cnpm install --global vue-cli
 ```
 
-验证是否成功
+验证是否成功 查看版本
 
 ```bash
 vue -V
@@ -171,8 +215,6 @@ autoOpenBrowser: true,
 ```bash
 npm run build
 ```
-
-
 
 
 
@@ -280,6 +322,8 @@ ok，现在问题解决了【IE和低版本的安卓设备都没问题了】
 
 #### 方案二 使用 babel-polyfill
 
+[**babel-polyfill文档**](https://babeljs.io/docs/en/babel-polyfill/)
+
 ```bash
 npm install babel-polyfill -S
 
@@ -294,4 +338,107 @@ import "babel-polyfill"
 import 'babel-polyfill'
 import axios from 'axios'
 ```
+
+--------
+
+或者 `build`=>`webpack.base.config.js`中修改`entry`属性
+
+```bash
+module.exports = {
+  entry: ["babel-polyfill", "./src/main.js"],
+};
+```
+
+
+
+### Vuex
+
+[`Vuex文档`](https://vuex.vuejs.org/zh/installation.html)
+
+安装
+
+```bash
+npm install vuex --save
+```
+
+使用
+
+```bash
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+```
+
+Vuex 依赖 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises)。如果你支持的浏览器并没有实现 Promise (比如 IE)，那么你可以使用一个 polyfill 的库，例如 [es6-promise](https://github.com/stefanpenner/es6-promise)。
+
+```bash
+npm install vuex --save
+npm install es6-promise --save
+```
+
+使用
+
+```bash
+import 'es6-promise/auto'
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+```
+
+
+
+## SEO方案
+
+常用的解决方案有三种：
+
+1. 页面预渲染
+2. 服务端渲染
+3. 路由采用h5 history模式
+
+而应用到的技术也是有很多，大体上我总结了四个，也是比较常用的：
+
++ ssr,vue官方文档给出的服务器渲染方案，这是一套完整的构建vue服务端渲染应用的指南，具体参考https://cn.vuejs.org/v2/guide/ssr.html
+
++ vue-meta-info，这个是针对单页面的meta SEO的另一种思路，参考网站 https://zhuanlan.zhihu.com/p/29148760
+
++ nuxt 简单易用，参考网站 https://zh.nuxtjs.org/guide/installation
+
++ phantomjs 页面预渲染，具体参考 [http://phantomjs.org](http://phantomjs.org)
+
+
+
+而市场上依靠vue做出来的唱功案例还是很多的：
+
++ https://www.bilibili.com （bilibili）
++ http://m.sohu.com （手机搜狐网）
++ https://juejin.im/timeline （掘金）
++ http://element.eleme.io/#/en-US 
++ https://classics.autotrader.com （New&Used Classic Car for sale）
++ http://qiqu.uc.cn （奇趣百科）
++ https://m.uhouzz.com/apartments （异乡好居）
+
+
+
+那么他们是如何做优化的呢？我们通过分析，总结以下几点
+
+1. bilibili做了基本的seo优化，比如
+
+  + TDK描叙详细。
+  + 提升网页加载速度：对外联css,以及js使用了延迟加载以及dns-prefetch，preload。
+  + 外联较多，关键词排名高。
+
+2. 掘金网站使用了[vue-meta-info](https://github.com/muwoo/vue-meta-info) 管理网站的meta，
+
+  应该配合使用了[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) 对SEO进行了优化
+
+3. Element在logo上加了首页的地址，并且只有logo是放在h1标签中。
+
+4. 有一些流量不太高的网站 比如
+
+  http://www.marshall.edu （Marshall University）做了seo社会化分享优化，在meta信息中出现了`property="og:title"`这种新东西；
+
+  https://we.dji.com/zh-CN/campus （大疆招聘）使用了**Nuxt**
+
 
