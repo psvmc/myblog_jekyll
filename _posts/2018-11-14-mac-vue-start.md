@@ -423,20 +423,19 @@ Vue.use(Vuex)
 
 那么他们是如何做优化的呢？我们通过分析，总结以下几点
 
-1. bilibili做了基本的seo优化，比如
++ 1) bilibili做了基本的seo优化，比如
 
-  + TDK描叙详细。
-  + 提升网页加载速度：对外联css,以及js使用了延迟加载以及dns-prefetch，preload。
-  + 外联较多，关键词排名高。
+  TDK描叙详细。
 
-2. 掘金网站使用了[vue-meta-info](https://github.com/muwoo/vue-meta-info) 管理网站的meta，
+  提升网页加载速度：对外联css,以及js使用了延迟加载以及dns-prefetch，preload。
 
-  应该配合使用了[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) 对SEO进行了优化
+  外联较多，关键词排名高。
 
-3. Element在logo上加了首页的地址，并且只有logo是放在h1标签中。
++ 2) 掘金网站使用了[vue-meta-info](https://github.com/muwoo/vue-meta-info) 管理网站的meta，应该配合使用了[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin) 对SEO进行了优化
 
-4. 有一些流量不太高的网站 比如
++ 3) Element在logo上加了首页的地址，并且只有logo是放在h1标签中。
 
++ 4) 有一些流量不太高的网站 比如
   http://www.marshall.edu （Marshall University）做了seo社会化分享优化，在meta信息中出现了`property="og:title"`这种新东西；
 
   https://we.dji.com/zh-CN/campus （大疆招聘）使用了**Nuxt**
