@@ -216,6 +216,33 @@ autoOpenBrowser: true,
 npm run build
 ```
 
+新项目添加依赖
+
+```bash
+npm install
+```
+
+
+
+Git忽略文件`.gitignore`
+
+```bash
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+```
+
 
 
 ## 常用包
