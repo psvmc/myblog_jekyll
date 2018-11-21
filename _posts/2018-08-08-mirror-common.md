@@ -226,3 +226,85 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn //国内用户需�
 export PATH=`pwd`/flutter/bin:$PATH
 ```
 
+
+
+## 更换Homebrew镜像源
+
+### 使用替换默认源
+
+第一步：替换`brew.git`
+
+```bash
+cd "$(brew --repo)"
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+```
+
+
+
+第二步：替换`homebrew-core.git`
+
+```bash
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+cd 
+brew update
+```
+
+第三步：替换`Homebrew Bottles`源
+
+> Homebrew是OS X系统的一款开源的包管理器。出于节省时间的考虑，Homebrew默认从Homebrew Bottles源中下载二进制代码包安装。Homebrew Bottles是Homebrew提供的二进制代码包，目前镜像站收录了以下仓库： 
+> homebrew/homebrew-core 
+> homebrew/homebrew-dupes 
+> homebrew/homebrew-games 
+> homebrew/homebrew-gui 
+> homebrew/homebrew-python 
+> homebrew/homebrew-php 
+> homebrew/homebrew-science 
+> homebrew/homebrew-versions 
+> homebrew/homebrew-x11
+
+对于bash用户：
+
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+```
+
+立即生效
+
+```bash
+source ~/.bash_profile
+```
+
+对于zsh用户:
+
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+```
+
+立即生效
+
+```bash
+source ~/.zshrc
+```
+
+
+
+### 换回官方源
+
+第一步：重置`brew.git`
+
+```bash
+cd "$(brew --repo)"
+git remote set-url origin https://github.com/Homebrew/brew.git
+```
+
+第二步：重置`homebrew-core.git`
+
+```bash
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+cd
+brew update
+```
+
+第三步：注释掉bash配置文件里的有关`Homebrew Bottles`即可恢复官方源。 重启bash或让bash重读配置文件。
