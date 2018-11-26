@@ -24,3 +24,5 @@ categories: vscode
 - Open HTML in Default Browser
 - Settings Sync
 - Vue 2 Snippets
+- [`LiveServer`](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) 将静态页面自动在Web服务器中运行
+- [`Vue.js Extension Pack`](https://marketplace.visualstudio.com/items?itemName=mubaidr.vuejs-extension-pack)
