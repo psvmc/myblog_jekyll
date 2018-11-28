@@ -9,6 +9,35 @@ categories: vue
 
 
 
+## 取值
+
+### 文本
+
+```html
+<span>Message: {{ msg }}</span>
+```
+
+
+
+### 表达式
+
+```bash
+{{ number + 1 }}
+{{ ok ? 'YES' : 'NO' }}
+{{ message.split('').reverse().join('') }}
+<div v-bind:id="'list-' + id"></div>
+```
+
+
+
+### html
+
+双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，你需要使用 `v-html` 指令：
+
+```html
+<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+```
+
 
 
 ## 事件
