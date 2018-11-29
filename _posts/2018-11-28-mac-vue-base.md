@@ -1,11 +1,49 @@
 ---
 layout: post
-title: Mac上Vue基本语法
-description: Mac上Vue基本语法
+title: Vue基本语法
+description: Vue基本语法
 keywords: vue
 categories: vue
 
 ---
+
+
+
+
+
+
+
+## 刷新时不显示模版
+
+当vue需要加载数据多或者网络慢时，加载数据时候会先出现vue模板（例如item.name），用户体验特别不好 
+
+解决方法有如下几种： 
+
+1、可以通过VUE内置的指令**v-cloak**解决这个问题（推荐） 具体实现：
+
+CSS中添加样式
+
+```css
+[v-cloak]{ display: none; }
+```
+
+页面要渲染的额部分添加**v-cloak**
+
+```html
+<ul v-cloak v-for="item in items">
+	<li>{{ item.name }}</li>
+</ul>
+```
+
+
+
+2、可以在需要编译的元素前后加上
+
+```html
+<template></template>
+```
+
+ 关于`<template>`[`详解`](http://www.zhangxinxu.com/wordpress/2014/07/hello-html5-template-tag/) 
 
 
 
@@ -60,6 +98,34 @@ categories: vue
 > 编历一个指定数字也就是相当编历一个从1到指定数字的数组。
 >
 > 所以上面这个例子的item是1-10，index是0-9
+
+
+
+### 遍历对象数组
+
+数据
+
+```js
+data:{
+    items:[
+        {text:"第一组"}，
+        {text:"第二组"}，
+        {text:"第三组"}，
+    ]
+}
+```
+
+页面
+
+```html
+<li v-for="item in items">{{item.text}}</li>
+
+<li v-for="(item, index) in items">
+    {{ index }} - {{ item.text }}
+</li>
+```
+
+
 
 
 
@@ -191,3 +257,46 @@ this.$emit('gotopage', newValue, oldValue);
 v-on:gotopage="gotopage"
 ```
 
+
+
+## 生命周期
+
+![20181129154348621112493.png](http://image.psvmc.cn/20181129154348621112493.png)
+
+beforeCreate
+
+> 在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。
+
+created
+
+> 实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。
+
+beforeMount
+
+> 在挂载开始之前被调用：相关的 render 函数首次被调用。
+
+mounted
+
+> el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。
+>
+> Ajax请求数据在此阶段
+
+beforeUpdate
+
+> 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
+
+updated
+
+> 由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+>
+> 当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。
+>
+> 该钩子在服务器端渲染期间不被调用。
+
+beforeDestroy
+
+> 实例销毁之前调用。在这一步，实例仍然完全可用。
+
+destroyed
+
+> Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。 该钩子在服务器端渲染期间不被调用。
