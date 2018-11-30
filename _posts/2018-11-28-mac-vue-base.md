@@ -9,10 +9,6 @@ categories: vue
 
 
 
-
-
-
-
 ## 刷新时不显示模版
 
 当vue需要加载数据多或者网络慢时，加载数据时候会先出现vue模板（例如item.name），用户体验特别不好 
@@ -43,7 +39,7 @@ CSS中添加样式
 <template></template>
 ```
 
- 关于`<template>`[`详解`](http://www.zhangxinxu.com/wordpress/2014/07/hello-html5-template-tag/) 
+ 关于`<template>`  [`详解`](http://www.zhangxinxu.com/wordpress/2014/07/hello-html5-template-tag/) 
 
 
 
@@ -78,6 +74,72 @@ CSS中添加样式
 
 
 
+## 计算属性
+
+
+
+```js
+data: {
+    num1: 10,
+    num2:2
+},
+computed: {
+    sum: function () {
+        return this.num1+this.num2;
+    }
+}
+```
+
+如上 计算属性`sum`的值就会为3
+
+**computed**特点：
+
+1. **computed**计算的性能更高,它会把计算的值缓存起来，如果**data**中的属性不变,**computed**就不会再次计算，而**methods**中每次都要重新计算
+2. **watch**主要用于监控vue实例的变化，它监控的变量当然必须在**data**里面声明才可以，它可以监控一个变量，也可以是一个对象
+
+
+
+## 取值处理
+
+JS中：
+
+```js
+var user_vue = new Vue({
+    el: ".user",
+    data: {
+        loginuser: {username:"我的名称比较长"}
+    },
+    filters: {
+        nameFilter(name) {
+            if (name.length > 4) {
+                name = name.substring(0, 4);
+            }
+            return name;
+        }
+    }
+});
+```
+
+取值方式：
+
+```html
+{{loginuser.username|nameFilter}}
+```
+
+
+
+## 样式
+
+
+
+```bash
+v-bind:class="{ unclickable: page == 1 }"
+```
+
+
+
+
+
 ## 事件
 
 ```html
@@ -91,7 +153,7 @@ CSS中添加样式
 ### 遍历数字
 
 ```html
-<li v-for="(item,index) in 10"">{{item}}</li>
+<li v-for="(item,index) in 10">{{item}}</li>
 ```
 
 > 编历一个数字时item的值是从1 始的。
