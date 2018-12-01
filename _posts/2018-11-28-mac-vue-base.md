@@ -55,12 +55,9 @@ CSS中添加样式
 
 ### 表达式
 
-```bash
-{{ number + 1 }}
-{{ ok ? 'YES' : 'NO' }}
-{{ message.split('').reverse().join('') }}
-<div v-bind:id="'list-' + id"></div>
-```
+	{{ number + 1 }}
+	{{ ok ? 'YES' : 'NO' }}
+	{{ message.split('').reverse().join('') }}
 
 
 
@@ -122,9 +119,7 @@ var user_vue = new Vue({
 
 取值方式：
 
-```html
-{{loginuser.username|nameFilter}}
-```
+	{{loginuser.username|nameFilter}}
 
 
 
