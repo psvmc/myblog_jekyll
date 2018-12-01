@@ -25,11 +25,11 @@ CSS中添加样式
 
 页面要渲染的额部分添加**v-cloak**
 
-```html
-<ul v-cloak v-for="item in items">
-	<li>{{ item.name }}</li>
-</ul>
-```
+
+	<ul v-cloak v-for="item in items">
+		<li>{{ item.name }}</li>
+	</ul>
+
 
 
 
@@ -47,11 +47,7 @@ CSS中添加样式
 
 ### 文本
 
-```html
-<span>Message: {{ msg }}</span>
-```
-
-
+	<span>Message: {{ msg }}</span>
 
 ### 表达式
 
@@ -68,7 +64,6 @@ CSS中添加样式
 ```html
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 ```
-
 
 
 ## 计算属性
@@ -126,12 +121,9 @@ var user_vue = new Vue({
 ## 样式
 
 
-
 ```bash
 v-bind:class="{ unclickable: page == 1 }"
 ```
-
-
 
 
 
@@ -147,9 +139,9 @@ v-bind:class="{ unclickable: page == 1 }"
 
 ### 遍历数字
 
-```html
-<li v-for="(item,index) in 10">{{item}}</li>
-```
+
+	<li v-for="(item,index) in 10">{{item}}</li>
+
 
 > 编历一个数字时item的值是从1 始的。
 > 编历一个指定数字也就是相当编历一个从1到指定数字的数组。
@@ -174,13 +166,12 @@ data:{
 
 页面
 
-```html
-<li v-for="item in items">{{item.text}}</li>
 
-<li v-for="(item, index) in items">
-    {{ index }} - {{ item.text }}
-</li>
-```
+	<li v-for="item in items">{{item.text}}</li>
+
+	<li v-for="(item, index) in items">
+		{{ index }} - {{ item.text }}
+	</li>
 
 
 
