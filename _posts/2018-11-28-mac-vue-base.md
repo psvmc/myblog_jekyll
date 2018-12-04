@@ -27,7 +27,7 @@ CSS中添加样式
 
 
 	<ul v-cloak v-for="item in items">
-		<li>\{{ item.name \}}</li>
+		<li>\{\{ item.name \}\}</li>
 	</ul>
 
 
