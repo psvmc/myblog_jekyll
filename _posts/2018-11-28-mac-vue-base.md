@@ -27,7 +27,7 @@ CSS中添加样式
 
 
 	<ul v-cloak v-for="item in items">
-		<li>{{ item.name }}</li>
+		<li>\{{ item.name \}}</li>
 	</ul>
 
 
@@ -168,7 +168,7 @@ data:{
 
 
 	<li v-for="item in items">{{item.text}}</li>
-
+	
 	<li v-for="(item, index) in items">
 		{{ index }} - {{ item.text }}
 	</li>
